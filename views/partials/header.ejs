@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="img/svgexport-36.svg" alt="make my show" style="height:2.1rem"></a>
+        <div class="input-group mx-5" style="width: 26rem;">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+
+
+                <% if(!user) {%>
+                    <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
+                    <% }else{ %>
+                        <div class="chip text-nowrap">
+                            <img class="rounded-circle " style="width:40px;" src="<%=user.image%>" alt="img">
+                            <span><a class="chip-user-name " href="/stories/user/<%=user._id%> d-inline">
+                                    <%=user.displayName%>
+                                </a></span>
+                        </div>
+                        <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+                        <% } %>
+                            <li>
+                                <div class="dropdown ">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Kochi
+                                    </button>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="index.html" class="nav-link">
+                                    <i class="fa fa-bars" style="font-size: 1.5rem;"></i>
+                                </a>
+                            </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

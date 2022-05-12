@@ -1,0 +1,22 @@
+/* user login form styling */
+.num-form {
+    position: relative;
+    cursor: none
+}
+
+.num-form input {
+    padding-left: 65px;
+}
+
+.indian-flag {
+    position: absolute;
+    left: -87%;
+    top: 43px;
+}
+
+/* header */
+.chip-user-name {
+    font-size: .9rem;
+    color: white;
+    padding-left: 5px;
+}

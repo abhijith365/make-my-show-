@@ -1,0 +1,31 @@
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <form action="/auth/login" method="post">
+                        <h3 class="mb-5">Get started</h3>
+
+                        <div class="form-outline num-form  mx-4 d-inline ">
+                            <span class="indian-flag"><img alt="ind"
+                                    src="//in.bmscdn.com/webin/common/icons/indianflag.svg"> +91</span>
+
+                            <label class="form-label" for="phone">Continue with mobile
+                                number</label>
+                            <input name="phone" id="phone" type="text" placeholder="continue with mobile number"
+                                class="form-control form-control-lg" value="">
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Continue</button>
+
+                        <hr class="my-4">
+
+                        <a href="/auth/google" class="btn btn-lg btn-block btn-primary mt-5"
+                            style="background-color: #dd4b39;" type="submit"><i class="fab fa-google me-2"></i> Sign in
+                            with google</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
