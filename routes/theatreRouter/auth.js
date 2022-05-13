@@ -2,9 +2,12 @@ const express = require('express')
 const passport = require('passport')
 const route = express.Router()
 const theatreOwn = require('../../models/Theatre_own')
-const accountSid = "ACf9f3bcac16a5c5b52ab07d450ed29429"
-const authToken = "2b03743be2a5f1f0889bc00e2f6ccbec"
-const serviceid = "VA49d520444271358c475888bba93f31d0"
+const accountSid = process.env.ACCOUNT_SID
+const authToken = process.env.AUTH_TOKEN
+const serviceid = process.env.SERVICE_ID
+
+
+
 
 
 const client = require('twilio')(accountSid, authToken);
@@ -12,15 +15,21 @@ const client = require('twilio')(accountSid, authToken);
 
 
 route.get('/home', (req, res) => {
-    if (!req.session.theatreOwn) {
-        res.redirect('/theatre/')
+    let user = req.session.theatreOwn;
+    if (!user) {
+        res.redirect('/theatre')
     } else {
-        let status = req.session.theatreOwnstatus;
-        console.log(status)
-        res.render("theatre/index", {
-            "layout": './layout/layout',
-            status
-        })
+        if (user.status == "Pending" || user.status == "reject") {
+            res.render("theatre/status/pending", {
+                "layout": './layout/layout',
+                data: user
+            })
+        } else {
+            res.render("theatre/index", {
+                "layout": './layout/layout',
+                data: user
+            })
+        }
     }
 })
 
@@ -46,8 +55,7 @@ route.post('/', async (req, res) => {
         let data = await theatreOwn.findOne({ googleMail: req.body.email, password: req.body.password })
         console.log(data)
         if (data) {
-            req.session.theatreOwn = req.body.email
-            req.session.theatreOwnstatus = data.status
+            req.session.theatreOwner = data
             res.status(200)
             res.redirect('/theatre/home');
         }
@@ -81,10 +89,8 @@ route.get('/reg', (req, res) => {
 route.post('/reg', async (req, res) => {
     try {
         let user = await theatreOwn.findOne({ googleMail: req.body.googleMail })
-        console.log(user)
         if (!user) {
             user = await theatreOwn.create(req.body)
-            console.log(user)
             console.log("user saved")
             res.redirect('/theatre')
         } else {
@@ -111,6 +117,7 @@ route.get('/auth/phone', async (req, res) => {
 //@route POST /auth/login
 
 route.post('/auth/phone', (req, res) => {
+    console.log(req.body.phone, "from auth/phone post");
     try {
         client.verify.services(serviceid)
             .verifications
@@ -118,7 +125,7 @@ route.post('/auth/phone', (req, res) => {
             .then(verification => {
                 res.render(res.render("theatre/login_otp", {
                     "layout": './layout/layout',
-                    phonenum: req.body.phone
+                    phone: req.body.phone
                 }))
             });
     } catch (error) {
@@ -131,31 +138,45 @@ route.post('/auth/phone', (req, res) => {
 // @desc otp validator 
 // @route POST /auth/otp_val
 route.post('/auth/otp_val', (req, res) => {
+    console.log(req.body.phone, "from auth/otp_val post");
     client.verify.services(serviceid)
         .verificationChecks
         .create({ to: `+91${req.body.phone}`, code: req.body.OTP })
         .then(async (verification_check) => {
+            console.log(verification_check)
             if (verification_check.status == "approved") {
                 try {
                     let phone = req.body.phone
-                    let user = theatreOwn.findOne({ phone: phone })
+                    let user = await theatreOwn.findOne({ phone: phone })
 
-                    if (user) {
-                        req.session.phone = user
-                        res.redirect('/theater')
+                    if (!user) {
+                        req.session.message = "user not found"
+                        res.redirect('/theatre')
+                        console.log("no user found")
+
                     }
                     else {
-                        res.redirect('/theater')
+                        req.session.theatreOwn = user
+                        res.redirect('/theatre')
                     }
                 } catch (error) {
                     console.log(error.message)
                 }
 
+            } else {
+                req.session.message = "invalid verification code"
+                message = req.session.message
+                req.session.message = ""
+                res.render("theatre/login_otp", {
+                    "layout": './layout/layout',
+                    message,
+                    phone: req.body.phone
+                })
             }
         })
         .catch((error) => {
             console.log(error.message)
-            res.render('user/login_otp.ejs', { err_msg: "Invalid Otp" })
+            res.render('theatre/login_otp.ejs', { err_msg: "Invalid Otp" })
         });
 
 })
