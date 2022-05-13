@@ -2,17 +2,22 @@
     <div class="container height-100 d-flex justify-content-center align-items-center">
         <div class="position-relative">
             <div class="card p-2 text-center">
-                <h6>Please enter the one time password <br> to verify your account</h6>
-                <div> <span>A code has been sent to</span> <small>
-                        <%= %>
-                    </small> </div>
-                <div id="otp" class="justify-content-center">
-                    <input name="OTP" class=" text-center form-control rounded" type="text" id="otp_inp" />
-                </div>
-                <input name="phone" value="<%-phonenum%>" type="hidden" />
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <h6>Please enter the one time password <br> to verify your account</h6>
+                        <div> <span>A code has been sent to</span> <small>
+                                <%-locals.phone%>
+                            </small> </div>
+                        <div id="otp" class="justify-content-center">
+                            <input name="OTP" class=" text-center form-control rounded" type="text" id="otp_inp" />
+                        </div>
+                        <input name="phone" value="<%-locals.phone%>" type="hidden" />
 
-                <div class=" mt-4"> <button class="btn btn-danger px-4 validate" type="submit">Validate</button>
-                </div>
+                        <div class=" mt-4"> <button class="btn btn-danger px-4 validate" type="submit">Validate</button>
+                        </div>
             </div>
             <div class="card-2">
                 <div class="content d-flex justify-content-center align-items-center"> <span>Didn't get the code</span>

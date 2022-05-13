@@ -40,7 +40,7 @@ router.post('/login', (req, res) => {
             .verifications
             .create({ to: `+91${req.body.phone}`, channel: 'sms' })
             .then(verification => {
-                res.render('user/login_otp', { phonenum: req.body.phone })
+                res.render('user/login_otp', { phone: req.body.phone })
             });
     } catch (error) {
         console.error(error.message)
@@ -75,9 +75,19 @@ router.post('/otp_val', (req, res) => {
                 }
 
             }
+            else {
+                req.session.message = "invalid verification code"
+                message = req.session.message
+                req.session.message = ""
+                res.render("user/login_otp", {
+                    "layout": './layout/layout',
+                    message,
+                    phone: req.body.phone
+                })
+            }
         })
         .catch((error) => {
-            res.render('user/login_otp.ejs', { err_msg: "Invalid Otp" })
+            res.render('user/login_otp.ejs', { message: "Invalid Otp" })
         });
 
 })

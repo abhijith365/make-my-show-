@@ -9,7 +9,6 @@ route.get('/', async (req, res) => {
     try {
         console.log(req.session.phone)
         let user = req.user || req.session.phone
-        console.log(user)
         if (user) {
             res.render('user/index', {
                 layout: './layout/layout.ejs',

@@ -1,0 +1,51 @@
+<%- include('../../partials/theater_header.ejs') %>
+    <div class="container-fluid">
+        <div class="h1 py-3 text-center" style="background-color: #ccc;">Application Status</div>
+        <div class="d-flex">
+            <div class="flex-shrink-0 p-3 " style="background-color: #ccc;width: 280px;">
+                <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                    <svg class="bi me-2" width="30" height="24">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <span class="h4 ">Application Status</span>
+                </a>
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <h4 class="text-white text-capitalize text-center text-dark">
+                            <%-data.status%>
+                        </h4>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="w-100" style="color: rgba(45, 42, 42, 0.793);">
+                <div class="h3 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Application</div>
+                <div class="status p-5">
+                    <div class="h5 px-5 py-3">Application Date &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.createdAt%>
+                    </div>
+                    <div class="h5 px-5 py-3">Application number &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.theatreId%>
+                    </div>
+                    <div class="h5 px-5 py-3">Owner name &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.userName%>
+                    </div>
+                    <div class="h5 px-5 py-5">Application Status &nbsp;&nbsp;&nbsp;&nbsp; :
+                        <% if(data.status=="Pending" ){%>
+                            <span style="color:black;">&nbsp; Application Under Review
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                <% } else if(data.status=="reject" ) { %>
+                                    <span style="color: rgb(255, 85, 0)">
+                                        &nbsp; Application Rejected
+                                        <i class="fa fa-ban" aria-hidden="true"></i>
+                                    </span>
+                                    <%}%>
+
+
+                    </div>
+                    <div class="danger h6"><a href="#!">Contact Us</a></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
