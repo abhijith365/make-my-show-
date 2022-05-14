@@ -14,7 +14,7 @@ const connectDb = require('./config/db')
 const app = express();
 
 // body parser 
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //Load config
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === "development") {
 
 // static file
 app.set('views', path.join(__dirname, 'views'))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 // view engine
 app.set('view engine', 'ejs')
