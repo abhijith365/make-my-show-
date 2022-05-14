@@ -7,32 +7,11 @@ const authToken = process.env.AUTH_TOKEN
 const serviceid = process.env.SERVICE_ID
 
 
-
-
-
 const client = require('twilio')(accountSid, authToken);
 
 
-
-route.get('/home', (req, res) => {
-    let user = req.session.theatreOwn;
-    if (!user) {
-        res.redirect('/theatre')
-    } else {
-        if (user.status == "Pending" || user.status == "reject") {
-            res.render("theatre/status/pending", {
-                "layout": './layout/layout',
-                data: user
-            })
-        } else {
-            res.render("theatre/index", {
-                "layout": './layout/layout',
-                data: user
-            })
-        }
-    }
-})
-
+//@desc login 
+//@route POST /
 
 route.get('/', (req, res) => {
     if (req.session.theatreOwn) {
@@ -52,10 +31,9 @@ route.get('/', (req, res) => {
 route.post('/', async (req, res) => {
     console.log(req.body)
     try {
-        let data = await theatreOwn.findOne({ googleMail: req.body.email, password: req.body.password })
-        console.log(data)
+        let data = await theatreOwn.findOne({ googleMail: req.body.email, password: req.body.password }).lean()
         if (data) {
-            req.session.theatreOwner = data
+            req.session.theatreOwn = data
             res.status(200)
             res.redirect('/theatre/home');
         }
@@ -68,6 +46,28 @@ route.post('/', async (req, res) => {
     }
 
 })
+
+
+route.get('/home', (req, res) => {
+    let user = req.session.theatreOwn;
+    console.log(user, "user")
+    console.log(req.session)
+    if (!user) {
+        res.redirect('/theatre')
+    } else if (user.status == "Pending" || user.status == "reject") {
+        res.render("theatre/status/pending", {
+            "layout": './layout/layout',
+            data: user
+        })
+    } else {
+        res.render("theatre/index", {
+            "layout": './layout/layout',
+            data: user
+        })
+    }
+})
+
+
 
 //@desc view registration page
 //@route GET /reg
@@ -117,7 +117,6 @@ route.get('/auth/phone', async (req, res) => {
 //@route POST /auth/login
 
 route.post('/auth/phone', (req, res) => {
-    console.log(req.body.phone, "from auth/phone post");
     try {
         client.verify.services(serviceid)
             .verifications
@@ -138,7 +137,6 @@ route.post('/auth/phone', (req, res) => {
 // @desc otp validator 
 // @route POST /auth/otp_val
 route.post('/auth/otp_val', (req, res) => {
-    console.log(req.body.phone, "from auth/otp_val post");
     client.verify.services(serviceid)
         .verificationChecks
         .create({ to: `+91${req.body.phone}`, code: req.body.OTP })

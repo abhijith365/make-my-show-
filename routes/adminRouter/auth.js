@@ -59,13 +59,49 @@ route.get('/adminHome', (req, res) => {
         });
     }
 })
+// @desc admin status 
+// @route GET /status/
 
 route.get('/adminHome/status', ensureAuth, async (req, res) => {
     try {
-        let data = await theatreOwn.find({ status: "Pending" }).lean()
+        let pending_data = await theatreOwn.find({ status: "Pending" }).lean()
         res.render('admin/status', {
             layout: './layout/layout.ejs',
-            data
+            data: pending_data,
+            status: "Pending"
+        });
+    } catch (err) {
+        console.log(err.message)
+    }
+
+})
+// @desc admin status 
+// @route GET /status/accept
+
+route.get('/status/accept', ensureAuth, async (req, res) => {
+    try {
+
+        let accept_data = await theatreOwn.find({ status: "accept" }).lean()
+        res.render('admin/status', {
+            layout: './layout/layout.ejs',
+            data: accept_data,
+            status: "Accept"
+        });
+    } catch (err) {
+        console.log(err.message)
+    }
+
+})
+// @desc admin status 
+// @route GET /status/reject
+
+route.get('/status/reject', ensureAuth, async (req, res) => {
+    try {
+        let reject_data = await theatreOwn.find({ status: "reject" }).lean()
+        res.render('admin/status', {
+            layout: './layout/layout.ejs',
+            data: reject_data,
+            status: "Reject"
         });
     } catch (err) {
         console.log(err.message)
@@ -80,12 +116,13 @@ route.get('/status/reject/:id', ensureAuth, async (req, res) => {
     try {
         let id = req.params.id
         await theatreOwn.findByIdAndUpdate({ _id: id }, { status: "reject" })
-        console.log("rejected")
         res.redirect('/admin/adminHome/status')
     } catch (error) {
         console.log(error.message)
     }
 })
+// @desc admin status accept
+// @route GET /status/accept/:id
 route.get('/status/accept/:id', ensureAuth, async (req, res) => {
     try {
         let id = req.params.id
@@ -96,6 +133,9 @@ route.get('/status/accept/:id', ensureAuth, async (req, res) => {
         console.log(error.message)
     }
 })
+
+
+
 
 
 module.exports = route

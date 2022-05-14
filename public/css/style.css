@@ -10,9 +10,23 @@
 
 .indian-flag {
     position: absolute;
-    left: -87%;
+    left: -88%;
     top: 43px;
 }
+
+@-moz-document url-prefix() {
+    .num-form {
+        position: relative;
+        cursor: none
+    }
+
+    .indian-flag {
+        position: absolute;
+        left: -33%;
+        top: 43px;
+    }
+}
+
 
 /* header */
 .chip-user-name {
