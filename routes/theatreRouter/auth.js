@@ -88,7 +88,12 @@ route.get('/reg', (req, res) => {
 //@route POST /reg
 route.post('/reg', async (req, res) => {
     try {
-        let user = await theatreOwn.findOne({ googleMail: req.body.googleMail })
+        let user = await theatreOwn.findOne({
+            $or: [
+                { googleMail: req.body.googleMail },
+                { phone: req.body.phone }
+            ]
+        })
         if (!user) {
             user = await theatreOwn.create(req.body)
             console.log("user saved")
