@@ -50,8 +50,6 @@ route.post('/', async (req, res) => {
 
 route.get('/home', (req, res) => {
     let user = req.session.theatreOwn;
-    console.log(user, "user")
-    console.log(req.session)
     if (!user) {
         res.redirect('/theatre')
     } else if (user.status == "Pending" || user.status == "reject") {

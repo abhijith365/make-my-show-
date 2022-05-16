@@ -7,6 +7,7 @@ const expressLayout = require('express-ejs-layouts')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
+const { connectToServer } = require('./config/mongo.config')
 const MongoStore = require('connect-mongo')
 const connectDb = require('./config/db')
 
@@ -25,6 +26,9 @@ dotenv.config({ path: './config/config.env' })
 require('./config/passport')(passport);
 // require('./routes/theatreRouter/passport')(passport)
 
+
+// database connection
+connectToServer((err) => { if (err) { console.log(err) } else { console.log(`MongoDb client connected`) } })
 connectDb();
 
 // Logging
@@ -84,6 +88,7 @@ app.use('/', require('./routes/userRouter/userLogin'))
 app.use('/auth', require('./routes/userRouter/auth'))
 app.use('/admin/', require('./routes/adminRouter/auth'))
 app.use('/theatre', require('./routes/theatreRouter/auth'))
+app.use('/theatre/theatre', require('./routes/theatreRouter/theatre'))
 
 // server port 
 const port = process.env.PORT || 3000

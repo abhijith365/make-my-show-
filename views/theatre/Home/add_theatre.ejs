@@ -1,0 +1,66 @@
+<%- include('../../partials/theater_header.ejs') %>
+    <link rel="stylesheet" href="/css/theatre/forms.css">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-12">
+            <div class="form-container">
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <h3 class="title">Add Theatre</h3>
+
+                        <form class="form-horizontal" action="/theatre/theatre/" method="POST"
+                            enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Theatre Name</label>
+                                <input required name="theatreName" type="text" class="form-control"
+                                    placeholder="Enter Theatre Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Building Name</label>
+                                <input required name="Building Name" type="text" class="form-control"
+                                    placeholder="Building Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input required name="address" type="text" class="form-control" placeholder="Address">
+                            </div>
+                            <div class="form-group">
+                                <label>City</label>
+                                <select name="city" class="form-control">
+                                    <option value="Kochi">Kochi</option>
+                                    <option value="NCR">NCR</option>
+                                    <option value="Bengalure">Bengalure</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Chadigarh">Chadigarh</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Theater registered ID</label>
+                                <input required name="theatreId" type="text" class="form-control"
+                                    placeholder="Theater registered ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="formFileMultiple">Add theatre images</label>
+                                <input class="form-control" name="images" type="file" id="formFileMultiple" multiple />
+                            </div>
+
+
+                            <div class="check-terms">
+                                <input required type="checkbox" class="checkbox">
+                                <span class="check-label">I agree to the terms</span>
+                            </div>
+                            <button class="btn signup">Create Theatre</button>
+
+                        </form>
+            </div>
+        </div>
+    </div>
+    </div>

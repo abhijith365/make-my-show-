@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="panel-body table-responsive">
-                        <table class="table">
+                        <table class="table" style="table-layout: fixed ; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -56,13 +56,16 @@
                                         </td>
                                         <td>
                                             <ul class="action-list">
-                                                <li><a href="/admin/status/accept/<%- d._id %> " data-tip="accept"><i
-                                                            class="fa fa-check fa-lg"></i></a>
+                                                <li class="list-item"><a class="btn"
+                                                        href="/admin/status/accept/<%- d._id %> " data-tip="accept">
+                                                        <i class="fa fa-check fa-lg"></i></a>
                                                 </li>
-                                                <li><a href="/admin/status/reject/<%- d._id %>" data-tip="reject"><i
+                                                <li class="list-item"><a class="btn"
+                                                        href="/admin/status/reject/<%- d._id %>" data-tip="reject"><i
                                                             class="fa fa-ban fa-lg px-2"></i></a>
                                                 </li>
-                                                <li><a href="/admin/status/view/<%- d._id %>" data-tip="view"><i
+                                                <li class="list-item"><a class="btn"
+                                                        href="/admin/status/view/<%- d._id %>" data-tip="view"><i
                                                             class="fa fa-eye fa-lg "></i></a>
                                                 </li>
                                             </ul>

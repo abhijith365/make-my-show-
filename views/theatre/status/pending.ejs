@@ -19,16 +19,18 @@
                 </ul>
 
             </div>
-            <div class="w-100" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
                 <div class="h3 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Application</div>
                 <div class="status p-5">
-                    <div class="h5 px-5 py-3">Application Date &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.createdAt%>
+                    <div class="h5 px-5 py-3">Application Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; <%-
+                            data.createdAt%>
                     </div>
-                    <div class="h5 px-5 py-3">Application number &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.theatreId%>
+                    <div class="h5 px-5 py-3">Application number &nbsp; : &nbsp;<%- data.theatreId%>
                     </div>
-                    <div class="h5 px-5 py-3">Owner name &nbsp;&nbsp;&nbsp;&nbsp; : <%- data.userName%>
+                    <div class="h5 px-5 py-3">Owner name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;<%- data.userName%>
                     </div>
-                    <div class="h5 px-5 py-5">Application Status &nbsp;&nbsp;&nbsp;&nbsp; :
+                    <div class="h5 px-5 py-4">Application Status &nbsp;&nbsp;&nbsp;&nbsp; :
                         <% if(data.status=="Pending" ){%>
                             <span style="color:black;">&nbsp; Application Under Review
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -41,7 +43,7 @@
 
 
                     </div>
-                    <div class="danger h6"><a href="#!">Contact Us</a></div>
+                    <div class="danger h6 " style="margin-top: 30px ;"><a href="#!">Contact Us</a></div>
                 </div>
 
             </div>

@@ -17,8 +17,8 @@
                     <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
                     <% }else{ %>
                         <div class="chip text-nowrap">
-                            <img class="rounded-circle " style="width:40px;" src="<%=user.image%>" alt="img">
-                            <span><a class="chip-user-name " href="/stories/user/<%=user._id%> d-inline">
+                            <img src="<%=user.image%>" class="rounded-circle " style="width:40px" alt="img">
+                            <span><a class="chip-user-name" href="/stories/user/<%=user._id%>">
                                     <%=user.displayName%>
                                 </a></span>
                         </div>
