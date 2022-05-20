@@ -1,36 +1,33 @@
 <%- include('../partials/theater_header.ejs') %>
     <div class="container-fluid w-100">
-        <div class=" text-center text-white" style="background-color:#dc3545; padding: .8rem 0;">
-            <div class="h3">
-                <%- locals.user %>A
+
+
+    </div>
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/home">Theaters</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/movies/<%-data._id%> ">Movies</a>
+
+
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Add
+                    Shows</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
         </div>
-        <div class="d-flex">
-            <div class="px-3 bg-dark text-white">
-                <div class="list-group px-4 bg-dark text-white text-nowrap">
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4"
-                        href="/theatre/home">Dashboard</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4"
-                        href="#!">Theaters</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4" href="#!">Movies</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4"
-                        href="/theatre/theatre">Add Theatre</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4" href="#!">Add
-                        Movies</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4" href="#!">Add
-                        Shows</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action text-white bg-dark px-4 pb-4" href="#!">Profile</a>
-                </div>
-            </div>
-            <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
-                <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Dashboard</div>
-                <div class="status p-5">
-                    <h1>Graph</h1>
-                </div>
-
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Dashboard</div>
+            <div class="status p-5">
+                <h1>Graph</h1>
             </div>
 
         </div>
+
+    </div>
 
     </div>

@@ -29,7 +29,6 @@ route.get('/', (req, res) => {
 //@route POST /
 
 route.post('/', async (req, res) => {
-    console.log(req.body)
     try {
         let data = await theatreOwn.findOne({ googleMail: req.body.email, password: req.body.password }).lean()
         if (data) {

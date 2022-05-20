@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/css/theatre/forms.css">
+<div class="container">
+    <div class="col-md-offset-1 col-md-12">
+        <div class="form-container">
+            <h3 class="title">Add movie</h3>
+            <form class="form-horizontal" action="/theatre/theatre/add/movie/<%- id %> " method="POST"
+                enctype="multipart/form-data">
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <div class="form-group">
+                            <label>Movie Name</label>
+                            <input required name="movieName" type="text" class="form-control" placeholder="Movie Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Movie Id</label>
+                            <input required name="movie_uid" type="text" class="form-control" placeholder="Movie Id">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input required name="description" type="text" class="form-control"
+                                placeholder="Description">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Movie duration</label>
+                            <input type="time" name="movieDuration" id="time" class="form-control" tabindex="27">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Movie Language</label>
+                            <input required name="language" type="text" class="form-control"
+                                placeholder="Movie Language">
+                        </div>
+                        <div class="form-group">
+                            <label for="releseDate">Relese Date</label>
+                            <input id="releseDate" class="form-control" name="ReleseDate" type="date" name="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Trailer Links</label>
+                            <input required name="tlLinks" type="text" class="form-control" placeholder="Trailer Links">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie-genres">Movie genres</label>
+                            <input id="movie-genres" class="form-control" type="text" name="movieGenres">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="images">Add Movie images</label>
+                            <input class="form-control" name="images" type="file" id="images" multiple />
+                        </div>
+
+                        <input type="hidden" name="theatreOwner" value="<%- id %> ">
+
+
+                        <button class="btn btn-danger" type="submit">Add Movie</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>

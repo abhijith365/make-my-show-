@@ -3,7 +3,9 @@ module.exports = {
     theatreowner: "theatreowns",
     admin: "admins",
     theatre: "theatres",
-
-
+    screen: "screens",
+    seat: "seats",
+    movie: "movies",
+    show: "shows"
 
 }

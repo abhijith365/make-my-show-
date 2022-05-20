@@ -39,6 +39,8 @@ if (process.env.NODE_ENV === "development") {
 
 // static file
 app.set('views', path.join(__dirname, 'views'))
+// app.set('/uploads', express.static(path.join('uploads')))
+app.use('/uploads', express.static('uploads'))
 app.use(express.static(path.join(__dirname, '/public')))
 
 // view engine
@@ -89,6 +91,7 @@ app.use('/auth', require('./routes/userRouter/auth'))
 app.use('/admin/', require('./routes/adminRouter/auth'))
 app.use('/theatre', require('./routes/theatreRouter/auth'))
 app.use('/theatre/theatre', require('./routes/theatreRouter/theatre'))
+
 
 // server port 
 const port = process.env.PORT || 3000

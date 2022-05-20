@@ -1,0 +1,64 @@
+<%- include('../../partials/theater_header.ejs') %>
+    <div class="container-fluid w-100">
+
+
+    </div>
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/halls/<%-data._id%> ">Screen</a>
+
+
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Theatre Dashboard</div>
+            <div class="status p-5">
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <img class="card-img-top" style="width:300px ;" src="<%- data.images[0].imageUrl %> "
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%-data.theatreName %>
+                                </h5>
+                                <p class="card-text">
+                                    <%- data.theatreName%>, <%-data.BuildingName%>, <%-data.city %>
+                                </p>
+                                <% if (!data.application_complete) { %>
+                                    <p class="card-text"><small class="text">
+
+                                            theatre form is incompleted
+
+                                        </small></p>
+                                    <!-- <a href="/theatre/theatre/<%-data._id%>" class="btn btn-danger">Continue</a> -->
+                                    <% }else{%>
+                                        <a href="#" class="btn btn-danger">Edit</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <% } %>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>

@@ -20,6 +20,7 @@
     "moment": "^2.29.3",
     "mongoose": "^6.3.2",
     "morgan": "^1.10.0",
+    "multer": "^1.4.4",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
