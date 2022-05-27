@@ -7,7 +7,6 @@ const route = express.Router()
 
 route.get('/', async (req, res) => {
     try {
-        console.log(req.session.phone)
         let user = req.user || req.session.phone;
         if (user) {
             res.render('user/index', {

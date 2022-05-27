@@ -1,10 +1,15 @@
 const express = require('express')
 const route = express.Router()
+const fs = require('fs');
+const _ = require('underscore')
 
 const db = require('../../helper/theatre_helper/database_helper')
 const { ensureAuth } = require('../../middleware/isTheater')
 
 const multer = require('multer')
+const database_helper = require('../../helper/theatre_helper/database_helper')
+const { session } = require('passport');
+const { error } = require('console');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -18,33 +23,39 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
+//theatre section
 // add theatre page 
 
 route.get('/', ensureAuth, (req, res) => {
-    let message = req.session.message;
-    req.session.message = "";
-    res.render("theatre/Home/add_theatre", {
-        "layout": './layout/layout',
-        message
-    })
+    try {
+        let message = req.session.message;
+        req.session.message = "";
+        res.render("theatre/Home/add_theatre", {
+            "layout": './layout/layout',
+            message
+        })
+    } catch (error) {
+        console.log(error.message);
+    }
+
 })
 route.post('/', ensureAuth, upload.array('images'), async (req, res) => {
     try {
         let image = req.files.map((e) => {
-            return ({
-                imageUrl: 'http://localhost:3000/uploads/' + e.filename
-            })
+            //'http://localhost:3000/uploads/' + 
+            return (e.filename)
         })
 
 
         req.body.application_complete = false;
-        req.body.images = image
-        req.body.theatreOwner = req.session.theatreOwn._id
+        req.body.images = image;
+        req.body.createdAt = Date.now();
+        req.body.theatreOwner = req.session.theatreOwn._id;
 
 
         let data = await db.addTheatre(req.body).then((res) => { return (res.status) }).catch((e) => console.log(e.message))
         if (data == true) {
-            res.redirect('/theatre/')
+            res.redirect('/theatre/theatre/home')
         } else {
             req.session.message = "User already exits"
             res.redirect('/theatre/theatre')
@@ -55,6 +66,7 @@ route.post('/', ensureAuth, upload.array('images'), async (req, res) => {
 
 
 })
+
 
 // theatre home page
 route.get('/home', ensureAuth, async (req, res) => {
@@ -76,6 +88,7 @@ route.get('/:id', ensureAuth, async (req, res) => {
         let id = req.params.id
         let data = await db.findTheatre(id).then((e) => e).catch(e => console.log(e.message))
 
+
         res.render("theatre/Home/theatre.ejs", {
             "layout": './layout/layout', data
         })
@@ -84,11 +97,85 @@ route.get('/:id', ensureAuth, async (req, res) => {
     }
 
 })
+//Edit theatre -> GET request
+route.get('/edit/:id', ensureAuth, async (req, res) => {
+    try {
+        let id = req.params.id
+        let theatreId = req.session.theatreOwn._id;
+
+        let data = await db.findTheatre(id).then((e) => e).catch(e => console.log(e.message))
+
+        if (data) {
+            res.render("theatre/Home/edit_theatre.ejs", {
+                "layout": './layout/layout', data
+            })
+        } else throw new error;
+    } catch (err) {
+        res.render('error/500')
+        console.log(err);
+    }
+
+})
+// Edit theatre -> POST request
+route.post('/edit/:id', ensureAuth, upload.array('images'), async (req, res) => {
+    try {
+
+
+        let image = req.files.map((e) => {
+            //http://localhost:3000/uploads/' +
+            return (e.filename)
+        })
+
+        let id = req.params.id;
+        let owner_id = req.session.theatreOwn._id;
+        req.body.images = image;
+        req.body.theatreOwner = owner_id;
+        req.body.theatre_id = id;
+
+        let data = await db.updateTheatre(req.body).then((res) => res).catch((e) => console.log(e.message))
+
+        if (data) {
+            res.redirect(`/theatre/theatre/home`)
+        } else {
+            req.session.message = "Movie already exits"
+            res.redirect(`/theatre/theatre/edit/movies/${id}`)
+        }
+    } catch (err) {
+        console.log(err)
+        res.render('error/500')
+
+    }
+
+
+})
+// delete theatre 
+route.get('/delete/:id', ensureAuth, async (req, res) => {
+    try {
+        let id = req.params.id;
+        let theatreId = req.session.theatreOwn._id;
+        let obj = { _id: id, theatreOwner: theatreId }
+        let del = await database_helper.deleteTheatre(obj).then(r => r).catch(e => console.log(error))
+        if (del) {
+            del.images.map((e) => {
+                fs.unlinkSync(`uploads/${e}`)
+            })
+            res.redirect(`/theatre/theatre/home`);
+        } else throw new error;
+    } catch (err) {
+        console.log(err)
+        res.render('error/500')
+    }
+
+})
+// screen section
+
 // screen home
 route.get('/halls/:id', ensureAuth, async (req, res) => {
     try {
-        let id = req.params.id.toString()
-        let data = await db.showScreen(id).then(r => r).catch(e => console.log(e.message))
+        let id = req.params.id
+        let data = await db.showScreen(id).then(r => r).catch(e => console.log(e.message));
+
+
 
         res.render("theatre/Home/theatre_hall", {
             "layout": './layout/layout',
@@ -96,11 +183,47 @@ route.get('/halls/:id', ensureAuth, async (req, res) => {
             id
         })
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
     }
 
 })
-// screen page 
+// single screen page
+route.get('/screen/:id', ensureAuth, async (req, res) => {
+    try {
+        let theatreId = req.query.tid;
+        let screenId = req.params.id;
+        let obj = {
+            theatreOwner: theatreId, _id: screenId
+        }
+
+        let data = await database_helper.showSingleScreen(obj).then(data => data).catch(e => e);
+        let array = [];
+        array.push(data.seats_details.seats.seats_tag_name)
+        array.push(data.seats_details.seats.seats_number)
+        array.push(data.seats_details.seats.seats_price)
+        array.push(data.seats_details.seats.seats_category)
+        let arr = _.zip(array[0], array[1], array[2], array[3], array[4]).map((x => ([{
+            seats_tag_name: x[0], total_seats: x[1], seats_price: x[2], seats_category: x[3]
+        }])))
+
+
+
+        if (data) {
+            res.render('theatre/Home/screen', {
+                "layout": './layout/layout',
+                data,
+                arr
+            })
+        } else throw new error;
+
+        // res.redirect('/theatre')
+    } catch (error) {
+        console.log(error.message)
+        res.render('error/500')
+    }
+
+})
+// add screen page 
 route.get('/halls/add/:id', ensureAuth, async (req, res) => {
     try {
 
@@ -113,13 +236,18 @@ route.get('/halls/add/:id', ensureAuth, async (req, res) => {
             message
         })
     } catch (err) {
-        console.log(err);
+        res.render('error/500')
+        console.log(err.message);
     }
 
 })
+
 // add screen 
 route.post('/hall/:id', ensureAuth, async (req, res) => {
     try {
+        req.body.theatreOwner = req.session.theatreOwn._id;
+        req.body.createdAt = Date.now();
+
         let screen = await db.addScreen(req.body).then(res => res)
         let id = req.params.id
         if (screen) {
@@ -130,12 +258,30 @@ route.post('/hall/:id', ensureAuth, async (req, res) => {
             res.redirect(`/theatre/theatre/halls/add/${id}`)
         }
     } catch (err) {
+        res.render('error/500')
         console.log(err);
     }
 
 })
+// delete screen
+route.get('/delete/halls/:id', ensureAuth, async (req, res) => {
+    try {
+        let _id = req.params.id
+        let data = await db.deleteScreen(_id).then(r => r).catch(e => console.log(e.message));
 
-// movies home page
+        console.log(data)
+        if (data) {
+            res.redirect('/theatre/theatre/home')
+        } else throw new error;
+
+    } catch (err) {
+        console.log(err.message);
+    }
+
+})
+
+
+// movies section
 
 route.get('/movies/:id', ensureAuth, async (req, res) => {
     try {
@@ -152,12 +298,13 @@ route.get('/movies/:id', ensureAuth, async (req, res) => {
         }
 
     } catch (err) {
+        res.render('error/500')
         console.log(err.message);
     }
 
 })
 
-// add movies
+// add movies page
 route.get('/add/movies/:id', ensureAuth, (req, res) => {
     let message = req.session.message;
     let id = req.params.id;
@@ -168,14 +315,13 @@ route.get('/add/movies/:id', ensureAuth, (req, res) => {
         id
     })
 })
-
+// add movie post request
 route.post('/add/movie/:id', ensureAuth, upload.array('images'), async (req, res) => {
     try {
         let id = req.params.id
         let image = req.files.map((e) => {
-            return ({
-                imageUrl: 'http://localhost:3000/uploads/' + e.filename
-            })
+            //'http://localhost:3000/uploads/' + 
+            return ({ image_url: e.filename })
         })
 
 
@@ -192,10 +338,103 @@ route.post('/add/movie/:id', ensureAuth, upload.array('images'), async (req, res
             res.redirect(`/theatre/theatre/add/movies/${id}`)
         }
     } catch (err) {
+        res.render('error/500')
         console.log(err)
     }
 
 
+})
+
+// Edit movies page
+route.get('/edit/movies/:id', ensureAuth, async (req, res) => {
+    try {
+        let message = req.session.message;
+        let id = req.params.id;
+        let ownId = req.session.theatreOwn._id;
+        let obj = { theatreOwner: ownId, movieId: id };
+        let data = await database_helper.showSingleMovie(obj).then(re => re).catch(e => console.log(e.message));
+        req.session.message = "";
+
+        res.render("theatre/Home/edit_movies", {
+            "layout": './layout/layout',
+            message,
+            id,
+            data
+        })
+    } catch (error) {
+        console.log(error);
+        res.render('error/500');
+    }
+
+
+})
+// Edit movie post request
+route.post('/edit/movie/:id', ensureAuth, upload.array('images'), async (req, res) => {
+    try {
+
+        let image = req.files.map((e) => {
+            //http://localhost:3000/uploads/' +
+            return (e.filename)
+        })
+
+        let id = req.params.id;
+        let owner_id = req.session.theatreOwn._id;
+        req.body.images = image;
+        req.body.theatreOwner = owner_id;
+
+        let data = await db.updateMovie(req.body).then((res) => res).catch((e) => console.log(e.message))
+        console.log(data);
+        if (data) {
+            res.redirect(`/theatre/theatre/movies/${owner_id}`)
+        } else {
+            req.session.message = "Movie already exits"
+            res.redirect(`/theatre/theatre/edit/movies/${id}`)
+        }
+    } catch (err) {
+        console.log(err)
+        res.render('error/500')
+
+    }
+
+
+})
+// delete movie 
+route.get('/delete/movies/:id', ensureAuth, async (req, res) => {
+    try {
+        let id = req.params.id;
+        let theatreId = req.session.theatreOwn._id;
+        let obj = { _id: id, theatreOwner: theatreId }
+        let del = await database_helper.deleteMovie(obj).then(r => r).catch(e => console.log(error))
+        if (del) {
+            del.images.map((e) => {
+                fs.unlinkSync(`uploads/${e}`)
+            })
+            res.redirect(`/theatre/theatre/movies/${theatreId}`);
+        }
+    } catch (err) {
+        console.log(err)
+        res.render('error/500')
+    }
+
+})
+// view single movie
+route.get('/view/movies/:id', ensureAuth, async (req, res) => {
+    try {
+        let id = req.params.id;
+        let owner_id = req.session.theatreOwn._id;
+        let obj = { _id: id, theatreOwner: owner_id };
+        let user = await database_helper.viewMovie(obj).then(d => d).catch(e => e.message);
+        console.log(user)
+        if (user) {
+            res.render('theatre/Home/movie', {
+                layout: "./layout/layout.ejs",
+                data: user
+            })
+        } else throw new error;
+    } catch (err) {
+        console.log(err)
+        res.render('error/500')
+    }
 })
 
 

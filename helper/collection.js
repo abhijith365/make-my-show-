@@ -6,6 +6,7 @@ module.exports = {
     screen: "screens",
     seat: "seats",
     movie: "movies",
-    show: "shows"
+    show: "shows",
+    food: "foods"
 
 }

@@ -5,6 +5,8 @@ const theatreOwn = require('../../models/Theatre_own')
 const accountSid = process.env.ACCOUNT_SID
 const authToken = process.env.AUTH_TOKEN
 const serviceid = process.env.SERVICE_ID
+const { ensureAuth } = require('../../middleware/isTheater')
+
 
 
 const client = require('twilio')(accountSid, authToken);
@@ -14,16 +16,22 @@ const client = require('twilio')(accountSid, authToken);
 //@route POST /
 
 route.get('/', (req, res) => {
-    if (req.session.theatreOwn) {
-        res.redirect('/theatre/home')
-    } else {
-        const message = req.session.message;
-        req.session.message = "";
-        res.render("theatre/login", {
-            "layout": './layout/layout',
-            message
-        })
+    try {
+        if (req.session.theatreOwn) {
+            res.redirect('/theatre/home')
+        } else {
+            const message = req.session.message;
+            req.session.message = "";
+            res.render("theatre/login", {
+                "layout": './layout/layout',
+                message
+            })
+        }
+    } catch (error) {
+        res.render('error/500')
+        console.log(error)
     }
+
 })
 //@desc login post
 //@route POST /
@@ -41,6 +49,7 @@ route.post('/', async (req, res) => {
             res.redirect('/theatre');
         }
     } catch (error) {
+        res.render('error/500')
         console.log(error.message)
     }
 
@@ -48,20 +57,27 @@ route.post('/', async (req, res) => {
 
 
 route.get('/home', (req, res) => {
-    let user = req.session.theatreOwn;
-    if (!user) {
-        res.redirect('/theatre')
-    } else if (user.status == "Pending" || user.status == "reject") {
-        res.render("theatre/status/pending", {
-            "layout": './layout/layout',
-            data: user
-        })
-    } else {
-        res.render("theatre/index", {
-            "layout": './layout/layout',
-            data: user
-        })
+    try {
+        let user = req.session.theatreOwn;
+        if (!user) {
+            res.redirect('/theatre')
+        } else if (user.status == "Pending" || user.status == "reject") {
+            res.render("theatre/status/pending", {
+                "layout": './layout/layout',
+                data: user
+            })
+        } else {
+            res.render("theatre/index", {
+                "layout": './layout/layout',
+                data: user,
+                admin: user
+            })
+        }
+    } catch (error) {
+        res.render('error/500')
+        console.log(error.message)
     }
+
 })
 
 
@@ -69,15 +85,20 @@ route.get('/home', (req, res) => {
 //@desc view registration page
 //@route GET /reg
 route.get('/reg', (req, res) => {
-    if (req.session.theatreOwn) {
-        res.redirect('/theatre/home')
-    } else {
-        const message = req.session.message;
-        req.session.message = "";
-        res.render("theatre/reg", {
-            "layout": './layout/layout',
-            message
-        })
+    try {
+        if (req.session.theatreOwn) {
+            res.redirect('/theatre/home')
+        } else {
+            const message = req.session.message;
+            req.session.message = "";
+            res.render("theatre/reg", {
+                "layout": './layout/layout',
+                message
+            })
+        }
+    } catch (error) {
+        res.render('error/500')
+        console.log(error.message)
     }
 })
 
@@ -101,6 +122,7 @@ route.post('/reg', async (req, res) => {
         }
 
     } catch (err) {
+        res.render('error/500')
         console.log(err.message)
     }
 })
@@ -109,9 +131,15 @@ route.post('/reg', async (req, res) => {
 //@route POST /auth/phone
 
 route.get('/auth/phone', async (req, res) => {
-    res.render("theatre/authPhone", {
-        "layout": './layout/layout'
-    })
+    try {
+        res.render("theatre/authPhone", {
+            "layout": './layout/layout'
+        })
+    } catch (error) {
+        res.render('error/500')
+        console.log(error.message)
+    }
+
 })
 
 
@@ -130,6 +158,7 @@ route.post('/auth/phone', (req, res) => {
                 }))
             });
     } catch (error) {
+        res.render('error/500')
         console.error(error.message)
     }
 
@@ -179,6 +208,20 @@ route.post('/auth/otp_val', (req, res) => {
             res.render('theatre/login_otp.ejs', { err_msg: "Invalid Otp" })
         });
 
+})
+
+// profile page
+route.get('/edit/profile/:id', ensureAuth, (req, res) => {
+    try {
+        const message = req.session.message;
+        req.session.message = "";
+        res.render("theatre/Home/profile_form", {
+            "layout": './layout/layout',
+            message
+        })
+    } catch (error) {
+
+    }
 })
 
 

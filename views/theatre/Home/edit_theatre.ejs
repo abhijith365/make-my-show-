@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/css/theatre/forms.css">
+<div class="container">
+    <div class="col-md-offset-1 col-md-12">
+        <div class="form-container">
+            <% if(locals.message){ %>
+                <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                    <%= message %>
+                </h5>
+                <% } %>
+                    <h3 class="title">Edit Theatre</h3>
+
+                    <form class="form-horizontal" action="/theatre/theatre/edit/<%-data._id %>" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Theatre Name</label>
+                            <input required name="theatreName" value="<%- data.theatreName %> " type="text"
+                                class="form-control" placeholder="Enter Theatre Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Building Name</label>
+                            <input required name="BuildingName" value="<%-data.BuildingName%>" type="text"
+                                class="form-control" placeholder="Building Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea required name="address" type="text" class="form-control"
+                                placeholder="address"><%-data.address%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select name="city" class="form-control">
+                                <option value="Kochi">Kochi</option>
+                                <option value="NCR">NCR</option>
+                                <option value="Bengalure">Bengalure</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Chadigarh">Chadigarh</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Mumbai">Mumbai</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Theater registered ID</label>
+                            <input required name="theatreId" value="<%- data.theatreId %> " type="text"
+                                class="form-control" placeholder="Theater registered ID">
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex">
+                                <% data.images.map((e)=>{ %>
+                                    <img src="http://localhost:3000/uploads/<%- e%> " name="images" alt="img"
+                                        style="width:15rem;height:15rem;" class="imgView">
+                                    <input type="text" style="display: none;" class="imgView" name="images" value=<%- e
+                                        %> id="images">
+                                    <% }) %>
+                            </div>
+                            <input required class="form-control" name="images" onchange="viewImage(event)" type="file"
+                                id="images" multiple />
+
+                        </div>
+
+
+
+                        <button class="btn signup">Edit Theatre</button>
+                        <!-- <input type="hidden" name="theatreOwner" value="<%- /*id */%> "> -->
+                        <input type="hidden" name="theatre_id" value="<%-data._id%>">
+
+                    </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function viewImage(event) {
+
+        document.querySelectorAll("img").src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

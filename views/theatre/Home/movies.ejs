@@ -1,11 +1,7 @@
 <%- include('../../partials/theater_header.ejs') %>
-    <!-- <div class="container-fluid w-100">
-
-
-    </div> -->
     <div class="d-flex">
-        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776)">
-            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:555px;">
+        <div class=" px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:100%;">
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/home">Dashboard</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
@@ -14,49 +10,78 @@
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
         </div>
-        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+        <div class="w-100" style="color: rgba(45, 42, 42, 0.793);">
             <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Movies Dashboard</div>
-            <div class="status p-5">
+            <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
 
-                <div class="row" style="position:sticky;">
+                <div class="row">
 
                     <% data.forEach(elm=> { %>
 
                         <figure class="movie">
                             <div class="movie__hero">
-                                <img src="<%- elm.images[0].imageUrl %> " alt="Rambo" class="movie__img">
-                            </div>
-                            <div class="movie__content">
-                                <div class="movie__title">
-                                    <h1 class="heading__primary">
-                                        <%- elm.movieName %> <i class="fas fa-fire"></i>
-                                    </h1>
-                                    <% let arr=elm.movieGenres.split(','); arr.forEach(e=> {%>
-                                        <div class="movie__tag movie__tag">
-                                            <%-e%>
-                                        </div>
-                                        <%})%>
-                                            <!-- <div class="movie__tag movie__tag--2">#thriller</div> -->
+
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+
+                                        <% elm.images.map((e,i)=>{ %>
+                                            <% if(i==0){%>
+                                                <div class="carousel-item active">
+                                                    <% }else{ %>
+                                                        <div class="carousel-item">
+                                                            <% } %>
+                                                                <a
+                                                                    href="http://localhost:3000/uploads/<%-e.image_url%>">
+                                                                    <img style="height: 215px;"
+                                                                        src="http://localhost:3000/uploads/<%-e.image_url%> "
+                                                                        alt="movies" class="movie__img">
+                                                                </a>
+
+                                                        </div>
+                                                        <% }) %>
+                                                </div>
+
+                                    </div>
+
+
+
                                 </div>
-                                <p class="movie__description">
-                                    <%-elm.description%>
-                                </p>
-                                <div class="movie__details">
-                                    <p class="movie__detail"><span class="icons icons-red"><i
-                                                class="fas fa-camera-retro"></i> </span>
-                                        <%- elm.language %>
+                                <div class="movie__content">
+                                    <div class="movie__title">
+                                        <h1 class="heading__primary">
+                                            <%- elm.movieName %> <i class="fas fa-fire"></i>
+                                        </h1>
+                                        <% let arr=elm.movieGenres.split(','); arr.forEach(e=> {%>
+                                            <div class="movie__tag movie__tag">
+                                                <%-e%>
+                                            </div>
+                                            <%})%>
+                                                <!-- <div class="movie__tag movie__tag--2">#thriller</div> -->
+                                    </div>
+                                    <p class="movie__description">
+                                        <%-elm.description%>
                                     </p>
-                                    <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i>
-                                        </span>
-                                        <%- elm.movieDuration %>hr
-                                    </p>
-                                    <p class="movie__detail"><span class="icons icons-yellow">
-                                            <button type="button" class="btn btn-dark btn-rounded">Edit</button>
-                                            <button type="button" class="btn btn-dark btn-rounded">Delete</button>
-                                            <button type="button" class="btn btn-dark btn-rounded">View</button>
+                                    <div class="movie__details">
+                                        <p class="movie__detail"><span class="icons icons-red"><i
+                                                    class="fas fa-camera-retro"></i> </span>
+                                            <%- elm.language %>
+                                        </p>
+                                        <p class="movie__detail"><span class="icons icons-grey"><i
+                                                    class="fas fa-clock"></i>
+                                            </span>
+                                            <%- elm.movieDuration %>hr
+                                        </p>
+                                        <p class="movie__detail"><span class="icons icons-yellow">
+                                                <a href="/theatre/theatre/edit/movies/<%- elm._id %>"><button
+                                                        type="button" class="btn btn-dark btn-rounded">Edit</button></a>
+                                                <a href="/theatre/theatre/delete/movies/<%- elm._id %>"><button
+                                                        type="button"
+                                                        class="btn btn-dark btn-rounded">Delete</button></a>
+                                                <a href="/theatre/theatre/view/movies/<%- elm._id %>"><button
+                                                        type="button" class="btn btn-dark btn-rounded">View</button></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- <div class="movie__price">$12.56</div> -->
+                                <!-- <div class="movie__price">$12.56</div> -->
                         </figure>
 
 

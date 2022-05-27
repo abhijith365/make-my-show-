@@ -1,0 +1,74 @@
+<%- include('../../partials/theater_header.ejs') %>
+
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/shows/">Add
+                    Shows</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Shows Dashboard</div>
+            <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+
+
+                <div class="col-sm-12 d-flex justify-content-center"
+                    style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+
+                    <div class=" card" style="width:75%">
+                        <img class="card-img-top" src="http://localhost:3000/uploads/<%-arr[1].all_Movies.images[0]%> "
+                            style="height: 220px;" alt="Card image cap">
+                        <div class="card-body">
+
+                            <h3 class="card-title">
+                                <%-arr[0]["showName"] %>
+                            </h3>
+                            <p class="card-text">
+                                <b>Screen Name: </b>
+                                <%-arr[1].all_Movies.movieName %>
+                            </p>
+                            <p class="card-text">
+                                <b>Screen Id: </b>
+                                <%-arr[1].screen_id %>
+                            </p>
+                            <p class="card-text">
+                                <b>show Id: </b>
+                                <%-arr[1].show_uid %>
+                            </p>
+                            <p class="card-text">
+                                <b>Start Date: </b>
+                                <%-arr[1].startDate %>
+                            </p>
+                            <p class="card-text">
+                                <b>End Date: </b>
+                                <%-arr[1].endDate %>
+                            </p>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>

@@ -1,50 +1,36 @@
 <%- include('../partials/admin_header.ejs') %>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar-->
-        <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light"></div>
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                    href="/admin/AdminHome">Dashboard</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Theaters</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">City</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                    href="/admin/adminHome/status">Status</a>
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/admin/adminHome/status"">Status</a>
+                    <a class=" list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="#">Theaters</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="#!">Advertisement</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Ticket
+                    details</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
         </div>
-        <!-- Page content wrapper-->
-        <div id="page-content-wrapper">
-            <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Admin Dashboard
+            </div>
+            <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+
+
+                <!-- Page content wrapper-->
+
+                <!-- Page content-->
                 <div class="container-fluid">
-                    <button class="btn btn-primary" id="sidebarToggle">Menu</button>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                            class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#!">Action</a>
-                                    <a class="dropdown-item" href="#!">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#!">Something else here</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <h2>Admin</h2>
                 </div>
-            </nav>
-            <!-- Page content-->
-            <div class="container-fluid">
-                <h2>Admin</h2>
             </div>
         </div>
+    </div>
+    </div>
     </div>

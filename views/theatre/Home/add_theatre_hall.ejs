@@ -1,6 +1,7 @@
 <%- include('../../partials/theater_header.ejs') %>
     <link rel="stylesheet" href="/css/theatre/forms.css">
-    <div class="container">
+
+    <div class="container" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
         <div class="col-md-offset-1 col-md-12">
             <div class="form-container">
                 <% if(locals.message){ %>
@@ -9,8 +10,8 @@
                     </h5>
                     <% } %>
                         <h3 class="title">Add Theatre Screen</h3>
-                        <!-- 
-                        <form class="form-horizontal" action="/theatre/theatre/hall/<%- id %> " method="POST">
+
+                        <form class="form-horizontal" id="form" action="/theatre/theatre/hall/<%- id %> " method="POST">
                             <div class="form-group">
                                 <label>Screen Name</label>
                                 <input required name="screenName" type="text" class="form-control"
@@ -23,80 +24,31 @@
                                     placeholder="Screen Id">
                             </div>
 
+                            <div class="form-group">
+                                <label>Enter total seats columns</label>
+                                <input type="number" name="seats_col_num" id="seats_col_num" value="0"
+                                    class="form-control">
 
+                            </div>
+
+
+
+                            <div id="seat_arr_id" class="row">
+
+
+                            </div>
                             <input type="hidden" name="theatre_id" value='<%-id%>' />
 
 
                             <button class="btn btn-danger" type="submit">Add Theatre Screen</button>
 
-                        </form> -->
-                        <!-- <template name="uploadTicket"> -->
-                        <div class="row">
-                            <h3> Upload Ticket</h3>
-                            <form class="ticket-form col-12" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="input-field col-12">
-                                        <input id="name" type="text" class="validate">
-                                        <label for="name">Event Name</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col-12">
-                                        <input id="location" type="text" class="validate">
-                                        <label for="location">Location</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col-4">
-                                        <input id="date" type="date" class="validate">
-                                        <label for="date"></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col-6">
-                                        <textarea id="description" class="materialize-textarea"></textarea>
-                                        <label for="Description">Description</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <h5>More Price Fields</h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" id="addField"><i
-                                                class="mdi mdi-plus"></i></a>
-                                    </div>
-
-                                </div>
-                                <div class="wrapper">
-
-                                    <div class="row">
-                                        <div class="input-field col-4">
-                                            <input name="priceClass[]" type="text" class="validate">
-                                            <label for="priceClass[]">Class</label>
-                                        </div>
-                                        <div class="input-field col-4">
-                                            <input name="priceAmount[]" type="text" class="validate">
-                                            <label for="priceAmount[]">Price</label>
-                                        </div>
-
-                                        <div class="input-field col-4">
-                                            <h6>Input Price Classes and Amounts.</h6>
-                                        </div>
-                                    </div>
-
-                                    <br>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div>
-                                        <button class="waves-effect waves-light btn" type="submit">Upload</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- </template> -->
+                        </form>
             </div>
         </div>
     </div>
     </div>
+    <script src="/js/theatre_helper/index.js"></script>
+    <script>
+        const input_field = document.getElementById('input-field').value
+        const num = parseInt(input_field)
+    </script>

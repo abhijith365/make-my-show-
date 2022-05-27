@@ -1,0 +1,117 @@
+<%- include('../../partials/theater_header.ejs') %>
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/edit/movies/<%- data._id %>">Edit</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" onclick="con(e)"
+                    href="/theatre/theatre/delete/movies/<%- data._id %>">Delete</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">movie Dashboard</div>
+            <div class="status " style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+                <div class="row">
+
+                    <div class="col-sm-12 d-flex justify-content-center">
+                        <!-- // card and carousel -->
+                        <div class="card" style="width: 70%;">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+
+                                    <% data.images.map((e,i)=>{ %>
+                                        <% if(i==0){%>
+                                            <div class="carousel-item active">
+                                                <% }else{ %>
+                                                    <div class="carousel-item">
+                                                        <% } %>
+                                                            <a href="http://localhost:3000/uploads/<%-e.image_url%>">
+                                                                <img class="card-img-top w-100" style="height: 300px;"
+                                                                    src="http://localhost:3000/uploads/<%- e.image_url %> "
+                                                                    alt="Card image cap">
+                                                            </a>
+
+                                                    </div>
+                                                    <% }) %>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls"
+                                                role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls"
+                                                role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                </div>
+
+
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <%-data.movieName %>
+                                    </h3>
+                                    <p class="card-text">
+                                        <b>Movie description</b>
+                                        <%- data.description %>
+                                    </p>
+
+                                    <p class="card-text"><b>Movie Duration : </b>
+                                        <%- data.movieDuration %>
+                                    </p>
+                                    <p class="card-text"><b>Relese Date : </b>
+                                        <%- data.ReleseDate %>
+                                    </p>
+                                    <p class="card-text"><b>Language : </b>
+                                        <%- data.language %>
+                                    </p>
+                                    <p class="card-text"><b>Movie Id : </b>
+                                        <%- data.movie_uid %>
+                                    </p>
+                                    <p class="card-text"><b>Trailer Link : </b>
+                                        <a href="<%- data.tlLinks %>">
+                                            <%- data.tlLinks %>
+                                        </a>
+                                    </p>
+                                    <p class="card-text"><b>Movie Genres : </b>
+                                        <%- data.movieGenres %>
+                                    </p>
+
+                                    <p class="card-text"><b>Created Date: </b>
+                                        <%-new Date(data.Created_date).toString() %>
+                                    </p>
+
+                                    <p class="card-text"><b>Modified Date</b>
+                                        <% if(data.Modified_date) {%>
+                                            <%-new Date(data.Modified_date).toString() %>
+                                                <% } else{%>
+                                                    not modified yet
+                                                    <% } %>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let con = (e) => {
+            let ans = window.confirm("are you want to delete");
+            if (!ans) {
+                e.preventDefault();
+            }
+        }
+    </script>

@@ -1,26 +1,19 @@
 <%- include('../../partials/theater_header.ejs') %>
-    <div class="container-fluid w-100">
-
-
-    </div>
     <div class="d-flex">
         <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
-            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+            <div class="list-group px-2 py-4  text-white text-nowrap">
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/home">Dashboard</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/theatre/halls/add/<%-id%> ">Add
                     Screen</a>
-
-                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Add
-                    Seats</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
             <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Screens Dashboard</div>
-            <div class="status p-5">
+            <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
                         <%= message %>
@@ -36,38 +29,23 @@
                                                 <%-data.screenName %>
                                             </h5>
                                             <p class="card-text">
-                                                <%- data. screenId%>
+                                                Screen Id: <%- data.screenId%>
+                                            </p>
+                                            <p class="card-text">
+                                                Total seats: <%- data.seats_details.seats.seats_number.reduce((a, b)=>
+                                                    parseInt(a) + parseInt(b)) %>
                                             </p>
                                             <input type="hidden" name="id" value=<%- id %> >
-                                            <% if (!data.application_complete) { %>
 
-                                                <a href="/theatre/theatre/<%-data._id%>&uid?=<%-data.theatre_id%> "
-                                                    class="btn btn-danger">Continue</a>
-                                                <% }else{%>
-                                                    <a href="#" class="btn btn-danger">Edit</a>
-                                                    <a href="#" class="btn btn-danger">Delete</a>
-                                                    <% } %>
+                                            <a href="/theatre/theatre/screen/<%-data._id%>?&tid=<%-data.theatreOwner%> "
+                                                class="btn btn-danger">Continue</a>
+
 
                                         </div>
                                     </div>
                                 </div>
                                 <% }) %>
-
                         </div>
             </div>
-
-
-
-
-
         </div>
-
-
-
-    </div>
-
-    </div>
-
-    </div>
-
     </div>

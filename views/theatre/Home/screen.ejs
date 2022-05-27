@@ -1,0 +1,99 @@
+<%- include('../../partials/theater_header.ejs') %>
+
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/halls/data._id ">Edit</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/theatre/delete/halls/<%-data._id %>">Delete</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Screen Dashboard</div>
+            <div class="status p-5">
+
+                <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+
+                    <div class="col-sm-12 d-flex justify-content-center">
+                        <div class="card" style="width:75%">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <%-data.screenName %>
+                                </h3>
+                                <p class="card-text">
+                                    <b>Screen Name: </b>
+                                    <%-data.screenName %>
+                                </p>
+                                <p class="card-text">
+                                    <b>Screen Id: </b>
+                                    <%- data.screenId %>
+                                </p>
+
+                                <p class="card-text"><b>Seats total colum: </b>
+                                    <%- data.seats_details.totalColums %>
+                                </p>
+                                <p class="card-text"><b>Seats: </b>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">seats_tag_name</th>
+                                            <th scope="col">total_seats</th>
+                                            <th scope="col">seats_price</th>
+                                            <th scope="col">seats_category</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% arr.map((e,i)=>{%>
+
+                                            <tr>
+                                                <th scope="row">
+                                                    <%-++i %>
+                                                </th>
+                                                <td>
+                                                    <%-e[0].seats_tag_name %>
+                                                </td>
+                                                <td>
+                                                    <%-e[0].total_seats %>
+                                                </td>
+                                                <td>
+                                                    <%-e[0].seats_price %>
+                                                </td>
+                                                <td>
+                                                    <%-e[0].seats_category %>
+                                                </td>
+
+                                            </tr>
+                                            <% }) %>
+
+                                    </tbody>
+                                </table>
+
+
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>

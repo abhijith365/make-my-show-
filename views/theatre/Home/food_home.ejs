@@ -1,0 +1,87 @@
+<%- include('../../partials/theater_header.ejs') %>
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/shows/add/food/<%-theatreId %>">Add
+                    Food</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Foods Dashboard</div>
+            <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+                <% if(arr.length>0) {%>
+                    <div class="row">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">name</th>
+                                    <th scope="col">food qty</th>
+                                    <th scope="col">veg</th>
+                                    <th scope="col">price</th>
+                                    <th scope="col">Image</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% arr.map((e,i)=>{%>
+
+                                    <tr>
+                                        <th scope="row">
+                                            <%-++i %>
+                                        </th>
+                                        <td>
+                                            <%-e.foodName %>
+                                        </td>
+                                        <td>
+                                            <%-e.food_qty %>
+                                        </td>
+                                        <td>
+                                            <%-e.veg %>
+                                        </td>
+                                        <td>
+                                            <%-e.price %>
+                                        </td>
+                                        <td><a href="http://localhost:3000/uploads/<%-e.image.image_url %>">
+                                                <img style="width:50px;height:50px;"
+                                                    src="http://localhost:3000/uploads/<%-e.image.image_url %> "
+                                                    alt="img">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <!-- Call to action buttons -->
+                                            <ul class="list-inline m-0">
+
+                                                <li class="list-inline-item">
+                                                    <button class="btn btn-success btn-sm rounded-0" type="button"
+                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                            class="fa fa-edit"></i></button>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="/theatre/shows/delete/food/<%-e._id %> "><button
+                                                            class="btn btn-danger btn-sm rounded-0" type="button"
+                                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                                class="fa fa-trash"></i></button></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+
+                                    </tr>
+                                    <% }) %>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <% }else{ %>
+                        <h4>Food Not found</h4>
+                        <% } %>
+            </div>
+        </div>
+    </div>

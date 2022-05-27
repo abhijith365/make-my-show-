@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/theatre/forms.css">
+<div class="container">
+    <div class="col-md-offset-1 col-md-12">
+        <div class="form-container">
+            <h3 class="title">Add Food</h3>
+            <form class="form-horizontal" action="/theatre/shows/food/<%- id %> " method="POST"
+                enctype="multipart/form-data">
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <div class="form-group">
+                            <label>Food Name</label>
+                            <input required name="foodName" type="text" class="form-control" placeholder="Food Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Food Id</label>
+                            <input required name="food_uid" type="text" class="form-control"
+                                placeholder="Food Unique Id">
+                        </div>
+                        <div class="form-group">
+                            <label>food_qty</label>
+                            <input required name="food_qty" type="text" class="form-control" placeholder="food_qty">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie_id">Select Movie</label>
+                            <select class="form-control" name="veg" id="veg">
+
+                                <option value="true">veg</option>
+                                <option value="false">non veg</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>food price</label>
+                            <input required name="price" type="text" class="form-control" placeholder="food price">
+
+
+
+                            <div class="form-group">
+                                <label>Add Food images</label>
+                                <input class="form-control" name="image" type="file" id="image" />
+                            </div>
+
+                            <div>
+                                <button class="btn btn-info" type="submit">Add Food</button>s
+                            </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>

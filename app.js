@@ -63,9 +63,9 @@ app.use(session({
     secret: uuidv4(),
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI
-    })
+    // store: MongoStore.create({
+    //     mongoUrl: process.env.MONGO_URI
+    // })
 }))
 
 // passport middleware
@@ -90,9 +90,10 @@ app.use('/', require('./routes/userRouter/userLogin'))
 app.use('/auth', require('./routes/userRouter/auth'))
 app.use('/admin/', require('./routes/adminRouter/auth'))
 app.use('/theatre', require('./routes/theatreRouter/auth'))
+app.use('/theatre/shows', require('./routes/theatreRouter/shows'))
 app.use('/theatre/theatre', require('./routes/theatreRouter/theatre'))
-
+app.get('*', (req, res) => { res.render('error/404') })
 
 // server port 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 app.listen(port, () => console.log(`server runing in ${process.env.NODE_ENV} mode on port http://localhost:${port}`))

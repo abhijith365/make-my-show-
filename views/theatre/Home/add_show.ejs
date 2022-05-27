@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/css/theatre/forms.css">
+<div class="container">
+    <div class="col-md-offset-1 col-md-12">
+        <div class="form-container">
+            <h3 class="title">Add show</h3>
+            <form class="form-horizontal" action="/theatre/shows/" method="POST">
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <div class="form-group">
+                            <label>Show Name</label>
+                            <input required name="showName" type="text" class="form-control" placeholder="Show Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Show Id</label>
+                            <input required name="show_uid" type="text" class="form-control" placeholder="
+                            show Id">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Show Time</label>
+                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Show Time</label>
+                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Show Time</label>
+                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Show Time</label>
+                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startDate">Movie Start Date</label>
+                            <input required id="startDate" class="form-control" name="startDate" type="date" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">Movie End Date</label>
+                            <input required id="endDate" class="form-control" name="endDate" type="date" name="">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie_id">Select Movie</label>
+                            <select class="form-control" name="movie_id" id="movie_id">
+                                <% movies.map((e,i)=>{ %>
+                                    <option value="<%-e._id%>">
+                                        <%- e.movieName %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="screen_id">Select Screen</label>
+                            <select class="form-control" name="screen_id" id="screen_id">
+                                <% hall.map(e=>{ %>
+                                    <option value="<%-e._id%>">
+                                        <%- e.screenName %>
+
+                                    </option>
+                                    <% }) %>
+
+                            </select>
+                        </div>
+
+
+                        <inputtype="hidden" name="theatreOwner" value="<%- theatreOwn %>">
+
+
+                            <button class="btn btn-danger" type="submit">Add show</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>

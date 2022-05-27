@@ -11,17 +11,39 @@
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
+
+
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
+                <% if(locals.admin) {%>
 
-                <li><a href="/admin/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
-                <li class="nav-item active">
-                    <a href="index.html" class="nav-link">
-                        <i class="fa fa-bars" style="font-size: 1.5rem;"></i>
-                    </a>
-                </li>
+                    <div class="chip text-nowrap">
+                        <img src="<%=admin.image%>" class="rounded-circle " style="width:40px" alt="img">
+                        <span><a class="chip-user-name" href="/stories/user/<%=admin._id%>">
+                                <%=admin.displayName%>
+                            </a></span>
+                    </div>
+                    <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+                    <% } else{%>
+                        <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+
+                        <% } %>
+
+
+
+
+                            <li class="nav-item active">
+                                <a href="index.html" class="nav-link">
+                                    <i class="fa fa-bars" style="font-size: 1.5rem;"></i>
+                                </a>
+                            </li>
 
             </ul>
         </div>
     </div>
 </nav>
+<style>
+    body {
+        overflow: hidden !important;
+    }
+</style>

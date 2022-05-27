@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/css/theatre/forms.css">
+<div class="container" style="overflow-y:visible !important;">
+    <div class="col-md-offset-1 col-md-12">
+        <div class="form-container">
+            <h3 class="title">Edit Movie</h3>
+            <form class="form-horizontal" action="/theatre/theatre/edit/movie/<%- data._id %>" method="POST"
+                enctype="multipart/form-data">
+                <% if(locals.message){ %>
+                    <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
+                        <%= message %>
+                    </h5>
+                    <% } %>
+                        <div class="form-group">
+                            <label>Movie Name</label>
+                            <input required name="movieName" type="text" class="form-control" placeholder="Movie Name"
+                                value="<%- data.movieName %>">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Movie Id</label>
+                            <input required name="movie_uid" type="text" class="form-control" placeholder="Movie Id"
+                                value="<%- data.movie_uid %>">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea required name="description" type="text" class="form-control"
+                                placeholder="Description" value=""><%- data.description %></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Movie duration</label>
+                            <input required type="time" name="movieDuration" id="time" class="form-control"
+                                tabindex="27" value=<%- data.movieDuration %> >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Movie Language</label>
+                            <input required name="language" type="text" class="form-control"
+                                placeholder="Movie Language" value="<%- data.language %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="releseDate">Relese Date</label>
+                            <input required id="releseDate" class="form-control" name="ReleseDate" type="date" name=""
+                                value=<%- data.ReleseDate %>>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Trailer Links</label>
+                            <input required name="tlLinks" type="text" class="form-control" placeholder="Trailer Links"
+                                value="<%- data.tlLinks %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie-genres">Movie genres</label>
+                            <input required id="movie-genres" class="form-control" type="text" name="movieGenres"
+                                value="<%- data.movieGenres %>">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="d-flex">
+                                <% data.images.map((e,i)=>{ %>
+                                    <img src="http://localhost:3000/uploads/<%- e%> " name="images" alt="img"
+                                        style="width:15rem;height:15rem;" class="imgView">
+                                    <input type="text" style="display: none;" class="imgView" name="images" value=<%- e
+                                        %> id="images">
+                                    <% }) %>
+                            </div>
+                            <input required class="form-control" name="images" onchange="viewImage(event)" type="file"
+                                id="images" multiple />
+
+                        </div>
+                        <label for="images">Add Movie images</label>
+                        <input type="hidden" name="theatreOwner" value="<%- id %> ">
+                        <input type="hidden" name="movie_id" value="<%-data._id%>">
+
+
+                        <button class="btn btn-danger mx-2" type="submit">Change</button>
+                        <a href="/theatre/theatre/movies/<%-data.theatreOwner%>" class="btn btn-danger">Cancel</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function viewImage(event) {
+
+        document.querySelectorAll("img").src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

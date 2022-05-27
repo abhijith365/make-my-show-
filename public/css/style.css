@@ -1,3 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
 /* user login form styling */
 .num-form {
     position: relative;
