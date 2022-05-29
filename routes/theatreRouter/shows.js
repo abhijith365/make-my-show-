@@ -6,9 +6,11 @@ const fs = require('fs')
 
 // multer for image uploads
 const multer = require('multer')
-const database_helper = require('../../helper/theatre_helper/database_helper')
-const { session } = require('passport');
-const { error } = require('console');
+const database_helper = require('../../helper/theatre_helper/database_helper');
+const { isEmpty } = require('underscore');
+
+
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -68,9 +70,17 @@ route.get('/home', ensureAuth, async (req, res) => {
     try {
         let obj = req.session.theatreOwn._id;
         let allShows = await db.AllShows(obj).then(e => e).catch(e => e);
-        let screen_id = allShows[0].screen_id;
-        let all = await db.showCinema_screen(screen_id).then(e => e).catch(e => e)
+        console.log(allShows);
 
+        let all = false;
+
+        console.log(isEmpty(allShows));
+        console.log(typeof (allShows))
+        if (!isEmpty(allShows)) {
+            let screen_id = allShows[0].screen_id;
+            all = await db.showCinema_screen(screen_id).then(e => e).catch(e => e)
+            console.log(all)
+        }
 
         res.render('theatre/Home/show', {
             "layout": "./layout/layout.ejs", arr: all

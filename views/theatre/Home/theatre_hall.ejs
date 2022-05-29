@@ -12,7 +12,10 @@
             </div>
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
-            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Screens Dashboard</div>
+            <div class="h4 py-3 text-center text-white"
+                style="background-color:rgb(9, 20, 9);text-transform: uppercase;">
+                <%-theatreName%>
+            </div>
             <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
@@ -32,12 +35,11 @@
                                                 Screen Id: <%- data.screenId%>
                                             </p>
                                             <p class="card-text">
-                                                Total seats: <%- data.seats_details.seats.seats_number.reduce((a, b)=>
-                                                    parseInt(a) + parseInt(b)) %>
+                                                Total seats: <%- data.total_seats %>
                                             </p>
                                             <input type="hidden" name="id" value=<%- id %> >
 
-                                            <a href="/theatre/theatre/screen/<%-data._id%>?&tid=<%-data.theatreOwner%> "
+                                            <a href="/theatre/theatre/screen/<%-data._id%>?&tid=<%-data.theatreId%> "
                                                 class="btn btn-danger">Continue</a>
 
 

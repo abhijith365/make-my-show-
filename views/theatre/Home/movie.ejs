@@ -13,46 +13,19 @@
             </div>
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
-            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">movie Dashboard</div>
+            <div class="h4 py-3 text-center text-white title" style="background-color:rgb(9, 20, 9);">movie Dashboard
+            </div>
             <div class="status " style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+                <div class="container py-1">
+                    <!-- <div class="title h1 text-center">
+                        <%-data.theatreName%>, <%-data.city%>
+                    </div> -->
+                    <!-- Card Start -->
+                    <div class="card">
+                        <div class="row ">
 
-                <div class="row">
-
-                    <div class="col-sm-12 d-flex justify-content-center">
-                        <!-- // card and carousel -->
-                        <div class="card" style="width: 70%;">
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-
-                                    <% data.images.map((e,i)=>{ %>
-                                        <% if(i==0){%>
-                                            <div class="carousel-item active">
-                                                <% }else{ %>
-                                                    <div class="carousel-item">
-                                                        <% } %>
-                                                            <a href="http://localhost:3000/uploads/<%-e.image_url%>">
-                                                                <img class="card-img-top w-100" style="height: 300px;"
-                                                                    src="http://localhost:3000/uploads/<%- e.image_url %> "
-                                                                    alt="Card image cap">
-                                                            </a>
-
-                                                    </div>
-                                                    <% }) %>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls"
-                                                role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls"
-                                                role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                </div>
-
-
-                                <div class="card-body">
+                            <div class="col-md-7 px-3">
+                                <div class="card-block px-6 mx-3">
                                     <h3 class="card-title">
                                         <%-data.movieName %>
                                     </h3>
@@ -86,20 +59,52 @@
                                         <%-new Date(data.Created_date).toString() %>
                                     </p>
 
-                                    <p class="card-text"><b>Modified Date</b>
-                                        <% if(data.Modified_date) {%>
-                                            <%-new Date(data.Modified_date).toString() %>
-                                                <% } else{%>
-                                                    not modified yet
-                                                    <% } %>
-                                    </p>
-
 
                                 </div>
                             </div>
+                            <!-- Carousel start -->
+                            <div class="col-md-5">
+                                <div id="CarouselTest" class="carousel slide" data-ride="carousel">
+
+                                    <div class="carousel-inner">
+                                        <% data.images.map((e,i)=>{ %>
+                                            <% if(i==0){%>
+                                                <div class="carousel-item active">
+                                                    <% }else{ %>
+                                                        <div class="carousel-item">
+                                                            <% } %>
+                                                                <a
+                                                                    href="http://localhost:3000/uploads/<%-e.image_url%>">
+                                                                    <img class="card-img-top w-100"
+                                                                        style="height: 300px;"
+                                                                        src="http://localhost:3000/uploads/<%- e.image_url %> "
+                                                                        alt="Card image cap">
+                                                                </a>
+
+                                                        </div>
+                                                        <% }) %>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#CarouselTest" role="button"
+                                                    data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#CarouselTest" role="button"
+                                                    data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of carousel -->
                         </div>
                     </div>
+                    <!-- End of card -->
+
                 </div>
+
+
 
             </div>
 
@@ -115,3 +120,65 @@
             }
         }
     </script>
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        .title {
+
+            text-transform: uppercase;
+        }
+
+        .card-block {
+            font-size: 1em;
+            position: relative;
+            margin: 0;
+            padding: 1em;
+            border: none;
+            border-top: 1px solid rgba(34, 36, 38, .1);
+            box-shadow: none;
+
+        }
+
+        .card {
+            font-size: 1em;
+            overflow: hidden;
+            padding: 5;
+            border: none;
+            border-radius: .28571429rem;
+            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+            margin-top: 20px;
+        }
+
+        .carousel-indicators li {
+            border-radius: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: #404040;
+        }
+
+        .carousel-indicators li {
+            border-radius: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: #404040;
+        }
+
+        .carousel-indicators .active {
+            background-color: white;
+            max-width: 12px;
+            margin: 0 3px;
+            height: 12px;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 23vw;
+            object-fit: cover;
+        }
+
+        .btn {
+            margin-top: auto;
+        }
+    </style>

@@ -2,6 +2,8 @@ const express = require('express')
 const route = express.Router()
 const fs = require('fs');
 const _ = require('underscore')
+const { ObjectId } = require('mongodb')
+
 
 const db = require('../../helper/theatre_helper/database_helper')
 const { ensureAuth } = require('../../middleware/isTheater')
@@ -39,11 +41,11 @@ route.get('/', ensureAuth, (req, res) => {
     }
 
 })
+// add theatre POST request
 route.post('/', ensureAuth, upload.array('images'), async (req, res) => {
     try {
         let image = req.files.map((e) => {
-            //'http://localhost:3000/uploads/' + 
-            return (e.filename)
+            return ({ image_url: e.filename })
         })
 
 
@@ -88,7 +90,7 @@ route.get('/:id', ensureAuth, async (req, res) => {
         let id = req.params.id
         let data = await db.findTheatre(id).then((e) => e).catch(e => console.log(e.message))
 
-
+        req.session.theatreName = `${data.theatreName} - ${data.BuildingName} - ${data.city}`;
         res.render("theatre/Home/theatre.ejs", {
             "layout": './layout/layout', data
         })
@@ -172,15 +174,21 @@ route.get('/delete/:id', ensureAuth, async (req, res) => {
 // screen home
 route.get('/halls/:id', ensureAuth, async (req, res) => {
     try {
-        let id = req.params.id
-        let data = await db.showScreen(id).then(r => r).catch(e => console.log(e.message));
+        let id = req.params.id;
+        let theatreName = req.session.theatreName;
+        let theatreOwner = req.session.theatreOwn._id;
+        let obj = { id: id, theatreOwner: theatreOwner }
+        console.log(obj)
+        let data = await db.showScreen(obj).then(r => r).catch(e => console.log(e.message));
+
 
 
 
         res.render("theatre/Home/theatre_hall", {
             "layout": './layout/layout',
             data,
-            id
+            id,
+            theatreName
         })
     } catch (err) {
         console.log(err.message);
@@ -192,27 +200,19 @@ route.get('/screen/:id', ensureAuth, async (req, res) => {
     try {
         let theatreId = req.query.tid;
         let screenId = req.params.id;
+        let theatreOwner = req.session.theatreOwn._id;
         let obj = {
-            theatreOwner: theatreId, _id: screenId
+            theatreId: theatreId, _id: screenId, theatreOwner: theatreOwner
         }
 
         let data = await database_helper.showSingleScreen(obj).then(data => data).catch(e => e);
-        let array = [];
-        array.push(data.seats_details.seats.seats_tag_name)
-        array.push(data.seats_details.seats.seats_number)
-        array.push(data.seats_details.seats.seats_price)
-        array.push(data.seats_details.seats.seats_category)
-        let arr = _.zip(array[0], array[1], array[2], array[3], array[4]).map((x => ([{
-            seats_tag_name: x[0], total_seats: x[1], seats_price: x[2], seats_category: x[3]
-        }])))
 
-
-
+        let theatreName = req.session.theatreName;
         if (data) {
             res.render('theatre/Home/screen', {
                 "layout": './layout/layout',
                 data,
-                arr
+                theatreName
             })
         } else throw new error;
 
@@ -226,6 +226,7 @@ route.get('/screen/:id', ensureAuth, async (req, res) => {
 // add screen page 
 route.get('/halls/add/:id', ensureAuth, async (req, res) => {
     try {
+
 
         let message = req.session.message
         req.session.message = ""
@@ -242,13 +243,41 @@ route.get('/halls/add/:id', ensureAuth, async (req, res) => {
 
 })
 
-// add screen 
+// add screen POST request
 route.post('/hall/:id', ensureAuth, async (req, res) => {
     try {
-        req.body.theatreOwner = req.session.theatreOwn._id;
-        req.body.createdAt = Date.now();
 
-        let screen = await db.addScreen(req.body).then(res => res)
+
+        let tol = req.body.total_seats;
+
+        let hallInp = {
+            screenName: req.body.screenName,
+            screenId: req.body.screenId,
+            total_seats: tol.reduce((a, b) => (parseInt(a), parseInt(b)), 0),
+            theatreOwner: ObjectId(req.session.theatreOwn._id),
+            theatreId: ObjectId(req.params.id),
+            createdAt: Date.now()
+        }
+        // restuctring seats details
+        let array = [];
+        array.push(req.body.seats_tag_name)
+        array.push(req.body.total_seats)
+        array.push(req.body.seats_price)
+        array.push(req.body.seats_category)
+        let arr = _.zip(array[0], array[1], array[2], array[3], array[4]).map((x => ({
+            seats_tag_name: x[0], total_seats: x[1], seats_price: x[2], seats_category: x[3]
+        })))
+
+        let seatsInp = {
+            total_row: req.body.seats_col_num,
+            seats_details: arr,
+            theatreId: ObjectId(req.params.id),
+            theatreOwner: ObjectId(req.session.theatreOwn._id),
+            createdAt: Date.now()
+        }
+
+
+        let screen = await db.addScreen(hallInp, seatsInp).then(res => res)
         let id = req.params.id
         if (screen) {
             res.redirect(`/theatre/theatre/halls/${id}`)
@@ -257,6 +286,7 @@ route.post('/hall/:id', ensureAuth, async (req, res) => {
             req.session.message = "screen id exits"
             res.redirect(`/theatre/theatre/halls/add/${id}`)
         }
+
     } catch (err) {
         res.render('error/500')
         console.log(err);
@@ -269,7 +299,7 @@ route.get('/delete/halls/:id', ensureAuth, async (req, res) => {
         let _id = req.params.id
         let data = await db.deleteScreen(_id).then(r => r).catch(e => console.log(e.message));
 
-        console.log(data)
+
         if (data) {
             res.redirect('/theatre/theatre/home')
         } else throw new error;
@@ -330,7 +360,7 @@ route.post('/add/movie/:id', ensureAuth, upload.array('images'), async (req, res
 
 
         let data = await db.addMovie(req.body).then((res) => { return (res.status) }).catch((e) => console.log(e.message))
-        console.log(data)
+
         if (data) {
             res.redirect(`/theatre/theatre/movies/${id}`)
         } else {
@@ -383,7 +413,7 @@ route.post('/edit/movie/:id', ensureAuth, upload.array('images'), async (req, re
         req.body.theatreOwner = owner_id;
 
         let data = await db.updateMovie(req.body).then((res) => res).catch((e) => console.log(e.message))
-        console.log(data);
+
         if (data) {
             res.redirect(`/theatre/theatre/movies/${owner_id}`)
         } else {
@@ -424,7 +454,7 @@ route.get('/view/movies/:id', ensureAuth, async (req, res) => {
         let owner_id = req.session.theatreOwn._id;
         let obj = { _id: id, theatreOwner: owner_id };
         let user = await database_helper.viewMovie(obj).then(d => d).catch(e => e.message);
-        console.log(user)
+
         if (user) {
             res.render('theatre/Home/movie', {
                 layout: "./layout/layout.ejs",

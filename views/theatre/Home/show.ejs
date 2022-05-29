@@ -22,40 +22,44 @@
                 <div class="col-sm-12 d-flex justify-content-center"
                     style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
 
+                    <% if(locals.arr) {%>
+                        <div class=" card" style="width:75%">
+                            <img class="card-img-top"
+                                src="http://localhost:3000/uploads/<%-arr[0].all_Movies.images[0]%> "
+                                style="height: 220px;" alt="Card image cap">
+                            <div class="card-body">
 
-                    <div class=" card" style="width:75%">
-                        <img class="card-img-top" src="http://localhost:3000/uploads/<%-arr[1].all_Movies.images[0]%> "
-                            style="height: 220px;" alt="Card image cap">
-                        <div class="card-body">
-
-                            <h3 class="card-title">
-                                <%-arr[0]["showName"] %>
-                            </h3>
-                            <p class="card-text">
-                                <b>Screen Name: </b>
-                                <%-arr[1].all_Movies.movieName %>
-                            </p>
-                            <p class="card-text">
-                                <b>Screen Id: </b>
-                                <%-arr[1].screen_id %>
-                            </p>
-                            <p class="card-text">
-                                <b>show Id: </b>
-                                <%-arr[1].show_uid %>
-                            </p>
-                            <p class="card-text">
-                                <b>Start Date: </b>
-                                <%-arr[1].startDate %>
-                            </p>
-                            <p class="card-text">
-                                <b>End Date: </b>
-                                <%-arr[1].endDate %>
-                            </p>
+                                <h3 class="card-title">
+                                    <%-arr[0]["showName"] %>
+                                </h3>
+                                <p class="card-text">
+                                    <b>Screen Name: </b>
+                                    <%-arr[0].all_Movies.movieName %>
+                                </p>
+                                <p class="card-text">
+                                    <b>Screen Id: </b>
+                                    <%-arr[0].screen_id %>
+                                </p>
+                                <p class="card-text">
+                                    <b>show Id: </b>
+                                    <%-arr[0].show_uid %>
+                                </p>
+                                <p class="card-text">
+                                    <b>Start Date: </b>
+                                    <%-arr[0].startDate %>
+                                </p>
+                                <p class="card-text">
+                                    <b>End Date: </b>
+                                    <%-arr[0].endDate %>
+                                </p>
 
 
 
+                            </div>
                         </div>
-                    </div>
+                        <% }else{ %>
+                            <h2>No shows available</h2>
+                            <% } %>
 
                 </div>
 

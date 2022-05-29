@@ -24,7 +24,8 @@
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea required name="address" type="text" class="form-control"
+
+                            <textarea required name="address" type="text" class="form-control" rows="3"
                                 placeholder="address"><%-data.address%></textarea>
                         </div>
                         <div class="form-group">
@@ -43,14 +44,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Theater registered ID</label>
-                            <input required name="theatreId" value="<%- data.theatreId %> " type="text"
-                                class="form-control" placeholder="Theater registered ID">
-                        </div>
-                        <div class="form-group">
                             <div class="d-flex">
                                 <% data.images.map((e)=>{ %>
-                                    <img src="http://localhost:3000/uploads/<%- e%> " name="images" alt="img"
+                                    <img src="http://localhost:3000/uploads/<%- e.image_url%> " name="images" alt="img"
                                         style="width:15rem;height:15rem;" class="imgView">
                                     <input type="text" style="display: none;" class="imgView" name="images" value=<%- e
                                         %> id="images">
@@ -60,6 +56,13 @@
                                 id="images" multiple />
 
                         </div>
+
+                        <div class="form-group">
+                            <label>Theater registered ID</label>
+                            <input required name="theatreId" value="<%- data.theatreId %> " type="text"
+                                class="form-control" placeholder="Theater registered ID">
+                        </div>
+
 
 
 

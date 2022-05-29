@@ -8,66 +8,72 @@
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/theatre/halls/data._id ">Edit</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
-                    href="/theatre/theatre/delete/halls/<%-data._id %>">Delete</a>
+                    href="/theatre/theatre/delete/halls/<%-data[0].screenDetails._id %>">Delete</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
-            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Screen Dashboard</div>
-            <div class="status p-5">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">
+                <%-theatreName%>
+            </div>
+            <div class="status p-3">
 
-                <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+                <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 450px;">
 
 
                     <div class="col-sm-12 d-flex justify-content-center">
                         <div class="card" style="width:75%">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    <%-data.screenName %>
+                                    <%-data[0].screenDetails.screenName %>
                                 </h3>
                                 <p class="card-text">
                                     <b>Screen Name: </b>
-                                    <%-data.screenName %>
+                                    <%-data[0].screenDetails.screenName %>
                                 </p>
                                 <p class="card-text">
                                     <b>Screen Id: </b>
-                                    <%- data.screenId %>
+                                    <%- data[0].screenDetails.screenId %>
                                 </p>
 
-                                <p class="card-text"><b>Seats total colum: </b>
-                                    <%- data.seats_details.totalColums %>
+                                <p class="card-text"><b>Seats total rows: </b>
+                                    <%- data[0].seatDetails.total_row %>
                                 </p>
-                                <p class="card-text"><b>Seats: </b>
+                                <p class="card-text"><b>Total Seats: </b>
+                                    <%- data[0].screenDetails.total_seats %>
+                                </p>
+                                <hr>
+                                <div class="h3 text-center">Seat details</div>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">seats_tag_name</th>
-                                            <th scope="col">total_seats</th>
-                                            <th scope="col">seats_price</th>
-                                            <th scope="col">seats_category</th>
+                                            <th scope="col">SEATS TAG NAME</th>
+                                            <th scope="col">TOTAL SEATS</th>
+                                            <th scope="col">SEATS PRICE</th>
+                                            <th scope="col">SEATS CATEGORY</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% arr.map((e,i)=>{%>
+                                        <% data[0].seatDetails.seats_details.map((e,i)=>{%>
 
                                             <tr>
                                                 <th scope="row">
                                                     <%-++i %>
                                                 </th>
                                                 <td>
-                                                    <%-e[0].seats_tag_name %>
+                                                    <%-e.seats_tag_name %>
                                                 </td>
                                                 <td>
-                                                    <%-e[0].total_seats %>
+                                                    <%-e.total_seats %>
                                                 </td>
                                                 <td>
-                                                    <%-e[0].seats_price %>
+                                                    <%-e.seats_price %>
                                                 </td>
                                                 <td>
-                                                    <%-e[0].seats_category %>
+                                                    <%-e.seats_category %>
                                                 </td>
 
                                             </tr>

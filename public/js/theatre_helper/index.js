@@ -12,7 +12,7 @@ let element = `
             </div>
             <div class="form-group col-sm-3">
                  <label>Enter total seats</label>
-                <input required type="number" name="seats_number" id="seats_number" placeholder="Enter total seats" class="form-control">
+                <input required type="number" name="total_seats" id="total_seats" placeholder="Enter total seats in row" class="form-control">
             </div>
             <div class="form-group col-sm-3">
                  <label>Enter seat price</label>

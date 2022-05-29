@@ -16,12 +16,13 @@
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
             <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Theatres Dashboard</div>
-            <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+            <div class="status p-3" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
                 <div class="row">
                     <% data.forEach(elm=> { %>
                         <div class="col-sm-4">
                             <div class="card">
-                                <img class="card-img-top" src="http://localhost:3000/uploads/<%-elm.images[0]%> "
+                                <img class="card-img-top"
+                                    src="http://localhost:3000/uploads/<%-elm.images[0].image_url%> "
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">
