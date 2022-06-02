@@ -1,11 +1,11 @@
 const express = require('express')
-const passport = require('passport')
 const route = express.Router()
 const theatreOwn = require('../../models/Theatre_own')
 const accountSid = process.env.ACCOUNT_SID
 const authToken = process.env.AUTH_TOKEN
 const serviceid = process.env.SERVICE_ID
-const { ensureAuth } = require('../../middleware/isTheater')
+const { ensureAuth } = require('../../middleware/isTheater');
+
 
 
 
@@ -67,6 +67,7 @@ route.get('/home', (req, res) => {
                 data: user
             })
         } else {
+
             res.render("theatre/index", {
                 "layout": './layout/layout',
                 data: user,

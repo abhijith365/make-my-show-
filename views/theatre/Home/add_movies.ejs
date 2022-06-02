@@ -3,54 +3,116 @@
     <div class="col-md-offset-1 col-md-12">
         <div class="form-container">
             <h3 class="title">Add movie</h3>
-            <form class="form-horizontal" action="/theatre/theatre/add/movie/<%- id %> " method="POST"
-                enctype="multipart/form-data">
+            <form class="form-horizontal needs-validation" novalidate action="/theatre/theatre/add/movie/<%- id %> "
+                method="POST" enctype="multipart/form-data">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
                         <%= message %>
                     </h5>
                     <% } %>
                         <div class="form-group">
-                            <label>Movie Name</label>
-                            <input required name="movieName" type="text" class="form-control" placeholder="Movie Name">
+                            <label class="form-label" for="movieName">Movie Name</label>
+                            <input required name="movieName" id="movieName" type="text" class="form-control"
+                                placeholder="Movie Name">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie Name.
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Movie Id</label>
-                            <input required name="movie_uid" type="text" class="form-control" placeholder="Movie Id">
+                            <label class="form-label" for="movie_uid">Movie Id</label>
+                            <input required name="movie_uid" id="movie_uid" type="text" class="form-control"
+                                placeholder="Movie Id">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie Id.
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label>Description</label>
-                            <input required name="description" type="text" class="form-control"
+                            <label class="form-label" for="description">Description</label>
+                            <input required name="description" id="description" type="text" class="form-control"
                                 placeholder="Description">
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Movie duration</label>
-                            <input type="time" name="movieDuration" id="time" class="form-control" tabindex="27">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Description.
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Movie Language</label>
-                            <input required name="language" type="text" class="form-control"
+                            <label class="form-label" for="time">Movie duration</label>
+                            <input type="time" name="movieDuration" id="time" class="form-control" tabindex="27"
+                                required>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add duration.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="language">Movie Language</label>
+                            <input required name="language" id="language" type="text" class="form-control"
                                 placeholder="Movie Language">
-                        </div>
-                        <div class="form-group">
-                            <label for="releseDate">Relese Date</label>
-                            <input id="releseDate" class="form-control" name="ReleseDate" type="date" name="">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Trailer Links</label>
-                            <input required name="tlLinks" type="text" class="form-control" placeholder="Trailer Links">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie-genres">Movie genres</label>
-                            <input id="movie-genres" class="form-control" type="text" name="movieGenres">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Language.
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="images">Add Movie images</label>
-                            <input class="form-control" name="images" type="file" id="images" multiple />
+                            <label class="form-label" for="releseDate">Relese Date</label>
+                            <input id="releseDate" class="form-control" name="ReleseDate" type="date" required>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie Relese Date.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="tlLinks">Trailer Links</label>
+                            <input required name="tlLinks" id="tlLinks" type="text" class="form-control"
+                                placeholder="Trailer Links">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie Trailer Links.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="movieGenres">Movie genres</label>
+                            <input id="movieGenres" class="form-control" type="text" name="movieGenres" required>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie genres.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="images">Add Movie images</label>
+                            <input class="form-control" name="images" type="file" id="images" required multiple />
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Movie Name.
+                            </div>
                         </div>
 
                         <input type="hidden" name="theatreOwner" value="<%- id %> ">
@@ -63,3 +125,43 @@
     </div>
 </div>
 </div>
+<script>    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>
+
+<style>
+    .invalid-tooltip,
+    .valid-tooltip {
+        top: -2px;
+        right: 0;
+        left: auto;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
+</style>
+<!-- <script src="/js/bootstrap_form_val.js"></script> -->

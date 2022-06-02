@@ -3,61 +3,100 @@
     <div class="col-md-offset-1 col-md-12">
         <div class="form-container">
             <h3 class="title">Add show</h3>
-            <form class="form-horizontal" action="/theatre/shows/" method="POST">
+            <form class="form-horizontal needs-validation" novalidate action="/theatre/shows/" method="POST">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
                         <%= message %>
                     </h5>
                     <% } %>
                         <div class="form-group">
-                            <label>Show Name</label>
-                            <input required name="showName" type="text" class="form-control" placeholder="Show Name">
+                            <labe class="form-label" for="movieName" l>Show Type</label>
+                                <input required name="showName" type="text" class="form-control"
+                                    placeholder="Show Name">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Please Add Show Name.
+                                </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Show Id</label>
-                            <input required name="show_uid" type="text" class="form-control" placeholder="
+                            <label class="form-label" for="show_uid">Show Id</label>
+                            <input required id="show_uid" name="show_uid" type="text" class="form-control" placeholder="
                             show Id">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add Show Id.
+                            </div>
+                        </div>
+                        <!-- Enter show details  -->
+                        <div class="form-group">
+                            <label class="form-label" for="seats_col_num">Enter Total Shows</label>
+                            <input type="number" name="seats_col_num" id="seats_col_num" min="1" value="0"
+                                class="form-control">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Add at least 1 show.
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div id="seat_arr_id" class="row">
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label" for="startDate">Movie Start Date</label>
+                            <input required id="startDate" class="form-control" name="startDate" type="date" min="<%-new
+                                Date().toISOString().split('T')[0]%>">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Select Movie Start Date.
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="time">Show Time</label>
-                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Show Time</label>
-                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Show Time</label>
-                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Show Time</label>
-                            <input required type="time" name="showTime" id="time" class="form-control" tabindex="27">
+                            <label class="form-label" for="endDate">Movie End Date</label>
+                            <input required id="endDate" class="form-control" name="endDate" type="date" min="<%-new
+                                Date().toISOString().split('T')[0]%>">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Select Movie End Date.
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="startDate">Movie Start Date</label>
-                            <input required id="startDate" class="form-control" name="startDate" type="date" name="">
-                        </div>
-                        <div class="form-group">
-                            <label for="endDate">Movie End Date</label>
-                            <input required id="endDate" class="form-control" name="endDate" type="date" name="">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_id">Select Movie</label>
-                            <select class="form-control" name="movie_id" id="movie_id">
+                            <label class="form-label" for="movie_id">Select Movie</label>
+                            <select class="form-control" name="movie_id" id="movie_id" required>
                                 <% movies.map((e,i)=>{ %>
                                     <option value="<%-e._id%>">
                                         <%- e.movieName %>
                                     </option>
                                     <% }) %>
                             </select>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Select Movie.
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="screen_id">Select Screen</label>
-                            <select class="form-control" name="screen_id" id="screen_id">
+                            <label class="form-label" for="screen_id">Select Screen</label>
+                            <select class="form-control " name="screen_id" id="screen_id" required>
                                 <% hall.map(e=>{ %>
                                     <option value="<%-e._id%>">
                                         <%- e.screenName %>
@@ -66,6 +105,12 @@
                                     <% }) %>
 
                             </select>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Select Screen.
+                            </div>
                         </div>
 
 
@@ -75,7 +120,48 @@
                             <button class="btn btn-danger" type="submit">Add show</button>
 
             </form>
+
         </div>
     </div>
 </div>
 </div>
+<script src="/js/theatre_helper/showHelper.js"></script>
+<script>    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>
+
+<style>
+    .invalid-tooltip,
+    .valid-tooltip {
+        top: -2px;
+        right: 0;
+        left: auto;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
+</style>

@@ -57,10 +57,10 @@
                         <div class="form-group">
                             <div class="d-flex">
                                 <% data.images.map((e,i)=>{ %>
-                                    <img src="http://localhost:3000/uploads/<%- e%> " name="images" alt="img"
+                                    <img src="http://localhost:3000/uploads/<%- e.image_url%> " name="images" alt="img"
                                         style="width:15rem;height:15rem;" class="imgView">
-                                    <input type="text" style="display: none;" class="imgView" name="images" value=<%- e
-                                        %> id="images">
+                                    <input type="text" style="display: none;" class="imgView" name="images"
+                                        value=<%-e.image_url %> id="images">
                                     <% }) %>
                             </div>
                             <input required class="form-control" name="images" onchange="viewImage(event)" type="file"

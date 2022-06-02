@@ -3,51 +3,91 @@
     <div class="col-md-offset-1 col-md-12">
         <div class="form-container">
             <h3 class="title">Add Food</h3>
-            <form class="form-horizontal" action="/theatre/shows/food/<%- id %> " method="POST"
-                enctype="multipart/form-data">
+            <form class="form-horizontal needs-validation" novalidate action="/theatre/shows/food/<%- id %> "
+                method="POST" enctype="multipart/form-data">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
                         <%= message %>
                     </h5>
                     <% } %>
-                        <div class="form-group">
-                            <label>Food Name</label>
-                            <input required name="foodName" type="text" class="form-control" placeholder="Food Name">
+
+
+                        <div class="form-group py-2">
+                            <label class="form-label" for="foodName">Food Name*</label>
+                            <input name="foodName" type="text" id="foodName" class="form-control"
+                                placeholder="Food Name" required>
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please add food name.
+                            </div>
+
                         </div>
 
-                        <div class="form-group">
-                            <label>Food Id</label>
-                            <input required name="food_uid" type="text" class="form-control"
+                        <div class="form-group py-2">
+                            <label class="form-label" for="FoodId">Food Id*</label>
+                            <input required name="food_uid" id="FoodId" type="text" class="form-control"
                                 placeholder="Food Unique Id">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please add food id.
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>food_qty</label>
-                            <input required name="food_qty" type="text" class="form-control" placeholder="food_qty">
+                        <div class="form-group py-2">
+                            <label class="form-label" for="food_qty">Food quantity*</label>
+                            <input required name="food_qty" id="food_qty" type="text" class="form-control"
+                                placeholder="food_qty">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please add food quantity.
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="movie_id">Select Movie</label>
+                        <div class="form-group py-2">
+                            <label class="form-label" for="veg">Select Movie*</label>
                             <select class="form-control" name="veg" id="veg">
 
-                                <option value="true">veg</option>
+                                <option value="true" aria-checked="true">veg</option>
                                 <option value="false">non veg</option>
 
                             </select>
+
                         </div>
 
-                        <div class="form-group">
-                            <label>food price</label>
-                            <input required name="price" type="text" class="form-control" placeholder="food price">
-
-
-
-                            <div class="form-group">
-                                <label>Add Food images</label>
-                                <input class="form-control" name="image" type="file" id="image" />
+                        <div class="form-group py-2">
+                            <label class="form-label" for="price">food price*</label>
+                            <input required name="price" id="price" type="text" class="form-control"
+                                placeholder="food price">
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please add food price.
                             </div>
 
-                            <div>
-                                <button class="btn btn-info" type="submit">Add Food</button>s
+                        </div>
+
+
+
+                        <div class="form-group py-2">
+                            <label class="form-label" for="image">Add Food images*</label>
+                            <input class="form-control" name="image" type="file" id="image" required />
+                            <div class="valid-tooltip">
+                                Looks good!
                             </div>
+                            <div class="invalid-tooltip">
+                                Please add food image.
+                            </div>
+                        </div>
+
+                        <div class="text-center p-3">
+                            <button class="btn btn-info px-5 py-2" type="submit">Add Food</button>s
+                        </div>
 
 
             </form>
@@ -55,3 +95,75 @@
     </div>
 </div>
 </div>
+
+
+<script>
+    const form = document.getElementById("form");
+    const submit = document.getElementById("submit");
+
+
+    const image = document.getElementById("image");
+    const price = document.getElementById("price");
+    const food_qty = document.getElementById("food_qty");
+    const FoodId = document.getElementById("FoodId");
+    const foodName = document.getElementById("foodName");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const error = document.getElementById("error");
+
+
+    // form.addEventListener('submit', (e) => {
+    //     if (!isEmail(email.value)) {
+
+    //         error.innerText = "Enter proper Email";
+    //         e.preventDefault();
+
+    //     } else if (password.value == "") {
+    //         error.innerText = "short password";
+    //         e.preventDefault();
+    //     }
+    // })
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>
+
+<style>
+    .invalid-tooltip,
+    .valid-tooltip {
+        top: -2px;
+        right: 0;
+        left: auto;
+    }
+
+    .container {
+        padding: 3rem 0rem;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
+</style>

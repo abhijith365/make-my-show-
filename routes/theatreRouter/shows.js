@@ -3,11 +3,16 @@ const route = express.Router();
 const db = require('../../helper/theatre_helper/database_helper')
 const { ensureAuth } = require('../../middleware/isTheater')
 const fs = require('fs')
+const _ = require('underscore')
+const { ObjectId } = require('mongodb')
+
+
 
 // multer for image uploads
 const multer = require('multer')
 const database_helper = require('../../helper/theatre_helper/database_helper');
 const { isEmpty } = require('underscore');
+const moment = require('moment');
 
 
 
@@ -48,12 +53,115 @@ route.get('/', ensureAuth, async (req, res) => {
 // add shows post request
 route.post('/', ensureAuth, async (req, res) => {
     try {
+
         req.body.createdAt = Date.now();
         req.body.theatreOwn = req.session.theatreOwn._id;
 
-        let show = await db.AddShow(req.body).then(res => res).catch(e => e);
+        // making one array of start show and end show time
+        let arr = [];
+        arr.push(req.body.showStartTime);
+        arr.push(req.body.showEndTime);
+
+        let showByDay = _.zip(arr[0], arr[1]).map((a) => ({ startTime: a[0], endTime: a[1] }));
+        //making one object of start date and end date of show
+        let showByDate = { startDate: req.body.startDate, endDate: req.body.endDate };
+
+
+
+        let aDay = 86400000;
+        let start_date = showByDate.startDate;
+        let end_date = showByDate.endDate;
+        let diff = Math.floor(
+            (
+                Date.parse(
+                    end_date.replace(/-/g, '\/')
+                ) - Date.parse(
+                    start_date.replace(/-/g, '\/')
+                )
+            ) / aDay)
+
+
+        let showObj = {
+            showType: req.body.showName,
+            showUid: req.body.show_uid,
+            showByDate: showByDate,
+            showByDay: showByDay,
+            totalShowsInDay: parseInt(req.body.seats_col_num),
+            totalShowDays: diff,
+            movieId: ObjectId(req.body.movie_id),
+            screenId: ObjectId(req.body.screen_id),
+            createdAt: Date.now()
+        }
+
+        let seatObj = {
+            totalShowByDay: req.body.seats_col_num,
+            totalShowDays: diff,
+            movieId: ObjectId(req.body.movie_id),
+            screenId: ObjectId(req.body.screen_id),
+            createdAt: Date.now(),
+
+        }
+
+
+
+        let show = await db.AddShow(showObj, seatObj).then(res => res).catch(e => e);
+
 
         if (show) {
+
+
+            //complex object assignment start here :) 
+            let show_seats = [];
+
+            for (let i = 0; i < diff; i++) {
+                let seatDetails = {};
+                let date = new Date(showByDate.startDate);
+
+                seatDetails.showByDate = {};
+
+                seatDetails.showByDate.ShowDate = new Date(date.setDate(date.getDate() + i)).toISOString().split('T')[0];
+                seatDetails.showByDate.shows = [];
+                for (let j = 0; j < showObj.totalShowsInDay; j++) {
+                    let dailyShow = {};
+
+                    let time = showByDay[j].startTime;
+                    let dateTime = `${seatDetails.showByDate.ShowDate}T${time}`;
+
+                    dailyShow.showTime = dateTime;
+                    let showSeats = [];
+                    dailyShow.showSeats = showSeats;
+
+                    let total_row = parseInt(show[0].screen.seatsRetails.total_row)
+                    let seat_details = show[0].screen.seatsRetails.seats_details;
+                    for (let k = 0; k < total_row; k++) {
+                        let total_seats = parseInt(seat_details[k].total_seats);
+                        for (let l = 0; l < total_seats; l++) {
+                            showSeats.push({
+                                _id: new ObjectId(),
+                                seat_number: `${seat_details[k].seats_tag_name} ${l + 1}`,
+                                seat_status: false,
+                                user_id: false,
+                                price: seat_details[k].seats_price,
+                                seats_category: seat_details[k].seats_category,
+                                show_time: dateTime
+                            })
+                        }
+
+                    }
+                    // every show in one day
+
+                    seatDetails.showByDate.shows.push(dailyShow)
+                }
+                show_seats.push(seatDetails);
+            }
+            seatObj.showId = ObjectId(show[0].findShow._id);
+            seatObj.show_seats = show_seats;
+            // end 
+
+            let addSeat = await db.AddshowSeats(seatObj).then(re => re).catch(e => e);
+
+
+
             res.redirect(`/theatre/home`)
         }
         else {
@@ -70,12 +178,10 @@ route.get('/home', ensureAuth, async (req, res) => {
     try {
         let obj = req.session.theatreOwn._id;
         let allShows = await db.AllShows(obj).then(e => e).catch(e => e);
-        console.log(allShows);
+
 
         let all = false;
 
-        console.log(isEmpty(allShows));
-        console.log(typeof (allShows))
         if (!isEmpty(allShows)) {
             let screen_id = allShows[0].screen_id;
             all = await db.showCinema_screen(screen_id).then(e => e).catch(e => e)
@@ -142,7 +248,7 @@ route.get('/add/food/:id', ensureAuth, (req, res) => {
         req.session.message = "";
         let obj = req.params.id;
         res.render('theatre/Home/add_food', {
-            "layout": "./layout/layout.ejs", id: obj, message
+            layout: "./layout/layout.ejs", id: obj, message
         })
     } catch (error) {
         res.render('error/500')

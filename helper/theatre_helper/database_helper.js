@@ -93,11 +93,10 @@ module.exports = {
             if (!hall) {
 
                 let hall = await db.getDb().collection(coll.screen).insertOne(hallInp).then(res => res).catch(err => err);
-                seatsInp.screen_id = hall.insertedId;
-                let seat = await db.getDb().collection(coll.seat).insertOne(seatsInp);
+
 
                 let update = await db.getDb().collection(coll.theatre).updateOne({ _id: ObjectId(hallInp.theatreOwner) }, { "$set": { application_complete: true } })
-                if (hall && update && seat) {
+                if (hall && update) {
                     res(hall)
                 } else {
                     res(false)
@@ -121,13 +120,11 @@ module.exports = {
     showSingleScreen: (obj) => {
         return new Promise(async (res, rej) => {    //6292f70e86d5ac58a9291423?&tid=629087fb96e2a9f4bacc1a80
             let screen = await db.getDb().collection(coll.screen).findOne({ $and: [{ theatreId: ObjectId(obj.theatreId) }, { _id: ObjectId(obj._id) }] });
-            let seats = await db.getDb().collection(coll.seat).findOne({ $and: [{ theatreOwner: ObjectId(obj.theatreOwner) }, { screen_id: ObjectId(obj._id) }] });
 
-            if (screen && seats) {
-                let result = [];
-                result.push({ screenDetails: screen, seatDetails: seats });
-                console.log(result)
-                res(result)
+
+            if (screen) {
+
+                res(screen)
             }
             else {
                 res(false)
@@ -138,9 +135,8 @@ module.exports = {
         return new Promise(async (res, rej) => {
             try {
                 let del = await db.getDb().collection(coll.screen).deleteOne({ _id: ObjectId(obj) });
-                let seats = await db.getDb().collection(coll.seat).deleteOne({ screen_id: ObjectId(obj) });
 
-                if (del && seats) {
+                if (del) {
                     res(true);
                 }
                 else throw new error;
@@ -286,19 +282,38 @@ module.exports = {
     AddShow: (obj) => {
         return new Promise(async (res, rej) => {
             try {
-                let data = await db.getDb().collection(coll.show).findOne({ show_uid: obj.show_uid })
+                let data = await db.getDb().collection(coll.show).findOne({ showUid: obj.showUid })
 
                 if (data) {
                     res(false)
                 } else {
-                    let show = await db.getDb().collection(coll.show).insertOne(obj);
-                    res(show)
+                    let show = await db.getDb().collection(coll.show).insertOne(obj).then(re => re).catch(e => e);
+                    let findShow = await db.getDb().collection(coll.show).findOne({ _id: show.insertedId })
+                    let screen = await db.getDb().collection(coll.screen).findOne({ _id: obj.screenId });
+                    console.log(screen);
+                    if (show) {
+                        let arr = []
+                        arr.push({ findShow, screen });
+                        res(arr)
+                    }
+                    res(false)
+
+
                 }
             } catch (error) {
                 console.log(error)
             }
         })
     },
+    AddshowSeats: (obj) => {
+        return new Promise(async (res, rej) => {
+            let seatsCollection = await db.getDb().collection(coll.seat).insertOne(obj).then(res => res).catch(e => e);
+            if (seatsCollection) {
+                res(seatsCollection)
+            } else res(false);
+        })
+    }
+    ,
     // all shows
     AllShows: (obj) => {
         return new Promise(async (res, rej) => {
@@ -313,7 +328,7 @@ module.exports = {
     AllFoods: (obj) => {
         return new Promise(async (res, rej) => {
             let data = await db.getDb().collection(coll.food).find({ theatreId: obj }).toArray();
-            console.log(data)
+
             if (data) {
                 res(data)
             } else { res(false) }

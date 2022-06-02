@@ -8,7 +8,7 @@
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/theatre/halls/data._id ">Edit</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
-                    href="/theatre/theatre/delete/halls/<%-data[0].screenDetails._id %>">Delete</a>
+                    href="/theatre/theatre/delete/halls/<%-data._id %>">Delete</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
             </div>
@@ -26,22 +26,23 @@
                         <div class="card" style="width:75%">
                             <div class="card-body">
                                 <h3 class="card-title">
-                                    <%-data[0].screenDetails.screenName %>
+                                    <%-data.screenName %>
                                 </h3>
                                 <p class="card-text">
                                     <b>Screen Name: </b>
-                                    <%-data[0].screenDetails.screenName %>
+                                    <%-data.screenName %>
                                 </p>
                                 <p class="card-text">
                                     <b>Screen Id: </b>
-                                    <%- data[0].screenDetails.screenId %>
+                                    <%- data.screenId %>
                                 </p>
 
                                 <p class="card-text"><b>Seats total rows: </b>
-                                    <%- data[0].seatDetails.total_row %>
+                                    <%- data.seatsRetails.total_row %>
                                 </p>
                                 <p class="card-text"><b>Total Seats: </b>
-                                    <%- data[0].screenDetails.total_seats %>
+                                    <%- data.seatsRetails.seats_details.map((e)=>
+                                        parseInt(e.total_seats)).reduce((a,b)=>a+b) %>
                                 </p>
                                 <hr>
                                 <div class="h3 text-center">Seat details</div>
@@ -57,7 +58,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% data[0].seatDetails.seats_details.map((e,i)=>{%>
+                                        <% data.seatsRetails.seats_details.map((e,i)=>{%>
 
                                             <tr>
                                                 <th scope="row">

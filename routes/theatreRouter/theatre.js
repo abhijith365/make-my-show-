@@ -253,7 +253,7 @@ route.post('/hall/:id', ensureAuth, async (req, res) => {
         let hallInp = {
             screenName: req.body.screenName,
             screenId: req.body.screenId,
-            total_seats: tol.reduce((a, b) => (parseInt(a), parseInt(b)), 0),
+            total_seats: tol.map(a => parseInt(a)).reduce((a, b) => (a + b)),
             theatreOwner: ObjectId(req.session.theatreOwn._id),
             theatreId: ObjectId(req.params.id),
             createdAt: Date.now()
@@ -268,16 +268,15 @@ route.post('/hall/:id', ensureAuth, async (req, res) => {
             seats_tag_name: x[0], total_seats: x[1], seats_price: x[2], seats_category: x[3]
         })))
 
-        let seatsInp = {
+        let seatsRetails = {
             total_row: req.body.seats_col_num,
             seats_details: arr,
-            theatreId: ObjectId(req.params.id),
-            theatreOwner: ObjectId(req.session.theatreOwn._id),
-            createdAt: Date.now()
+
         }
+        hallInp.seatsRetails = seatsRetails;
 
 
-        let screen = await db.addScreen(hallInp, seatsInp).then(res => res)
+        let screen = await db.addScreen(hallInp).then(res => res)
         let id = req.params.id
         if (screen) {
             res.redirect(`/theatre/theatre/halls/${id}`)
@@ -439,6 +438,7 @@ route.get('/delete/movies/:id', ensureAuth, async (req, res) => {
             del.images.map((e) => {
                 fs.unlinkSync(`uploads/${e}`)
             })
+
             res.redirect(`/theatre/theatre/movies/${theatreId}`);
         }
     } catch (err) {

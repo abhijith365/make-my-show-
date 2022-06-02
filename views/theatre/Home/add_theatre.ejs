@@ -10,26 +10,46 @@
                     <% } %>
                         <h3 class="title">Add Theatre</h3>
 
-                        <form class="form-horizontal" action="/theatre/theatre/" method="POST"
-                            enctype="multipart/form-data">
+                        <form class="form-horizontal needs-validation" novalidate action="/theatre/theatre/"
+                            method="POST" enctype="multipart/form-data">
+
                             <div class="form-group">
-                                <label>Theatre Name</label>
-                                <input required name="theatreName" type="text" class="form-control"
+                                <label class="form-label" for="theatreName">Theatre Name</label>
+                                <input required name="theatreName" id="theatreName" type="text" class="form-control"
                                     placeholder="Enter Theatre Name">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter Theatre Name.
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Building Name</label>
-                                <input required name="BuildingName" type="text" class="form-control"
+                                <label class="form-label" for="BuildingName">Building Name</label>
+                                <input required name="BuildingName" id="BuildingName" type="text" class="form-control"
                                     placeholder="Building Name">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter Building Name.
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <input required name="address" type="text" class="form-control" placeholder="Address">
+                                <label class="form-label" for="address">Address</label>
+                                <input required name="address" id="address" type="text" class="form-control"
+                                    placeholder="Address" min="10">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter Address min 10.
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>City</label>
-                                <select name="city" class="form-control">
+                                <label class="form-label" for="city">City</label>
+                                <select name="city" id="city" class="form-control" required>
                                     <option value="Kochi">Kochi</option>
                                     <option value="NCR">NCR</option>
                                     <option value="Bengalure">Bengalure</option>
@@ -40,22 +60,49 @@
                                     <option value="Kolkata">Kolkata</option>
                                     <option value="Mumbai">Mumbai</option>
                                 </select>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter city.
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Theater registered ID</label>
-                                <input required name="theatreId" type="text" class="form-control"
-                                    placeholder="Theater registered ID">
+                                <label class="form-label" for="theatreId">Theater registered ID</label>
+                                <input required name="theatreId" id="theatreId" type="text" class="form-control"
+                                    placeholder="Theater registered ID" min="5">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Theater registered ID min 5 letter
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="images">Add theatre images</label>
+                                <label class="form-label" for="images">Add theatre images</label>
                                 <input required class="form-control" name="images" type="file" id="images" multiple />
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Add image.
+                                </div>
                             </div>
 
 
-                            <div class="check-terms">
-                                <input required type="checkbox" class="checkbox">
-                                <span class="check-label">I agree to the terms</span>
+                            <div class="form-group">
+                                <input required id="checkbox" type="checkbox" class="checkbox">
+                                <label class="form-label check-label" for="checkbox">&nbsp; I agree to the terms</label>
+
+
+
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    need to agree to continue
+                                </div>
                             </div>
                             <button class="btn signup">Create Theatre</button>
 
@@ -64,3 +111,48 @@
         </div>
     </div>
     </div>
+
+
+    <script>
+        const input_field = document.getElementById('input-field').value
+        const num = parseInt(input_field)
+    </script>
+    <script>    (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+
+
+
+    </script>
+
+    <style>
+        .invalid-tooltip,
+        .valid-tooltip {
+            top: -2px;
+            right: 0;
+            left: auto;
+        }
+
+        h4 {
+            margin: 2rem 0rem 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+    </style>

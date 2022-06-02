@@ -11,23 +11,42 @@
                     <% } %>
                         <h3 class="title">Add Theatre Screen</h3>
 
-                        <form class="form-horizontal" id="form" action="/theatre/theatre/hall/<%- id %> " method="POST">
+                        <form class="form-horizontal needs-validation" novalidate id="form"
+                            action="/theatre/theatre/hall/<%- id %> " method="POST">
                             <div class="form-group">
-                                <label>Screen Name</label>
-                                <input required name="screenName" type="text" class="form-control"
+                                <label class="form-label" for="screenName">Screen Name</label>
+                                <input required name="screenName" id="screenName" type="text" class="form-control"
                                     placeholder="Enter Screen Name">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Please Add Screen Name.
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Screen Id</label>
-                                <input required name="screenId" type="text" class="form-control"
+                                <label class="form-label" for="screenId">Screen Id</label>
+                                <input required name="screenId" id="screenId" type="text" class="form-control"
                                     placeholder="Screen Id">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Please Add Screen id.
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Enter total seats columns</label>
-                                <input type="number" name="seats_col_num" id="seats_col_num" value="0"
+                                <label class="form-label" for="seats_col_num">Enter total seats columns</label>
+                                <input type="number" name="seats_col_num" id="seats_col_num" min="2" value="0"
                                     class="form-control">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter min 2 seats.
+                                </div>
 
                             </div>
 
@@ -52,3 +71,42 @@
         const input_field = document.getElementById('input-field').value
         const num = parseInt(input_field)
     </script>
+    <script>    (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+
+
+
+    </script>
+
+    <style>
+        .invalid-tooltip,
+        .valid-tooltip {
+            top: -2px;
+            right: 0;
+            left: auto;
+        }
+
+        h4 {
+            margin: 2rem 0rem 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+    </style>
