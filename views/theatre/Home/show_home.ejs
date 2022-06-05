@@ -1,0 +1,82 @@
+<%- include('../../partials/theater_header.ejs') %>
+
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/shows/">Add
+                    Shows</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Shows Dashboard</div>
+            <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+
+
+
+
+                <% if(locals.arr) {%>
+
+                    <div class="row">
+                        <% arr.forEach(arr=> { %>
+                            <div class="col-sm-4">
+                                <div class=" card">
+                                    <img class="card-img-top"
+                                        src="http://localhost:3000/uploads/<%-arr.movie[0].images[0].image_url%> "
+                                        style="height: 220px;" alt="Card image cap">
+                                    <div class="card-body">
+
+                                        <h3 class="card-text h4 pb-2">
+                                            <%-arr.movie[0].movieName %>
+                                        </h3>
+
+                                        <p class="card-text ">
+                                            <b>SHOW TYPE : </b>
+                                            <%-arr.showType %>
+                                        </p>
+                                        <p class="card-text">
+                                            <b>THEATRE NAME : </b>
+                                            <%-arr.screen[0].screenId %>
+                                        </p>
+                                        <p class="card-text">
+                                            <b>SCREEN ID : </b>
+                                            <%-arr.screen[0].screenId %>
+                                        </p>
+                                        <p class="card-text">
+                                            <b>SCREEN NAME : </b>
+                                            <%-arr.screen[0].screenName %>
+                                        </p>
+                                        <p class="card-text">
+                                            <b> SHOW DAYS: </b>
+                                            <%-arr.showByDate.startDate %>
+                                                TO
+                                                <%-arr.showByDate.endDate %>
+                                        </p>
+
+                                        <div class="text-center">
+                                            <a href="/theatre/show/<%-arr._id%>"
+                                                class="btn btn-danger text-center px-5">Continue</a>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                    </div>
+
+                    <% }else{ %>
+                        <h2>No shows available</h2>
+                        <% } %>
+            </div>
+
+        </div>
+
+    </div>

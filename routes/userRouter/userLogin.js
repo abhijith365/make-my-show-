@@ -8,6 +8,7 @@ const route = express.Router()
 route.get('/', async (req, res) => {
     try {
         let user = req.user || req.session.phone;
+        let movies_ad_shows = "";
         if (user) {
             res.render('user/index', {
                 layout: './layout/layout.ejs',

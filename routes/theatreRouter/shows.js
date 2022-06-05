@@ -90,6 +90,7 @@ route.post('/', ensureAuth, async (req, res) => {
             totalShowDays: diff,
             movieId: ObjectId(req.body.movie_id),
             screenId: ObjectId(req.body.screen_id),
+            theatreOwner: ObjectId(req.body.theatreOwn),
             createdAt: Date.now()
         }
 
@@ -179,18 +180,16 @@ route.get('/home', ensureAuth, async (req, res) => {
         let obj = req.session.theatreOwn._id;
         let allShows = await db.AllShows(obj).then(e => e).catch(e => e);
 
+        console.log(allShows)
+        let all;
+        //if show list not empty 
+        (!isEmpty(allShows)) ? all = allShows : all = false;
 
-        let all = false;
-
-        if (!isEmpty(allShows)) {
-            let screen_id = allShows[0].screen_id;
-            all = await db.showCinema_screen(screen_id).then(e => e).catch(e => e)
-            console.log(all)
-        }
-
-        res.render('theatre/Home/show', {
+        res.render('theatre/Home/show_home', {
             "layout": "./layout/layout.ejs", arr: all
         })
+
+
     } catch (error) {
         res.render('error/500')
         console.log(error);

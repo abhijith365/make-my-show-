@@ -117,6 +117,22 @@ module.exports = {
             }
         })
     },
+    checkScreen: (obj) => {
+        return new Promise(async (res, rej) => {
+            let screen = await db.getDb().collection(coll.screen).findOne({ $and: [{ theatreId: ObjectId(obj.theatreId) }, { screenId: obj.screenId }] });
+
+
+            if (screen) {
+
+                res(screen)
+            }
+            else {
+                res(false)
+            }
+        })
+
+    }
+    ,
     showSingleScreen: (obj) => {
         return new Promise(async (res, rej) => {    //6292f70e86d5ac58a9291423?&tid=629087fb96e2a9f4bacc1a80
             let screen = await db.getDb().collection(coll.screen).findOne({ $and: [{ theatreId: ObjectId(obj.theatreId) }, { _id: ObjectId(obj._id) }] });
@@ -317,7 +333,44 @@ module.exports = {
     // all shows
     AllShows: (obj) => {
         return new Promise(async (res, rej) => {
-            let data = await db.getDb().collection(coll.show).find({ theatreOwn: obj }).toArray();
+            // find({ theatreOwner: obj }).toArray()
+            let data = await db.getDb().collection(coll.show).aggregate(
+                [{
+                    $match: { theatreOwner: ObjectId(obj) }
+                },
+                {
+                    $lookup: {
+                        from: coll.screen,
+                        localField: "screenId",
+                        foreignField: "_id",
+                        as: "screen"
+
+                    }
+                },
+                {
+                    $lookup: {
+                        from: coll.movie,
+                        localField: "movieId",
+                        foreignField: "_id",
+                        as: "movie"
+                    }
+                },
+                {
+                    $lookup: {
+                        from: coll.theatre,
+                        localField: "theatreId",
+                        foreignField: "_id",
+                        as: "theatre"
+                    }
+                },
+                {
+                    $project: {
+                        _id: 1, showUid: 1, showType: 1, showByDate: 1, screen: 1, movie: 1, theatreOwner: 1
+                    }
+                },
+
+                ]
+            ).toArray()
 
             if (data) {
                 res(data)

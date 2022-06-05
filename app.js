@@ -87,6 +87,7 @@ app.use(methodOverride(function (req, res) {
 
 // routes
 app.use('/', require('./routes/userRouter/userLogin'))
+app.use('/home', require('./routes/userRouter/home'))
 app.use('/auth', require('./routes/userRouter/auth'))
 app.use('/admin/', require('./routes/adminRouter/auth'))
 app.use('/theatre', require('./routes/theatreRouter/auth'))

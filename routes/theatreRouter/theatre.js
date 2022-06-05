@@ -275,10 +275,14 @@ route.post('/hall/:id', ensureAuth, async (req, res) => {
         }
         hallInp.seatsRetails = seatsRetails;
 
-
-        let screen = await db.addScreen(hallInp).then(res => res)
         let id = req.params.id
-        if (screen) {
+        //obj for check uuid exit or not 
+        let obj = { screenId: req.body.screenId, theatreId: id }
+
+        //CHECKING SCREEN EXIT OR NOT IF NOT ADDING NEW DATA
+        let screenExist = await db.checkScreen(obj).then(re => re).catch(e => e);
+        if (!screenExist) {
+            let screen = await db.addScreen(hallInp).then(res => res)
             res.redirect(`/theatre/theatre/halls/${id}`)
         }
         else {
