@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="/css/user/runningmovie.css">
+
+<%- include('../../partials/header.ejs', {user}) %>
+    <div class="row mx-4 mt-4">
+
+        <% data.map(data=>data.movies.forEach(elm=> { %>
+
+            <figure class="movie">
+                <div class="movie__hero">
+
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="none">
+                        <div class="carousel-inner">
+
+                            <% elm.images.map((e,i)=>{ %>
+                                <% if(i==0){%>
+                                    <div class="carousel-item active">
+                                        <% }else{ %>
+                                            <div class="carousel-item ">
+                                                <% } %>
+                                                    <a href="http://localhost:3000/uploads/<%-e.image_url%>">
+                                                        <img style="width: 100%; height: auto;"
+                                                            src="http://localhost:3000/uploads/<%-e.image_url%> "
+                                                            alt="movies" class="movie__img">
+                                                    </a>
+
+                                            </div>
+                                            <% }) %>
+                                    </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="movie__content">
+                        <div class="movie__title">
+                            <h1 class="heading__primary">
+                                <%- elm.movieName %> <i class="fas fa-fire"></i>
+                            </h1>
+                            <% let arr=elm.movieGenres.split(','); arr.forEach(e=> {%>
+                                <div class="movie__tag movie__tag">
+                                    <%-e%>
+                                </div>
+                                <%})%>
+                                    <!-- <div class="movie__tag movie__tag--2">#thriller</div> -->
+                        </div>
+                        <p class="movie__description">
+                            <%-elm.description%>
+                        </p>
+                        <div class="movie__details">
+                            <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i>
+                                </span>
+                                <%- elm.language %>
+                            </p>
+                            <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i>
+                                </span>
+                                <%- elm.movieDuration %>hr
+                            </p>
+                            <p class="movie__detail"><span class="icons icons-yellow">
+                                    <a href="/movie/<%- data._id %>"><button type="button"
+                                            class="btn px-4 py-2 btn-rounded"
+                                            style="background-color: rgb(233, 45, 45);color: white; font-weight: 600">Book
+                                            Tickets</button>
+                        </div>
+                    </div>
+                    <!-- <div class="movie__price">$12.56</div> -->
+            </figure>
+
+            <% }))%>
+    </div>
+
+
+
+
+
+
+    <style>
+        /*  
+background-color: #A9C9FF;
+background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+
+*/
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .movie {
+            max-width: 100%;
+            border-radius: 5px;
+            display: flex;
+            box-shadow: 0 5px 20px 10px rgba(0, 0, 0, .2);
+            overflow: hidden;
+        }
+
+        .movie__hero {
+            flex: 0 0 45%;
+        }
+
+        .movie__img {
+            width: 100%;
+            display: block;
+        }
+
+        .movie__content {
+            background-color: #fff;
+            flex: 1;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie__price {
+            background: linear-gradient(to bottom, #A9C9FF 0%, #FFBBEC 100%);
+            flex: 0 0 50px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 255, 255);
+            writing-mode: vertical-lr;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .movie__title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .heading__primary {
+            font-size: 1.5rem;
+            margin-right: auto;
+            color: royalblue;
+        }
+
+        .fa-fire {
+            color: salmon;
+        }
+
+        .movie__tag {
+            font-size: .8rem;
+            font-weight: bold;
+            color: #fff;
+            padding: 2px 7px;
+            border-radius: 100px;
+            margin-right: 8px;
+            display: block;
+            text-transform: uppercase;
+
+        }
+
+        .movie__tag {
+            background-color: #FFBBEC;
+            color: rgba(0, 0, 0, 0.792);
+        }
+
+        /* .movie__tag--2 {
+            background-color: #A9C9FF;
+        } */
+
+        .movie__description {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .movie__details {
+            display: flex;
+            margin: auto;
+            justify-content: flex-end;
+        }
+
+        .movie__detail {
+            font-size: .8rem;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icons i {
+            margin-right: 3px;
+            font-size: 18px;
+        }
+
+        .icons-red {
+            color: salmon;
+        }
+
+        .icons-grey {
+            color: grey;
+        }
+
+        .icons-yellow {
+            color: rgb(190, 190, 71);
+
+        }
+    </style>
