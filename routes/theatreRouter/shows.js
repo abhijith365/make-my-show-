@@ -64,13 +64,13 @@ route.post('/', ensureAuth, async (req, res) => {
 
         let showByDay = _.zip(arr[0], arr[1]).map((a) => ({ startTime: a[0], endTime: a[1] }));
         //making one object of start date and end date of show
-        let showByDate = { startDate: req.body.startDate, endDate: req.body.endDate };
+        let showByDate = { startDate: new Date(req.body.startDate), endDate: new Date(req.body.endDate) };
 
 
 
         let aDay = 86400000;
-        let start_date = showByDate.startDate;
-        let end_date = showByDate.endDate;
+        let start_date = req.body.startDate;
+        let end_date = req.body.endDate;
         let diff = Math.floor(
             (
                 Date.parse(

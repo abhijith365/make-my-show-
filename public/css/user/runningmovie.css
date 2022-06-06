@@ -3,6 +3,55 @@ body {
     overflow-x: hidden;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 .info a {
     color: rgb(222, 42, 42);
+}
+
+.clearfix:hover {
+    transform: scale(1.05);
+    transition-duration: 0.7s;
+
+
+}
+
+.clearfix img:hover {}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-position: center;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.fa-chevron-right:before {
+    border-radius: 50%;
+    content: "\f054";
+    color: rgba(0, 0, 0, 0.678);
+    position: absolute;
+    z-index: 8888;
+    font-size: 2rem;
+    background: #ffffffb5;
+    right: 0;
+    top: 42%;
+    padding: 7px 13px;
+}
+
+.fa-chevron-left:before {
+    border-radius: 50%;
+    color: rgba(0, 0, 0, 0.678);
+    position: absolute;
+    z-index: 8888;
+    font-size: 2rem;
+    background: #ffffffb5;
+    left: 0;
+    top: 42%;
+    padding: 7px 13px;
 }

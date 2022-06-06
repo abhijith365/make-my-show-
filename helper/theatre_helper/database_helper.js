@@ -2,12 +2,6 @@ const db = require('../../config/mongo.config')
 const { ObjectId } = require('mongodb')
 const coll = require('../collection')
 
-
-
-
-
-
-
 module.exports = {
     // add theatre page POST -> /theatre/theatre
     addTheatre: (obj) => {

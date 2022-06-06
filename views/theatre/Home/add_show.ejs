@@ -10,7 +10,7 @@
                     </h5>
                     <% } %>
                         <div class="form-group">
-                            <labe class="form-label" for="movieName" l>Show Type</label>
+                            <labe class="form-label" for="movieName">Show Type</label>
                                 <input required name="showName" type="text" class="form-control"
                                     placeholder="Show Name">
                                 <div class="valid-tooltip">
@@ -23,7 +23,9 @@
 
                         <div class="form-group">
                             <label class="form-label" for="show_uid">Show Id</label>
-                            <input required id="show_uid" name="show_uid" type="text" class="form-control" placeholder="
+                            <input required id="show_uid" name="show_uid"
+                                value="<%- Math.floor(Math.random() * 100000 )%>" type="text" class="form-control"
+                                placeholder="
                             show Id">
                             <div class="valid-tooltip">
                                 Looks good!

@@ -40,10 +40,10 @@
                                             <b>SHOW TYPE : </b>
                                             <%-arr.showType %>
                                         </p>
-                                        <p class="card-text">
+                                        <!-- <p class="card-text">
                                             <b>THEATRE NAME : </b>
-                                            <%-arr.screen[0].screenId %>
-                                        </p>
+                                            <%-/*arr.screen[0].screenId */%>
+                                        </p> -->
                                         <p class="card-text">
                                             <b>SCREEN ID : </b>
                                             <%-arr.screen[0].screenId %>
@@ -54,9 +54,9 @@
                                         </p>
                                         <p class="card-text">
                                             <b> SHOW DAYS: </b>
-                                            <%-arr.showByDate.startDate %>
+                                            <%-arr.showByDate.startDate.toISOString().split('T')[0]%>
                                                 TO
-                                                <%-arr.showByDate.endDate %>
+                                                <%-arr.showByDate.endDate.toISOString().split('T')[0] %>
                                         </p>
 
                                         <div class="text-center">
