@@ -1,0 +1,440 @@
+ .ljnioe {
+     width: 100%;
+     background-color: rgb(26, 26, 26);
+ }
+
+ section {
+     display: block;
+     background: #0000;
+     border: 0;
+     font-size: 100%;
+     font-weight: 400;
+     margin: 0;
+     padding: 0;
+     vertical-align: initial;
+ }
+
+ .eQtXbA {
+     min-height: 480px;
+     width: 92%;
+     padding: 32px 0px;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     background-repeat: no-repeat;
+     background-position: right center;
+     background-color: rgb(26, 26, 26);
+     position: relative;
+     margin: 0px auto;
+     max-width: 1440px;
+ }
+
+ .cUDDgh {
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     -webkit-box-flex: 1;
+     flex-grow: 1;
+     max-width: 1240px;
+     margin: 0px auto;
+     position: relative;
+     width: 100%;
+ }
+
+ .eWuQcQ {
+     width: 261px;
+     height: 416px px;
+     overflow: hidden;
+     flex-shrink: 0;
+     -webkit-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+ }
+
+ .fSyllq {
+     position: relative;
+     display: flex;
+     -webkit-box-align: center;
+     align-items: center;
+     flex-direction: column;
+     padding: 0px;
+     width: 100%;
+ }
+
+ .iCYiPJ {
+     position: relative;
+     cursor: pointer;
+     width: 100%;
+ }
+
+ .csqwyD {
+     border-radius: 16px 16px 0px 0px;
+     background-color: rgb(229, 229, 229);
+     max-height: 392px;
+     min-height: 392px;
+     min-width: auto;
+ }
+
+ .hutamn {
+     width: auto;
+     height: 392px;
+ }
+
+ .hyjyfR {
+     cursor: pointer;
+     z-index: 1;
+     height: 24px;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     -webkit-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     background: rgba(34, 34, 34, 0.8);
+     box-shadow: rgb(0 0 0 / 16%) 0px 1px 8px;
+     border-radius: 24px;
+     padding: 4px 8px;
+ }
+
+ svg:not(:root) {
+     overflow: hidden;
+ }
+
+ .hyjyfR span {
+     font-size: 12px;
+     font-weight: 500;
+     line-height: 16px;
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     padding-left: 6px;
+ }
+
+ .dTPawu {
+     background: rgb(0, 0, 0);
+     border-radius: 0px 0px 16px 16px;
+     -webkit-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     padding: 4px 8px;
+     width: 100%;
+ }
+
+ .eREoZe {
+     font-size: 12px;
+     font-weight: 500;
+     line-height: 16px;
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+
+ .ehwnas {
+     -webkit-box-flex: 1;
+     flex-grow: 1;
+     padding-left: 32px;
+     max-width: 520px;
+ }
+
+ .hxbOUw {
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: initial;
+     display: -webkit-box;
+     -webkit-box-orient: vertical;
+ }
+
+ .hxbOUw {
+     color: rgb(255, 255, 255);
+     font-family: Roboto;
+     font-size: 36px;
+     font-weight: bold;
+     line-height: 42px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     -webkit-line-clamp: 3;
+ }
+
+ .bmFtqL {
+     display: inline-block;
+     cursor: pointer;
+     padding: 0px;
+     margin-top: 24px;
+ }
+
+ .hFxJGJ {
+     -webkit-box-align: center;
+     display: flex;
+     align-items: flex-end;
+ }
+
+ .ctjtdj {
+     letter-spacing: 0.2px;
+     font-size: 24px;
+     font-weight: 700;
+     line-height: 30px;
+     color: rgb(255, 255, 255);
+     padding: 2px 0px 0px 8px;
+ }
+
+ .KmsNs {
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     padding: 4px 0px 0px 8px;
+ }
+
+ .fsacFf {
+     padding-left: 4px;
+     padding-bottom: 4px;
+     width: auto;
+     height: auto;
+ }
+
+ .duexLW {
+     border-top: none;
+     padding: 0px;
+ }
+
+ .fdWjQB {
+     border-radius: 8px;
+     -webkit-box-pack: justify;
+     justify-content: space-between;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     padding: 12px 24px;
+     margin: 16px 0px 0px;
+     max-width: 446px;
+     cursor: pointer;
+     background-color: rgb(51, 51, 51);
+ }
+
+ .gAedkM {
+     max-width: 75%;
+ }
+
+ .chrNDO {
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     font-size: 18px;
+     font-weight: 500;
+     line-height: 24px;
+ }
+
+ .kTptex {
+     padding-top: 2px;
+     color: rgb(204, 204, 204);
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .lftZnN {
+     cursor: pointer;
+     background-color: rgb(255, 255, 255);
+     border-radius: 8px;
+     -webkit-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     margin-left: 4px;
+     padding: 8px 12px;
+     border: none;
+     color: rgb(51, 51, 51);
+ }
+
+ .lftZnN span {
+     font-size: 18px;
+     font-weight: 500;
+     line-height: 24px;
+ }
+
+ .dChQqE {
+     border-radius: 8px;
+     -webkit-box-pack: justify;
+     justify-content: space-between;
+     -webkit-box-align: center;
+     align-items: center;
+     display: none;
+     padding: 12px 24px;
+     margin: 16px 0px 0px;
+     max-width: 446px;
+     cursor: pointer;
+     background-color: rgb(51, 51, 51);
+ }
+
+ .gAedkM {
+     max-width: 75%;
+ }
+
+ .chrNDO {
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     font-size: 18px;
+     font-weight: 500;
+     line-height: 24px;
+ }
+
+ .kTptex {
+     padding-top: 2px;
+     color: rgb(204, 204, 204);
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .gvPpJA {
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+ }
+
+ .gvPpJA span {
+     color: rgb(102, 102, 102);
+     font-size: 16px;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+     font-weight: 500;
+     padding: 0px 8px 0px 4px;
+ }
+
+ .ddXVHR {
+     margin-top: 16px;
+ }
+
+ .btqyFP {
+     display: flex;
+     flex-wrap: wrap;
+     color: rgb(255, 255, 255);
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .fdHSZD:first-child {
+     margin-right: 8px;
+ }
+
+ .iWTape {
+     color: black;
+     margin-right: 0px;
+ }
+
+ a {
+     background: #0000;
+     font-size: 100%;
+     margin: 0;
+     padding: 0;
+     text-decoration: none;
+     vertical-align: initial;
+ }
+
+ .fdHSZD {
+     display: flex;
+     flex-wrap: wrap;
+     background-color: rgb(229, 229, 229);
+     color: rgb(0, 0, 0);
+     padding: 2px 8px;
+     border-radius: 2px;
+     align-self: flex-start;
+     margin-top: 8px;
+ }
+
+ .btqyFP:last-child {
+     margin-top: 16px;
+ }
+
+ .kvkTzz {
+     padding: 0px 8px;
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .ijNbsp {
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+     color: rgb(255, 255, 255);
+     margin-right: 0px;
+ }
+
+ .flgUpY {
+     padding: 0px 4px 0px 0px;
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .kvkTzz {
+     padding: 0px 8px;
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 24px;
+     letter-spacing: 0.2px;
+ }
+
+ .jayiEd {
+     margin-top: 32px;
+ }
+
+ .jMCuom {
+     text-align: center;
+     z-index: 99;
+     -webkit-box-pack: justify;
+     justify-content: space-between;
+     -webkit-box-align: center;
+     align-items: center;
+     display: flex;
+     position: relative;
+     width: auto;
+     padding: 0px;
+     background: none;
+     max-width: 216px;
+     -webkit-box-flex: 1;
+     flex-grow: 1;
+     box-shadow: none;
+ }
+
+ .gsJmXR {
+     padding: 0px;
+     border: 1px solid rgb(248, 68, 100);
+     color: rgb(255, 255, 255);
+     background-color: rgb(248, 68, 100);
+     border-radius: 8px;
+     box-shadow: rgb(0 0 0 / 16%) 0px 1px 8px;
+     width: 100%;
+     position: relative;
+     overflow: hidden;
+     cursor: pointer;
+ }
+
+ .iBonLL {
+     letter-spacing: 0.2px;
+     padding: 12px 8px;
+     font-size: 18px;
+     font-weight: 500;
+     line-height: 24px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
