@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="/css/user/runningmovie.css">
-<div>
-    <%- include('../partials/header.ejs', {user}) %>
-</div>
-<div>
-    <%- include('./partials/runningMovies.ejs') %>
-        <%- include('./partials/movie.ejs') %>
 
-</div>
+<%- include('../partials/header.ejs', {user}) %>
+
+    <div>
+        <%- include('./partials/runningMovies.ejs') %>
+
+
+    </div>
+
+    <%- include('./partials/footer.ejs') %>

@@ -10,7 +10,7 @@ route.get('/', async (req, res) => {
     try {
         let user = req.user || req.session.phone;
         let movies_ad_shows = await db.runningMovies().then(re => re).catch(err => err);
-        console.log(movies_ad_shows);
+
         if (user) {
             res.render('user/index', {
                 layout: './layout/layout.ejs',
