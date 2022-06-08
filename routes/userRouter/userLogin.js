@@ -12,10 +12,17 @@ route.get('/', async (req, res) => {
         let movies_ad_shows = await db.runningMovies().then(re => re).catch(err => err);
 
         if (user) {
+            // filtering data removing duplicate data
+            let uniqueArray = movies_ad_shows.filter((value, index, self) =>
+                index === self.findIndex((t) => (
+                    t.movies[0].movie_uid === value.movies[0].movie_uid
+                ))
+            )
+
             res.render('user/index', {
                 layout: './layout/layout.ejs',
                 user,
-                data: movies_ad_shows
+                data: uniqueArray
             })
         } else {
             res.render('user/index', {

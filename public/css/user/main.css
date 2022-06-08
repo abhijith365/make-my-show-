@@ -6553,3 +6553,471 @@ a {
     font-size: 10px;
     line-height: 12px;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* booking show section */
+.buyticket-page:not(._touch) .showtimes {
+    min-height: 650px;
+}
+
+.buyticket-page .showtimes {
+    padding: 1px 0px 30px;
+    background: rgb(242, 242, 242);
+}
+
+.buyticket-page .showtimes .wrapper {
+    padding: 0px 15px;
+}
+
+.buyticket-page .showtimes .applied-filters {
+    display: block;
+    padding: 0px 15px;
+}
+
+.wrapper:not(._touch) {
+    max-width: 992px;
+    width: 100%;
+}
+
+.wrapper,
+.wrapper-main {
+    min-width: 320px;
+    max-width: 1280px;
+    margin: 0px auto;
+}
+
+.buyticket-page .showtimes .applied-filters .added-filters {
+    margin: 5px 0px;
+    display: block;
+    min-height: 1px;
+    padding: 0px 10px;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.buyticket-page .showtimes .wrapper {
+    padding: 0px 15px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 992px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 992px;
+        width: 100%;
+    }
+}
+
+.buyticket-page:not(._touch) .showtimes .wrapper .container {
+    min-height: 600px;
+}
+
+@media (min-width: 320px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 991px) {
+    .buyticket-page .showtimes .wrapper .container {
+        margin-right: 0px;
+    }
+}
+
+.buyticket-page .showtimes .wrapper .container {
+    zoom: 1;
+    background: rgb(255, 255, 255);
+    padding: 0px 0px 15px;
+    position: relative;
+    min-height: 350px;
+}
+
+.attributes-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    cursor: default;
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.offer-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 8px;
+    cursor: default;
+}
+
+.offer-details-container.legends-section {
+    margin-bottom: 0px;
+}
+
+.attributes-container .legends-container {
+    display: flex;
+}
+
+.attributes-container .legends-container .showtimes-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.attributes-container .legends-container .showtimes-legend .legend-icon {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: rgb(74, 189, 93);
+    margin-right: 8px;
+}
+
+.attributes-container .legends-container .showtimes-legend .legend-text {
+    color: rgb(113, 113, 113);
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.attributes-container .legends-container .showtimes-legend:last-child {
+    margin-right: 0px;
+}
+
+.attributes-container .legends-container .showtimes-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.attributes-container .legends-container .showtimes-legend .legend-icon.fast {
+    background-color: rgb(255, 102, 0);
+}
+
+.attributes-container .legends-container .showtimes-legend .legend-icon {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: rgb(74, 189, 93);
+    margin-right: 8px;
+}
+
+.attributes-container .legends-container .showtimes-legend .legend-text {
+    color: rgb(113, 113, 113);
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list {
+    zoom: 1;
+    border-bottom: 1px solid rgb(239, 241, 243);
+    padding: 13px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list>div:not(.payment-options-text) {
+    float: left;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info {
+    width: 28%;
+    min-width: 250px;
+    font-size: 10px;
+    color: rgb(153, 153, 153);
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .img-container {
+    display: none;
+    position: relative;
+    float: left;
+    width: 40px;
+    margin-top: 5px;
+}
+
+[class*="icon"] {
+    display: inline-block;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details {
+    float: left;
+    margin-top: 5px;
+    padding-left: 5px;
+    display: table;
+    width: 100%;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .heart-it {
+    display: table-cell;
+    vertical-align: top;
+    width: 17px;
+    height: 17px;
+    padding-right: 10px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .heart-it svg {
+    transition: fill 0.3s ease 0s;
+    width: 17px;
+    height: 17px;
+    stroke: rgb(153, 153, 153);
+    fill: rgb(255, 255, 255);
+    stroke-width: 5px;
+    cursor: pointer;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .icon-location {
+    display: none;
+    vertical-align: top;
+    width: 15px;
+    height: 15px;
+    padding-right: 5px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .icon-location svg {
+    width: 15px;
+    fill: rgb(164, 165, 167);
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name {
+    display: table-cell;
+    vertical-align: top;
+    font-size: 12px;
+    color: rgb(51, 51, 51);
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__title {
+    display: flex;
+}
+
+@media (min-width: 320px) and (max-width: 767px),
+(min-width: 768px) and (max-width: 991px) {
+    .buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name a {
+        min-width: 100%;
+    }
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name a {
+    width: 220px;
+    font-weight: 700;
+    color: rgb(51, 51, 51);
+    float: left;
+}
+
+.listing-info .info-section {
+    display: flex;
+    margin-left: 6px;
+    float: left;
+    cursor: pointer;
+}
+
+.listing-info .info-section .venue-info-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.listing-info .info-section .venue-info-text {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgb(125, 125, 125);
+    margin-left: 4px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .st-distance {
+    zoom: 1;
+    position: relative;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .st-distance._none {
+    display: none;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .st-distance .__dis-icon {
+    display: block;
+    width: 17px;
+    height: 17px;
+    float: left;
+}
+
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .st-distance .__dis-icon svg {
+    fill: rgb(153, 153, 153);
+    width: 17px;
+    height: 17px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .st-distance .__distance {
+    font-size: 12px;
+    position: relative;
+    color: rgb(153, 153, 153);
+    float: left;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .unpaid-mticket-wrapper {
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info {
+    margin-left: -4px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info .icon,
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__unpaid-info .icon {
+    cursor: default;
+    display: inline-block;
+    width: 22px;
+    height: 20px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info .icon svg {
+    fill: rgb(73, 186, 142);
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info label {
+    color: rgb(73, 186, 142);
+    cursor: default;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__fnb-info {
+    margin-left: 10px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__fnb-info,
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info,
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__unpaid-info {
+    float: left;
+    margin: 5px 15px 0px -4px;
+    cursor: default;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__fnb-info .icon,
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__mticket-info .icon,
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__unpaid-info .icon {
+    cursor: default;
+    display: inline-block;
+    width: 22px;
+    height: 20px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__fnb-info .icon svg {
+    fill: rgb(255, 164, 38);
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list .listing-info .details .__name .__fnb-info label {
+    color: rgb(255, 164, 38);
+    margin-left: 3px;
+    cursor: default;
+}
+
+.buyticket-page .showtimes .wrapper .container ul .list>div:not(.payment-options-text) {
+    float: left;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.showtimes-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.offer-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 8px;
+    cursor: default;
+}
+
+.showtime-pill-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.showtime-pill-container {
+    margin: 8px;
+}
+
+.showtime-pill-container._sold .showtime-pill {
+    color: rgb(153, 153, 153);
+    cursor: default;
+}
+
+.showtime-pill-container .showtime-pill {
+    border: 1px solid rgb(153, 153, 153);
+    color: rgb(74, 189, 93);
+    padding: 4px;
+    border-radius: 4px;
+    width: 96px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.showtime-pill-container .showtime-pill .__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px 2px;
+    height: 14px;
+}
+
+.showtime-pill-container .showtime-pill .__details .__text {
+    margin: 0px auto;
+}
+
+.showtime-pill-container._filling .showtime-pill {
+    color: rgb(255, 102, 0);
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 1400px;
+        width: 100%;
+    }
+}
+
+.venue-flags .gold-icon {
+    width: 7px;
+    height: 7px;
+    background: rgb(255, 198, 16);
+    border-radius: 50%;
+}

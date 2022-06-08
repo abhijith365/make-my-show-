@@ -9,17 +9,15 @@
                         <div class="text-details">
                             <h1>
                                 <div class="cinema-name-wrapper" style="padding: 0; margin:0;">
-                                    <a style="padding-left:2rem;" href="/kochi/movies/vikram/ET00138591" class="">
-                                        Vikram</a>
+                                    <a style="padding-left:2rem;" href="/home/movie/<%- data[0].movies[0]._id%>"
+                                        class="">
+                                        <%-data[0].movies[0].movieName %>
+                                    </a>
                                 </div>
                             </h1>
                             <div class="__more-movie-data">
                                 <span class="__censor">
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
-                                        enable-background="new 0 0 100 100" xml:space="preserve">
-                                        <use xlink:href="/icons/common-icons.svg#icon-ua"></use>
-                                    </svg>
+
                                 </span>
                                 <span class="heart-rating" style="display: inline;">
                                     <span class="heart-icon">
@@ -27,14 +25,26 @@
                                         <i class="fa fa-heart" aria-hidden="true"></i>
 
                                     </span>
-                                    <span class="__percent">96 %</span><br>
-                                    <span class="__votes">111674 VOTES</span>
+                                    <span class="__percent">
+                                        <%- Math.floor(Math.random()*20)+80 %> %
+                                    </span><br>
+                                    <span class="__votes">
+                                        <%- Math.floor(Math.random()*100000)+10000 %> VOTES
+                                    </span>
                                 </span>
                                 <span class="__tags">
-                                    <span class="__genre-tag">Action</span>
-                                    <span class="__genre-tag">Thriller</span>
-                                    <span style="display:none">Tamil</span></span>
-                                <span class="__release-date" content="2022-06-03" itemprop="datePublished">Jun 03, 2022
+                                    <% data[0].movies[0].movieGenres.split(',').forEach(e=>{ %>
+                                        <span class="__genre-tag">
+                                            <%- e %>
+                                        </span>
+                                        <% } )%>
+
+                                            <span style="display:none">
+                                                <%-data[0].movies[0].language %>
+                                            </span>
+                                </span>
+                                <span class="__release-date" content="2022-06-03" itemprop="datePublished">
+                                    <%-data[0].movies[0].ReleseDate %>
 
                                 </span>
 
@@ -44,9 +54,11 @@
 
                                     </span>
 
-                                    <span class="__time" content="PT173M" itemprop="duration">2 hrs 53 mins</span>
+                                    <span class="__time" itemprop="duration">
+                                        <%-data[0].movies[0].movieDuration.split(":").join(" hrs ") %> mins</span>
                                     <br>
-                                    <span class="__selected-category">3D</span>
+                                    <span class=" __selected-category">2D
+                                    </span>
                                 </span>
                             </div>
                         </div>
@@ -61,111 +73,77 @@
                         <div class="dates-wrapper " style="display: inline-block;">
                             <ul id="showDates" class="dates-container slick-initialized slick-slider"><button
                                     class="buttons prev slick-arrow slick-disabled" aria-label="Previous" role="button"
-                                    href="#" aria-disabled="true" style="display: block;"><svg version="1.1"
+                                    href="#" aria-disabled="true" style="display: block;">
+                                    <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i><svg version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"
                                         xml:space="preserve">
-                                        <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>
+
                                     </svg></button>
                                 <div aria-live="polite" class="slick-list draggable">
                                     <div class="slick-track"
                                         style="opacity: 1; width: 35000px; transform: translate3d(-1px, 0px, 0px);">
-                                        <li class="date-details _active slick-slide slick-current slick-active"
-                                            data-slick-index="0" aria-hidden="false">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/today"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Tue </div>
-                                                <div class="date-numeric">
-                                                    07 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="1" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/tomorrow"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Wed </div>
-                                                <div class="date-numeric">
-                                                    08 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="2" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/20220609"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Thu </div>
-                                                <div class="date-numeric">
-                                                    09 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="3" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/20220610"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Fri </div>
-                                                <div class="date-numeric">
-                                                    10 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="4" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/20220611"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Sat </div>
-                                                <div class="date-numeric">
-                                                    11 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="5" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/20220612"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Sun </div>
-                                                <div class="date-numeric">
-                                                    12 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
-                                        <li class="date-details  slick-slide" data-slick-index="6" aria-hidden="true">
-                                            <a class="date-href"
-                                                href="/buytickets/vikram-kochi/movie-koch-ET00138591-MT/20220613"
-                                                onclick="BMS.Misc.fnBusy(true);">
-                                                <div class="date-day">
-                                                    Mon </div>
-                                                <div class="date-numeric">
-                                                    13 </div>
-                                                <div class="date-month">
-                                                    Jun </div>
-                                            </a>
-                                        </li>
+
+                                        <!-- finding max day for shows -->
+                                        <% let maxday=data[0].totalShowDays %>
+
+                                            <% data.forEach(e=>{ %>
+
+                                                <% if (maxday < e.totalShowDays){%>
+                                                    <% maxday=e.totalShowDays %>
+                                                        <% } %>
+                                                            <% } )%>
+                                                                <%console.log(maxday)%>
+
+                                                                    <% for( let i=0; i < maxday; i++ ) { %>
+                                                                        <% let
+                                                                            startDate=data[0].showByDate.startDate.toString()%>
+                                                                            <%let date=new Date(`${startDate}`);%>
+                                                                                <%m=date.setDate(date.getDate() + i); %>
+
+                                                                                    <li class="<%= i==0 ?`date-details _active slick-slide slick-current slick-active`:`date-details  slick-slide`%>"
+                                                                                        data-slick-index=<%-i-1 %>
+                                                                                        aria-hidden="false">
+                                                                                        <a class="date-href"
+                                                                                            href="/home/booking/date/<%-data[0].movies[0]._id %> "
+                                                                                            onclick="BMS.Misc.fnBusy(true);">
+                                                                                            <div class="date-day">
+                                                                                                <%-new
+                                                                                                    Date(m).toString().split(" ")[0]%>
+                                                                                            </div>
+                                                                                            <div class=" date-numeric">
+                                                                                                    <%-new
+                                                                                                        Date(m).toString().split(" ")[2]%>
+                                                                                            </div>
+                                                                                            <div class=" date-month">
+                                                                                                        <%-new
+                                                                                                            Date(m).toString().split(" ")[1]%></div>
+                                                                                        </a>
+                                                                                    </li>
+
+                                                                                    <% } %>
+
+
+
                                     </div>
                                 </div>
 
 
-                                <button class="buttons next slick-arrow" aria-label="Next" role="button" href="#"
-                                    style="display: block;" aria-disabled="false"><svg version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                        xml:space="preserve">
-                                        <i class="fa fa-arrow-right fa-1x" aria-hidden="true"></i>
-                                    </svg></button>
+                                <button class=" buttons next slick-arrow" aria-label="Next" role="button" href="#"
+                                                                                                            style="display: block;"
+                                                                                                            aria-disabled="false">
+                                                                                                            <i class="fa fa-arrow-right fa-1x"
+                                                                                                                aria-hidden="true"></i><svg
+                                                                                                                version="1.1"
+                                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                                                x="0px"
+                                                                                                                y="0px"
+                                                                                                                viewBox="0 0 100 100"
+                                                                                                                enable-background="new 0 0 100 100"
+                                                                                                                xml:space="preserve">
+
+                                                                                                            </svg></button>
                             </ul>
                         </div>
                         <div class="dropdown-block ">
@@ -174,7 +152,9 @@
                             <button class="btn _tres __done">DONE</button>
 
                             <div class="dropdown highlighted _disabled">
-                                <div class="__text _languages-text _highlighted">Tamil - 2D</div>
+                                <div class="__text _languages-text _highlighted">
+                                    <%-data[0].movies[0].language %> - 2D
+                                </div>
                                 <i class="__icon icon-arrow-down ">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
@@ -195,8 +175,7 @@
 
         <!-- theatre details -->
         <section class="phpShowtimes showtimes">
-            <!-- NATIVE AD SPOT START [ADS SDK] -->
-            <div class="native-ad-spot-showtimes wrapper" id="prod_st_banner_desktop" style="display:none"></div>
+
             <!-- NATIVE AD SPOT END [ADS SDK] -->
             <div class="applied-filters wrapper">
 
@@ -222,624 +201,115 @@
 
                     <ul id="venuelist">
 
-                        <li class="list" data-id="CCKL" data-name="Carnival Cinemas: RedCarpet, Kariyad"
-                            data-sub-region-id="KOCH" data-sub-region-name="Kochi" data-lat="10.1616" data-lng="76.3649"
-                            data-session-count="0" data-allow-sales="Y" data-venue-app="VS" data-is-new-cinema="N"
-                            data-is-food-sales="Y" data-is-multiplex="N" data-message-type="AC"
-                            data-message-title="Terms&amp;Conditions"
-                            data-message="1. Tickets once purchased cannot be cancelled, exchanged, or refunded.<br>2. Outside food and beverages are not allowed inside the cinema premises.<br>3. Smoking is strictly prohibited inside the theatre<br>4. If the customer consumes alcohol, he will not be allowed inside the premises and the tickets will not be refunded.<br>5.Please purchase tickets for children older than 3 years.<br>6. The movie schedule,screens,tickets price and seating allocation is subject to change without notice."
-                            data-is-full-seat-layout="Y" data-offline="false" data-is-down="false" data-venuedownmsg=""
-                            data-has-unpaid="false" data-has-mticket="true" data-has-cod="false" data-has-cop="false"
-                            data-position-key="1">
-                            <div class="listing-info">
-                                <div class="img-container">
-                                    <span class="icon-star star"></span>
-                                </div>
-                                <div class="details">
-                                    <span class="heart-it" data-id="CCKL">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/movies-icons.svg#icon-heart"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-location">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                        </svg>
-                                    </span>
-                                    <div class="__name ">
-                                        <div class="__title">
-                                            <a class="__venue-name" onclick="BMS.Misc.fnBusy(true);"
-                                                href="/buytickets/carnival-cinemas-redcarpet-kariyad/cinema-koch-CCKL-MT/20220607">Carnival
-                                                Cinemas: RedCarpet, Kariyad</a>
-                                            <div class="info-section" onclick="toggleCinemaShowcaseModal(this);"
-                                                data-venue-code="CCKL">
-                                                <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/safety_first.png"
-                                                    class="venue-info-icon lazy"
-                                                    onerror="this.src='https:/\/\in.bmscdn.com/m6/images/common/placeholder.png'; this.onerror='';">
-                                                <div class="venue-info-text">INFO</div>
-                                            </div>
-                                        </div>
-                                        <div class="st-distance _none">
-                                            <span class="__dis-icon">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                                </svg>
-                                            </span>
-                                            <span class="__distance"></span>
-                                        </div>
-                                        <div class="unpaid-mticket-wrapper">
+                        <% data.map(d=>d.theatres.forEach(item=>{ %>
 
-                                            <div class="__mticket-info">
-                                                <span class="icon">
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                        xml:space="preserve">
-                                                        <use xlink:href="/icons/buytickets-icons.svg#icon-mobile"></use>
+                            <li class="list">
+                                <div class="listing-info">
+                                    <div class="img-container">
+                                        <span class="icon-star star"></span>
+                                    </div>
+                                    <div class="details">
+                                        <span class="heart-it" data-id="CCKL">
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+
+                                        </span>
+                                        <span class="icon-location">
+                                            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                        </span>
+                                        <div class="__name ">
+                                            <div class="__title">
+                                                <a class="__venue-name" onclick="BMS.Misc.fnBusy(true);"
+                                                    href="/buytickets/">
+                                                    <%-item.theatreName %>
+                                                        Cinemas: <%-item.BuildingName %>
+                                                            , <%-item.city %>
+                                                </a>
+                                                <div class="info-section" onclick="toggleCinemaShowcaseModal(this);"
+                                                    data-venue-code="CCKL">
+                                                    <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/safety_first.png"
+                                                        class="venue-info-icon lazy"
+                                                        onerror="this.src='https:/\/\in.bmscdn.com/m6/images/common/placeholder.png'; this.onerror='';">
+                                                    <div class="venue-info-text">INFO</div>
+                                                </div>
+                                            </div>
+                                            <div class="st-distance _none">
+                                                <span class="__dis-icon">
+                                                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
                                                     </svg>
                                                 </span>
-                                                <label>M-Ticket</label>
+                                                <span class="__distance"></span>
                                             </div>
-                                            <div class="__fnb-info ">
-                                                <span class="icon">
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                        xml:space="preserve">
-                                                        <use xlink:href="/icons/buytickets-icons.svg#icon-fnb"></use>
-                                                    </svg>
-                                                </span>
-                                                <label>Food &amp; Beverage</label>
+                                            <div class="unpaid-mticket-wrapper">
+
+                                                <div class="__mticket-info">
+                                                    <span class="icon">
+                                                        <i class="fa fa-mobile" style="color:rgba(0, 128, 0, 0.661)"
+                                                            aria-hidden="true"></i>
+                                                    </span>
+                                                    <label>M-Ticket</label>
+                                                </div>
+                                                <div class="__fnb-info ">
+                                                    <span class="icon">
+                                                        <i class="fa fa-burger-glass"></i>
+                                                    </span>
+                                                    <label>Food &amp; Beverage</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body showtimes-details-container ">
-                                <div class="offer-details-container">
-                                </div>
-                                <div class="showtime-pill-wrapper">
-                                    <div data-online="N" class="showtime-pill-container _sold">
-                                        <a class="showtime-pill" data-showtime-code="1015"
-                                            data-showtime-filter-index="morning" data-price-filter-index="[2]"
-                                            data-attributes="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:15 AM </div>
-                                            </div>
-                                        </a>
+                                <div class="body showtimes-details-container ">
+                                    <div class="offer-details-container">
                                     </div>
+                                    <div class="showtime-pill-wrapper">
+                                    <% d.showByDay.map(e =>{%>
+                                       
+                                            <div data-online="N" class="showtime-pill-container _sold">
+                                                <a class="showtime-pill" data-showtime-code="1015"
+                                                    data-showtime-filter-index="morning" data-price-filter-index="[2]"
+                                                    data-attributes="">
+                                                    <div class="__details">
+                                                        <div class="__text">
+                                                            <% let time = e.startTime%>
+                                                            <% time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];%>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8238" data-session-id="8238"
-                                            data-showtime-code="1245" data-showtime-filter-index="afternoon"
-                                            data-date-time="12:45 PM" data-display-showtime="12:45 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071245" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;190.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;},{&quot;price&quot;:&quot;110.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="62" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    12:45 PM </div>
+                                                            <% if (time.length > 1) { %> 
+                                                            <% time = time.slice (1),time[5] = +time[0] < 12 ? ' AM' : ' PM';  time[0] = +time[0] % 12 || 12 %>
+                                                            <% } %> 
+                                                            <%- time.join('') %> 
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </a>
-                                    </div>
+                                            
+                                            <% }) %>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8239" data-session-id="8239"
-                                            data-showtime-code="1605" data-showtime-filter-index="evening"
-                                            data-date-time="04:05 PM" data-display-showtime="04:05 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071605" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;270.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;140.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="77" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    04:05 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
 
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8245" data-session-id="8245"
-                                            data-showtime-code="1900" data-showtime-filter-index="night"
-                                            data-date-time="07:00 PM" data-display-showtime="07:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071900" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;270.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;},{&quot;price&quot;:&quot;140.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="49" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    07:00 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
 
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8240" data-session-id="8240"
-                                            data-showtime-code="1930" data-showtime-filter-index="night"
-                                            data-date-time="07:30 PM" data-display-showtime="07:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071930" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;270.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_sold&quot;,&quot;availabilityText&quot;:&quot;Sold Out&quot;},{&quot;price&quot;:&quot;140.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="43" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    07:30 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8246" data-session-id="8246"
-                                            data-showtime-code="2215" data-showtime-filter-index="night"
-                                            data-date-time="10:15 PM" data-display-showtime="10:15 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072215" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;270.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;140.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="96" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:15 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/CCKL/8241" data-session-id="8241"
-                                            data-showtime-code="2245" data-showtime-filter-index="night"
-                                            data-date-time="10:45 PM" data-display-showtime="10:45 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072245" data-venue-code="CCKL"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;270.00&quot;,&quot;desc&quot;:&quot;GOLD LOUNGE&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;},{&quot;price&quot;:&quot;140.00&quot;,&quot;desc&quot;:&quot;EXECUTIVE OFFLINE&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="57" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:45 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="venue-flags">
-                                    <span class="gold-icon"></span>
-                                    <span class="venue-flags-details">Cancellation Available</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list" data-id="VMHE" data-name="Vanitha Veneetha CINEPLEX RGB LASER 4K3D:Edappally"
-                            data-sub-region-id="KOCH" data-sub-region-name="Kochi" data-lat="10.0308" data-lng="76.3096"
-                            data-session-count="0" data-allow-sales="Y" data-venue-app="VS" data-is-new-cinema="N"
-                            data-is-food-sales="Y" data-is-multiplex="Y" data-message-type="" data-message-title=""
-                            data-message="As per State Govt, in cinemas, all movie goers should be atleast 1st dose vaccinated.<br>"
-                            data-is-full-seat-layout="Y" data-offline="false" data-is-down="false" data-venuedownmsg=""
-                            data-has-unpaid="false" data-has-mticket="false" data-has-cod="false" data-has-cop="false"
-                            data-position-key="23">
-                            <div class="listing-info">
-                                <div class="img-container">
-                                    <span class="icon-star star"></span>
-                                </div>
-                                <div class="details">
-                                    <span class="heart-it" data-id="VMHE">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/movies-icons.svg#icon-heart"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-location">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                        </svg>
-                                    </span>
-                                    <div class="__name ">
-                                        <div class="__title">
-                                            <a class="__venue-name" onclick="BMS.Misc.fnBusy(true);"
-                                                href="/buytickets/vanitha-veneetha-cineplex-rgb-laser-4k3dedappally/cinema-koch-VMHE-MT/20220607">Vanitha
-                                                Veneetha CINEPLEX RGB LASER 4K3D:Edappally</a>
-                                            <div class="info-section" onclick="toggleCinemaShowcaseModal(this);"
-                                                data-venue-code="VMHE">
-                                                <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/safety_first.png"
-                                                    class="venue-info-icon lazy"
-                                                    onerror="this.src='https:/\/\in.bmscdn.com/m6/images/common/placeholder.png'; this.onerror='';">
-                                                <div class="venue-info-text">INFO</div>
-                                            </div>
-                                        </div>
-                                        <div class="st-distance _none">
-                                            <span class="__dis-icon">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                                </svg>
-                                            </span>
-                                            <span class="__distance"></span>
-                                        </div>
-                                        <div class="unpaid-mticket-wrapper">
+                                                <!-- <div class="showtime-pill-container _filling" data-online="Y">
+                                                    <a class="showtime-pill" href="/booktickets/CCKL/8240">
+                                                        <div class="__details">
+                                                            <div class="__text">
+                                                                07:30 PM </div>
+                                                        </div>
+                                                    </a>
+                                                </div> -->
 
-                                            <div class="__fnb-info __no-margin-left">
-                                                <span class="icon">
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                        xml:space="preserve">
-                                                        <use xlink:href="/icons/buytickets-icons.svg#icon-fnb"></use>
-                                                    </svg>
-                                                </span>
-                                                <label>Food &amp; Beverage</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="body showtimes-details-container ">
-                                <div class="offer-details-container">
-                                </div>
-                                <div class="showtime-pill-wrapper">
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4956" data-session-id="4956"
-                                            data-showtime-code="1130" data-showtime-filter-index="morning"
-                                            data-date-time="11:30 AM" data-display-showtime="11:30 AM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071130" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 1&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="48" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    11:30 AM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4996" data-session-id="4996"
-                                            data-showtime-code="1130" data-showtime-filter-index="morning"
-                                            data-date-time="11:30 AM" data-display-showtime="11:30 AM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071130" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 2&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="57" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    11:30 AM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4969" data-session-id="4969"
-                                            data-showtime-code="1330" data-showtime-filter-index="afternoon"
-                                            data-date-time="01:30 PM" data-display-showtime="01:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071330" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 3&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;},{&quot;price&quot;:&quot;220.00&quot;,&quot;desc&quot;:&quot;SCREEN 3 -SOFA&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="44" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    01:30 PM </div>
-                                            </div>
-                                            <div class="attribute">4K</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4957" data-session-id="4957"
-                                            data-showtime-code="1500" data-showtime-filter-index="afternoon"
-                                            data-date-time="03:00 PM" data-display-showtime="03:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071500" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 1&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="41" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    03:00 PM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4997" data-session-id="4997"
-                                            data-showtime-code="1500" data-showtime-filter-index="afternoon"
-                                            data-date-time="03:00 PM" data-display-showtime="03:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071500" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 2&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="46" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    03:00 PM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4958" data-session-id="4958"
-                                            data-showtime-code="1830" data-showtime-filter-index="evening"
-                                            data-date-time="06:30 PM" data-display-showtime="06:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071830" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 1&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="17" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    06:30 PM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4970" data-session-id="4970"
-                                            data-showtime-code="1830" data-showtime-filter-index="evening"
-                                            data-date-time="06:30 PM" data-display-showtime="06:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071830" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 3&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;},{&quot;price&quot;:&quot;220.00&quot;,&quot;desc&quot;:&quot;SCREEN 3 -SOFA&quot;,&quot;availabilityClass&quot;:&quot;_sold&quot;,&quot;availabilityText&quot;:&quot;Sold Out&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="20" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    06:30 PM </div>
-                                            </div>
-                                            <div class="attribute">4K</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4959" data-session-id="4959"
-                                            data-showtime-code="2200" data-showtime-filter-index="night"
-                                            data-date-time="10:00 PM" data-display-showtime="10:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072200" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 1&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="19" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:00 PM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4971" data-session-id="4971"
-                                            data-showtime-code="2200" data-showtime-filter-index="night"
-                                            data-date-time="10:00 PM" data-display-showtime="10:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072200" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 3&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Filling Fast&quot;},{&quot;price&quot;:&quot;220.00&quot;,&quot;desc&quot;:&quot;SCREEN 3 -SOFA&quot;,&quot;availabilityClass&quot;:&quot;_sold&quot;,&quot;availabilityText&quot;:&quot;Sold Out&quot;}]"
-                                            data-price-filter-index="[2,3]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="26" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:00 PM </div>
-                                            </div>
-                                            <div class="attribute">4K</div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container _filling" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/VMHE/4994" data-session-id="4994"
-                                            data-showtime-code="2200" data-showtime-filter-index="night"
-                                            data-date-time="10:00 PM" data-display-showtime="10:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072200" data-venue-code="VMHE"
-                                            data-event-id="ET00138591" data-attributes="4K/LASER"
-                                            data-cat-popup="[{&quot;price&quot;:&quot;160.00&quot;,&quot;desc&quot;:&quot;SCREEN 2&quot;,&quot;availabilityClass&quot;:&quot;_filling&quot;,&quot;availabilityText&quot;:&quot;Almost Full&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="19" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    10:00 PM </div>
-                                            </div>
-                                            <div class="attribute">4K/LASER</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list" data-id="ZTKC" data-name="Zeenath Theatre 2K A/C: Aluva"
-                            data-sub-region-id="KOCH" data-sub-region-name="Kochi" data-lat="10.105" data-lng="76.3589"
-                            data-session-count="0" data-allow-sales="Y" data-venue-app="VS" data-is-new-cinema="N"
-                            data-is-food-sales="N" data-is-multiplex="Y" data-message-type="AC"
-                            data-message-title="Terms &amp; Conditions"
-                            data-message="1.Please ensure the name of the movie, seats, time and day with bookmyshow message when it clears from the theatre counter.<br>2.Online tickets should be exchanged in the counter 15 mints before the show time.<br>3. As per State Govt, in cinemas, all movie goers should be atleast 1st dose vaccinated.<br>"
-                            data-is-full-seat-layout="Y" data-offline="false" data-is-down="false" data-venuedownmsg=""
-                            data-has-unpaid="false" data-has-mticket="false" data-has-cod="false" data-has-cop="false"
-                            data-position-key="24">
-                            <div class="listing-info">
-                                <div class="img-container">
-                                    <span class="icon-star star"></span>
-                                </div>
-                                <div class="details">
-                                    <span class="heart-it" data-id="ZTKC">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/movies-icons.svg#icon-heart"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="icon-location">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                            xml:space="preserve">
-                                            <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                        </svg>
-                                    </span>
-                                    <div class="__name ">
-                                        <div class="__title">
-                                            <a class="__venue-name" onclick="BMS.Misc.fnBusy(true);"
-                                                href="/buytickets/zeenath-theatre-2k-ac-aluva/cinema-koch-ZTKC-MT/20220607">Zeenath
-                                                Theatre 2K A/C: Aluva</a>
-                                            <div class="info-section" onclick="toggleCinemaShowcaseModal(this);"
-                                                data-venue-code="ZTKC">
-                                                <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/info.png"
-                                                    class="venue-info-icon lazy"
-                                                    onerror="this.src='https:/\/\in.bmscdn.com/m6/images/common/placeholder.png'; this.onerror='';">
-                                                <div class="venue-info-text">INFO</div>
-                                            </div>
-                                        </div>
-                                        <div class="st-distance _none">
-                                            <span class="__dis-icon">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/common-icons.svg#icon-location"></use>
-                                                </svg>
-                                            </span>
-                                            <span class="__distance"></span>
-                                        </div>
-                                        <div class="unpaid-mticket-wrapper">
 
                                         </div>
-                                    </div>
+                                        <div class="venue-flags">
+                                            <span class="gold-icon"></span>
+                                            <span class="venue-flags-details">Cancellation Available</span>
+                                        </div>
                                 </div>
-                            </div>
-                            <div class="body showtimes-details-container ">
-                                <div class="offer-details-container">
-                                </div>
-                                <div class="showtime-pill-wrapper">
+                            </li>
+                            <% }) )%>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/ZTKC/9959" data-session-id="9959"
-                                            data-showtime-code="1100" data-showtime-filter-index="morning"
-                                            data-date-time="11:00 AM" data-display-showtime="11:00 AM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071100" data-venue-code="ZTKC"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;150.00&quot;,&quot;desc&quot;:&quot;DIAMOND RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;120.00&quot;,&quot;desc&quot;:&quot;SAPHIRE RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="76" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    11:00 AM </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <!-- loop end -->
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/ZTKC/9975" data-session-id="9975"
-                                            data-showtime-code="1200" data-showtime-filter-index="afternoon"
-                                            data-date-time="12:00 PM" data-display-showtime="12:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071200" data-venue-code="ZTKC"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;150.00&quot;,&quot;desc&quot;:&quot;RUBY RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;120.00&quot;,&quot;desc&quot;:&quot;EMERALD RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="67" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    12:00 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
 
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/ZTKC/9960" data-session-id="9960"
-                                            data-showtime-code="1430" data-showtime-filter-index="afternoon"
-                                            data-date-time="02:30 PM" data-display-showtime="02:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071430" data-venue-code="ZTKC"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;150.00&quot;,&quot;desc&quot;:&quot;DIAMOND RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;120.00&quot;,&quot;desc&quot;:&quot;SAPHIRE RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="74" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    02:30 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/ZTKC/9961" data-session-id="9961"
-                                            data-showtime-code="1800" data-showtime-filter-index="evening"
-                                            data-date-time="06:00 PM" data-display-showtime="06:00 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206071800" data-venue-code="ZTKC"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;150.00&quot;,&quot;desc&quot;:&quot;DIAMOND RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;120.00&quot;,&quot;desc&quot;:&quot;SAPHIRE RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="72" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    06:00 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="showtime-pill-container" data-online="Y">
-                                        <a class="showtime-pill" href="/booktickets/ZTKC/9962" data-session-id="9962"
-                                            data-showtime-code="2130" data-showtime-filter-index="night"
-                                            data-date-time="09:30 PM" data-display-showtime="09:30 PM"
-                                            data-is-atmos-enabled="N" data-availability="A"
-                                            data-cut-off-date-time="202206072130" data-venue-code="ZTKC"
-                                            data-event-id="ET00138591" data-attributes=""
-                                            data-cat-popup="[{&quot;price&quot;:&quot;150.00&quot;,&quot;desc&quot;:&quot;DIAMOND RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;},{&quot;price&quot;:&quot;120.00&quot;,&quot;desc&quot;:&quot;SAPHIRE RING&quot;,&quot;availabilityClass&quot;:&quot;_available&quot;,&quot;availabilityText&quot;:&quot;Available&quot;}]"
-                                            data-price-filter-index="[2]" data-is-unpaid="0" data-unpaid-quota="0"
-                                            data-seats-percent="67" data-session-popup-desc="">
-                                            <div class="__details">
-                                                <div class="__text">
-                                                    09:30 PM </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="venue-flags">
-                                    <span class="gold-icon"></span>
-                                    <span class="venue-flags-details">Cancellation Available</span>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -850,3 +320,19 @@
     </div>
     <!-- footer -->
     <%- include('../partials/footer.ejs') %>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#ajax").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $.ajax({
+                        data: "Ohhhh"
+                    }).done(function (rs) {
+                        console.log(rs.data)
+
+                    })
+                })
+            })
+        </script>

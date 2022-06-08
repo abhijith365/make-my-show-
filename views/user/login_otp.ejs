@@ -1,4 +1,4 @@
-<form action="/auth/otp_val" method="POST">
+<form action="/auth/otp_val" class="needs-validation" novalidate method="POST">
     <div class="container height-100 d-flex justify-content-center align-items-center">
         <div class="position-relative">
             <div class="card p-2 text-center">
@@ -11,8 +11,20 @@
                         <div> <span>A code has been sent to</span> <small>
                                 <%=phone %>
                             </small> </div>
-                        <div id="otp" class="justify-content-center">
-                            <input name="OTP" class=" text-center form-control rounded" type="text" id="otp_inp" />
+                        <div id="otp" class="justify-content-center form-group">
+
+                            <label class="form-label" for="otp_inp">otp *</label>
+                            <input name="OTP" class=" text-center form-control rounded" type="text" id="otp_inp"
+                                required min="4" />
+
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please enter otp.
+                            </div>
+
                         </div>
                         <input name="phone" value="<%-phone%>" type="hidden" />
 
@@ -97,4 +109,47 @@
         border: 1px solid red;
         width: 140px
     }
+
+    .invalid-tooltip,
+    .valid-tooltip {
+        top: -2px;
+        right: 0;
+        left: auto;
+    }
+
+    .container {
+        padding: 3rem 0rem;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
 </style>
+<script>
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>

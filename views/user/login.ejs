@@ -3,19 +3,26 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card shadow-2-strong" style="border-radius: 1rem;">
                 <div class="card-body p-5 text-center">
-                    <form action="/auth/login" method="post">
+                    <form action="/auth/login" class="needs-validation" novalidate method="post">
                         <h3 class="mb-5">Get started</h3>
 
-                        <div class="form-outline num-form  mx-4 d-inline flag-box">
+                        <div class="form-group num-form  mx-4 d-inline flag-box">
 
 
                             <label class="form-label" for="phone">Continue with mobile
                                 number</label>
                             <input name="phone" id="phone" type="text" placeholder="continue with mobile number"
-                                class="form-control form-control-lg" value="">
+                                class="form-control form-control-lg" value="" minlength="10" maxlength="10" required>
                             <span class="indian-flag"><img alt="ind"
                                     src="//in.bmscdn.com/webin/common/icons/indianflag.svg"> +91</span>
-                            </input>
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Please Enter valid number.
+                            </div>
+
                         </div>
 
                         <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Continue</button>
@@ -31,3 +38,57 @@
         </div>
     </div>
 </div>
+<style>
+    .validate {
+        border-radius: 20px;
+        height: 40px;
+        background-color: red;
+        border: 1px solid red;
+        width: 140px
+    }
+
+    .invalid-tooltip,
+    .valid-tooltip {
+        position: relative;
+        top: -2px;
+        right: 0;
+        left: auto;
+        min-width: 100%;
+    }
+
+    .container {
+        padding: 3rem 0rem;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
+</style>
+<script>
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>
