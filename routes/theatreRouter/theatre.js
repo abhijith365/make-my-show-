@@ -360,6 +360,7 @@ route.post('/add/movie/:id', ensureAuth, upload.array('images'), async (req, res
 
         req.body.images = image
         req.body.theatreOwner = id
+        req.body.ReleseDate = new Date(req.body.ReleseDate)
 
 
         let data = await db.addMovie(req.body).then((res) => { return (res.status) }).catch((e) => console.log(e.message))
@@ -409,7 +410,7 @@ route.post('/edit/movie/:id', ensureAuth, upload.array('images'), async (req, re
             //http://localhost:3000/uploads/' +
             return (e.filename)
         })
-
+        req.body.ReleseDate = new Date(req.body.ReleseDate)
         let id = req.params.id;
         let owner_id = req.session.theatreOwn._id;
         req.body.images = image;

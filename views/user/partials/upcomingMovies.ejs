@@ -1,0 +1,74 @@
+<% if(locals.upcoming) {%>
+    <section class="container-fluid p-4">
+        <div class="d-flex justify-content-between align-items-center mx-4">
+            <div class="h2 ">Upcoming Movies</div>
+            <div class="h6 info"><a href="/home/upcomingMovieAll">
+                    View all</a> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </div>
+        <!--Carousel Wrapper-->
+        <div id="multi-item" class="carousel slide carousel-multi-item mx-3 " data-interval="false">
+
+            <!--Controls-->
+            <div class="controls-top">
+                <a class="btn-floating" id="prev-btn" href="#multi-item" data-slide="prev"><i
+                        class="fa fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#multi-item" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <!--Slides-->
+            <div class="carousel-inner pt-3 px-2"" role=" listbox">
+
+                <% var i=0; %>
+
+                    <!-- looping data -->
+                    <% upcoming.forEach((item,inx)=>{i++%>
+                        <% if(inx==0||inx%5==0){ %>
+                            <div class="<%= i === 1 ? " carousel-item active":"carousel-item" %>">
+                                <div class="row row-cols-5 ">
+                                    <% } %>
+
+                                        <div class="col clearfix">
+                                            <div class=" card-img-top">
+                                                <a href="/home/upcomingMovie/<%- item._id %> " class="imageoutlink">
+                                                    <img style="border-radius:.9rem .9rem 0 0;height: 19rem ; object-fit: cover;"
+                                                        src="http://localhost:3000/uploads/<%-item.images[0].image_url%> "
+                                                        class="img-fluid shadow-sm wp-post-image" alt=""
+                                                        loading="lazy" />
+                                                </a>
+
+                                            </div>
+                                            <div class="text-center"
+                                                style="width:100%;height: 1.6rem;border-radius: 0 0 .9rem  .9rem  ; background-color: #212529;; ">
+                                                <i class="fa fa-star" style="color: rgba(241, 237, 237, 0.974); "
+                                                    aria-hidden="true"></i>
+                                            </div>
+
+                                            <div class="h5 mt-2  text-center" style="color:#333 ;">
+
+                                                <span style="color: #333;">
+                                                    <%-item.movieName%>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                        <% if(i%5==0){ %>
+                                </div>
+
+                            </div>
+                            <% } %>
+
+
+
+                                <!-- loop end -->
+                                <% }) %>
+
+
+
+            </div>
+        </div>
+    </section>
+    <% } %>

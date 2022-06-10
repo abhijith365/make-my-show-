@@ -6369,6 +6369,14 @@ input[type="button"] {
 .dates-wrapper .dates-container .date-details._active {
     background-color: rgb(248, 68, 100);
     border-radius: 8px;
+
+}
+
+.dates-wrapper .dates-container .date-details._active .date-href .date-day,
+.dates-wrapper .dates-container .date-details._active .date-href .date-month,
+.dates-wrapper .dates-container .date-details._active .date-href .date-numeric {
+    color: #fff;
+    font-weight: 500;
 }
 
 .dates-wrapper .dates-container .date-details {
@@ -6385,6 +6393,7 @@ input[type="button"] {
     height: 100%;
     min-height: 1px;
 }
+
 
 .dates-wrapper .dates-container .date-details .date-href {
     display: flex;
@@ -6972,7 +6981,7 @@ ul {
 
 .showtime-pill-container._sold .showtime-pill {
     color: rgb(153, 153, 153);
-    cursor: default;
+    cursor: pointer;
 }
 
 .showtime-pill-container .showtime-pill {

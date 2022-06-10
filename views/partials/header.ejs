@@ -18,12 +18,15 @@
                     <% if(!user) {%>
                         <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
                         <% }else{ %>
-                            <div class="chip text-nowrap">
-                                <img src="<%=user.image%>" class="rounded-circle " style="width:40px" alt="img">
-                                <span><a class="chip-user-name" href="/stories/user/<%=user._id%>">
+                            <a href="/profile">
+                                <div class="chip text-nowrap">
+
+                                    <img src="<%=user.image%>" class="rounded-circle " style="width:40px" alt="img">
+                                    <span class="chip-user-name">
                                         <%=user.firstName%>
-                                    </a></span>
-                            </div>
+                                    </span>
+                                </div>
+                            </a>
                             <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
                             <% } %>
                                 <li>

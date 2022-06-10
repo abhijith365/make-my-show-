@@ -74,50 +74,39 @@
                             <ul id="showDates" class="dates-container slick-initialized slick-slider"><button
                                     class="buttons prev slick-arrow slick-disabled" aria-label="Previous" role="button"
                                     href="#" aria-disabled="true" style="display: block;">
-                                    <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i><svg version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                        xml:space="preserve">
-
-                                    </svg></button>
+                                    <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i></button>
                                 <div aria-live="polite" class="slick-list draggable">
                                     <div class="slick-track"
                                         style="opacity: 1; width: 35000px; transform: translate3d(-1px, 0px, 0px);">
 
                                         <!-- finding max day for shows -->
-                                        <% let maxday=data[0].totalShowDays %>
 
-                                            <% data.forEach(e=>{ %>
 
-                                                <% if (maxday < e.totalShowDays){%>
-                                                    <% maxday=e.totalShowDays %>
-                                                        <% } %>
-                                                            <% } )%>
-                                                                <%console.log(maxday)%>
 
-                                                                    <% for( let i=0; i < maxday; i++ ) { %>
-                                                                        <% let
-                                                                            startDate=data[0].showByDate.startDate.toString()%>
-                                                                            <%let date=new Date(`${startDate}`);%>
-                                                                                <%m=date.setDate(date.getDate() + i); %>
 
-                                                                                    <li class="<%= i==0 ?`date-details _active slick-slide slick-current slick-active`:`date-details  slick-slide`%>"
-                                                                                        data-slick-index=<%-i-1 %>
-                                                                                        aria-hidden="false">
-                                                                                        <a class="date-href"
-                                                                                            href="/home/booking/date/<%-data[0].movies[0]._id %> "
-                                                                                            onclick="BMS.Misc.fnBusy(true);">
-                                                                                            <div class="date-day">
-                                                                                                <%-new
-                                                                                                    Date(m).toString().split(" ")[0]%>
+                                        <!-- finding reming days -->
+                                        <%const maxday=(Math. ceil((data[0].showByDate.endDate-new Date()) / (1000 *
+                                            3600 * 24))) %>
+
+                                            <% for( let i=0; i <maxday; i++ ) { %>
+                                                <% let startDate=data[0].showByDate.startDate.toString()%>
+                                                    <%let date=new Date();%>
+                                                        <%m=date.setDate(date.getDate() + i); %>
+
+                                                            <li class="<%= i==0 ?`date-details _active slick-slide slick-current slick-active `:`date-details  slick-slide`%>"
+                                                                data-slick-index=<%-i %>
+                                                                aria-hidden="false">
+                                                                <a class="date-href"
+                                                                    href="/home/booking/<%- data[0].movies[0]._id%>?&dt=<%-new Date(m).toISOString() %>"
+                                                                    data-url="/home/booking/<%- data[0].movies[0]._id%>?&dt=<%-new Date(m).toISOString() %>">
+                                                                    <div class="date-day">
+                                                                        <%-new Date(m).toString().split(" ")[0]%>
                                                                                             </div>
                                                                                             <div class=" date-numeric">
-                                                                                                    <%-new
-                                                                                                        Date(m).toString().split(" ")[2]%>
+                                                                            <%-parseInt(new Date(m).toString().split(" ")[2])%>
                                                                                             </div>
                                                                                             <div class=" date-month">
-                                                                                                        <%-new
-                                                                                                            Date(m).toString().split(" ")[1]%></div>
+                                                                                <%-new Date(m).toString().split(" ")[1]%></div>
                                                                                         </a>
                                                                                     </li>
 
@@ -129,21 +118,12 @@
                                 </div>
 
 
-                                <button class=" buttons next slick-arrow" aria-label="Next" role="button" href="#"
-                                                                                                            style="display: block;"
-                                                                                                            aria-disabled="false">
-                                                                                                            <i class="fa fa-arrow-right fa-1x"
-                                                                                                                aria-hidden="true"></i><svg
-                                                                                                                version="1.1"
-                                                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                                x="0px"
-                                                                                                                y="0px"
-                                                                                                                viewBox="0 0 100 100"
-                                                                                                                enable-background="new 0 0 100 100"
-                                                                                                                xml:space="preserve">
-
-                                                                                                            </svg></button>
+                                <button  class=" buttons next slick-arrow" aria-label="Next" role="button" href="#"
+                                                                                    style="display: block;"
+                                                                                    aria-disabled="false">
+                                                                                    <i class="fa fa-arrow-right fa-1x"
+                                                                                        aria-hidden="true"></i>
+                                                                                    </button>
                             </ul>
                         </div>
                         <div class="dropdown-block ">
@@ -176,7 +156,7 @@
         <!-- theatre details -->
         <section class="phpShowtimes showtimes">
 
-            <!-- NATIVE AD SPOT END [ADS SDK] -->
+
             <div class="applied-filters wrapper">
 
                 <div class="added-filters"></div>
@@ -218,14 +198,12 @@
                                         </span>
                                         <div class="__name ">
                                             <div class="__title">
-                                                <a class="__venue-name" onclick="BMS.Misc.fnBusy(true);"
-                                                    href="/buytickets/">
+                                                <a class="__venue-name" href="/buytickets/">
                                                     <%-item.theatreName %>
                                                         Cinemas: <%-item.BuildingName %>
                                                             , <%-item.city %>
                                                 </a>
-                                                <div class="info-section" onclick="toggleCinemaShowcaseModal(this);"
-                                                    data-venue-code="CCKL">
+                                                <div class="info-section">
                                                     <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/safety_first.png"
                                                         class="venue-info-icon lazy"
                                                         onerror="this.src='https:/\/\in.bmscdn.com/m6/images/common/placeholder.png'; this.onerror='';">
@@ -262,26 +240,23 @@
                                     <div class="offer-details-container">
                                     </div>
                                     <div class="showtime-pill-wrapper">
-                                    <% d.showByDay.map(e =>{%>
-                                       
-                                            <div data-online="N" class="showtime-pill-container _sold">
-                                                <a class="showtime-pill" data-showtime-code="1015"
-                                                    data-showtime-filter-index="morning" data-price-filter-index="[2]"
-                                                    data-attributes="">
+                                        <% d.showByDay.map(e=>{%>
+
+                                            <div class="showtime-pill-container _sold">
+                                                <a class="showtime-pill show_time_url"
+                                                    href="/home/bookticket/seat/<%-d._id%>?&t=<%-e.startTime%>&d=<%- date %>"
+                                                    data-url=" /home/bookticket/seat/<%-d._id%>?&t=<%-e.startTime%>&d=<%- date %>"
+                                                    data-id="<%-d._id%>" data-time="<%-e.startTime%>"
+                                                    data-date="<%- date %>">
                                                     <div class="__details">
                                                         <div class="__text">
-                                                            <% let time = e.startTime%>
-                                                            <% time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];%>
-
-                                                            <% if (time.length > 1) { %> 
-                                                            <% time = time.slice (1),time[5] = +time[0] < 12 ? ' AM' : ' PM';  time[0] = +time[0] % 12 || 12 %>
-                                                            <% } %> 
-                                                            <%- time.join('') %> 
+                                                            <%-moment(e.startTime, ["HH.mm"]).format("hh:mm A")%>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
-                                            
+
+
                                             <% }) %>
 
 
@@ -298,16 +273,17 @@
                                                 </div> -->
 
 
-                                        </div>
-                                        <div class="venue-flags">
-                                            <span class="gold-icon"></span>
-                                            <span class="venue-flags-details">Cancellation Available</span>
-                                        </div>
+                                    </div>
+                                    <div class="venue-flags">
+                                        <span class="gold-icon"></span>
+                                        <span class="venue-flags-details">Cancellation Available</span>
+                                    </div>
                                 </div>
                             </li>
                             <% }) )%>
 
                                 <!-- loop end -->
+                                <div id="div"></div>
 
 
                     </ul>
@@ -320,19 +296,157 @@
     </div>
     <!-- footer -->
     <%- include('../partials/footer.ejs') %>
-
+        <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $("#ajax").click(function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    $.ajax({
-                        data: "Ohhhh"
-                    }).done(function (rs) {
-                        console.log(rs.data)
+            //button class changing
+            $('.slick-track li').click(function (e) {
 
-                    })
+                $(this).siblings().removeClass()
+                $(this).siblings().addClass('date-details  slick-slide')
+                $(this).removeClass()
+                $(this).addClass('date-details _active slick-slide slick-current slick-active');
+            });
+
+            // <a class="showtime-pill show_time_url" data-url="/bookticket"
+            //         data-id="<%-/*d._id*/%>" data-start-time="<%-/*e.startTime*/%>"
+            // data-date="<% /*date*/ %> ">
+
+            $(document).ready(function () {
+                $(".showtime-pill-container a").click(function (e) {
+
+                    // alert($(this).data("id") + $(this).data("date") + $(this).data("time") + $(this).data("url"))
+                    let id = $(this).data('id');
+                    let time = $(this).data('time');
+                    let date = $(this).data('date');
+                    let url = $(this).data('url')
+
+                    // $.ajax({
+                    //     url: url,
+                    //     type: "GET",
+                    //     data: JSON.stringify({
+                    //         data: { id, time, date }
+                    //     }),
+                    //     success: {
+                    //         location: '/home/bookticket/seat'
+                    //     }
+                    // }).done(function (data) {
+                    //     window.location = "/home/bookticket/seat";
+
+                    // })
                 })
             })
+
+
+
+
+            // for theatre data
+            // $(document).ready(function () {
+            //     $(".slick-track li").click(function (e) {
+            //         e.preventDefault();
+            //         e.stopPropagation();
+
+            //         $.ajax({
+            //             url: $('a').data("url"),
+            //             type: "POST",
+            //             contentType: "Application/JSON",
+            //         }).done(function (data) {
+            //             console.log(typeof (data))
+            //             console.log(data)
+
+            //             data.map(d => d.theatres.forEach(item => {
+
+            //                 let divv = ' <li class="list">' +
+            //                     '<div class="listing-info">' +
+            //                     '<div class="img-container">' +
+            //                     '<span class="icon-star star"></span>' +
+            //                     '</div>' +
+            //                     '<div class="details">' +
+            //                     '<span class="heart-it" data-id="CCKL">' +
+            //                     '<i class="fa fa-heart" aria-hidden="true"></i>' +
+
+            //                     '</span>' +
+            //                     ' <span class="icon-location">' +
+            //                     '<i class="fa fa-location-arrow" aria-hidden="true"></i>' +
+            //                     '</span>' +
+            //                     '<div class="__name ">' +
+            //                     '<div class="__title">' +
+            //                     '<a class="__venue-name" href="/buytickets/">' +
+            //                     item.theatreName +
+            //                     ' Cinemas:' + item.BuildingName +
+            //                     ' , ' + item.city +
+            //                     '</a>' +
+            //                     '<div class="info-section">' +
+            //                     '<img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/safety_first.png"' +
+            //                     'class="venue-info-icon lazy"' +
+            //                     'onerror="this.src="https:/\/\in.bmscdn.com/m6/images/common/placeholder.png"; this.onerror="";">' +
+            //                     '<div class="venue-info-text">INFO</div>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '<div class="st-distance _none">' +
+            //                     '<span class="__dis-icon">' +
+            //                     '<i class="fa fa-location-arrow" aria-hidden="true"></i>' +
+            //                     '</svg>' +
+            //                     '</span>' +
+            //                     '<span class="__distance"></span>' +
+            //                     '</div>' +
+            //                     '<div class="unpaid-mticket-wrapper">' +
+
+            //                     '<div class="__mticket-info">' +
+            //                     '<span class="icon">' +
+            //                     '<i class="fa fa-mobile" style="color:rgba(0, 128, 0, 0.661)"' +
+            //                     ' aria-hidden="true"></i>' +
+            //                     '</span>' +
+            //                     '<label>M-Ticket</label>' +
+            //                     '</div>' +
+            //                     '<div class="__fnb-info ">' +
+            //                     '<span class="icon">' +
+            //                     '<i class="fa fa-burger-glass"></i>' +
+            //                     '</span>' +
+            //                     '<label>Food &amp; Beverage</label>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '<div class="body showtimes-details-container ">' +
+            //                     '<div class="offer-details-container">' +
+            //                     '</div>' +
+            //                     '<div class="showtime-pill-wrapper">'
+            //                 d.showByDay.forEach(e => {
+            //                     let dddd =
+
+            //                         '<div class="showtime-pill-container _sold">' +
+            //                         '<a class="showtime-pill show_time_url" data-url="/bookticket"' +
+            //                         'data-id="' + d._id + '" data-time="' + e.startTime +
+            //                         '"data-date="' + ' ">' +
+            //                         '<div class="__details">' +
+            //                         '<div class="__text">' +
+            //                         '<div class="__text">' +
+
+            //                         moment(e.startTime, ["HH.mm"]).format("hh:mm A") +
+
+
+            //                         ' </div>' +
+            //                         '</div>' +
+            //                         '</a>' +
+            //                         '</div>';
+            //                     console.log(dddd)
+            //                     $('.showtime-pill-wrapper').append(dddd)
+            //                 })
+
+
+            //                     + ' </div>' +
+            //                     '<div class="venue-flags">' +
+            //                     '<span class="gold-icon"></span>' +
+            //                     '<span class="venue-flags-details">Cancellation Available</span>' +
+            //                     '</div>' +
+            //                     '</div>' +
+            //                     '</li>'
+
+            //                 $('#div').append(divv);
+            //             }))
+            //         })
+            //     })
+            // })
         </script>

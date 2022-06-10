@@ -1,13 +1,22 @@
 <link rel="stylesheet" href="/css/user/runningmovie.css">
 
+<!-- header -->
 <%- include('../partials/header.ejs', {user}) %>
 
     <div>
+        <!-- upcoming movies -->
         <%- include('./partials/runningMovies.ejs') %>
 
+
+            <!-- advertisments -->
+            <%- include('./home/advertisement.ejs') %>
+
+
+                <!-- upcoming movies -->
+                <%- include('./partials/upcomingMovies.ejs') %>
 
     </div>
 
 
-
+    <!-- footer  -->
     <%- include('./partials/footer.ejs') %>

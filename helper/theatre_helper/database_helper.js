@@ -300,7 +300,7 @@ module.exports = {
                     let show = await db.getDb().collection(coll.show).insertOne(obj).then(re => re).catch(e => e);
                     let findShow = await db.getDb().collection(coll.show).findOne({ _id: show.insertedId })
                     let screen = await db.getDb().collection(coll.screen).findOne({ _id: obj.screenId });
-                    console.log(screen);
+
                     if (show) {
                         let arr = []
                         arr.push({ findShow, screen });
