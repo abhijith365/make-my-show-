@@ -37,13 +37,13 @@
                         <!-- Enter show details  -->
                         <div class="form-group">
                             <label class="form-label" for="seats_col_num">Enter Total Shows</label>
-                            <input type="number" name="seats_col_num" id="seats_col_num" min="1" value="0"
+                            <input type="number" name="seats_col_num" id="seats_col_num" min="2" value="0"
                                 class="form-control">
                             <div class="valid-tooltip">
                                 Looks good!
                             </div>
                             <div class="invalid-tooltip">
-                                Please Add at least 1 show.
+                                Please Add at least 2 show.
                             </div>
 
                         </div>
@@ -57,8 +57,8 @@
 
                         <div class="form-group">
                             <label class="form-label" for="startDate">Movie Start Date</label>
-                            <input required id="startDate" class="form-control" name="startDate" type="date" min="<%-new
-                                Date().toISOString().split('T')[0]%>">
+                            <input required id="startDate" class="form-control" name="startDate" type="date"
+                                min="<%-new Date().toISOString().split('T')[0]%>">
                             <div class="valid-tooltip">
                                 Looks good!
                             </div>
@@ -69,8 +69,8 @@
 
                         <div class="form-group">
                             <label class="form-label" for="endDate">Movie End Date</label>
-                            <input required id="endDate" class="form-control" name="endDate" type="date" min="<%-new
-                                Date().toISOString().split('T')[0]%>">
+                            <input required id="endDate" class="form-control" name="endDate" type="date"
+                                min="<%-new Date().toISOString().split('T')[0]%>">
                             <div class="valid-tooltip">
                                 Looks good!
                             </div>

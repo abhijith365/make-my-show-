@@ -174,7 +174,26 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
             time: `${req.query.d}T${req.query.t}`
         }
         let data = await db.seatDeatails(obj).then(result => result).catch(error => error);
+        //destructing data
+        function groupByArray(xs, key) {
+            return xs.reduce(function (rv, x) {
+                let v = key instanceof Function ? key(x) : x[key];
+                let el = rv.find((r) => r && r.key === v);
+                if (el) { el.values.push(x); }
+                else { rv.push({ key: v, values: [x] },); }
+                return rv;
+            }, []);
+        }
+        let m = data[0].show_seats.showByDate.shows.showSeats;
+        let array = [];
+        z = groupByArray(m, 'seats_category')
+        for (let i = 0; i < z.length; i++) {
+            array[i] = [];
+            array[i].push({ "category": z[i].key, "seat_detais": groupByArray(z[i].values, 'tag_name') })
 
+        }
+        console.log(array);
+        console.log(JSON.stringify(array))
 
         // console.log(data)
         if (data) {
