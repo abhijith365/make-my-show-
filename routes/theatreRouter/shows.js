@@ -50,6 +50,7 @@ route.get('/', ensureAuth, async (req, res) => {
         res.render('error/500')
     }
 })
+
 // add shows post request
 route.post('/', ensureAuth, async (req, res) => {
     try {
@@ -64,13 +65,13 @@ route.post('/', ensureAuth, async (req, res) => {
 
         let showByDay = _.zip(arr[0], arr[1]).map((a) => ({ startTime: a[0], endTime: a[1] }));
         //making one object of start date and end date of show
-        let showByDate = { startDate: req.body.startDate, endDate: req.body.endDate };
+        let showByDate = { startDate: new Date(req.body.startDate), endDate: new Date(req.body.endDate) };
 
 
 
         let aDay = 86400000;
-        let start_date = showByDate.startDate;
-        let end_date = showByDate.endDate;
+        let start_date = req.body.startDate;
+        let end_date = req.body.endDate;
         let diff = Math.floor(
             (
                 Date.parse(
@@ -130,7 +131,7 @@ route.post('/', ensureAuth, async (req, res) => {
 
                     dailyShow.showTime = dateTime;
                     let showSeats = [];
-                    dailyShow.showSeats = showSeats;
+
 
                     let total_row = parseInt(show[0].screen.seatsRetails.total_row)
                     let seat_details = show[0].screen.seatsRetails.seats_details;
@@ -139,7 +140,8 @@ route.post('/', ensureAuth, async (req, res) => {
                         for (let l = 0; l < total_seats; l++) {
                             showSeats.push({
                                 _id: new ObjectId(),
-                                seat_number: `${seat_details[k].seats_tag_name} ${l + 1}`,
+                                seat_number: `${l + 1}`,
+                                tag_name: seat_details[k].seats_tag_name,
                                 seat_status: false,
                                 user_id: false,
                                 price: seat_details[k].seats_price,
@@ -150,7 +152,26 @@ route.post('/', ensureAuth, async (req, res) => {
 
                     }
                     // every show in one day
+                    //destructing data
+                    function groupByArray(xs, key) {
+                        return xs.reduce(function (rv, x) {
+                            let v = key instanceof Function ? key(x) : x[key];
+                            let el = rv.find((r) => r && r.key === v);
+                            if (el) { el.values.push(x); }
+                            else { rv.push({ key: v, values: [x] },); }
+                            return rv;
+                        }, []);
+                    }
+                    let m = showSeats;
+                    let array = [];
+                    z = groupByArray(m, 'seats_category')
+                    for (let i = 0; i < z.length; i++) {
+                        array[i] = [];
+                        array[i].push({ "category": z[i].key, "seat_detais": groupByArray(z[i].values, 'tag_name') })
 
+                    }
+                    showSeats = array;
+                    dailyShow.showSeats = showSeats;
                     seatDetails.showByDate.shows.push(dailyShow)
                 }
                 show_seats.push(seatDetails);
