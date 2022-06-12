@@ -167,7 +167,7 @@ route.post('/', ensureAuth, async (req, res) => {
                     z = groupByArray(m, 'seats_category')
                     for (let i = 0; i < z.length; i++) {
                         array[i] = [];
-                        array[i].push({ "category": z[i].key, "seat_detais": groupByArray(z[i].values, 'tag_name') })
+                        array[i].push({ "category": z[i].key, "seat_details": groupByArray(z[i].values, 'tag_name') })
 
                     }
                     showSeats = array;

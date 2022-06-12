@@ -1,1697 +1,117 @@
 <link rel="stylesheet" href="/css/user/seat_layout.css">
-<% console.log(data[0].show_seats.showByDate.shows.showSeats[0].seats_category) %>
 
-
-
-
-
-
-    <section id="seatlayoutbox" class="bkf-container _seat" style="display: block;">
-        <!--double booking -->
+<section class="bkf-layout mb-5">
+    <section id="seatlayoutbox" class="bkf-container _seat container" style="display: block;">
+        <!-- booking -->
         <div id="cpnleft">
-
             <div class="seat-container">
-                <div class="rem-seats" style="display: none;">
-                    <span></span>
-                </div>
-
                 <div class="seats" id="seatcall">
                     <div class="__block">
                         <div id="layout" style="width: 1298px;">
-                            <table cellspacing="0" cellpadding="0" class="setmain">
+                            <table cellspacing=" 0" cellpadding="0" class="setmain ">
                                 <tbody>
+                                    <% let array=data[0].show_seats.showByDate.shows.showSeats%>
+                                        <% array.reverse().forEach((e, i)=> { %>
 
-                                    <% let catogory=data[0].show_seats.showByDate.shows.showSeats[0].seats_category; %>
-                                        <% data[0].show_seats.showByDate.shows.showSeats.forEach((e,i)=>{ %>
 
-                                            <% if (i==0) { %>
-                                                <tr>
-                                                    <td class="PriceB1" colspan="2">
-                                                        <div class="seatP">
-                                                            <%- e.seats_category %>
-                                                                <%-e.price%>
-                                                                    .00
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <% } %>
+                                            <tr>
+                                                <td class="PriceB1" colspan="2">
+                                                    <div class="seatP mt-3">
+                                                        <%- e[0].category %>
+                                                            <%- e[0].seat_details[0].values[0].price%>
+                                                                .00
+                                                    </div>
+                                                </td>
+                                            </tr>
 
+                                            <%e.forEach((d)=>{ %>
+
+
+                                                <% d.seat_details.reverse().forEach((m,m_i)=> {%>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="seatR Setrow<%-m_i%>">
+                                                                <%- m.key %>
+                                                            </div>
+                                                        </td>
+
+
+                                                        <td class=<%-`${ m.key }Row${ i }`%>>
+
+                                                            <% m.values.forEach((rs,r_i)=>{%>
+
+
+                                                                <% if(r_i==Math.floor((m.values.length/2.6))){ %>
+                                                                    <div class="seatI">&nbsp;</div>
+                                                                    <div class="seatI">&nbsp;</div>
+                                                                    <div class="seatI">&nbsp;</div>
+                                                                    <div class="seatI">&nbsp;</div>
+
+                                                                    <% } %>
+                                                                        <% if(r_i==Math.floor((m.values.length/1.4))){
+                                                                            %>
+                                                                            <div class="seatI">&nbsp;</div>
+                                                                            <div class="seatI">&nbsp;</div>
+                                                                            <div class="seatI">&nbsp;</div>
+                                                                            <div class="seatI">&nbsp;</div>
+
+                                                                            <% } %>
+                                                                                <%let cls=`${m.key}-${r_i}`%>
+                                                                                    <div id="<%-cls%>" class="seatI">
+                                                                                        <a href="javascript:;"
+                                                                                            class=<%=rs.seat_status==false?"_available":"_blocked"%>
+                                                                                            data-num="<%-cls%>
+                                                                                                "data-price="
+                                                                                                <%-rs.price%>
+                                                                                                    "data-category="
+                                                                                                    <%-rs.seats_category%>
+                                                                                                        ">
+                                                                                                        <%-
+                                                                                                            rs.seat_number%>
+                                                                                        </a>
+                                                                                    </div>
+
+
+                                                                                    <%})%>
+                                                        </td>
+
+                                                    </tr>
                                                     <% }) %>
 
 
 
+                                                        <%})%>
 
+                                                            <%}) %>
 
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">K</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_1_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_011')">
-                                                                        36
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_012')">
-                                                                        35
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_013')">
-                                                                        34
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_014')">
-                                                                        33
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_015')">
-                                                                        32
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_016')">
-                                                                        31
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_017')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_018')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_019" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_019')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0110" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0110')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0111" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0111')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0112')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0113')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0114')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0115')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0116')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0117')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0118')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0119')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0120')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0121')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0122')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0123')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0124')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0125')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0126" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0126')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0127" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0127')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0128" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0128')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_1_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_1_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">J</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_2_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_2_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_2_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_2_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_2_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">I</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_3_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_3_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_3_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_3_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_3_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">H</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_4_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_4_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_4_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_4_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_4_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">G</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_5_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_5_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_5_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_5_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_5_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">F</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_6_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_6_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_6_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_6_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_6_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">E</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_7_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_7_0112" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0113" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0114" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0115" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0116" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0117" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0118" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0119" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0120" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0121" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0122" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0123" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0124" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0125" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_7_0129" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0130" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0131" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0132" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0133" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0134" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0135" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_7_0136" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_7_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1"></div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1"></div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="seatR Setrow1">C</div>
-                                                            </td>
-                                                            <td class="SRow1">
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_10_011" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_011')">
-                                                                        30
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_012" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_012')">
-                                                                        29
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_013" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_013')">
-                                                                        28
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_014" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_014')">
-                                                                        27
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_015" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_015')">
-                                                                        26
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_016" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_016')">
-                                                                        25
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_017" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_017')">
-                                                                        24
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_018" data-seat-type="1" class="seatI">
-                                                                    <a href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_018')">
-                                                                        23
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_10_0112" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0112')">
-                                                                        22
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0113" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0113')">
-                                                                        21
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0114" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0114')">
-                                                                        20
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0115" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0115')">
-                                                                        19
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0116" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0116')">
-                                                                        18
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0117" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0117')">
-                                                                        17
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0118" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0118')">
-                                                                        16
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0119" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0119')">
-                                                                        15
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0120" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0120')">
-                                                                        14
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0121" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0121')">
-                                                                        13
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0122" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0122')">
-                                                                        12
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0123" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0123')">
-                                                                        11
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0124" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0124')">
-                                                                        10
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0125" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0125')">
-                                                                        9
-                                                                    </a>
-                                                                </div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div class="seatI">&nbsp;</div>
-                                                                <div id="A_10_0129" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0129')">
-                                                                        8
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0130" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0130')">
-                                                                        7
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0131" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0131')">
-                                                                        6
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0132" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0132')">
-                                                                        5
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0133" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0133')">
-                                                                        4
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0134" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0134')">
-                                                                        3
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0135" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0135')">
-                                                                        2
-                                                                    </a>
-                                                                </div>
-                                                                <div id="A_10_0136" data-seat-type="1" class="seatI"> <a
-                                                                        href="javascript:;" class="_available"
-                                                                        onclick="fnSelectSeat('A_10_0136')">
-                                                                        1
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
 
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="screen-this-way">
                             <span class="__icon">
-                                <svg xml:space="preserve" enable-background="new 0 0 100 100" viewBox="0 0 260 20"
-                                    y="0px" x="0px" width="260px" height="20px"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                    version="1.1" style="fill: rgba(0, 0, 0, 0.6);">
-                                    <use xlink:href="/icons/seatlayout-icons.svg#icon-screen">
-                                    </use>
-                                </svg>
+                                <!-- icon for screen -->
                             </span>
                             <span class="__text">All eyes this way please!</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="__seat-message" style="display:none;">
-                <span class="__seat-message-text"></span>
-                <span class="__seat-message-dismiss" onclick="fnDismissSeatsMessage();">OK</span>
+
+
+
+            <!--payment section-->
+            <div class="__seat-action btn-bar _centered _spaced" id="bottom_pay" style="display: none;">
+
+                <a id="btmcntbook" onclick="fnPkgCl();" class="bar-btn _primary _small" style="display: flex;">Pay&nbsp;
+                    <span id="btnSTotal_reserve"></span> &nbsp;RS</a>
+
             </div>
-            <div class="__best-legend-message">
-                <span class="__best-legend-message-text"></span>
-            </div>
-            <div id="snackbar" style="display: none;"></div>
-            <div class="__seat-action btn-bar _centered _spaced" style="display: none;">
-                <a id="btmcntbook" href="javascript:;" onclick="fnPkgCl();" class="bar-btn _primary _small"
-                    style="display: none;">Pay <span id="btnSTotal_reserve"></span></a>
-                <a id="subSeat" href="javascript:;" onclick="fnsubSetSeats();" class="bar-btn _primary _small"
-                    style="display:none;">Pay <span id="btnSTotal_reserve"></span></a>
-                <div class="text-unpaid _tooltip-top" id="btm-Un-SetaErrMsg">
-                    <span class="__tip"></span>
-                    <p class="laterMsgText" id="laterMsgText"></p>
-                </div>
-                <!-- <a id="prePay" class="btn _cuatro" onclick="fnPrePay();" href="javascript:;">Proceed To Payment</a> -->
-            </div>
-            <div class="bottom-screen">
-                <div class="screen-this-way">
-                    <span id="scrImg" class="__text">All eyes this way please!</span>
-                </div>
-                <div class="__action">
-                    <a id="btmcntbook" href="javascript:;" onclick="fnPkgCl();" class="btn _cuatro"
-                        style="display:none;">Pay <span id="btnSTotal_reserve"></span></a>
-                    <a id="btmsubSeat" href="javascript:;" onclick="fnsubSetSeats();" class="btn _cuatro"
-                        style="display:none;">Pay <span id="btnSTotal_reserve"></span></a>
-                    <!-- <a id="prePay" class="btn _cuatro" onclick="fnPrePay();" href="javascript:;">Proceed To Payment</a> -->
-                </div>
-            </div>
+
+
+
+            <!--sold /aviailable/sold section-->
             <div class="seat-legends-wrapper">
                 <div class="seat-legend-container">
                     <div class="seat-legend-box status-2"></div>
@@ -1709,6 +129,8 @@
                                 fill="black"></path>
                         </svg> </div>
                 </div>
+
+
                 <div class="seat-legend-container">
                     <div class="seat-legend-box status-1"></div>
                     <div class="seat-legend-text">Available</div>
@@ -1725,6 +147,9 @@
                                 fill="black"></path>
                         </svg> </div>
                 </div>
+
+
+
                 <div class="seat-legend-container">
                     <div class="seat-legend-box status-88"></div>
                     <div class="seat-legend-text">Selected</div>
@@ -1741,6 +166,65 @@
                                 fill="black"></path>
                         </svg> </div>
                 </div>
+
+
             </div>
         </div>
     </section>
+</section>
+
+<!--jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.seatI a').on('click', function (e) {
+            e.preventDefault();
+
+
+
+            //checking for not selecting __blocked class // limiting 10 seats
+            if ($(this).hasClass('_available') || $(this).hasClass('_selected')) {
+                if ($('._selected').length < 10) {
+                    $(this).toggleClass('_available _selected')
+                } else {
+                    $(this).removeClass().addClass('_available')
+                }
+            }
+
+            // storing all selected items data into a array
+            let arr = $('._selected').map((i, e) => {
+                let obj = { "seatDetail": $(e).data('num'), "price": $(e).data('price'), "category": $(e).data('category') }
+                return obj;
+            }).get()
+
+
+            let data = `<%- JSON.stringify(data)%>`;
+            // console.log(JSON.parse(data))
+
+
+            const findObject = id => obj => obj.id === id ? obj : flatFind(obj.child, findObject(id));
+            m = JSON.parse(data);
+            let rs = findObject(m, 'Awww')
+            console.log(rs)
+
+
+            // checking is any seat selected or not 
+            if (arr.length >= 1) {
+                $('#bottom_pay').css('display', "flex");
+                let price = 0;
+                let value = arr.map((v, i) => {
+                    price += parseInt(v.price);
+                })
+                $('#btmcntbook span').text(price)
+                console.log(price)
+            } else {
+                $('#bottom_pay').css('display', "none")
+            }
+
+
+            // console.log(arr);
+        })
+
+    })
+</script>
