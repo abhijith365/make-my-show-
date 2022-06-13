@@ -184,8 +184,8 @@ module.exports = {
                 }, {
                     '$lookup': {
                         'from': 'foods',
-                        'localField': 'screen.theatreOwner',
-                        'foreignField': 'theatreOwn',
+                        'localField': 'screen.theatreId',
+                        'foreignField': 'theatreId',
                         'as': 'foods'
                     }
                 }, {
