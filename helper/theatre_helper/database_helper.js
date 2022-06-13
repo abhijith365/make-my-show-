@@ -220,7 +220,7 @@ module.exports = {
                         ReleseDate: obj.ReleseDate,
                         tlLinks: obj.tlLinks,
                         movieGenres: obj.movieGenres,
-                        theatreOwner: obj.theatreOwner,
+                        theatreOwner: ObjectId(obj.theatreOwner),
                         images: obj.images,
                         Modified_date: (() => Date.now())()
                     }

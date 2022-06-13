@@ -111,6 +111,31 @@ route.get('/booking/:id', ensureAuth, async (req, res) => {
         res.render('error/500');
     }
 })
+// showing movie avialble theatres
+route.post('/booking/:id', ensureAuth, async (req, res) => {
+    try {
+        let id = req.body.id;
+        let date = req.body.date;
+        date = date.split('T')[0].toString()
+
+        let obj = { id, date }
+
+        let user = req.user || req.session.phone;
+        let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
+
+
+        if (data) {
+            res.render('user/home/running_theatre', { data },
+                function (err, html) {
+                    console.log(html)
+                    res.send(html);
+                })
+        } else throw new error;
+    } catch (error) {
+        console.log(error);
+        res.render('error/500');
+    }
+})
 //single page for upcoming movie
 route.get('/upcomingMovie/:id', async (req, res) => {
     try {
@@ -175,12 +200,12 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
         }
         let data = await db.seatDeatails(obj).then(result => result).catch(error => error);
 
-        // console.log(data)
         if (data) {
             res.render('user/home/seat_layout', {
                 layout: './layout/layout.ejs',
                 user,
-                data
+                data,
+                moment
             })
         } else throw new error
     } catch (error) {
@@ -188,6 +213,38 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
         res.render('error/500');
     }
 
+})
+//POST -> seat home page
+route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
+    try {
+        let user = req.user || req.session.phone;
+        let obj = {
+            id: `${req.body.id}`,
+            date: `${req.body.date}`
+        }
+
+
+        let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
+
+        console.log(data)
+        if (data) {
+            res.render('user/home/running_theatre.ejs', { data },
+                function (err, html) {
+                    console.log(html)
+                    res.send(html);
+                })
+        } else throw new error
+    } catch (error) {
+        console.log(error);
+        res.render('error/500');
+    }
+
+})
+
+route.post('/payment_one',ensureAuth, async (req, res) => {
+    res.render('user/home/payment_one.ejs', { users: "data", moment }, function (err, html) {
+        res.send(html);
+    });
 })
 
 

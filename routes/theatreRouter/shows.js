@@ -220,7 +220,7 @@ route.get('/home', ensureAuth, async (req, res) => {
 route.get('/food/:id', ensureAuth, async (req, res) => {
     try {
 
-        let obj = req.params.id;
+        let obj = ObjectId(req.params.id);
         let allShows = await db.AllFoods(obj).then(e => e).catch(e => e);
 
 
@@ -244,7 +244,8 @@ route.post('/food/:id', ensureAuth, upload.single('image'), async (req, res) => 
 
         req.body.theatreId = id;
         req.body.image = image;
-        req.body.theatreOwn = req.session.theatreOwn._id;
+        req.body.theatreId = ObjectId(req.body.theatreId)
+        req.body.theatreOwn = ObjectId(req.session.theatreOwn._id);
         req.body.createdAt = Date.now();
 
         let data = await db.AddFood(req.body).then(res => res).catch(err => err);

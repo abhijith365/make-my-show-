@@ -131,7 +131,7 @@ module.exports = {
     },
     // fetching seat details
     seatDeatails: (obj) => {
-        console.log(obj)
+        // console.log(obj)
         return new Promise(async (resolve, reject) => {
 
             let data = await db.getDb().collection(coll.seat).aggregate([
@@ -182,12 +182,20 @@ module.exports = {
                         'as': 'show'
                     }
                 }, {
+                    '$lookup': {
+                        'from': 'foods',
+                        'localField': 'screen.theatreOwner',
+                        'foreignField': 'theatreOwn',
+                        'as': 'foods'
+                    }
+                }, {
                     '$project': {
                         '_id': 1,
                         'show_seats': 1,
                         'movie': 1,
                         'theatre': 1,
-                        'show': 1
+                        'show': 1,
+                        'foods':1
                     }
                 }
             ]).toArray();

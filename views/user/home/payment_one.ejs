@@ -1,0 +1,354 @@
+<link rel="stylesheet" href="/css/user/booking.css">
+
+<section class="bkf-layout" id="seat-layout" style="display: block;">
+    <div class="container">
+        <header class="bkf-header">
+
+            <div class="header-container">
+                <h2>
+                    <!-- Event name -->
+                    <div>
+                        <span class="__event-name"><a id="strEvtName" href="#"></a></span>
+                        <span class="icon-a" id="sen_a" style="display: none;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <use xlink:href="/icons/common-icons.svg#icon-a"></use>
+                            </svg>
+                        </span>
+                        <span class="icon-u" id="sen_u" style="display: none;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <use xlink:href="/icons/common-icons.svg#icon-u"></use>
+                            </svg>
+                        </span>
+                        <span class="icon-ua" id="sen_ua" style="display: inline-block;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <use xlink:href="/icons/common-icons.svg#icon-ua"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <!-- Event details such as venue name and timing -->
+                    <div>
+                        <span class="__event-details">
+                            <span id="strVenName"></span>
+                            <span>|</span>
+                            <span id="strDate" style="display: inline-block !important;"></span>
+                        </span>
+                    </div>
+                </h2>
+
+            </div>
+
+        </header>
+        <section id="bksmile" class="bkf-container _add-ons struktur" style="display: block;">
+
+            <div id="fnbcont" class="add-ons-container">
+                <!-- Book A Smile Container -->
+
+                <!-- Food combo Container -->
+
+                <div class="fnb-container" id="shfnb">
+                    <div class="fnb-section">
+                        <div class="block">
+                            <h2 class="__heading-text-plus-red" id="grab-a-bite">Grab a <span>bite!</span><br><span
+                                    class="sub-head fc-text" id="text-none">Now get your favorite snack at a<span
+                                        class="highlight-text"> discounted price!</span></span>
+                            </h2>
+                                          
+
+                            <div class="fnb-container" id="fnbcall">
+                                <aside class="fnb-body" data-category="PO">
+                                    <div class="fnb-div">
+                                        <div class="img"><img
+                                                src="//in.bmscdn.com/bmsin/v2/Web-v2/d-combo/1020004_17082018144718.jpg"
+                                                onerror="this.src='//in.bmscdn.com/bmsin/callouts/foodc.jpg'">
+                                            <div class="price-tag"><span class="__amount"><svg version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                        xml:space="preserve">
+                                                        <use xlink:href="/icons/common-icons.svg#icon-rs"></use>
+                                                    </svg>60</span><span class="__price-tag all-excl-combos"></span>
+                                            </div>
+                                        </div>
+                                        <div class="description" id="desc_1020004-2957">
+                                            <div class="foodtype-indicator"><svg version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
+                                                    viewBox="0 0 26 24" fill="none">&gt ;<use
+                                                        xlink:href="/icons/fnb-icons.svg#icon-veg"></use></svg></div>
+                                            <div class="item-desc">
+                                                <h2><span class="_veg"></span><span
+                                                        class="item-sname detail-sname">Cheese
+                                                        Popcorn</span></h2>
+                                                <p onclick="showFCDetails('1020004-2957')" class="tr-desc">Cheese
+                                                    Popcorn</p>
+                                                <p onclick="showFCDetails('1020004-2957')" style="display:none;"
+                                                    class="detail-desc">Cheese Popcorn</p>
+                                            </div>
+                                            <div class="qty"><span id="add-btn_1020004-2957" class="add-btn"
+                                                    onclick="fnAddFC('ADD','1020004-2957')">ADD</span><span
+                                                    id="rm_1020004-2957" style="display:none;" class="icon-minus"
+                                                    onclick="fnAddFC('REMOVE', '1020004-2957')">
+                                                    <div class="minus-icon"></div>
+                                                </span><span id="FD_1020004-2957" class="__holder"></span><span
+                                                    id="add_1020004-2957" style="display:none;" class="icon-minus"
+                                                    onclick="fnAddFC('ADD','1020004-2957')">
+                                                    <div class="plus-icon"></div>
+                                                </span></div>
+                                        </div>
+                                    </div>
+                                </aside>
+                                <aside class="fnb-body" data-category="PO">
+                                    <div class="fnb-div">
+                                        <div class="img"><img
+                                                src="//in.bmscdn.com/bmsin/v2/Web-v2/d-combo/1020004_17082018144718.jpg"
+                                                onerror="this.src='//in.bmscdn.com/bmsin/callouts/foodc.jpg'">
+                                            <div class="price-tag"><span class="__amount"><svg version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                        xml:space="preserve">
+                                                        <use xlink:href="/icons/common-icons.svg#icon-rs"></use>
+                                                    </svg>60</span><span class="__price-tag all-excl-combos"></span>
+                                            </div>
+                                        </div>
+                                        <div class="description" id="desc_1020004-2956">
+                                            <div class="foodtype-indicator"><svg version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
+                                                    viewBox="0 0 26 24" fill="none">&gt;<use
+                                                        xlink:href="/icons/fnb-icons.svg#icon-veg"></use></svg></div>
+                                            <div class="item-desc">
+                                                <h2><span class="_veg"></span><span
+                                                        class="item-sname detail-sname">Regular
+                                                        Popcorn</span></h2>
+                                                <p onclick="showFCDetails('1020004-2956')" class="tr-desc">Regular
+                                                    Popcorn</p>
+                                                <p onclick="showFCDetails('1020004-2956')" style="display:none;"
+                                                    class="detail-desc">Regular Popcorn</p>
+                                            </div>
+                                            <div class="qty"><span id="add-btn_1020004-2956" class="add-btn"
+                                                    onclick="fnAddFC('ADD','1020004-2956')">ADD</span><span
+                                                    id="rm_1020004-2956" style="display:none;" class="icon-minus"
+                                                    onclick="fnAddFC('REMOVE', '1020004-2956')">
+                                                    <div class="minus-icon"></div>
+                                                </span><span id="FD_1020004-2956" class="__holder"></span><span
+                                                    id="add_1020004-2956" style="display:none;" class="icon-minus"
+                                                    onclick="fnAddFC('ADD','1020004-2956')">
+                                                    <div class="plus-icon"></div>
+                                                </span></div>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+
+                            <p class="__note" id="text-none" style="display:none;">Please collect your food from the
+                                counter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Order summary section -->
+
+            <div class="bkf-order-summary-container" style="margin-top: -85px;">
+                <div class="order-summary-section">
+                    <div class="order-summarywrap">
+                        <div class="order-summary">
+                            <span class="__circle-left"></span>
+                            <span class="__circle-right"></span>
+                            <h2>Booking Summary</h2>
+
+                            <ul class="__details">
+                                <li>
+                                    <div>
+                                        <p id="naGstBrkp">
+                                            <span class="__up-icon up-icon-tax" onclick="showTaxBreakup('show', this)"
+                                                style="display: none;">
+                                                <svg width="100%" height="100%" version="1.1"
+                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
+                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
+                                                    xml:space="preserve">
+                                                    <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="__down-icon down-icon-tax"
+                                                onclick="showTaxBreakup('hide', this)" style="display:none;">
+                                                <svg width="100%" height="100%" version="1.1"
+                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
+                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
+                                                    xml:space="preserve">
+                                                    <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
+                                                </svg>
+                                            </span>
+                                        </p>
+                                        <span class="__ticket-cat">
+                                            <span id="TickCat" class="__seat-type">PLATINUM - D7, D8<span
+                                                    id="TickQuantity"> ( 2
+                                                    Tickets )</span></span>
+                                                    
+                                            <br><span id="audiInfo">SCREEN 2</span>
+                                        </span>
+                                    </div>
+                                    <div><span id="seatPri" class="__seat-price">Rs. 300.00</span></div>
+                                    <div class="__breakdown __gstchen" id="HandlingGstChenFeeBreakdown"
+                                        style="display: none;">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p>
+                                            <span class="__up-icon up-icon-tax" onclick="showTaxBreakup('show', this)">
+                                                <svg width="100%" height="100%" version="1.1"
+                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
+                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
+                                                    xml:space="preserve">
+                                                    <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="__down-icon down-icon-tax"
+                                                onclick="showTaxBreakup('hide', this)" style="display:none;">
+                                                <svg width="100%" height="100%" version="1.1"
+                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
+                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
+                                                    xml:space="preserve">
+                                                    <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
+                                                </svg>
+                                            </span>
+                                            <span class="txt_brkp">Convenience fees</span>
+                                        </p>
+                                    </div>
+                                    <div><span id="bkfee">Rs.47.20</span></div>
+                                    <div class="__breakdown" id="intHandlingFeeBreakdown">
+                                        <ul>
+                                            <li><span>Base Amount</span><span>Rs.40.00</span></li>
+                                            <li><span>Integrated GST (IGST) @ 18%</span><span>Rs.7.20</span></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li id="dOtherCharges" style="display:none;"></li>
+                                <li class="_total-section">
+                                    <div>
+                                        Sub total
+                                    </div>
+                                    <div><span id="subTT" class="__sub-total">Rs.347.20</span></div>
+                                </li>
+                                <li id="fdd" class="__fnb-section" style="display:none;">
+                                    <div>
+                                        <span class="__up-icon up-icon-fandb" onclick="showBeverages();"
+                                            style="display:none;">
+                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
+                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                xml:space="preserve">
+                                                <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="__down-icon down-icon-fandb" onclick="showBeverages();">
+                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
+                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                xml:space="preserve">
+                                                <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
+                                            </svg>
+                                        </span>
+                                        Food &amp; Beverage
+                                        <!-- <a id="fdAll" onClick="showBeverages();" href ="javascript:;">Hide All</a> -->
+                                        <span class="__trash-icon" onclick="fnRemoveAllItems();">
+                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
+                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                xml:space="preserve">
+                                                <use xlink:href="/icons/fnb-icons.svg#icon-Remove"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div id="fnbTotal"></div>
+                                    <p id="fnbDiscount" style="display:none;" class="__discount-text">You've got Rs.
+                                        <span></span>
+                                    </p>
+                                </li>
+
+
+                                <!-- <li id ="dOtherCharges" style="display:none;"></li> -->
+                                <li id="OffDis" style="display:none;"></li>
+                                <li id="basDtl" class="bas-card">
+                                    <div class="__bas-logo">
+                                        <div class="__bas-checkbox">
+                                            <form class="struktur">
+                                                <div id="bascheckboxprocessing" class="_bas-processing"
+                                                    style="min-width: 0% !important;">
+                                                    <div class="mini-loader" style="display: none;">
+                                                        <div class="mini">
+                                                        </div>
+                                                    </div>
+                                                    <div class="bas-container">
+                                                        <div class="__tick bas-icon">
+                                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                                                y="0px" viewBox="0 0 100 100"
+                                                                enable-background="new 0 0 100 100"
+                                                                xml:space="preserve">
+                                                                <use xlink:href="/icons/bookasmile-icons.svg#icon-bas">
+                                                                </use>
+                                                            </svg>
+                                                        </div>
+                                                        <label class="__bas-logo __bas-content">
+                                                            <span id="basText" class="__bas-content-text"
+                                                                style="color: rgb(0, 0, 0);">Contribution to
+                                                                MakeASmile</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="_total-section amt-payable">
+                            <div>
+                                Amount Payable
+                            </div>
+                            <div><span id="ttPrice" class="__amount-payable">Rs. 349.20</span></div>
+                        </div>
+                    </div>
+
+
+                    <div class="disclaimer-container">
+                        <div style="width: 13px; height: 13px;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
+                                enable-background="new 0 0 100 100" xml:space="preserve">
+                                <use xlink:href="/icons/common-icons.svg#icon-info"></use>
+                            </svg>
+                        </div>
+                        <div
+                            style="font-family: Roboto; font-size: 12px; line-height: 16px; align-items: center; letter-spacing: 0.2px; color: #404040; margin-left: 5px;">
+                            By proceeding, I express my consent to complete this transaction.
+                        </div>
+                    </div>
+                    <div class="btn-bar fnb-proceed-btn">
+                        <a id="btnseatdisab" href="javascript:;" class="btn _disable" style="display: none;">Please
+                            wait...</a>
+                        <div id="prePay" class="bar-btn _primary _full-width __fnb-btn" onclick="fnPrePay();"
+                            href="javascript:;" style="display: flex;"><span class="__totalinbtn">TOTAL: <span
+                                    id="PayTotal">Rs. 349.20</span></span>Proceed</div>
+                        <a id="payLat" class="btn _cuatro" style="display:none;" onclick="fnBookTrans();"
+                            href="javascript:;">Confirm Reservation</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<script src="/js/user_helper/user_booking_helper.js"></script>
