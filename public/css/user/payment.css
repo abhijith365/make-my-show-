@@ -1,0 +1,290 @@
+section ._fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+
+.payments {
+    color: #969696;
+    background: #f2f2f2;
+}
+
+.payments .payment-container {
+    padding: 12px 10px;
+    zoom: 1;
+}
+
+.wrapper,
+.wrapper-main {
+    min-width: 320px;
+    max-width: 466px;
+    margin: 0px auto;
+}
+
+.payments .payment-container .order-info {
+    float: right;
+    min-height: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+}
+
+.payments .payment-container .order-info .order-summary {
+    position: relative;
+    padding: 27px 0px 0px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(223 227 231) 0px 0px 0px 1px inset;
+}
+
+.payments .payment-container .order-info .order-summary h2 {
+    position: relative;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 3px;
+    padding: 0px 25px;
+    color: rgb(14, 20, 34);
+}
+
+ul {
+    list-style: none;
+}
+
+.payments .payment-container .order-info .order-summary .__details li.event {
+    position: relative;
+    padding: 10px 25px;
+    border-bottom: 1px dashed rgb(204, 204, 204);
+}
+
+.payments .payment-container .order-info .order-summary .__details li {
+    padding: 15px 25px 0px;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+    display: inline-block;
+    zoom: 1;
+    width: 100%;
+    color: rgb(102, 102, 102);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div:first-child {
+    float: left;
+    width: 75%;
+}
+
+.payments .payment-container .order-info .order-summary .__details li h3 {
+    font-size: 16px;
+    color: rgb(14, 20, 34);
+    padding-bottom: 6px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li address {
+    font-size: 12px;
+    font-style: inherit;
+    padding-bottom: 0px;
+}
+
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__date {
+    font-size: 14px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__no-of-tickets {
+    text-align: center;
+    display: inherit;
+    position: absolute;
+    top: 0px;
+    right: 25px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__no-of-tickets b {
+    font-size: 24px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__no-of-tickets b {
+    font-size: 24px;
+}
+
+
+.payments .payment-container .order-info .order-summary .__details li._sub-total-section {
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li {
+    padding: 15px 25px 0px;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+    display: inline-block;
+    zoom: 1;
+    width: 100%;
+    color: rgb(102, 102, 102);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div:first-child {
+    float: left;
+    width: 75%;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__sub-total {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__sub-total {
+    font-size: 16px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li {
+    padding: 15px 25px 0px;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+    display: inline-block;
+    zoom: 1;
+    width: 100%;
+    color: rgb(102, 102, 102);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    font-size: 12px;
+    color: rgb(31, 37, 51);
+}
+
+.payments .payment-container .order-info .order-summary .__details li._total-section {
+    position: relative;
+    border-width: 0px 1px 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: rgb(223, 227, 231);
+    border-bottom-color: rgb(223, 227, 231);
+    border-left-color: rgb(223, 227, 231);
+    border-image: initial;
+    border-top-style: initial;
+    border-top-color: initial;
+    padding: 15px 25px;
+    background-color: rgb(255, 252, 220);
+    margin-top: 10px;
+    top: 3px;
+}
+
+.payments .payment-container .order-info .order-summary .__details li {
+    padding: 15px 25px 0px;
+    font-size: 11px;
+    text-align: left;
+    line-height: 18px;
+    display: inline-block;
+    zoom: 1;
+    width: 100%;
+    color: rgb(102, 102, 102);
+}
+
+.payments .payment-container .order-info .order-summary .__details li._total-section>div.block:first-child {
+    width: 100%;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div:first-child {
+    float: left;
+    /* width: 75%; */
+}
+
+.payments .payment-container .order-info .order-summary .__details li._total-section>div.block>div:first-child {
+    width: auto;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div:first-child {
+    float: left;
+    /* width: 75%; */
+}
+
+.payments .payment-container .order-info .order-summary .__details li div {
+    float: right;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span.__amount-payble {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.payments .payment-container .order-info .order-summary .__details li div span {
+    /* font-size: 12px; */
+    color: rgb(31, 37, 51);
+}
+/* button */
+.bar-btn._primary {
+    background: #f84464;
+    color: #fff !important;
+}
+
+.bar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 16%);
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}

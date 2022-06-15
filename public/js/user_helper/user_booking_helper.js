@@ -1,10 +1,15 @@
-
 //seat layout helper
+var orderId;
+var array = [];
+var arrData=[];
+var totalSeats=0;
+var totalSeatNames=0;
 $(document).ready(function () {
-    let arr = [];
+    var arr = [];
+
+
     $('.seatI a').on('click', function (e) {
         e.preventDefault();
-
         //checking for not selecting __blocked class // limiting 10 seats
         if ($(this).hasClass('_available') || $(this).hasClass('_selected')) {
             if ($('._selected').length < 10) {
@@ -36,6 +41,8 @@ $(document).ready(function () {
         }
     })
 
+
+
     //entering ticket confirm section and food section
     $('#btmcntbook').on('click', (e) => {
         e.preventDefault();
@@ -57,18 +64,19 @@ $(document).ready(function () {
                 }, {});
             };
             filteredArray = groupBy(arr, 'cate')
-            let zz = Object.entries(filteredArray)
+            let objectArray = Object.entries(filteredArray)
+            array=objectArray;
 
             let seat_details = ""
             let price = 0;
 
-            zz.forEach((val, inx) => {
+            objectArray.forEach((val, inx) => {
                 val[1].forEach((aVal, aInx) => {
                     seat_details += aVal.seatDetail + " "
                     price += aVal.price
                 })
             })
-            $(".__ticket-cat").append($('<span id="TickCat" class="seat-type" >' + zz[0][0] + ' -  &nbsp;' + seat_details + '<span id="TickQuantity">( ' + `${seat_details.split(" ").length - 1}` + 'Tickets )</span >' + '<br><span id="audiInfo">SCREEN</span>'))
+            $(".__ticket-cat").append($('<span id="TickCat" class="seat-type" >' + objectArray[0][0] + ' -  &nbsp;' + seat_details + '<span id="TickQuantity">( ' + `${seat_details.split(" ").length - 1}` + 'Tickets )</span >' + '<br><span id="audiInfo"></span>'))
             // $("#TickQuantity").text()
 
             $("#seatPri").append(" Rs.  " + price + " .00")
@@ -77,47 +85,57 @@ $(document).ready(function () {
             $("#ttPrice").append(" Rs.  " + amt)
             $("#PayTotal").append(" Rs.  " + amt)
 
-            let seatPrice = arr.map((v, i) => {
-                price += parseInt(v.price);
-            })
-
+            arrData = JSON.parse(arrData)
+       ;
 
         })
 
     })
+
+
+
     //heading section
-    //parsing data 
     let data_from_seats = JSON.parse(data);
+    console.log("arrData=====>",typeof(arrData),arrData)
+    console.log("data_from_seats=====>", typeof (data_from_seats), data_from_seats)
+   
+    
     //header 
     //add movie name 
     let movieName = `${data_from_seats[0].movie[0].movieName}`;
     let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
+    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
+    let language = `${data_from_seats[0].movie[0].language}`;
+    let screen = `${data_from_seats[0].screen[0].screenName}`
     let city = `${data_from_seats[0].theatre[0].city}`;
     let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
     let time = `${date.split("T")[1]}`;
+    let full_date = `${new Date(date)}`;
+    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
 
     $('#strEvtName').append(`${movieName}`)
     $("#strVenName").append(`${theatreName} : ${city} `)
+    $('#audiInfo').append(`${screen}`)
     // 'Monday,Jun 13, 2022, 03:15 PM'
     let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
     $("#strDate").append(d_time)
 
-    console.log(data_from_seats)
+
+   let m = `
+        <div>
+            <h3>${movieName} (U/A)</h3>
+            <address>${language}, 2D</address>
+            <address>${theatreName}: ${BuildingName}, ${city} (${theatreName})</address>
+            <address>M-Ticket</address><span>GOLD - E7, E8</span><br>
+            <span class="__date">${full_date.split(" ").slice(0,4)}<br>
+          ${moment(time, ["HH.mm"]).format("hh:mm A")}</span>
+        </div>
+        <div><span class="__no-of-tickets"><b>${totalSeats}</b><br>Tickets</span></div> 
+    `
+    
 
     //adding foods
     let elm = ""
-
-    // createdAt: 1655126845454
-    // foodName: "Popcorn Cone Cheese "
-    // food_qty: "120gms"
-    // food_uid: "0111ed"
-    // image: { image_url: '2022-06-13T13:27:25.449Zlarge-small-popcorn-boxes-ticket-260nw-529856704.jpg' }
-    // price: "120"
-    // theatreId: "629087fb96e2a9f4bacc1a80"
-    // theatreOwn: "627ac636e50c76c3190fbb0f"
-    // veg: "false"
-    // _id: "62a73b3d40994be72d827e00"
-
 
     data_from_seats[0].foods.forEach((val, ind) => {
         elm +=
@@ -164,7 +182,118 @@ $(document).ready(function () {
 
 
 
+    //payment first step
+    
+    $("#prePay").on("click", (e) => {
+        
+        let price = 0;
+
+        array.forEach((val, inx) => {
+            val[1].forEach((aVal, aInx) => {
+                price += aVal.price
+            })
+        })
+        var settings = {
+            "url": "/auth/api/payment",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "amount": `${Math.floor((parseInt(price) + 47.20) * 100) }`
+            }),
+        };
+        let spinner = `<div class="text-center mt-5">
+                            <div class="spinner-border mt-5" role="status">
+                                <span class="sr-only mt-5">Loading...</span>
+                            </div>
+                        </div>`
+
+        
+        $('body').html(spinner)
+        //creates new orderId everytime
+        $.ajax(settings).done(function (response) {
+            
+            orderId = response.orderId;
+            // console.log(response);
+            
+            $('body').html(response.html);
+            $('#orderId').append(`<div id="orderId" style="display:none;" data-orderId="${orderId}"></div>`)
+            $('.event').append(m)
+            console.log(seat_details)
+        })
+    });
 
 
+    $('#Pay_now').click((e) => {
+  
+        e.preventDefault();
+
+        let price = 0;
+        array.forEach((val, inx) => {
+            val[1].forEach((aVal, aInx) => {
+                price += aVal.price
+            })
+        })
+    
+        var options = {
+            "key": "rzp_test_RI0cuiLHb592oX",
+            "amount": `${Math.floor((parseInt(price) + 47.20) * 100)}`,
+            "currency": "INR",
+            "name": "Make My Show",
+            "description": "Pay & Checkout",
+            "order_id": $('#orderId').attr("data-orderId"),
+            "handler": function (response) {
+                // console.log(response);
+                // alert(response.razorpay_payment_id);
+                // alert(response.razorpay_order_id);
+                // alert(response.razorpay_signature)
+                var settings = {
+                    
+                    "url": "/auth/api/payment/verify",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({ response }),
+                }
+                
+                $.ajax(settings).done(function (response) {
+
+                    console.log(response)
+
+                });
+
+            },
+            "prefill": {
+                //Here we are prefilling random contact
+                "contact": "8606817157",
+                //name and email id, so while checkout
+                "name": "Abhijith v",
+                "email": "abhijith@gmail.com"
+            },
+            "theme": {
+                "color": "#f84464"
+            }
+        };
+
+        //error handling
+        var razorpayObject = new Razorpay(options);
+        razorpayObject.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+        razorpayObject.open();
+    })
 })
+
+
+
 

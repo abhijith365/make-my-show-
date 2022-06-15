@@ -27,7 +27,6 @@ route.get('/allmovies', async (req, res) => {
 
 
             res.render('user/home/allMovies', {
-                layout: './layout/layout.ejs',
                 user,
                 data: uniqueArray
             })
@@ -39,15 +38,14 @@ route.get('/allmovies', async (req, res) => {
 
 })
 // for single movie page 
-route.get('/movie/:id', ensureAuth, async (req, res) => {
+route.post('/movie/', ensureAuth, async (req, res) => {
     try {
-        let id = req.params.id;
+        let id = req.body.id;
         let user = req.user || req.session.phone;
         let show = await db.singleShow(id).then(result => result).catch(err => err);
 
         if (show) {
             res.render('user/home/movie', {
-                layout: './layout/layout.ejs',
                 user,
                 movie: show
             })
@@ -61,9 +59,10 @@ route.get('/movie/:id', ensureAuth, async (req, res) => {
     }
 })
 // @POST for ajax
-//shoing movie avialble theatres 
+//showing movie avialble theatres 
 route.post('/booking/:id', ensureAuth, async (req, res) => {
     try {
+        // console.log(req.body)
         let id = req.params.id;
         let date = req.query.dt;
         date = date.split('T')[0].toString()
@@ -72,15 +71,62 @@ route.post('/booking/:id', ensureAuth, async (req, res) => {
 
         let user = req.user || req.session.phone;
         let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
-
-
+        
         if (data) {
-            res.json(data)
+            res.json({data,obj})
         } else throw new error;
     } catch (error) {
         console.log(error);
         res.render('error/500');
     }
+})
+
+
+//single page for upcoming movie
+route.get('/upcomingMovie/:id', async (req, res) => {
+    try {
+        let id = req.params.id;
+        let user = req.user || req.session.phone;
+        let show = await db.singleShow(id).then(result => result).catch(err => err);
+
+        if (show) {
+            res.render('user/home/upcomingMove', {
+                user,
+                movie: show
+            })
+        } else
+            throw new error;
+
+
+    } catch (error) {
+        console.log(error);
+        res.render('error/500');
+    }
+})
+// view all movies for upcoming movies
+route.get('/upcomingMovieAll', async (req, res) => {
+    try {
+        let data = await db.upcomingMovies().then(re => re).catch(err => err);
+        let user = req.user || req.session.phone;
+
+        if (data) {
+            // filtering data removing duplicate data
+            let uniqueArray = data.filter((value, index, self) =>
+                index === self.findIndex((t) => (
+                    t.movie_uid === value.movie_uid
+                ))
+            )
+
+            res.render('user/home/upcomingAllMovies', {
+                user,
+                data: uniqueArray
+            })
+        } else throw new error;
+    } catch (error) {
+        console.log(error);
+        res.render('error/500');
+    }
+
 })
 
 // showing movie avialble theatres
@@ -95,11 +141,8 @@ route.get('/booking/:id', ensureAuth, async (req, res) => {
         let user = req.user || req.session.phone;
         let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
 
-
-
         if (data) {
             res.render('user/home/booking', {
-                layout: './layout/layout.ejs',
                 user,
                 data,
                 date,
@@ -127,7 +170,6 @@ route.post('/booking/:id', ensureAuth, async (req, res) => {
         if (data) {
             res.render('user/home/running_theatre', { data },
                 function (err, html) {
-                    console.log(html)
                     res.send(html);
                 })
         } else throw new error;
@@ -136,56 +178,30 @@ route.post('/booking/:id', ensureAuth, async (req, res) => {
         res.render('error/500');
     }
 })
-//single page for upcoming movie
-route.get('/upcomingMovie/:id', async (req, res) => {
+
+route.post('/booking/',ensureAuth,async(req,res)=>{
     try {
-        let id = req.params.id;
-        let user = req.user || req.session.phone;
-        let show = await db.singleShow(id).then(result => result).catch(err => err);
+        let id = req.body.Id;
+        let date = req.body.date;
+        date = date.split('T')[0].toString()
 
-        if (show) {
-            res.render('user/home/upcomingMove', {
-                layout: './layout/layout.ejs',
-                user,
-                movie: show
-            })
-        } else
-            throw new error;
-
-
-    } catch (error) {
-        console.log(error);
-        res.render('error/500');
-    }
-})
-// view all movies for upcoming movies
-route.get('/upcomingMovieAll', async (req, res) => {
-    try {
-        let data = await db.upcomingMovies().then(re => re).catch(err => err);
+        let obj = { id, date }
 
         let user = req.user || req.session.phone;
-
+        let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
 
         if (data) {
-            // filtering data removing duplicate data
-            let uniqueArray = data.filter((value, index, self) =>
-                index === self.findIndex((t) => (
-                    t.movie_uid === value.movie_uid
-                ))
-            )
-
-
-            res.render('user/home/upcomingAllMovies', {
-                layout: './layout/layout.ejs',
+            res.render('user/home/booking', {
                 user,
-                data: uniqueArray
+                data,
+                date,
+                moment
             })
         } else throw new error;
     } catch (error) {
         console.log(error);
         res.render('error/500');
     }
-
 })
 
 //for seat section
@@ -202,7 +218,6 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
 
         if (data) {
             res.render('user/home/seat_layout', {
-                layout: './layout/layout.ejs',
                 user,
                 data,
                 moment
@@ -223,10 +238,7 @@ route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
             date: `${req.body.date}`
         }
 
-
         let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
-
-        console.log(data)
         if (data) {
             res.render('user/home/running_theatre.ejs', { data },
                 function (err, html) {
@@ -241,8 +253,10 @@ route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
 
 })
 
-route.post('/payment_one',ensureAuth, async (req, res) => {
-    res.render('user/home/payment_one.ejs', { users: "data", moment }, function (err, html) {
+route.post('/payment_one', ensureAuth, async (req, res) => {
+
+    req.session.order_data = req.body;
+    res.render('user/home/payment_one.ejs', { data: req.body, moment, }, function (err, html) {
         res.send(html);
     });
 })

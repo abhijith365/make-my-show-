@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="/css/user/booking.css">
-
 <section class="bkf-layout" id="seat-layout" style="display: block;">
     <div class="container">
         <header class="bkf-header">
@@ -84,54 +83,18 @@
                                 <li>
                                     <div>
                                         <p id="naGstBrkp">
-                                            <span class="__up-icon up-icon-tax" onclick="showTaxBreakup('show', this)"
-                                                style="display: none;">
-                                                <svg width="100%" height="100%" version="1.1"
-                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
-                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
-                                                </svg>
-                                            </span>
-                                            <span class="__down-icon down-icon-tax"
-                                                onclick="showTaxBreakup('hide', this)" style="display:none;">
-                                                <svg width="100%" height="100%" version="1.1"
-                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
-                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
-                                                </svg>
-                                            </span>
+                                            
                                         </p>
                                         <span class="__ticket-cat">
 
                                         </span>
                                     </div>
                                     <div><span id="seatPri" class="__seat-price"></span></div>
-                                    <div class="__breakdown __gstchen" id="HandlingGstChenFeeBreakdown"
-                                        style="display: none;">
-                                    </div>
+                                    
                                 </li>
                                 <li>
                                     <div>
                                         <p>
-                                            <span class="__up-icon up-icon-tax" onclick="showTaxBreakup('show', this)">
-                                                <svg width="100%" height="100%" version="1.1"
-                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
-                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
-                                                </svg>
-                                            </span>
-                                            <span class="__down-icon down-icon-tax"
-                                                onclick="showTaxBreakup('hide', this)" style="display:none;">
-                                                <svg width="100%" height="100%" version="1.1"
-                                                    xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink"
-                                                    x="0px" y="0px" enable-background="new 0 0 100 100"
-                                                    xml:space="preserve">
-                                                    <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
-                                                </svg>
-                                            </span>
                                             <span class="txt_brkp">Convenience fees</span>
                                         </p>
                                     </div>
@@ -154,30 +117,19 @@
                                     <div>
                                         <span class="__up-icon up-icon-fandb" onclick="showBeverages();"
                                             style="display:none;">
-                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
-                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                xml:space="preserve">
+                                            
                                                 <use xlink:href="/icons/fnb-icons.svg#icon-downwards"></use>
-                                            </svg>
+                                            
                                         </span>
                                         <span class="__down-icon down-icon-fandb" onclick="showBeverages();">
-                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
-                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                xml:space="preserve">
+                                            
                                                 <use xlink:href="/icons/fnb-icons.svg#icon-dropdown"></use>
-                                            </svg>
+                                            
                                         </span>
                                         Food &amp; Beverage
                                         <!-- <a id="fdAll" onClick="showBeverages();" href ="javascript:;">Hide All</a> -->
-                                        <span class="__trash-icon" onclick="fnRemoveAllItems();">
-                                            <svg version="1.1" xmlns="//www.w3.org/2000/svg"
-                                                xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                xml:space="preserve">
-                                                <use xlink:href="/icons/fnb-icons.svg#icon-Remove"></use>
-                                            </svg>
+                                        <span class="__trash-icon" ">
+                                           
                                         </span>
                                     </div>
                                     <div id="fnbTotal"></div>
@@ -220,9 +172,6 @@
                                             </form>
                                         </div>
                                     </div>
-
-
-
                                 </li>
                             </ul>
 
@@ -252,11 +201,11 @@
                     <div class="btn-bar fnb-proceed-btn">
                         <a id="btnseatdisab" href="javascript:;" class="btn _disable" style="display: none;">Please
                             wait...</a>
-                        <div id="prePay" class="bar-btn _primary _full-width __fnb-btn" onclick="fnPrePay();"
-                            href="javascript:;" style="display: flex;"><span class="__totalinbtn">TOTAL: <span
-                                    id="PayTotal"></span></span>Proceed</div>
-                        <a id="payLat" class="btn _cuatro" style="display:none;" onclick="fnBookTrans();"
-                            href="javascript:;">Confirm Reservation</a>
+                        <div id="prePay" class="bar-btn _primary _full-width __fnb-btn" href="#"
+                            style="display: flex;"><span class="__totalinbtn">TOTAL:
+                                 <span id="PayTotal"></span></span>Proceed
+                        </div>
+                        
                     </div>
 
                 </div>
@@ -264,4 +213,13 @@
         </section>
     </div>
 </section>
+<script>
+    arrData=`<%-JSON.stringify(data)%>`
+</script>
 <script src="/js/user_helper/user_booking_helper.js"></script>
+
+<style>
+    body{
+        caret-color: rgba(0,0,0,0);
+    }
+</style>

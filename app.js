@@ -6,6 +6,7 @@ const uuidv4 = require('uuid').v4
 const expressLayout = require('express-ejs-layouts')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const Razorpay = require('razorpay');
 const passport = require('passport')
 const { connectToServer } = require('./config/mongo.config')
 const MongoStore = require('connect-mongo')
@@ -74,6 +75,12 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+// razor pay
+const instance = new Razorpay({
+    key_id: process.env.RAZ__ID,
+    key_secret: process.env.RAZ_SECRET,
+});
 
 
 

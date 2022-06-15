@@ -85,8 +85,10 @@
                     </div>
                     <div class=" sc-qswwm9-8 jayiEd">
                         <div id="page-cta-container" class="sc-11ze7wi-0 jMCuom">
-                            <a href="/home/booking/<%- movie[0]._id %>?&dt=<%-new Date().toISOString() %>">
-                                <button data-phase="postRelease"
+                            <!-- <%-/* movie[0]._id %>?&dt=<%-new Date().toISOString() */%> -->
+                            <a href="">
+                                <button id="movie_sub" data-phase="postRelease" onclick="sendBooking()"
+                                        data-date="<%-new Date().toISOString() %>" data-movieId="<%-movie[0]._id %>"
                                     class="sc-8f9mtj-0 sc-8f9mtj-1 sc-1vmod7e-0 gsJmXR py-1 px-4">
                                     <div class="sc-1vmod7e-2 iBonLL"><span
                                             style="font-weight: 500; font-size: 16px; color: rgb(255, 255, 255);">Book
@@ -120,3 +122,21 @@
 
     <!-- footer -->
     <%- include('../partials/footer.ejs', {user}) %>
+
+
+    <script>
+        function sendBooking(){
+        $.ajax("/home/booking/", {
+                type: 'POST',
+                data: {
+                    Id: $('#movie_sub').attr('data-movieId'),
+                    date: $('#movie_sub').attr('data-date')
+                }
+            }).done((res)=>{
+                var newDoc = document.open("text/html", "replace");
+                newDoc.write(res);
+                newDoc.close();
+               
+            })
+        }
+    </script>

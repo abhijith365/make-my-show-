@@ -24,8 +24,10 @@
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
+    "razorpay": "^2.8.1",
     "twilio": "^3.77.0",
     "underscore": "^1.13.3",
+    "use-spinner": "^0.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

@@ -13,7 +13,8 @@ module.exports = {
                         '$match': {
                             'showByDate.endDate': {
                                 '$gte': new Date()
-                            }
+                            },
+                            
                         }
                     }, {
                         '$lookup': {
@@ -68,7 +69,6 @@ module.exports = {
                         }
                     }
                 }
-
                 , {
                     '$lookup': {
                         'from': 'screens',
@@ -195,7 +195,8 @@ module.exports = {
                         'movie': 1,
                         'theatre': 1,
                         'show': 1,
-                        'foods':1
+                        'screen': 1,
+                        'foods': 1
                     }
                 }
             ]).toArray();
@@ -207,8 +208,51 @@ module.exports = {
             }
         })
 
+    },
+    findAmt: (arr) => {
+        return new Promise(async (res, rej) => {
+
+            let data = await db.getDb().collection(coll.seat).aggregate([
+                {
+                    '$unwind': {
+                        'path': '$show_seats'
+                    }
+                }, {
+                    '$unwind': {
+                        'path': '$show_seats.showByDate.shows'
+                    }
+                }, {
+                    '$unwind': {
+                        'path': '$show_seats.showByDate.shows.showSeats'
+                    }
+                }, {
+                    '$unwind': {
+                        'path': '$show_seats.showByDate.shows.showSeats'
+                    }
+                }, {
+                    '$unwind': {
+                        'path': '$show_seats.showByDate.shows.showSeats.seat_details'
+                    }
+                }, {
+                    '$unwind': {
+                        'path': '$show_seats.showByDate.shows.showSeats.seat_details.values'
+                    }
+                }, {
+                    '$match': {
+                        'show_seats.showByDate.shows.showSeats.seat_details.values._id': {
+                            '$in': arr
+
+                        }
+                    }
+                }
+            ]).toArray()
+
+            if (data) {
+                res(data)
+            } else {
+                res(false)
+            }
+        })
     }
-
-
 
 }
