@@ -50,6 +50,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.set('view engine', 'ejs')
 app.use(expressLayout)
 app.set('layout', './layout/layout.ejs')
+app.set("layout off", false);
 
 // cache handleing
 app.use((req, res, next) => {
