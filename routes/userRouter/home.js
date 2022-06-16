@@ -38,9 +38,9 @@ route.get('/allmovies', async (req, res) => {
 
 })
 // for single movie page 
-route.post('/movie/', ensureAuth, async (req, res) => {
+route.get('/movie/:id', ensureAuth, async (req, res) => {
     try {
-        let id = req.body.id;
+        let id = req.params.id;
         let user = req.user || req.session.phone;
         let show = await db.singleShow(id).then(result => result).catch(err => err);
 
@@ -242,7 +242,6 @@ route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
         if (data) {
             res.render('user/home/running_theatre.ejs', { data },
                 function (err, html) {
-                    console.log(html)
                     res.send(html);
                 })
         } else throw new error
@@ -256,9 +255,7 @@ route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
 route.post('/payment_one', ensureAuth, async (req, res) => {
 
     req.session.order_data = req.body;
-    res.render('user/home/payment_one.ejs', { data: req.body, moment, }, function (err, html) {
-        res.send(html);
-    });
+    res.render('user/home/payment_one', {data: req.body, moment, });
 })
 
 

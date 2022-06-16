@@ -16,8 +16,8 @@
 
 .indian-flag {
     position: absolute;
-    left: -88%;
-    top: 43px;
+    left: -90%;
+    top: 44px;
 }
 
 @-moz-document url-prefix() {
@@ -28,8 +28,8 @@
 
     .indian-flag {
         position: absolute;
-        left: -33%;
-        top: 43px;
+        left: -28%;
+        top: 44px;
     }
 }
 

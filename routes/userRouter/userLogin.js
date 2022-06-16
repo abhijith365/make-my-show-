@@ -56,7 +56,6 @@ route.get('/login', (req, res) => {
 //@route GET /profile
 route.get('/profile', ensureAuth, (req, res) => {
     let user = req.user || req.session.phone;
-    console.log(user)
     res.render('user/profile', {
         layout: './layout/layout.ejs',
         user

@@ -85,10 +85,9 @@
                     </div>
                     <div class=" sc-qswwm9-8 jayiEd">
                         <div id="page-cta-container" class="sc-11ze7wi-0 jMCuom">
-                            <!-- <%-/* movie[0]._id %>?&dt=<%-new Date().toISOString() */%> -->
                             <a href="">
-                                <button id="movie_sub" data-phase="postRelease" onclick="sendBooking()"
-                                        data-date="<%-new Date().toISOString() %>" data-movieId="<%-movie[0]._id %>"
+                                <button id="movie_sub" data-phase="postRelease" 
+                                    data-date="<%-new Date().toISOString() %>" data-movieId="<%-movie[0]._id %>"
                                     class="sc-8f9mtj-0 sc-8f9mtj-1 sc-1vmod7e-0 gsJmXR py-1 px-4">
                                     <div class="sc-1vmod7e-2 iBonLL"><span
                                             style="font-weight: 500; font-size: 16px; color: rgb(255, 255, 255);">Book
@@ -122,21 +121,29 @@
 
     <!-- footer -->
     <%- include('../partials/footer.ejs', {user}) %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-    <script>
-        function sendBooking(){
-        $.ajax("/home/booking/", {
-                type: 'POST',
-                data: {
-                    Id: $('#movie_sub').attr('data-movieId'),
-                    date: $('#movie_sub').attr('data-date')
-                }
-            }).done((res)=>{
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(res);
-                newDoc.close();
-               
+        <script>
+
+            $('#movie_sub').click(function (e) {
+                
+                e.preventDefault()
+
+                $.ajax("/home/booking/", {
+                    type: 'POST',
+                    data: {
+                        Id: $('#movie_sub').attr('data-movieId'),
+                        date: $('#movie_sub').attr('data-date')
+                    }
+                }).done((res) => {
+                    $('body').html(res);
+                    // var newDoc = document.open("text/html", "replace");
+                    // newDoc.write(res);
+                    // newDoc.close();
+
+                })
+
             })
-        }
-    </script>
+
+        </script>

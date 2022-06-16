@@ -132,7 +132,7 @@ router.post('/api/payment',ensureAuth, async (req, res) => {
             };
             instance.orders.create(options, function (err, order) {
 
-                res.render('user/home/payment.ejs', {data: req.session,total:pr,totalseat:status.length ,orderId: order.id }, function (err, html) {
+                res.render('user/home/payment', { data: req.session,total:pr,totalseat:status.length ,orderId: order.id }, function (err, html) {
                     res.send({ html, "orderId": order.id, price: pr });
                 });
 
