@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
     content: "\f054";
     color: rgba(0, 0, 0, 0.678);
     position: absolute;
-    z-index: 8888;
+    z-index: 88;
     font-size: 2rem;
     background: #ffffffb5;
     right: 0;
@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
     border-radius: 50%;
     color: rgba(0, 0, 0, 0.678);
     position: absolute;
-    z-index: 8888;
+    z-index: 88;
     font-size: 2rem;
     background: #ffffffb5;
     left: 0;

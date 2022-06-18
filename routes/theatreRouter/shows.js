@@ -199,9 +199,8 @@ route.post('/', ensureAuth, async (req, res) => {
 route.get('/home', ensureAuth, async (req, res) => {
     try {
         let obj = req.session.theatreOwn._id;
-        let allShows = await db.AllShows(obj).then(e => e).catch(e => e);
+        let allShows = await db.RunningShows(obj).then(e => e).catch(e => e);
 
-        console.log(allShows)
         let all;
         //if show list not empty 
         (!isEmpty(allShows)) ? all = allShows : all = false;
@@ -210,12 +209,45 @@ route.get('/home', ensureAuth, async (req, res) => {
             "layout": "./layout/layout.ejs", arr: all
         })
 
-
     } catch (error) {
         res.render('error/500')
         console.log(error);
     }
 })
+//previouse shows 
+route.post('/previouseShows/',async(req,res)=>{
+    try {
+        let obj = req.session.theatreOwn._id;
+        let allShows = await db.previouseShows(obj).then(e => e).catch(e => e);
+
+        let all;
+        //if show list not empty 
+        (!isEmpty(allShows)) ? all = allShows : all = false;
+
+        res.json(JSON.stringify(all))
+
+    } catch (error) {
+        res.render('error/500')
+        console.log(error);
+    }
+}),
+    //previouse shows 
+    route.post('/runningShows/', async (req, res) => {
+        try {
+            let obj = req.session.theatreOwn._id;
+            let allShows = await db.RunningShows(obj).then(e => e).catch(e => e);
+
+            let all;
+            //if show list not empty 
+            (!isEmpty(allShows)) ? all = allShows : all = false;
+
+            res.json(JSON.stringify(all))
+
+        } catch (error) {
+            res.render('error/500')
+            console.log(error);
+        }
+    })
 // food home page
 route.get('/food/:id', ensureAuth, async (req, res) => {
     try {

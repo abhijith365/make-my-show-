@@ -14,16 +14,30 @@
             </div>
         </div>
         <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
-            <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Shows Dashboard</div>
+            <!-- <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Shows Dashboard
+
+
+            </div> -->
+            <div class="dropdown py-3 text-white d-flex w-100"  style="background-color:rgb(9, 20, 9);">
+                <div class="px-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Running shows &nbsp;&nbsp;
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item running-show" href="#">Running shows </a>
+                        <a class="dropdown-item old-show" href="#">Previoues shows</a>
+                    </div>
+                </div>
+                <div id="showHeader" class="h3" style="margin-left:27% ;">Running Shows</div>
+            </div>
+
             <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
-
-
-
 
 
                 <% if(locals.arr) {%>
 
-                    <div class="row">
+                    <div class="row" id="show_section">
                         <% arr.forEach(arr=> { %>
                             <div class="col-sm-4">
                                 <div class=" card">
@@ -80,3 +94,5 @@
         </div>
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/theatre_helper/ajax_helper.js"></script>

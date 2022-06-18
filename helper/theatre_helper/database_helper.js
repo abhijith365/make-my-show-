@@ -325,13 +325,23 @@ module.exports = {
     }
     ,
     // all shows
-    AllShows: (obj) => {
+    RunningShows: (obj) => {
         return new Promise(async (res, rej) => {
             // find({ theatreOwner: obj }).toArray()
             let data = await db.getDb().collection(coll.show).aggregate(
                 [{
-                    $match: { theatreOwner: ObjectId(obj) }
-                },
+                    $match: {
+                        theatreOwner: ObjectId(obj),
+                        'showByDate.endDate': {
+                            '$gte': new Date()
+                        }
+                    }
+
+                }, {
+                        '$sort': {
+                            'showByDate.startDate': 1
+                        }
+                    },
                 {
                     $lookup: {
                         from: coll.screen,
@@ -371,6 +381,63 @@ module.exports = {
             } else { res(false) }
         })
     },
+    previouseShows :(obj)=>{
+        return new Promise(async(resolve,reject)=>{
+            let data = await db.getDb().collection(coll.show).aggregate(
+                [{
+                    $match: {
+                        theatreOwner: ObjectId(obj),
+                        'showByDate.endDate': {
+                            '$lt': new Date()
+                        }
+                    }
+
+                }, {
+                        '$sort': {
+                            'showByDate.startDate': 1
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: coll.screen,
+                            localField: "screenId",
+                            foreignField: "_id",
+                            as: "screen"
+
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: coll.movie,
+                            localField: "movieId",
+                            foreignField: "_id",
+                            as: "movie"
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: coll.theatre,
+                            localField: "theatreId",
+                            foreignField: "_id",
+                            as: "theatre"
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 1, showUid: 1, showType: 1, showByDate: 1, screen: 1, movie: 1, theatreOwner: 1
+                        }
+                    },
+
+                ]
+            ).toArray()
+
+            if (data) {
+                resolve(data)
+            } else { resolve(false) }
+        })
+       
+    }
+    ,
     // all foods
     AllFoods: (obj) => {
         return new Promise(async (res, rej) => {

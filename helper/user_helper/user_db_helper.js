@@ -28,7 +28,42 @@ module.exports = {
                             'movies': 1,
                             '_id': 0
                         }
-                    },
+                    }, {
+                        '$limit': 10
+                    }
+
+                ]
+            ).toArray();
+            if (data) {
+                resolve(data);
+            } else {
+                resolve(false);
+            }
+        })
+    }, runningMoviesAll: () => {
+        return new Promise(async (resolve, reject) => {
+            let data = await db.getDb().collection(coll.show).aggregate(
+                [
+                    {
+                        '$match': {
+                            'showByDate.endDate': {
+                                '$gte': new Date()
+                            },
+
+                        }
+                    }, {
+                        '$lookup': {
+                            'from': 'movies',
+                            'localField': 'movieId',
+                            'foreignField': '_id',
+                            'as': 'movies'
+                        }
+                    }, {
+                        '$project': {
+                            'movies': 1,
+                            '_id': 0
+                        }
+                    }
 
                 ]
             ).toArray();
@@ -111,6 +146,28 @@ module.exports = {
     },
     //upcoming movie details
     upcomingMovies: () => {
+        return new Promise(async (resolve, reject) => {
+            let data = await db.getDb().collection(coll.movie).aggregate([
+                {
+                    '$match': {
+                        'ReleseDate': {
+                            '$gt': new Date()
+                        }
+                    }
+                }, {
+                    '$limit': 10
+                }
+            ]).toArray()
+            if (data) {
+                resolve(data)
+            } else {
+                resolve(false)
+            }
+        })
+
+    },
+    //upcoming movie details
+    upcomingMoviesAll: () => {
         return new Promise(async (resolve, reject) => {
             let data = await db.getDb().collection(coll.movie).aggregate([
                 {

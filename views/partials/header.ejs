@@ -1,4 +1,4 @@
-<div style="position: fixed;z-index: 99999; width: 100%; ">
+<div style="position: fixed;z-index: 999; width: 100%; ">
     <nav class=" navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep" id="ftco-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="/img/svgexport-36.svg" alt="make my show"
@@ -50,22 +50,365 @@
 
                                 </li>
                                 <li class="nav-item active">
-                                    <a href="index.html" class="nav-link">
+                                    <a href="#" id="headerSideNav" class="nav-link">
                                         <i class="fa fa-bars" style="font-size: 1.5rem;"></i>
                                     </a>
                                 </li>
+                                <li class="nav-item active" id="headerSideNav">
+
+                                    <span class="d-inline-block d-lg-block"><a href="#"
+                                            class="text-black site-menu-toggle js-menu-toggle py-5 active"><span
+                                                class="icon-menu h3 text-white"></span></a></span>
+
+
+                                </li>
 
                 </ul>
+
             </div>
         </div>
     </nav>
 </div>
 <div style="width: 100%;height:3.8em;"></div>
 
+
+<!-- side nav -->
+<div class="super-container d-none" id="sideNav" style="position: absolute;" id="super-container">
+    <div role="main" class="sc-b1h692-2 bSKSgr" style="z-index: 99999">
+        <div class="sc-bdVaJa dMxmvV">
+            <div class="sc-bxivhb lhgycc">
+                <div direction="column" class="sc-iwsKbI sc-hzDEsm hWKcLa">
+                    <!-- <div class="sc-iwsKbI sc-gkFcWv kxIwEB">
+                        <div class="sc-iwsKbI sc-jKmXuR hfQWYZ">
+                            <div class="sc-iwsKbI sc-dREXXX dVTpSa">
+                                <div class="sc-iwsKbI sc-dHmInP cLeMeq">
+                                    <div class="sc-imABML jiKYiv">Hey!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="sc-iwsKbI sc-jGxEUC fMIHoZ">
+                        <div class="sc-iwsKbI sc-jUpvKA hnpmxi"></div>
+                        <div class="sc-iwsKbI sc-iCwjlJ bBdVBf">
+                            <div class="sc-iwsKbI sc-fkyLDJ bLAGIR">Login / Register</div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="sc-fnwBNb iiLYQK"> -->
+                        <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="purchace" id="purchace"><img
+                                src="https://assets-in.bmscdn.com/members/common/icons/purchasehistory.png"
+                                class="sc-gRnDUn gMMdZt">
+                            <div class="sc-cmjSyW bTZsza">
+                                <div class="sc-sdtwF bGPOnl">Purchase History</div>
+                                <div class="sc-iYUSvU hNTLEy">View all your bookings &amp; purchases</div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="sc-fnwBNb iiLYQK"> -->
+                        <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="setting"><img
+                                src="https://assets-in.bmscdn.com/members/common/icons/accountandsettings.png"
+                                class="sc-gRnDUn gMMdZt">
+                            <div class="sc-cmjSyW bTZsza">
+                                <div class="sc-sdtwF bGPOnl">Accounts &amp; Settings</div>
+                                <div class="sc-iYUSvU hNTLEy">Location, Payments, Addresses &amp; More</div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/user_helper/header.js"></script>
+
 <style>
     @media only screen and (max-width: 900px) {
         .input-box {
             display: none;
         }
+    }
+
+    body .super-container {
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+
+    .hnpmxi {
+        display: flex;
+        flex-flow: row nowrap;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+        width: auto;
+        opacity: 1;
+        -moz-box-align: center;
+        align-items: center;
+    }
+
+    .bLAGIR {
+        display: flex;
+        flex-flow: row nowrap;
+        -moz-box-align: stretch;
+        align-items: stretch;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+        width: auto;
+        opacity: 1;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+        text-align: center;
+        color: rgb(248, 68, 100);
+    }
+
+    .bBdVBf {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 0px;
+        opacity: 1;
+        -moz-box-pack: center;
+        justify-content: center;
+        -moz-box-align: center;
+        align-items: center;
+        padding: 0px 8px;
+        width: 147px;
+        height: 36px;
+        border-radius: 8px;
+        border: 1px solid rgb(248, 68, 100);
+        background-color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+    .fMIHoZ {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 0px;
+        opacity: 1;
+        width: 100%;
+        padding: 12px 16px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px 0px;
+        -moz-box-pack: justify;
+        justify-content: space-between;
+        -moz-box-align: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .hfQWYZ {
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 0px;
+        margin: 0px;
+        opacity: 1;
+        -moz-box-pack: justify;
+        justify-content: space-between;
+        -moz-box-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cLeMeq {
+        display: flex;
+        flex-flow: row nowrap;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+        opacity: 1;
+        -moz-box-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dVTpSa {
+        display: flex;
+        flex-flow: column nowrap;
+        -moz-box-align: stretch;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+        opacity: 1;
+        align-items: flex-start;
+        width: auto;
+        max-width: 84%;
+    }
+
+    .jiKYiv {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 25px;
+        color: rgb(255, 255, 255);
+        z-index: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .kxIwEB {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 0px;
+        opacity: 1;
+        -moz-box-align: center;
+        align-items: center;
+        -moz-box-pack: justify;
+        justify-content: space-between;
+        background-color: rgb(46, 49, 71);
+        padding: 10px 16px;
+        width: 100%;
+        min-height: 64px;
+    }
+
+    .bBCejD {
+        display: flex;
+        width: 18px;
+        height: 18px;
+    }
+
+    .iiLYQK {
+        pointer-events: none;
+    }
+
+    .dTCEzS {
+        cursor: pointer;
+    }
+
+    .eYlEfr {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out 0s;
+    }
+
+    .eJGLVM {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hNTLEy {
+        font-size: 12px;
+        line-height: 1.33;
+        color: rgb(102, 102, 102);
+        margin-top: 2px;
+    }
+
+    .bGPOnl {
+        font-size: 14px;
+        line-height: 1.43;
+        color: rgb(51, 51, 51);
+    }
+
+    .bTZsza {
+        -moz-box-flex: 1;
+        flex-grow: 1;
+    }
+
+    .gMMdZt {
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+    }
+
+    .gPINdS {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 0px;
+        opacity: 1;
+        width: 100%;
+        color: rgb(51, 51, 51);
+        cursor: pointer;
+        min-height: 60px;
+        padding: 0px 15px;
+        -moz-box-align: center;
+        align-items: center;
+        text-decoration: none;
+        -moz-box-pack: justify;
+        justify-content: space-between;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+        background-color: rgb(255, 255, 255);
+        border-bottom: medium none;
+    }
+
+    .hTzOSW {
+        width: 100%;
+        display: flex;
+        flex: 1 1 auto;
+        flex-grow: 1;
+        overflow-y: scroll;
+        flex-direction: column;
+        align-items: flex-start;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+    }
+
+    .hWKcLa {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        -moz-box-pack: start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+        opacity: 1;
+        width: 100%;
+        height: 100vh;
+    }
+
+    @media (min-width: 1024px) {
+        .bSKSgr {
+            background: transparent none repeat scroll 0% 0%;
+            min-height: unset;
+            padding-top: 0px;
+        }
+    }
+
+    .bSKSgr {
+        display: flex;
+        flex-direction: column;
+        -moz-box-align: stretch;
+        align-items: stretch;
+        place-content: stretch flex-start;
+        justify-content: flex-start;
+        -moz-box-pack: start;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+        min-height: 100vh;
+        padding-top: 64px;
+    }
+
+    .lhgycc {
+        width: 360px;
+        height: 100vh;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+        box-sizing: border-box;
+        animation: 0.25s ease-out 0s 1 normal none running foBHIm;
+        position: relative;
+        z-index: 1;
+        overflow-y: scroll;
+    }
+
+    .dMxmvV {
+        position: fixed;
+        inset: 0px;
+        display: flex;
+        -moz-box-pack: end;
+        justify-content: flex-end;
+        -moz-box-align: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 449;
+        transition: all 500ms ease-in-out 0s;
+    }
+    .gPINdS:hover{
+        background-color: rgb(218, 207, 207);
+        color: wheat;
+    }
+    #purchace{
+        margin-top:15px;
     }
 </style>

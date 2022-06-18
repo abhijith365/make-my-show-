@@ -1,24 +1,17 @@
 // changing class in theatre selecting section
 //button class changing
 
-
-
 $(document).ready(function () {
-
-    ;
-
-
-
     // for theatre data
     $('.slick-track li a').click(function (e) {
-       
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).parent().siblings().removeClass()
-            $(this).parent().siblings().addClass('date-details  slick-slide')
-            $(this).parent().removeClass()
-            $(this).parent().addClass('date-details _active slick-slide slick-current slick-active')
-        
+
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).parent().siblings().removeClass()
+        $(this).parent().siblings().addClass('date-details  slick-slide')
+        $(this).parent().removeClass()
+        $(this).parent().addClass('date-details _active slick-slide slick-current slick-active')
+
 
         let id = $(this).data('id');
         var date = $(this).data('date');
@@ -128,4 +121,5 @@ $(document).ready(function () {
         })
 
     })
+   
 })

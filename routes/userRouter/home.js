@@ -13,7 +13,7 @@ route.get('/city/:id', ensureAuth, async (req, res) => {
 // GET /allmovie => showing all running  movies
 route.get('/allmovies', async (req, res) => {
     try {
-        let movies_ad_shows = await db.runningMovies().then(re => re).catch(err => err);
+        let movies_ad_shows = await db.runningMoviesAll().then(re => re).catch(err => err);
         let user = req.user || req.session.phone;
 
 
@@ -106,7 +106,7 @@ route.get('/upcomingMovie/:id', async (req, res) => {
 // view all movies for upcoming movies
 route.get('/upcomingMovieAll', async (req, res) => {
     try {
-        let data = await db.upcomingMovies().then(re => re).catch(err => err);
+        let data = await db.upcomingMoviesAll().then(re => re).catch(err => err);
         let user = req.user || req.session.phone;
 
         if (data) {
