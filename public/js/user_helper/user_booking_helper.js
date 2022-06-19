@@ -55,7 +55,7 @@ $(document).ready(function () {
 
         }).done((d) => {
             let m = d.split('<section>')
-            console.log(m)
+
             $('body').html(`
             <link rel="stylesheet" href="/css/user/booking.css">
 <section class="bkf-layout" id="seat-layout" style="display: block;">
@@ -430,7 +430,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
 
             orderId = response.orderId;
-            console.log(response);
+           
             $('body').html(`
             <link rel="stylesheet" href="/css/user/payment.css">
                 <section class="payments">

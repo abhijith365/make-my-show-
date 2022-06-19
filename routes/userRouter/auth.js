@@ -101,7 +101,7 @@ router.post('/otp_val', (req, res) => {
 
 // @desc creating order id
 // @route POST /auth/api/payment
-router.post('/api/payment',ensureAuth, async (req, res) => {
+router.post('/api/payment', ensureAuth, async (req, res) => {
     try {
         let seat_data = req.session.order_data;
         let array = seat_data.map((e) => ObjectId(e.id))
@@ -132,7 +132,7 @@ router.post('/api/payment',ensureAuth, async (req, res) => {
             };
             instance.orders.create(options, function (err, order) {
 
-                res.render('user/home/payment', { data: req.session,total:pr,totalseat:status.length ,orderId: order.id }, function (err, html) {
+                res.render('user/home/payment', { data: req.session, total: pr, totalseat: status.length, orderId: order.id }, function (err, html) {
                     res.send({ html, "orderId": order.id, price: pr });
                 });
 
@@ -141,13 +141,13 @@ router.post('/api/payment',ensureAuth, async (req, res) => {
     } catch (error) {
         console.log(error)
         res.render('error/500');
-    } 
+    }
 })
 
 
 // @desc verifying payment
 // @route POST /auth/api/payment/verify
-router.post("/api/payment/verify",ensureAuth, (req, res) => {
+router.post("/api/payment/verify", ensureAuth, async(req, res) => {
     try {
         let body = req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
 
@@ -158,8 +158,15 @@ router.post("/api/payment/verify",ensureAuth, (req, res) => {
         console.log("sig received ", req.body.response.razorpay_signature);
         console.log("sig generated ", expectedSignature);
         var response = { "signatureIsValid": "false" }
-        if (expectedSignature === req.body.response.razorpay_signature)
+        if (expectedSignature === req.body.response.razorpay_signature) {
+            console.log(req.session)
+            let seat_data = req.session.order_data;
+            let array = seat_data.map((e) => e.id)
+            const ddd = await db.BookSeats(array)
+            console.log(ddd)
             response = { "signatureIsValid": "true" }
+           
+        }
         res.send(response);
     } catch (error) {
         console.log(error)

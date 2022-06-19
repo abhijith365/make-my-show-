@@ -5,7 +5,6 @@ $(document).ready(function () {
     $('.running-show').on('click', (e) => {
         e.preventDefault();
 
-        console.log($(this))
         $('#dropdownMenuButton').html(`Running Shows  &nbsp;&nbsp;`)
         $('#showHeader').html(`Running Shows`)
 
@@ -17,12 +16,13 @@ $(document).ready(function () {
             data: "{}",
             contentType: "application/json; charset=utf-8",
         }).done((res) => {
-            
-            let array = JSON.parse(res)
 
+            let array = JSON.parse(res) 
             let elm = "";
-            array.forEach(arr => {
-                elm += ` <div class="col-sm-4">
+
+            if (array) { 
+                array.forEach(arr => {
+                    elm += ` <div class="col-sm-4">
                                     <div class=" card">
                                         <img class="card-img-top"
                                             src="http://localhost:3000/uploads/${arr.movie[0].images[0].image_url}"
@@ -66,9 +66,12 @@ $(document).ready(function () {
                                     </div>
                                 </div>
             `
-            })
+                })
+            }else{
+                 elm = `<h2 class="px-5 text-center">No shows available</h2>` 
+            }
             $('#show_section').text("")
-            $('#show_section').html(elm)    
+            $('#show_section').html(elm)
         })
     })
 
@@ -83,13 +86,16 @@ $(document).ready(function () {
             "method": "POST",
             data: "{}",
             contentType: "application/json; charset=utf-8",
-        }).done((res) => {
-            // alert(res)
+        }).done((res) => { 
+
             let array = JSON.parse(res)
             let elm = "";
-            array.map(arr => {
-                // console.log(arr)
-                elm += ` <div class="col-sm-4">
+
+            if (array) {
+                let array = JSON.parse(res)
+                array.forEach(arr => {
+                    // console.log(arr)
+                    elm += ` <div class="col-sm-4">
                         <div class=" card">
                             <img class="card-img-top"
                                 src="http://localhost:3000/uploads/${arr.movie[0].images[0].image_url}"
@@ -129,9 +135,12 @@ $(document).ready(function () {
                         </div>
                     </div>
                 `
-            })
+                })
+            }else{
+                elm = `<h2 class="px-5 text-center">No shows available</h2>` 
+            }
             $('#show_section').text("")
-            $('#show_section').html(elm)            
+            $('#show_section').html(elm)
         })
     })
 })

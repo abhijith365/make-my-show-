@@ -14,7 +14,7 @@ module.exports = {
                             'showByDate.endDate': {
                                 '$gte': new Date()
                             },
-                            
+
                         }
                     }, {
                         '$lookup': {
@@ -100,7 +100,10 @@ module.exports = {
                     '$match': {
                         'movieId': new ObjectId(obj.id),
                         'showByDate.endDate': {
-                            '$gt': new Date(date)
+                            '$gte': new Date(date)
+                        },
+                        'showByDate.startDate': {
+                            '$lte': new Date(date)
                         }
                     }
                 }
@@ -310,6 +313,55 @@ module.exports = {
                 res(false)
             }
         })
-    }
+    },
 
+
+    BookSeats: (arr) => {
+        return new Promise(async (res, rej) => {
+            
+            console.log(arr)
+          let  data = await arr.map(async e => {
+                 await db.getDb().collection(coll.seat).aggregate([
+                    {
+                        '$unwind': {
+                            'path': '$show_seats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats.seat_details'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats.seat_details.values'
+                        }
+                    }, {
+                        '$match': {
+                            'show_seats.showByDate.shows.showSeats.seat_details.values._id': ObjectId(e)
+                        }
+                    }, {
+                        $addFields: { "show_seats.showByDate.shows.showSeats.seat_details.values.seat_status": true }
+                    }
+
+                ])
+            })
+            console.log(data)
+            if (data) {
+                res(data)
+            } else {
+                res(false)
+            }
+        })
+    }
 }

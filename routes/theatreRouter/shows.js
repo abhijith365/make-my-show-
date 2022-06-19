@@ -215,7 +215,7 @@ route.get('/home', ensureAuth, async (req, res) => {
     }
 })
 //previouse shows 
-route.post('/previouseShows/',async(req,res)=>{
+route.post('/previouseShows/', ensureAuth, async (req, res) => {
     try {
         let obj = req.session.theatreOwn._id;
         let allShows = await db.previouseShows(obj).then(e => e).catch(e => e);
@@ -232,7 +232,7 @@ route.post('/previouseShows/',async(req,res)=>{
     }
 }),
     //previouse shows 
-    route.post('/runningShows/', async (req, res) => {
+    route.post('/runningShows/', ensureAuth, async (req, res) => {
         try {
             let obj = req.session.theatreOwn._id;
             let allShows = await db.RunningShows(obj).then(e => e).catch(e => e);
