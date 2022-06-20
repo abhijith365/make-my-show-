@@ -8,9 +8,9 @@ const state = {
 module.exports = {
 
     connectToServer: function (callback) {
-        const url = "mongodb://127.0.0.1:27017/";
+        const url = process.env.MONGO_URI
         MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
-            state._db = client.db('make_my_show');
+            state._db = client.db();
             return callback(err);
         });
 

@@ -43,7 +43,6 @@ route.get('/movie/:id', ensureAuth, async (req, res) => {
         let id = req.params.id;
         let user = req.user || req.session.phone;
         let show = await db.singleShow(id).then(result => result).catch(err => err);
-        console.log(show)
         if (show) {
             res.render('user/home/movie', {
                 user,

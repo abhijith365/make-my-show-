@@ -4,7 +4,6 @@
 $(document).ready(function () {
     $('.running-show').on('click', (e) => {
         e.preventDefault();
-
         $('#dropdownMenuButton').html(`Running Shows  &nbsp;&nbsp;`)
         $('#showHeader').html(`Running Shows`)
 
@@ -19,7 +18,7 @@ $(document).ready(function () {
 
             let array = JSON.parse(res) 
             let elm = "";
-
+               
             if (array) { 
                 array.forEach(arr => {
                     elm += ` <div class="col-sm-4">
