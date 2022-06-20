@@ -319,9 +319,52 @@ module.exports = {
     BookSeats: (obj) => {
         return new Promise(async (res, rej) => {
             // console.log(obj, typeof (obj))
-            console.log(obj)
+            let data = await db.getDb().collection(coll.seat).aggregate(
+                [
+                    {
+                        '$unwind': {
+                            'path': '$show_seats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats.seat_details'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$show_seats.showByDate.shows.showSeats.seat_details.values'
+                        }
+                    }, {
+                        '$match': {
+                            'show_seats.showByDate.shows.showSeats.seat_details.values._id': {
+                                '$in': obj
 
-            let data = await db.getDb().collection(coll.seat).updateOne({ 'show_seats.showByDate.shows.showSeats.seat_details.values._id': ObjectId('62b05591f2487a8a7e2f2d57') }, { $set: { 'show_seats.showByDate.shows.showSeats.seat_details.values.seat_status': true } })
+                            }
+                        }
+                    }, {
+                        '$addFields': {
+
+                            'show_seats.showByDate.shows.showSeats.seat_details.values.seat_status': true
+                        }
+
+                    },
+                    {
+                        $merge: 'seats'
+                    }
+
+                ]
+            ).toArray()
 
             console.log(data)
 

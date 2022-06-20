@@ -149,29 +149,11 @@ route.post('/', ensureAuth, async (req, res) => {
                                 show_time: dateTime
                             })
                         }
+                        dailyShow.showSeats = showSeats;
 
                     }
-                    // every show in one day
-                    //destructing data
-                    function groupByArray(xs, key) {
-                        return xs.reduce(function (rv, x) {
-                            let v = key instanceof Function ? key(x) : x[key];
-                            let el = rv.find((r) => r && r.key === v);
-                            if (el) { el.values.push(x); }
-                            else { rv.push({ key: v, values: [x] },); }
-                            return rv;
-                        }, []);
-                    }
-                    let m = showSeats;
-                    let array = [];
-                    z = groupByArray(m, 'seats_category')
-                    for (let i = 0; i < z.length; i++) {
-                        array[i] = [];
-                        array[i].push({ "category": z[i].key, "seat_details": groupByArray(z[i].values, 'tag_name') })
-
-                    }
-                    showSeats = array;
-                    dailyShow.showSeats = showSeats;
+                 
+                   
                     seatDetails.showByDate.shows.push(dailyShow)
                 }
                 show_seats.push(seatDetails);

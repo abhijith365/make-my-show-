@@ -1,7 +1,4 @@
 <link rel="stylesheet" href="/css/user/seat_layout.css">
-<script>
-    let data = `<%-JSON.stringify(data)%>`;
-</script>
 
 <section class="bkf-layout mb-5">
     <div class="container">
@@ -57,7 +54,9 @@
                             <div id="layout" style="width: 1298px;">
                                 <table cellspacing=" 0" cellpadding="0" class="setmain ">
                                     <tbody>
+                                        <% console.log(data) %> 
                                             <% let array=data[0].show_seats.showByDate.shows.showSeats%>
+                                            
                                             <% array.reverse().forEach((e, i)=> { %>
 
 
@@ -202,6 +201,9 @@
         </section>
     </div>
 </section>
+<script>
+    let data = `<%-JSON.stringify(data)%>`;
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/js/user_helper/user_booking_helper.js"></script>

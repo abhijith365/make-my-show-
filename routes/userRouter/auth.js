@@ -161,10 +161,9 @@ router.post("/api/payment/verify", ensureAuth, async(req, res) => {
         if (expectedSignature === req.body.response.razorpay_signature) {
             // console.log(req.session)
             let seat_data = req.session.order_data;
-            // let array = seat_data.map(async(e) => console.log(JSON.stringify(await db.BookSeats( ObjectId(e.id)))))
-            let array = await db.BookSeats(ObjectId(e.id))
-            
-            console.log(array);
+            let array = seat_data.map((e) => ObjectId(e.id))
+            const ddd = await db.BookSeats(array)
+            console.log(ddd)
             response = { "signatureIsValid": "true" }
         }
         res.send(response);

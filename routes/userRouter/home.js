@@ -69,9 +69,9 @@ route.post('/booking/:id', ensureAuth, async (req, res) => {
 
         let user = req.user || req.session.phone;
         let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
-        
+
         if (data) {
-            res.json({data,obj})
+            res.json({ data, obj })
         } else throw new error;
     } catch (error) {
         console.log(error);
@@ -177,7 +177,7 @@ route.post('/booking/:id', ensureAuth, async (req, res) => {
     }
 })
 
-route.post('/booking/',ensureAuth,async(req,res)=>{
+route.post('/booking/', ensureAuth, async (req, res) => {
     try {
         let id = req.body.Id;
         let date = req.body.date;
@@ -214,7 +214,30 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
         }
         let data = await db.seatDeatails(obj).then(result => result).catch(error => error);
 
-        if (data) {
+        // console.log(data);
+        function groupByArray(xs, key) {
+            return xs.reduce(function (rv, x) {
+                let v = key instanceof Function ? key(x) : x[key];
+                let el = rv.find((r) => r && r.key === v);
+                if (el) { el.values.push(x); }
+                else { rv.push({ key: v, values: [x] },); }
+                return rv;
+            }, []);
+        }
+        let m = data[0].show_seats.showByDate.shows.showSeats;
+        console.log(m)
+        let array = [];
+        z = groupByArray(m, 'seats_category')
+        for (let i = 0; i < z.length; i++) {
+            array[i] = [];
+            array[i].push({ "category": z[i].key, "seat_details": groupByArray(z[i].values, 'tag_name') })
+
+        }
+        data[0].show_seats.showByDate.shows.showSeats = array
+        
+       
+
+        if (array) {
             res.render('user/home/seat_layout', {
                 user,
                 data,
@@ -253,7 +276,7 @@ route.post('/bookticket/seat/', ensureAuth, async (req, res) => {
 route.post('/payment_one', ensureAuth, async (req, res) => {
 
     req.session.order_data = req.body;
-    res.render('user/home/payment_one', {data: req.body, moment, });
+    res.render('user/home/payment_one', { data: req.body, moment, });
 })
 
 
