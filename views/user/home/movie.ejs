@@ -79,7 +79,7 @@
                                 </span>UA<span class="sc-2k6tnd-5 kvkTzz"> • </span>
                                 <!-- date -->
                                 <span>
-                                    <%- movie[0].ReleseDate %>
+                                    <%- movie[0].ReleseDate.toString().split(" ").slice(0,4).join(" ") %>
                                 </span>
                         </div>
                     </div>

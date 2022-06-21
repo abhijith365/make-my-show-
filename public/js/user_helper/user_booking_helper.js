@@ -5,6 +5,8 @@ var arrData = [];
 var totalSeats = 0;
 var totalSeatNames = 0;
 
+
+
 $(document).ready(function () {
     var arr = [];
 
@@ -392,6 +394,135 @@ $(document).ready(function () {
     $("#fnbcall").append(elm)
 
 
+    let spinner = `
+                    <style>
+                        /* Spinner Wrapper */
+                    .loader {
+                        width: 100vw;
+                        height: 100vh;
+                        background: #fff;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    .loader-inner {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+
+                    /* Spinner */
+                    .lds-roller {
+                        display: inline-block;
+                        position: relative;
+                        width: 64px;
+                        height: 64px;
+                    }
+                    .lds-roller div {
+                        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                        transform-origin: 32px 32px;
+                    }
+                    .lds-roller div:after {
+                        content: " ";
+                        display: block;
+                        position: absolute;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #333;
+                        margin: -3px 0 0 -3px;
+                    }
+                    .lds-roller div:nth-child(1) {
+                        animation-delay: -0.036s;
+                    }
+                    .lds-roller div:nth-child(1):after {
+                        top: 50px;
+                        left: 50px;
+                    }
+                    .lds-roller div:nth-child(2) {
+                        animation-delay: -0.072s;
+                    }
+                    .lds-roller div:nth-child(2):after {
+                        top: 54px;
+                        left: 45px;
+                    }
+                    .lds-roller div:nth-child(3) {
+                        animation-delay: -0.108s;
+                    }
+                    .lds-roller div:nth-child(3):after {
+                        top: 57px;
+                        left: 39px;
+                    }
+                    .lds-roller div:nth-child(4) {
+                        animation-delay: -0.144s;
+                    }
+                    .lds-roller div:nth-child(4):after {
+                        top: 58px;
+                        left: 32px;
+                    }
+                    .lds-roller div:nth-child(5) {
+                        animation-delay: -0.18s;
+                    }
+                    .lds-roller div:nth-child(5):after {
+                        top: 57px;
+                        left: 25px;
+                    }
+                    .lds-roller div:nth-child(6) {
+                        animation-delay: -0.216s;
+                    }
+                    .lds-roller div:nth-child(6):after {
+                        top: 54px;
+                        left: 19px;
+                    }
+                    .lds-roller div:nth-child(7) {
+                        animation-delay: -0.252s;
+                    }
+                    .lds-roller div:nth-child(7):after {
+                        top: 50px;
+                        left: 14px;
+                    }
+                    .lds-roller div:nth-child(8) {
+                        animation-delay: -0.288s;
+                    }
+                    .lds-roller div:nth-child(8):after {
+                        top: 45px;
+                        left: 10px;
+                    }
+                    @keyframes lds-roller {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    </style>
+
+                    <div class="loader text-center">
+                        <div class="loader-inner">
+
+                            <!-- Animated Spinner -->
+                            <div class="lds-roller mb-3">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+
+                            
+                            <h4 class="text-uppercase font-weight-bold">Loading</h4>
+                        </div>
+                    </div>
+                    `
+
     //payment first step
 
     $("#prePay").click(function (e) {
@@ -416,11 +547,6 @@ $(document).ready(function () {
                 "amount": `${Math.floor((parseInt(price) + 47.20) * 100)}`
             }),
         };
-        let spinner = `<div class="text-center my-5 py-5">
-                            <div class="spinner-border my-5" role="status">
-                                <span class="sr-only mt-5">Loading...</span>
-                            </div>
-                        </div>`
 
 
         $('body').html(spinner)
@@ -538,7 +664,7 @@ $(document).ready(function () {
                     },
                     "data": JSON.stringify({ response }),
                 }
-
+                $('body').html(spinner)
                 $.ajax(settings).done(function (response) {
                     if (response.signatureIsValid == "true") {
                         location.href = "/tickets"

@@ -89,7 +89,7 @@ module.exports = {
                 let hall = await db.getDb().collection(coll.screen).insertOne(hallInp).then(res => res).catch(err => err);
 
 
-                let update = await db.getDb().collection(coll.theatre).updateOne({ _id: ObjectId(hallInp.theatreOwner) }, { "$set": { application_complete: true } })
+                let update = await db.getDb().collection(coll.theatre).updateOne({ _id: hallInp.theatreId }, { "$set": { application_complete: true } })
                 if (hall && update) {
                     res(hall)
                 } else {

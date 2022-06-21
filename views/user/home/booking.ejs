@@ -44,7 +44,7 @@
                                             </span>
                                 </span>
                                 <span class="__release-date" content="2022-06-03" itemprop="datePublished">
-                                    <%-data[0].movies[0].ReleseDate %>
+                                    <%-data[0].movies[0].ReleseDate.toString().split(" ").slice(0,4).join(" ") %>
 
                                 </span>
 

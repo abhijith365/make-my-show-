@@ -159,7 +159,7 @@ route.get('/delete/:id', ensureAuth, async (req, res) => {
         let del = await database_helper.deleteTheatre(obj).then(r => r).catch(e => console.log(error))
         if (del) {
             del.images.map((e) => {
-                fs.unlinkSync(`uploads/${e}`)
+                fs.unlinkSync(`uploads/${e.image_url}`)
             })
             res.redirect(`/theatre/theatre/home`);
         } else throw new error;
@@ -439,7 +439,7 @@ route.get('/delete/movies/:id', ensureAuth, async (req, res) => {
         let del = await database_helper.deleteMovie(obj).then(r => r).catch(e => console.log(error))
         if (del) {
             del.images.map((e) => {
-                fs.unlinkSync(`uploads/${e}`)
+                fs.unlinkSync(`uploads/${e.image_url}`)
             })
 
             res.redirect(`/theatre/theatre/movies/${theatreId}`);

@@ -36,10 +36,7 @@ $(document).ready(function () {
                                                 <b>SHOW TYPE : </b>
                                                 ${arr.showType}
                                             </p>
-                                            <!-- <p class="card-text">
-                                                <b>THEATRE NAME : </b>
-                                                <!--/*arr.screen[0].screenId */-->
-                                            </p> -->
+                                          
                                             <p class="card-text">
                                                 <b>SCREEN ID : </b>
                                                 ${arr.screen[0].screenId}
