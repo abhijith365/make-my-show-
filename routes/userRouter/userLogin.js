@@ -63,5 +63,23 @@ route.get('/profile', ensureAuth, (req, res) => {
     )
 })
 
+//@desc user edit profile page
+//@route GET /edit_profile
+route.get('/edit_profile', ensureAuth, async (req, res) => {
+    let user = req.user || req.session.phone;
+    res.render('user/edit_profile', {
+        layout: './layout/layout.ejs',
+        user
+    })
+})
+
+//@desc user ticket home page
+//@route GET /tickets
+route.get("/tickets", ensureAuth, async(req,res)=>{
+    res.send("mmmm")
+})
+
+
+
 
 module.exports = route

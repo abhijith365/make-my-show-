@@ -191,7 +191,7 @@ module.exports = {
     },
     // fetching seat details
     seatDeatails: (obj) => {
-        // console.log(obj)
+      
         return new Promise(async (resolve, reject) => {
 
             let data = await db.getDb().collection(coll.seat).aggregate([
@@ -286,20 +286,9 @@ module.exports = {
                         'path': '$show_seats.showByDate.shows.showSeats'
                     }
                 }, {
-                    '$unwind': {
-                        'path': '$show_seats.showByDate.shows.showSeats'
-                    }
-                }, {
-                    '$unwind': {
-                        'path': '$show_seats.showByDate.shows.showSeats.seat_details'
-                    }
-                }, {
-                    '$unwind': {
-                        'path': '$show_seats.showByDate.shows.showSeats.seat_details.values'
-                    }
-                }, {
                     '$match': {
-                        'show_seats.showByDate.shows.showSeats.seat_details.values._id': {
+                        'show_seats.showByDate.shows.showSeats._id':
+                        {
                             '$in': arr
 
                         }
@@ -316,63 +305,90 @@ module.exports = {
     },
 
 
-    BookSeats: (obj) => {
+    BookSeats: (obj, user) => {
         return new Promise(async (res, rej) => {
-            // console.log(obj, typeof (obj))
-            let data = await db.getDb().collection(coll.seat).aggregate(
-                [
-                    {
-                        '$unwind': {
-                            'path': '$show_seats'
-                        }
-                    }, {
-                        '$unwind': {
-                            'path': '$show_seats.showByDate.shows'
-                        }
-                    }, {
-                        '$unwind': {
-                            'path': '$show_seats.showByDate.shows.showSeats'
-                        }
-                    }, {
-                        '$unwind': {
-                            'path': '$show_seats.showByDate.shows.showSeats'
-                        }
-                    }, {
-                        '$unwind': {
-                            'path': '$show_seats.showByDate.shows.showSeats.seat_details'
-                        }
-                    }, {
-                        '$unwind': {
-                            'path': '$show_seats.showByDate.shows.showSeats.seat_details.values'
-                        }
-                    }, {
-                        '$match': {
-                            'show_seats.showByDate.shows.showSeats.seat_details.values._id': {
-                                '$in': obj
-
-                            }
-                        }
-                    }, {
-                        '$addFields': {
-
-                            'show_seats.showByDate.shows.showSeats.seat_details.values.seat_status': true
-                        }
-
-                    },
-                    {
-                        $merge: 'seats'
+            let data = await db.getDb().collection(coll.seat).updateOne(
+                {
+                    "show_seats.showByDate.shows.showSeats._id": obj
+                },
+                {
+                    $set: {
+                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].seat_status": true,
+                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].user_id":user
                     }
-
-                ]
-            ).toArray()
-
-            console.log(data)
+                },
+                {
+                    arrayFilters: [{ "elem._id": obj }]
+                }
+            )
 
             if (data) {
                 res(data)
             } else {
                 res(false),
                     rej("rejected")
+            }
+        })
+    },
+    TicketCreate: (obj) => {
+        return new Promise(async (res, rej) => {
+
+            let ticketData = await db.getDb().collection(coll.ticket).insertOne(obj)
+
+            if (ticketData) {
+                res(ticketData)
+            } else {
+                res(false),
+                    rej("rejected")
+            }
+        })
+    },
+    TicketLookup: (obj) => {
+        return new Promise(async (res, rej) => {
+            let data = await db.getDb().collection(coll.ticket).aggregate(
+                [
+                    {
+                        '$match': {
+                            'user_id': obj
+                        }
+                    }, {
+                        '$lookup': {
+                            'from': 'seats',
+                            'localField': 'ticketData.seat_id',
+                            'foreignField': 'show_seats.showByDate.shows.showSeats._id',
+                            'as': 'seat_details'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$seat_details'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$seat_details.show_seats'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$seat_details.show_seats.showByDate.shows'
+                        }
+                    }, {
+                        '$unwind': {
+                            'path': '$seat_details.show_seats.showByDate.shows.showSeats'
+                        }
+                    }
+                    // }, {
+                    //     '$match': {
+                    //         'seat_details.show_seats.showByDate.shows.showSeats._id': {
+                    //             '$in': obj
+                    //         }
+                    //     }
+                    // }
+                ]
+            ).toArray()
+
+            if (data) {
+                res(data)
+            } else {
+                res(false)
             }
         })
     }

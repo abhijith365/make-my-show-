@@ -178,10 +178,8 @@ route.get('/halls/:id', ensureAuth, async (req, res) => {
         let theatreName = req.session.theatreName;
         let theatreOwner = req.session.theatreOwn._id;
         let obj = { id: id, theatreOwner: theatreOwner }
-        console.log(obj)
+
         let data = await db.showScreen(obj).then(r => r).catch(e => console.log(e.message));
-
-
 
 
         res.render("theatre/Home/theatre_hall", {

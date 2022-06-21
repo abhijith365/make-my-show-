@@ -107,16 +107,19 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
         let array = seat_data.map((e) => ObjectId(e.id))
 
         let seatDetail = await db.findAmt(array);
-        let status = seatDetail.map((d) => d.show_seats.showByDate.shows.showSeats.seat_details.values.seat_status);
+
+        let status = seatDetail.map((d) => d.show_seats.showByDate.shows.showSeats.seat_status);
 
         let seat_all_not_clear = false;
 
         status.map(sts => { if (sts == true) { seat_all_not_clear = true } })
 
         let pr = 47.20;
-        seatDetail.map((p) => pr += parseInt(p.show_seats.showByDate.shows.showSeats.seat_details.values.price));
 
-        req.body.total = pr;
+        seatDetail.map((p) => pr += parseInt(p.show_seats.showByDate.shows.showSeats.price));
+
+        (req.body.total) ? req.body.total = pr : req.body.total = 0;
+
 
         if (!seat_all_not_clear) {
 
@@ -126,18 +129,19 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
             })
 
             var options = {
-                amount: pr * 100,  // amount in the smallest currency unit
+                amount: parseInt(pr) * 100,  // amount in the smallest currency unit
                 currency: "INR",
-                receipt: `order_rcptid_11`
+                receipt: `order_receipt_`
             };
             instance.orders.create(options, function (err, order) {
-
-                res.render('user/home/payment', { data: req.session, total: pr, totalseat: status.length, orderId: order.id }, function (err, html) {
-                    res.send({ html, "orderId": order.id, price: pr });
-                });
+                if (order) {
+                    res.render('user/home/payment', { data: req.session, total: pr, totalseat: status.length, orderId: order.id }, function (err, html) {
+                        res.send({ html, "orderId": order.id, price: pr });
+                    });
+                } else console.log(err);
 
             });
-        }
+        } else throw 'Error2';
     } catch (error) {
         console.log(error)
         res.render('error/500');
@@ -147,23 +151,38 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
 
 // @desc verifying payment
 // @route POST /auth/api/payment/verify
-router.post("/api/payment/verify", ensureAuth, async(req, res) => {
+router.post("/api/payment/verify", ensureAuth, async (req, res) => {
     try {
         let body = req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
-
         var crypto = require("crypto");
         var expectedSignature = crypto.createHmac('sha256', process.env.RAZ_SECRET)
             .update(body.toString())
             .digest('hex');
-        console.log("sig received ", req.body.response.razorpay_signature);
-        console.log("sig generated ", expectedSignature);
+        // console.log("sig received ", req.body.response.razorpay_signature);
+        // console.log("sig generated ", expectedSignature);
+
         var response = { "signatureIsValid": "false" }
         if (expectedSignature === req.body.response.razorpay_signature) {
-            // console.log(req.session)
+            
             let seat_data = req.session.order_data;
-            let array = seat_data.map((e) => ObjectId(e.id))
-            const ddd = await db.BookSeats(array)
-            console.log(ddd)
+            let user = req.user._id
+            let ticket_ids = [];
+
+            let array = await seat_data.map(async (e) => {
+                ticket_ids.push({ seat_id: ObjectId(e.id)});
+                await db.BookSeats(ObjectId(e.id), user);
+            });
+           
+            let ticketObj = {
+                user_id: user,
+                ticketData: ticket_ids,
+                seat_status: true,
+                createdAt: new Date()
+            }
+
+            let addTicket = await db.TicketCreate(ticketObj)
+
+
             response = { "signatureIsValid": "true" }
         }
         res.send(response);
@@ -172,6 +191,7 @@ router.post("/api/payment/verify", ensureAuth, async(req, res) => {
         res.render('error/500');
     }
 });
+
 
 
 module.exports = router

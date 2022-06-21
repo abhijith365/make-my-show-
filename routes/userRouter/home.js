@@ -60,7 +60,7 @@ route.get('/movie/:id', ensureAuth, async (req, res) => {
 //showing movie avialble theatres 
 route.post('/booking/:id', ensureAuth, async (req, res) => {
     try {
-        // console.log(req.body)
+       
         let id = req.params.id;
         let date = req.query.dt;
         date = date.split('T')[0].toString()
@@ -214,7 +214,6 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
         }
         let data = await db.seatDeatails(obj).then(result => result).catch(error => error);
 
-        // console.log(data);
         function groupByArray(xs, key) {
             return xs.reduce(function (rv, x) {
                 let v = key instanceof Function ? key(x) : x[key];
@@ -225,7 +224,7 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
             }, []);
         }
         let m = data[0].show_seats.showByDate.shows.showSeats;
-        console.log(m)
+       
         let array = [];
         z = groupByArray(m, 'seats_category')
         for (let i = 0; i < z.length; i++) {
@@ -235,8 +234,6 @@ route.get('/bookticket/seat/:id', ensureAuth, async (req, res) => {
         }
         data[0].show_seats.showByDate.shows.showSeats = array
         
-       
-
         if (array) {
             res.render('user/home/seat_layout', {
                 user,

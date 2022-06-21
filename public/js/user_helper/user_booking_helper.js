@@ -392,14 +392,12 @@ $(document).ready(function () {
     $("#fnbcall").append(elm)
 
 
-
-
     //payment first step
 
-    $("#prePay").click( function (e){
+    $("#prePay").click(function (e) {
         e.preventDefault()
         e.stopPropagation()
-    
+
         let price = 0;
 
         array.forEach((val, inx) => {
@@ -430,7 +428,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (response) {
 
             orderId = response.orderId;
-           
+
             $('body').html(`
             <link rel="stylesheet" href="/css/user/payment.css">
                 <section class="payments">
@@ -455,7 +453,7 @@ $(document).ready(function () {
                                             </li>
                                             <li class="_sub-total-section">
                                                 <div>Sub Total</div>
-                                                <div><span class="__sub-total">Rs. ${price }</span></div>
+                                                <div><span class="__sub-total">Rs. ${price}</span></div>
                                             </li>
                                             <li data-type="BookingFees">
                                                 <div>
@@ -474,7 +472,7 @@ $(document).ready(function () {
                                             <li class="_total-section">
                                                 <div class="block">
                                                     <div>Amount Payable</div>
-                                                    <div><span class="__amount-payble dTotal">Rs. ${ (parseInt(price) + 47.20) } </span></div>
+                                                    <div><span class="__amount-payble dTotal">Rs. ${(parseInt(price) + 47.20)} </span></div>
                                                 </div>
                                             </li>
                                             
@@ -508,7 +506,7 @@ $(document).ready(function () {
     });
 
 
-    $('#Pay_now').click(function (e){
+    $('#Pay_now').click(function (e) {
         e.preventDefault();
 
         let price = 0;
@@ -542,9 +540,11 @@ $(document).ready(function () {
                 }
 
                 $.ajax(settings).done(function (response) {
-
-                    console.log(response)
-
+                    if (response.signatureIsValid == "true") {
+                        location.href = "/tickets"
+                    } else {
+                        alert("try again something went wrong")
+                    }
                 });
 
             },

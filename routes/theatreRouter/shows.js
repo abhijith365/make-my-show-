@@ -152,7 +152,6 @@ route.post('/', ensureAuth, async (req, res) => {
                         dailyShow.showSeats = showSeats;
 
                     }
-                 
                    
                     seatDetails.showByDate.shows.push(dailyShow)
                 }
