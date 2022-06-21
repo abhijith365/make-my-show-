@@ -56,8 +56,7 @@ $(document).ready(function () {
             data: JSON.stringify(arr),
 
         }).done((d) => {
-            let m = d.split('<section>')
-
+    
             $('body').html(`
             <link rel="stylesheet" href="/css/user/booking.css">
 <section class="bkf-layout" id="seat-layout" style="display: block;">
@@ -308,6 +307,8 @@ $(document).ready(function () {
                     price += aVal.price
                 })
             })
+          
+
             $(".__ticket-cat").append($('<span id="TickCat" class="seat-type" >' + objectArray[0][0] + ' -  &nbsp;' + seat_details + '<span id="TickQuantity">( ' + `${seat_details.split(" ").length - 1}` + 'Tickets )</span >' + '<br><span id="audiInfo"></span>'))
             // $("#TickQuantity").text()
 
@@ -553,7 +554,10 @@ $(document).ready(function () {
         //creates new orderId everytime
         $.ajax(settings).done(function (response) {
 
-            orderId = response.orderId;
+            let orderId = response.orderId;
+            let seat_tags = response.data.map(e => e.seatDetail)
+            seat_tags =`${response.data[0].cate}: ${seat_tags.join(", ")}`
+            console.log(response,seat_tags)
 
             $('body').html(`
             <link rel="stylesheet" href="/css/user/payment.css">
@@ -570,11 +574,11 @@ $(document).ready(function () {
                                                 <h3>${movieName} (U/A)</h3>
                                                 <address>${language}, 2D</address>
                                                 <address>${theatreName}: ${BuildingName}, ${city} (${theatreName})</address>
-                                                <address>M-Ticket</address><span>GOLD - E7, E8</span><br>
-                                                <span class="__date">${full_date.split(" ").slice(0, 4)}<br>
+                                                <address>M-Ticket</address><span>${seat_tags}</span><br>
+                                                <span class="__date py-2">${full_date.split(" ").slice(0, 4)}<br>
                                                  ${moment(time, ["HH.mm"]).format("hh:mm A")}</span>
                                                 </div>
-                                                <div><span class="__no-of-tickets"><b>${totalSeats}</b><br>Tickets</span></div>
+                                                <div><span class="__no-of-tickets"><b>${response.data.length}</b><br>Tickets</span></div>
 
                                             </li>
                                             <li class="_sub-total-section">
@@ -624,10 +628,7 @@ $(document).ready(function () {
                     }
                 </style>
             
-            `);
-
-            // $('#orderId').append(`<div id="orderId" style="display:none;" data-orderId="${orderId}"></div>`)
-            // $('.event').append(m)        
+            `);       
         })
     });
 
@@ -650,10 +651,7 @@ $(document).ready(function () {
             "description": "Pay & Checkout",
             "order_id": $('#orderId').attr("data-orderId"),
             "handler": function (response) {
-                // console.log(response);
-                // alert(response.razorpay_payment_id);
-                // alert(response.razorpay_order_id);
-                // alert(response.razorpay_signature)
+
                 var settings = {
 
                     "url": "/auth/api/payment/verify",
@@ -689,13 +687,14 @@ $(document).ready(function () {
         //error handling
         var razorpayObject = new Razorpay(options);
         razorpayObject.on('payment.failed', function (response) {
-            alert(response.error.code);
-            alert(response.error.description);
-            alert(response.error.source);
-            alert(response.error.step);
-            alert(response.error.reason);
-            alert(response.error.metadata.order_id);
-            alert(response.error.metadata.payment_id);
+            alert("payment Failed try again")
+            // alert(response.error.code);
+            // alert(response.error.description);
+            // alert(response.error.source);
+            // alert(response.error.step);
+            // alert(response.error.reason);
+            // alert(response.error.metadata.order_id);
+            // alert(response.error.metadata.payment_id);
         });
         razorpayObject.open();
     })

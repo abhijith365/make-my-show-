@@ -134,10 +134,8 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
                 receipt: `order_receipt_`
             };
             instance.orders.create(options, function (err, order) {
-                if (order) {
-                    res.render('user/home/payment', { data: req.session, total: pr, totalseat: status.length, orderId: order.id }, function (err, html) {
-                        res.send({ html, "orderId": order.id, price: pr });
-                    });
+                if (order) {     
+                        res.send({ "orderId": order.id, price: pr, data: req.session.order_data });
                 } else console.log(err);
 
             });

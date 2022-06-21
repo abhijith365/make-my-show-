@@ -12,7 +12,8 @@ const { connectToServer } = require('./config/mongo.config')
 const MongoStore = require('connect-mongo')
 const connectDb = require('./config/db')
 
-
+//time zone
+process.env.TZ = "Asia/Calcutta"
 
 //app
 const app = express();
