@@ -191,7 +191,7 @@ module.exports = {
     },
     // fetching seat details
     seatDeatails: (obj) => {
-      
+
         return new Promise(async (resolve, reject) => {
 
             let data = await db.getDb().collection(coll.seat).aggregate([
@@ -314,7 +314,7 @@ module.exports = {
                 {
                     $set: {
                         "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].seat_status": true,
-                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].user_id":user
+                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].user_id": user
                     }
                 },
                 {
@@ -345,6 +345,8 @@ module.exports = {
     },
     TicketLookup: (obj) => {
         return new Promise(async (res, rej) => {
+
+
             let data = await db.getDb().collection(coll.ticket).aggregate(
                 [
                     {
@@ -353,35 +355,43 @@ module.exports = {
                         }
                     }, {
                         '$lookup': {
-                            'from': 'seats',
-                            'localField': 'ticketData.seat_id',
-                            'foreignField': 'show_seats.showByDate.shows.showSeats._id',
-                            'as': 'seat_details'
+                            'from': 'movies',
+                            'localField': 'showDetails.movieId',
+                            'foreignField': '_id',
+                            'as': 'movie_details'
                         }
                     }, {
-                        '$unwind': {
-                            'path': '$seat_details'
+                        '$lookup': {
+                            'from': 'screens',
+                            'localField': 'showDetails.screenId',
+                            'foreignField': '_id',
+                            'as': 'screen'
                         }
                     }, {
-                        '$unwind': {
-                            'path': '$seat_details.show_seats'
+                        '$lookup': {
+                            'from': 'theatres',
+                            'localField': 'screen.theatreId',
+                            'foreignField': '_id',
+                            'as': 'theatre'
                         }
                     }, {
-                        '$unwind': {
-                            'path': '$seat_details.show_seats.showByDate.shows'
+                        '$project': {
+                            '_id': 1,
+                            'movie_details.movieName': 1,
+                            'movie_details.language': 1,
+                            'movie_details.images': 1,
+                            'theatre.theatreName': 1,
+                            'theatre.BuildingName': 1,
+                            'theatre.city': 1,
+                            'ticketData': 1,
+                            'showDetails.showTime': 1,
+                            "seat_status": 1,
                         }
                     }, {
-                        '$unwind': {
-                            'path': '$seat_details.show_seats.showByDate.shows.showSeats'
+                        '$sort': {
+                            'createdAt': 1
                         }
                     }
-                    // }, {
-                    //     '$match': {
-                    //         'seat_details.show_seats.showByDate.shows.showSeats._id': {
-                    //             '$in': obj
-                    //         }
-                    //     }
-                    // }
                 ]
             ).toArray()
 

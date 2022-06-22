@@ -1,4 +1,5 @@
 const express = require('express');
+const { ObjectId } = require('mongodb');
 const route = express.Router();
 const db = require('../../helper/user_helper/user_db_helper');
 const { ensureAuth, ensureGuest } = require('../../middleware/isUser')
@@ -77,9 +78,15 @@ route.get('/edit_profile', ensureAuth, async (req, res) => {
 //@route GET /tickets
 route.get("/tickets", ensureAuth, async(req,res)=>{
     let user = req.user || req.session.phone;
+    let id = user._id;
+    if(typeof(id)=="string"){id = ObjectId(user._id)}
+    console.log(typeof(id))
+    let ticketData = await db.TicketLookup(id);
+    console.log(ticketData)
     res.render('user/home/ticketHome', {
         layout: './layout/layout.ejs',
-        user
+        user,
+        data:ticketData
     })
 })
 

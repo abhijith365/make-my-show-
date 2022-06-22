@@ -107,10 +107,19 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
         let seat_data = req.session.order_data;
         let array = seat_data.map((e) => ObjectId(e.id))
 
+        //collecting amount details from database
         let seatDetail = await db.findAmt(array);
+        
+        //storing show data
+        let showObj = {
+        movieId : seatDetail[0].movieId,
+        screenId : seatDetail[0].screenId,
+        showTime : seatDetail[0].show_seats.showByDate.shows.showTime}
+       
+        req.session.showDetails = showObj;
 
+         //checking all seats avialable
         let status = seatDetail.map((d) => d.show_seats.showByDate.shows.showSeats.seat_status);
-
         let seat_all_not_clear = false;
 
         status.map(sts => { if (sts == true) { seat_all_not_clear = true } })
@@ -175,13 +184,20 @@ router.post("/api/payment/verify", ensureAuth, async (req, res) => {
             let ticket_ids = [];
 
             let array = await seat_data.map(async (e) => {
-                ticket_ids.push({ seat_id: ObjectId(e.id) });
+                ticket_ids.push(ObjectId(e.id));
                 await db.BookSeats(ObjectId(e.id), user);
             });
+            // console.log(req.session)
+            let showObj = {
+                movieId: ObjectId(req.session.showDetails.movieId),
+                screenId: ObjectId(req.session.showDetails.screenId),
+                showTime: req.session.showDetails.showTime
+            }
 
             let ticketObj = {
                 user_id: user,
-                ticketData: ticket_ids,
+                showDetails: showObj,
+                ticketData: seat_data,
                 seat_status: true,
                 createdAt: new Date()
             }

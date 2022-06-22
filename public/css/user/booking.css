@@ -11503,7 +11503,7 @@ body {
 
 .bkf-layout .bkf-container .bkf-order-summary-container .order-summary-section .order-summarywrap .order-summary {
     position: relative;
-    padding: 30px 25px;
+    padding: 30px 25px 15px 25px;
     background: #fff;
     margin-top: 26%;
 }
