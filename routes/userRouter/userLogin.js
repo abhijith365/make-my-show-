@@ -3,6 +3,8 @@ const { ObjectId } = require('mongodb');
 const route = express.Router();
 const db = require('../../helper/user_helper/user_db_helper');
 const { ensureAuth, ensureGuest } = require('../../middleware/isUser')
+const moment = require('moment')
+const Swal = require('sweetalert2')
 
 
 //@desc user home page
@@ -41,6 +43,7 @@ route.get('/', async (req, res) => {
         } else throw new error
 
     } catch (error) {
+        res.render('error/500')
         console.error(error)
 
     }
@@ -48,46 +51,87 @@ route.get('/', async (req, res) => {
 })
 
 route.get('/login', (req, res) => {
-    res.render('user/login', {
-        layout: './layout/layout.ejs'
-    })
+    try {
+        res.render('user/login', {
+            layout: './layout/layout.ejs'
+        })
+    } catch (error) {
+        res.render('error/500')
+        console.error(error)
+    }
+
 })
 
 //@desc user profile page
 //@route GET /profile
 route.get('/profile', ensureAuth, (req, res) => {
-    let user = req.user || req.session.phone;
-    res.render('user/profile', {
-        layout: './layout/layout.ejs',
-        user
+    try {
+        let user = req.user || req.session.phone;
+        res.render('user/profile', {
+            layout: './layout/layout.ejs',
+            user
+        })
+    } catch (error) {
+        res.render('error/500')
+        console.error(error)
     }
-    )
+
 })
 
 //@desc user edit profile page
 //@route GET /edit_profile
 route.get('/edit_profile', ensureAuth, async (req, res) => {
-    let user = req.user || req.session.phone;
-    res.render('user/edit_profile', {
-        layout: './layout/layout.ejs',
-        user
-    })
+    try {
+        let user = req.user || req.session.phone;
+        res.render('user/edit_profile', {
+            layout: './layout/layout.ejs',
+            user
+        })
+    } catch (error) {
+        res.render('error/500')
+        console.error(error)
+    }
+
 })
 
 //@desc user ticket home page
 //@route GET /tickets
-route.get("/tickets", ensureAuth, async(req,res)=>{
-    let user = req.user || req.session.phone;
-    let id = user._id;
-    if(typeof(id)=="string"){id = ObjectId(user._id)}
-    console.log(typeof(id))
-    let ticketData = await db.TicketLookup(id);
-    console.log(ticketData)
-    res.render('user/home/ticketHome', {
-        layout: './layout/layout.ejs',
-        user,
-        data:ticketData
-    })
+route.get("/tickets", ensureAuth, async (req, res) => {
+    try {
+        let user = req.user || req.session.phone;
+        let id = user._id;
+        if (typeof (id) == "string") { id = ObjectId(user._id) }
+
+        let ticketData = await db.TicketLookup(id);
+
+        if (ticketData) {
+            res.render('user/home/ticketHome', {
+                layout: './layout/layout.ejs',
+                user,
+                data: ticketData,
+                moment,
+                Swal
+            })
+        } else throw new error;
+
+    } catch (error) {
+        res.render('error/500')
+        console.error(error)
+    }
+
+})
+
+//@desc user cancel_ticket
+//@route POST /cancel_tickets
+route.post('/cancelTicket', ensureAuth, async (req, res) => {
+    try {
+        console.log(req.body)
+        res.send(req.id)
+        // let id = ObjectId(req.id);
+    } catch (error) {
+        res.render('error/500')
+        console.error(error)
+    }
 })
 
 

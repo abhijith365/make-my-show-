@@ -117,9 +117,10 @@ a {
 
 .profile-container .profile-tabs .confirmation-list .view-all-bookings {
     color: rgb(220, 53, 88);
-    font-size: 14px;
+    font-size: 21px;
     padding: 0px 0px 15px;
     cursor: pointer;
+    float: right;
 }
 
 .bar-btn {
@@ -843,7 +844,8 @@ a {
 .tickets .details .info .text>div .__seats .icon-seat {
     width: 20px;
     height: 20px;
-    margin-top: 5px
+    margin-top: 5px;
+    font-size: 15px;
 }
 
 .tickets .details .info .text>div .__seats .icon-seat svg {

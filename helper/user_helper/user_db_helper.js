@@ -386,11 +386,15 @@ module.exports = {
                             'ticketData': 1,
                             'showDetails.showTime': 1,
                             "seat_status": 1,
+                            createdAt:1
                         }
                     }, {
                         '$sort': {
-                            'createdAt': 1
+                            'createdAt': -1
                         }
+                    },
+                    {
+                        '$limit': 10
                     }
                 ]
             ).toArray()
@@ -400,6 +404,11 @@ module.exports = {
             } else {
                 res(false)
             }
+        })
+    },
+    CancelTicket:(obj)=>{
+        return new Promise(async(res,rej)=>{
+            
         })
     }
 }

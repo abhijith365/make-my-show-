@@ -1,5 +1,5 @@
 <div style="position: fixed;z-index: 999; width: 100%; ">
-    <nav class=" navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep" id="ftco-navbar">
+    <nav class=" navbar navbar-expand navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep" id="ftco-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="/img/svgexport-36.svg" alt="make my show"
                     style="height:2.1rem"></a>
@@ -7,36 +7,36 @@
                 <input type="search" class="form-control rounded" style="height:100%" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"><i class="fa fa-bars" style="font-size: 1.5rem;"></i></span>
-            </button>
+            </button> -->
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
 
 
                     <% if(!user) {%>
-                        <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
+                        <li class="login_main"><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
                         <% }else{ %>
-                            <a href="/profile">
+                            <a href="/profile" class="login_main">
                                 <div class="chip text-nowrap d-flex align-items-center">
 
-                                    <img src="<%=user.image%>" class="rounded-circle " style="width:40px" alt="img">
-                                    <span class="chip-user-name ms-2">
+                                    <img src="<%=user.image%>" class="rounded-circle login_main" style="width:40px" alt="img">
+                                    <span class="chip-user-name ms-2 login_main">
                                         <%=user.firstName%>
                                     </span>
                                 </div>
                             </a>
-                            <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+                            <li class="login_main"><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger ">logout</a></li>
                             <% } %>
-                                <li>
+                                <li  class="login_main">
                                     <div class="dropdown me-5" style="margin-right:20px ;z-index: 10000;">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                             City
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu me-5 pe-5 mt-3" style="z-index: 999999;" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="/home/city/Kochi">Kochi</a>
                                             <a class="dropdown-item" href="/home/city/NCR">NCR</a>
                                             <a class="dropdown-item" href="/home/city/Bengalure">Bengalure</a>
@@ -49,19 +49,19 @@
                                         </div>
 
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item active burget_menu">
                                     <a href="#" id="headerSideNav" class="nav-link">
                                         <i class="fa fa-bars" style="font-size: 1.5rem;"></i>
                                     </a>
                                 </li>
-                                <li class="nav-item active" id="headerSideNav">
+                                <!-- <li class="nav-item active" id="headerSideNav">
 
                                     <span class="d-inline-block d-lg-block"><a href="#"
                                             class="text-black site-menu-toggle js-menu-toggle py-5 active"><span
                                                 class="icon-menu h3 text-white"></span></a></span>
 
 
-                                </li>
+                                </li> -->
 
                 </ul>
 
@@ -92,6 +92,24 @@
                         <div class="sc-iwsKbI sc-iCwjlJ bBdVBf">
                             <div class="sc-iwsKbI sc-fkyLDJ bLAGIR">Login / Register</div>
                         </div>
+                    </div>
+                    <div class="main_sm_class d-none">
+                        
+                                <% if(!user) {%>
+                                    <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
+                                    <% }else{ %>
+                                        <a href="/profile">
+                                            <div class="chip text-nowrap d-flex align-items-center">
+                    
+                                                <img src="<%=user.image%>" class="rounded-circle " style="width:40px " alt="img">
+                                                <span class="chip-user-name ms-2" style="color: black;">
+                                                    <%=user.firstName%>
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+                                        <% } %>
+                           
                     </div>
 
                     <!-- <div class="sc-fnwBNb iiLYQK"> -->
@@ -126,6 +144,18 @@
     @media only screen and (max-width: 900px) {
         .input-box {
             display: none;
+        }
+        .burget_menu{
+            display: block;
+        }
+        .login_main{
+            display: none;
+        }
+        .main_sm_class{
+            display: flex !important;
+        }
+        .main_sm_class li{
+             list-style-type: none;
         }
     }
 
