@@ -76,7 +76,11 @@ route.get('/edit_profile', ensureAuth, async (req, res) => {
 //@desc user ticket home page
 //@route GET /tickets
 route.get("/tickets", ensureAuth, async(req,res)=>{
-    res.send("mmmm")
+    let user = req.user || req.session.phone;
+    res.render('user/home/ticketHome', {
+        layout: './layout/layout.ejs',
+        user
+    })
 })
 
 

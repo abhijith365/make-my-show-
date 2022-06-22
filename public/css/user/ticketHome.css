@@ -1,0 +1,3695 @@
+.profile-container {
+    width: 100%;
+    display: inline-block;
+    zoom: 1;
+    background-color: rgb(242, 242, 242);
+}
+
+.profile-container::before {
+    content: " ";
+    display: table;
+    line-height: 0;
+}
+
+.booking-filters {
+    zoom: 1;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid rgb(223, 227, 231);
+    background: rgb(255, 255, 255);
+    padding: 0px 20px;
+}
+
+.profile-container .tab-list .bh-tab {
+    max-width: 1240px;
+    margin: 0px auto;
+}
+
+.booking-filters .p-tab {
+    border: 0px !important;
+}
+
+.profile-container .tab-list .p-tab {
+
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+}
+
+.profile-container .tab-list .sub-tab li._active,
+.profile-container .tab-list .sub-tab li:hover {
+    box-shadow: rgb(248 68 100) 0px -3px 0px inset;
+    font-weight: 400;
+}
+
+.profile-container .tab-list .p-tab li:first-child {
+    margin-left: 0px;
+}
+
+.profile-container .tab-list .sub-tab li {
+    padding: 16px 0px;
+}
+
+.profile-container .tab-list .p-tab li {
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 40px;
+    padding: 12px 0px;
+    color: rgb(93, 95, 97);
+}
+
+.booking-filters .p-tab li._active a {
+    color: rgb(248, 68, 100) !important;
+}
+
+a {
+    margin: 0px;
+    padding: 0px;
+    font-size: 100%;
+    text-decoration: none;
+    vertical-align: baseline;
+    background: 0px 0px;
+}
+
+.profile-container .tab-list .bh-tab li {
+    margin-left: 20px;
+}
+
+.booking-filters .p-tab li a {
+    color: rgb(51, 51, 51) !important;
+}
+
+.profile-container .tab-list .bh-tab li {
+    margin-left: 20px;
+}
+
+.profile-container .tab-list .sub-tab li {
+    padding: 16px 0px;
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 1400px;
+        width: 100%;
+    }
+}
+
+.profile-container .profile-tabs {
+    zoom: 1;
+    min-height: 420px;
+    padding: 40px 50px;
+}
+
+.tickets {
+    zoom: 1;
+}
+
+.profile-container .profile-tabs .confirmation-list .no-data {
+    font-family: "Jenna Sue", sans-serif;
+    font-size: 26px;
+    padding: 0px 0px 20px;
+}
+
+.profile-container .profile-tabs .confirmation-list .view-all-bookings {
+    color: rgb(220, 53, 88);
+    font-size: 14px;
+    padding: 0px 0px 15px;
+    cursor: pointer;
+}
+
+.bar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 49%;
+    height: 100%;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .16);
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px
+}
+
+.bar-btn._primary {
+    background: #f84464;
+    color: #fff
+}
+
+.bar-btn._secondary {
+    background: #fff;
+    color: #f84464;
+    border: 1px solid #f84464
+}
+
+.bar-btn._full-width {
+    width: 100%;
+    padding: 10px 16px;
+    justify-content: space-between
+}
+
+.bar-btn._centered {
+    margin: auto;
+    justify-content: center
+}
+
+.bar-btn._small {
+    width: 30%
+}
+
+.btn-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 56px;
+    padding: 8px 16px
+}
+
+.btn-bar._spaced {
+    white-space: pre
+}
+
+.btn-bar._centered {
+    justify-content: center
+}
+
+.loadinggif {
+    background: url('http://in.bmscdn.com//webin/static/ajax-loader.gif') right center no-repeat
+}
+
+.tickets {
+    zoom: 1
+}
+
+.tickets #view-more-bookings-btn {
+    text-align: center;
+    margin-left: -230px
+}
+
+.tickets #view-more-bookings-btn li a {
+    text-align: center;
+    padding: 15px 40px;
+    font-size: 12px;
+    border-radius: 2px;
+    border: 1px solid #d9d8d1;
+    text-decoration: none;
+    letter-spacing: 2px;
+    background: #fff;
+    color: #333;
+    font-weight: 700;
+    width: 230px
+}
+
+.tickets #view-more-bookings-btn li a:hover {
+    background: #f2f2f2
+}
+
+.tickets .confirmation-card .details .loyalty-benefits .__text {
+    font-size: 12px;
+    color: #1f2533
+}
+
+.tickets .confirmation-card .details .loyalty-benefits .loyalty-cancel-link {
+    float: right;
+    font-size: 12px;
+    color: #2f63cf
+}
+
+.tickets .confirmation-card .details .unpaid-tag {
+    position: absolute;
+    text-transform: uppercase;
+    top: 7px;
+    right: -9px;
+    background: #c02c39;
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 10px;
+    z-index: 1
+}
+
+.tickets .confirmation-card .details .unpaid-tag:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: 22px;
+    right: 0;
+    border: 4px solid transparent;
+    border-left-color: #9d1a25;
+    border-top-color: #9d1a25
+}
+
+.tickets .confirmation-card .details .info .text .Qty {
+    font-size: 12px
+}
+
+.tickets .confirmation-card .details .notification {
+    float: right;
+    width: 25%;
+    height: 110px;
+    margin: 100px 0;
+    padding: 8px;
+    justify-content: flex-start;
+    background-color: #fff9e3;
+    border: 1px solid #ffe78e;
+    display: none
+}
+
+.tickets .confirmation-card .details .notification p {
+    color: #b08b00;
+    width: 100%
+}
+
+.tickets .confirmation-card .details .notification .icon-notification {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px
+}
+
+.tickets .confirmation-card .details .notification.show-notification {
+    display: flex
+}
+
+.tickets .confirmation-card .details .eTicketnotification {
+    float: right;
+    width: 25%;
+    height: 161px;
+    margin: 100px 0;
+    padding: 8px;
+    justify-content: flex-start;
+    background-color: #fff9e3;
+    border: 1px solid #ffe78e;
+    display: none
+}
+
+.tickets .confirmation-card .details .eTicketnotification p {
+    color: #b08b00;
+    width: 100%
+}
+
+.tickets .confirmation-card .details .eTicketnotification .eTicketicon-notification {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px
+}
+
+.tickets .confirmation-card .details .eTicketnotification.show-notification {
+    display: flex
+}
+
+.tickets .confirmation-card._past-booking .details .info .text>div .Qyt,
+.tickets .confirmation-card._past-booking .details .info .text>div .__seats,
+.tickets .confirmation-card._past-booking .details .info .text>div .__value,
+.tickets .confirmation-card._past-booking .details .info .text>div h1 {
+    color: #ccc
+}
+
+.tickets .confirmation-card._past-booking .details .info .__img {
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -ms-filter: grayscale(1);
+    -o-filter: grayscale(1)
+}
+
+.tickets .confirmation-card._past-booking .details .bcode .__booking-id strong {
+    color: #ccc
+}
+
+.tickets .confirmation-card._past-booking .booking-details p,
+.tickets .confirmation-card._past-booking .booking-details p span {
+    color: #999
+}
+
+.tickets .confirmation-card._past-booking .booking-details.hide p {
+    opacity: 0
+}
+
+.tickets .confirmation-card.fnbTrans .show-details {
+    width: 75%;
+    line-height: 22px
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .cinema-name {
+    float: left;
+    line-height: 20px;
+    font-size: 12px
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .cinema-name .__cinema-text {
+    color: #666
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .cinema-name .__cinema-name,
+.tickets .confirmation-card.fnbTrans .show-details .cinema-name .__cinema-screen {
+    display: block;
+    font-size: 14px;
+    max-width: 275px
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .show-time {
+    float: right;
+    line-height: 20px;
+    font-size: 12px
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .show-time .__showdate-text {
+    color: #666
+}
+
+.tickets .confirmation-card.fnbTrans .show-details .show-time .__showdate,
+.tickets .confirmation-card.fnbTrans .show-details .show-time .__showtime {
+    display: block;
+    font-size: 14px
+}
+
+@media (min-width:320px) and (max-width:767px) {
+    .tickets .confirmation-card.fnbTrans .show-details {
+        width: 100%
+    }
+
+    .tickets .confirmation-card.fnbTrans .show-details .cinema-name,
+    .tickets .confirmation-card.fnbTrans .show-details .show-time {
+        width: 100%;
+        padding-bottom: 20px
+    }
+}
+
+.tickets .__breadCrumb {
+    margin-bottom: 20px
+}
+
+.tickets .__breadCrumb .__breadcrumbClickBack {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    color: #777;
+    cursor: pointer
+}
+
+.tickets .__breadCrumb .__breadcrumbClick {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    color: #000
+}
+
+.tickets .__merchandiseCard {
+    position: relative;
+    background: #fff;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    border: 1px solid #dfddde;
+    box-shadow: 0 0 0 3px #f1f1f1;
+    margin-bottom: 20px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._orderId,
+.tickets .__merchandiseCard ._headerContainer ._priceDetail {
+    color: #333;
+    font-size: 20px;
+    line-height: 22px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock {
+    padding-top: 15px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._priceDetailSection {
+    display: flex
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._priceDetailSection ._itemPrice {
+    font-size: 18px;
+    color: #777;
+    flex: 1 auto;
+    line-height: 24px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._priceDetailSection ._itemPriceValue {
+    font-size: 16px;
+    line-height: 24px;
+    color: #777;
+    flex: 1 auto;
+    justify-content: flex-end;
+    display: flex;
+    padding-top: 6px;
+    padding-bottom: 6px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._totalPriceSection {
+    padding-top: 20px;
+    border-top: 1px solid #eee
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._totalPriceSection ._totalPrice {
+    display: flex
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._totalPriceSection ._totalPrice ._totalPriceHeader {
+    flex: 1 auto;
+    display: flex
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._totalPriceSection ._totalPrice ._totalPriceValue {
+    flex: 1 auto;
+    display: flex;
+    justify-content: flex-end
+}
+
+.tickets .__merchandiseCard ._headerContainer ._itemBlock ._paymentMode {
+    font-size: 16px;
+    line-height: 24px;
+    color: #777
+}
+
+.tickets .__merchandiseCard ._headerContainer ._personName {
+    padding-top: 13px;
+    color: #555;
+    font-weight: 500
+}
+
+.tickets .__merchandiseCard ._headerContainer ._personAddress,
+.tickets .__merchandiseCard ._headerContainer ._personAddressType {
+    color: #555;
+    width: 550px;
+    padding-top: 10px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._personAddress ._addressLine {
+    width: 520px
+}
+
+.tickets .__merchandiseCard ._headerContainer ._orderDate {
+    color: #777;
+    padding-bottom: 15px
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline {
+    position: relative;
+    font-size: 0;
+    padding-top: 1.5rem
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step {
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 0;
+    border-left: none;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    position: relative;
+    padding: 20px .5rem .5rem 0;
+    width: 33%
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step .current {
+    border-color: #ccc
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step .date,
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step .title {
+    color: #ccc
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step:before {
+    font-size: .8rem;
+    line-height: 1.5rem;
+    text-align: center;
+    content: '';
+    width: .5rem;
+    height: .5rem;
+    border-radius: 1.5rem;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: -5px;
+    left: 0
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .step.lastChild {
+    border-top: 0;
+    top: 3px;
+    text-align: left
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .inprogress {
+    border-color: #ccc
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .inprogress:before {
+    border: 1px solid #3cd34a;
+    background-color: #66dc71
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .inprogress .title {
+    font-weight: bolder;
+    text-align: left;
+    color: #49bd5d
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .inprogress .date {
+    font-size: 80%;
+    color: #000;
+    text-align: left
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .completed {
+    border-color: #3cd34a
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .completed:before {
+    border: 1px solid #3cd34a;
+    background-color: #66dc71
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .completed .title {
+    font-weight: bolder;
+    text-align: left;
+    color: #49bd5d
+}
+
+.tickets .__merchandiseCard ._headerContainer .__timelineContainer .timeline .completed .date {
+    font-size: 80%;
+    color: #000;
+    text-align: left
+}
+
+.tickets .__merchandiseCard .__headerSideBar {
+    display: inline-block;
+    width: 100%
+}
+
+.tickets .__merchandiseCard .__addressSideBar {
+    width: 50%;
+    float: left;
+    height: 170px
+}
+
+.tickets .__merchandiseCard ._leftBar {
+    border-right: 1px solid #eee
+}
+
+.tickets .__merchandiseCard ._rightBar {
+    float: left;
+    padding-left: 30px
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails {
+    padding: 18px 27px;
+    font-size: 16px
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection {
+    padding-top: 27px
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection {
+    overflow: hidden;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+    border-top: 1px solid #eee
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._purchaseImg {
+    display: inline-block
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._purchaseImg img {
+    height: 111px;
+    width: 80px;
+    border-radius: 1.6px
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection {
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 2;
+    margin-left: 20px
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName {
+    font-size: 20px;
+    line-height: 24px;
+    display: flex
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName div:nth-child(2) {
+    margin: 0 auto
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName ._statusSection ._orderStatus {
+    font-size: 16px;
+    font-weight: 500
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName ._btn-pos {
+    margin: 0 0 0 auto;
+    padding: 0
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName ._btn-pos .__viewBtn {
+    color: #0078ff;
+    min-width: 230px;
+    max-width: 230px;
+    border-radius: 4px;
+    border: 1px solid #0378ff;
+    padding: 5px 20px 10px;
+    margin-top: 20px;
+    background-color: #fff;
+    cursor: pointer
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productName ._btn-pos .__viewBtn .__text {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: .88;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0078ff
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary {
+    display: flex
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary div:nth-child(1) {
+    margin-left: 0;
+    padding-left: 0
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 16px;
+    color: #777
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary ._btn-pos {
+    margin: 0 0 0 auto;
+    padding: 30px 0 0
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary ._btn-pos .__viewBtn {
+    color: #0078ff;
+    min-width: 230px;
+    max-width: 230px;
+    border-radius: 4px;
+    border: 1px solid #0378ff;
+    padding: 9px 20px 10px;
+    margin-top: 20px;
+    background-color: #fff;
+    cursor: pointer
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchaseSection ._productTitleSection ._productSummary ._btn-pos .__viewBtn .__text {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: .88;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0078ff
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollection .purchasedetailSection {
+    border-top: none
+}
+
+.tickets .__merchandiseCard .__merchandiseDetails ._historyCollectionOrderDetail {
+    padding-top: 0
+}
+
+.tickets:after,
+.tickets:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.tickets:after {
+    clear: both
+}
+
+.tickets .__successMsg {
+    color: #283042;
+    font-size: 18px;
+    margin: 40px 0 30px
+}
+
+.tickets .details {
+    position: relative;
+    float: left;
+    background: #fff;
+    width: 75%;
+    border-radius: 3px;
+    border: 1px solid #dfddde;
+    box-shadow: 0 0 0 3px #f1f1f1
+}
+
+.tickets .details:after,
+.tickets .details:before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: #f2f2f2;
+    border-radius: 24px;
+    right: 23.7%;
+    z-index: 1
+}
+
+.tickets .details:before {
+    top: -12px;
+    box-shadow: inset 0 -2px 0 #dfddde
+}
+
+.tickets .details:after {
+    bottom: -12px;
+    box-shadow: inset 0 2px 0 #dfddde
+}
+
+.tickets .details .info {
+    float: left;
+    position: relative;
+    width: 75%;
+    border-right: 1px dashed #e3e3e3;
+    padding: 15px 15px 5px
+}
+
+.tickets .details .info .cancellation-logo {
+    float: left;
+    margin-top: -53px;
+    margin-left: 32px
+}
+
+.tickets .details .info .__img {
+    float: left;
+    width: 25%;
+    min-height: 1px
+}
+
+.tickets .details .info .__img img {
+    display: block
+}
+
+.tickets .details .info .text {
+    float: left;
+    width: 75%;
+    padding: 5px 10px 7px 25px
+}
+
+.tickets .details .info .text .inner-text>span {
+    font-size: 12px
+}
+
+.tickets .details .info .text .inner-text>span.Qyt {
+    display: inline-block;
+    margin-top: 10px
+}
+
+.tickets .details .info .text>div {
+    text-align: left;
+    position: relative;
+    padding: 25px 0 15px
+}
+
+.tickets .details .info .text>div .__seats {
+    color: #5d5f61;
+    font-size: 12px;
+    font-weight: 400
+}
+
+.tickets .details .info .text>div .__seats .icon-seat {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px
+}
+
+.tickets .details .info .text>div .__seats .icon-seat svg {
+    fill: #5d5f61
+}
+
+.tickets .details .info .text>div .__seats strong {
+    display: inline-block;
+    font-size: 15px;
+    width: auto;
+    margin: 5px 0 5px 5px;
+    vertical-align: top
+}
+
+.tickets .details .info .text>div .__seats strong+span {
+    display: none
+}
+
+.tickets .details .info .text>div h1 {
+    font-size: 16px;
+    color: #0e1422;
+    width: 70%
+}
+
+@media (min-width:320px) and (max-width:600px) {
+    .tickets .details .info .__img {
+        display: none
+    }
+
+    .tickets .details .info .text {
+        padding: 0;
+        width: 100%
+    }
+
+    .tickets .details .info .text>div .__seats {
+        position: static;
+        margin-top: 5px;
+        text-align: left
+    }
+
+    .tickets .details .info .text>div h1 {
+        padding-bottom: 0
+    }
+}
+
+.tickets .details .info .text>div p {
+    color: #7b8086;
+    font-size: 12px;
+    line-height: 18px
+}
+
+@media (min-width:320px) and (max-width:800px) {
+    .tickets .details {
+        width: 100%;
+        box-shadow: none
+    }
+
+    .tickets .details:after,
+    .tickets .details:before {
+        display: none
+    }
+
+    .tickets .details .info {
+        width: 100%;
+        padding-top: 0;
+        border-right: 0px
+    }
+
+    .tickets .details .info .text>div .__seats strong {
+        width: auto;
+        margin: 7px 0 5px 5px;
+        vertical-align: top;
+        font-size: 14px
+    }
+
+    .tickets .details .info .text>div p {
+        line-height: 16px
+    }
+}
+
+.tickets .details .info .text>div .__adons {
+    display: none
+}
+
+.tickets .details .info .text>div:first-child {
+    padding-top: 0
+}
+
+.tickets .details .info .text .ticket-breakup {
+    display: none;
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 15px 0;
+    float: left;
+    width: 100%;
+    zoom: 1
+}
+
+.tickets .details .info .text .ticket-breakup:after,
+.tickets .details .info .text .ticket-breakup:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.tickets .details .info .text .ticket-breakup:after {
+    clear: both
+}
+
+.tickets .details .info .text .ticket-breakup li {
+    width: 100%;
+    float: left;
+    line-height: 14px;
+    margin-top: 10px
+}
+
+.tickets .details .info .text .ticket-breakup li span {
+    float: right;
+    font-size: 11px;
+    color: #444
+}
+
+.tickets .details .info .text .ticket-breakup li span b {
+    font-size: 12px;
+    color: #1f2533
+}
+
+.tickets .details .info .text .ticket-breakup li span:first-child {
+    float: left;
+    color: #969696
+}
+
+.tickets .details .info .text .ticket-breakup li:first-child {
+    margin-top: 0
+}
+
+.tickets .details .info .text .ticket-breakup li div {
+    float: left;
+    margin-left: 25px;
+    font-size: 11px;
+    color: #b6b6b6
+}
+
+.tickets .details .info .text .ticket-breakup li div:first-child {
+    margin-left: 0
+}
+
+.tickets .details .info .text .ticket-breakup li div strong {
+    display: inline-block;
+    font-size: 12px;
+    color: #1f2533;
+    font-weight: 300;
+    margin-top: 5px
+}
+
+.tickets .details .info .text .ticket-breakup.hide {
+    opacity: 0
+}
+
+.tickets .details .info .text .total {
+    color: #666;
+    padding: 10px 0;
+    border-top: 1px dashed #e3e3e3;
+    float: left;
+    width: 100%;
+    zoom: 1
+}
+
+.tickets .details .info .text .total:after,
+.tickets .details .info .text .total:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.tickets .details .info .text .total:after {
+    clear: both
+}
+
+.tickets .details .info .text .total .__value {
+    float: right;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2533
+}
+
+.tickets .details .info .text .total .__text {
+    position: relative;
+    color: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 5px;
+    display: inline-block;
+    vertical-align: top
+}
+
+.tickets .details .info .text .total .__text i {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    border: 1px solid #1f2533;
+    border-radius: 50%;
+    color: #1f2533;
+    font-style: inherit;
+    text-align: center;
+    padding-bottom: 1px;
+    top: -2px;
+    right: -19px
+}
+
+.tickets .details .info .text .total .__text:hover>i {
+    background: #1f2533;
+    color: #fff
+}
+
+.tickets .details .info .text .__summary {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 15px 0;
+    border-top: 1px solid #e3e3e3;
+    zoom: 1;
+    float: left;
+    width: 100%
+}
+
+.tickets .details .info .text .__summary:after,
+.tickets .details .info .text .__summary:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.tickets .details .info .text .__summary:after {
+    clear: both
+}
+
+.tickets .details .info .text .__summary ul {
+    line-height: 19px
+}
+
+.tickets .details .info .text .__summary ul li {
+    width: 100%;
+    float: left;
+    line-height: 14px;
+    margin-top: 10px
+}
+
+.tickets .details .info .text .__summary ul li span {
+    float: right;
+    font-size: 11px;
+    color: #444
+}
+
+.tickets .details .info .text .__summary ul li span b {
+    font-size: 12px;
+    color: #1f2533
+}
+
+.tickets .details .info .text .__summary ul li span:first-child {
+    float: left;
+    color: #969696
+}
+
+.tickets .details .info .text .__summary ul li:first-child {
+    margin-top: 0
+}
+
+.tickets .details .info .text .__summary ul li div {
+    float: left;
+    margin-left: 25px;
+    font-size: 11px;
+    color: #b6b6b6
+}
+
+.tickets .details .info .text .__summary ul li div:first-child {
+    margin-left: 0
+}
+
+.tickets .details .info .text .__summary ul li div strong {
+    display: inline-block;
+    font-size: 12px;
+    color: #1f2533;
+    font-weight: 300;
+    margin-top: 5px
+}
+
+.tickets .details .info .text .loyalty-refund {
+    width: 100%;
+    padding: 0
+}
+
+.tickets .details .info .text .loyalty-refund span:first-child {
+    float: left;
+    height: auto
+}
+
+.tickets .details .info .text .loyalty-refund span:first-child p {
+    font-size: 18px;
+    color: #0e1422 !important
+}
+
+.tickets .details .info .text .loyalty-refund span:last-child {
+    float: right;
+    font-size: 20px;
+    color: #0e1422 !important;
+    margin-top: -2px;
+    font-weight: 700
+}
+
+.tickets .details .info .text .loyalty-refund span:last-child.in-progress {
+    font-weight: 400;
+    font-size: 18px
+}
+
+.tickets .details .bcode {
+    float: right;
+    position: relative;
+    width: 25%;
+    padding: 30px 25px;
+    text-align: center
+}
+
+.tickets .details .bcode .tkt-cancellation {
+    width: 100px;
+    height: 100px
+}
+
+.tickets .details .bcode img {
+    width: 90px;
+    height: 90px
+}
+
+.tickets .details .bcode .__booking-id {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    padding: 25px 0
+}
+
+.tickets .details .bcode .__booking-id:last-child {
+    border-top: 1px solid #e0e0e0
+}
+
+.tickets .details .bcode .__booking-id:first-child {
+    border-top: 0
+}
+
+.tickets .details .bcode .__booking-id strong {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 5px;
+    color: #333;
+    word-break: break-word
+}
+
+@media (min-width:320px) and (max-width:800px) {
+    .tickets .details .bcode {
+        padding: 30px 25px 0
+    }
+
+    .tickets .details .bcode .__booking-id {
+        padding: 15px 0 25px
+    }
+
+    .tickets .details .bcode {
+        width: 100%;
+        display: block;
+        float: none
+    }
+}
+
+.tickets .details.multiEvent .bcode {
+    width: 100%;
+    border-bottom: 1px dashed #e3e3e3;
+    padding: 20px
+}
+
+.tickets .details.multiEvent .bcode>div {
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    border: 0 !important;
+    float: right !important
+}
+
+.tickets .details.multiEvent:after,
+.tickets .details.multiEvent:before {
+    display: none
+}
+
+.tickets .details.multiEvent .info {
+    width: 100%;
+    border: 0;
+    padding: 0
+}
+
+.tickets .details.multiEvent .info .text {
+    width: 100%;
+    padding: 0
+}
+
+.tickets .details.multiEvent .info .text .inner-text {
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 30px 10px !important;
+    color: #7b8086;
+    border-top: 1px solid #e3e3e3
+}
+
+.tickets .details.multiEvent .info .text .inner-text:first-child {
+    border-top: 0
+}
+
+.tickets .details.multiEvent .info .text .inner-text:after,
+.tickets .details.multiEvent .info .text .inner-text:before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: #f2f2f2;
+    border-radius: 24px;
+    top: 40%;
+    z-index: 1
+}
+
+.tickets .details.multiEvent .info .text .inner-text:before {
+    left: -12px;
+    box-shadow: inset -2px 0 0 #f1f1f1
+}
+
+.tickets .details.multiEvent .info .text .inner-text:after {
+    right: -12px;
+    box-shadow: inset 2px 0 0 #f1f1f1
+}
+
+.tickets .details.multiEvent .info .text .inner-text .__img {
+    text-align: center
+}
+
+.tickets .details.multiEvent .info .text .inner-text .__img img {
+    display: inline-block;
+    width: 150px
+}
+
+.tickets .details.multiEvent .info .text .inner-text .__img span {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #b5b5b5;
+    overflow: hidden
+}
+
+.tickets .details.multiEvent .info .text .event-details {
+    position: relative;
+    zoom: 1;
+    padding-top: 70px
+}
+
+.tickets .details.multiEvent .info .text .event-details:after,
+.tickets .details.multiEvent .info .text .event-details:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.tickets .details.multiEvent .info .text .event-details:after {
+    clear: both
+}
+
+.tickets .details.multiEvent .info .text .event-details address {
+    font-size: 12px;
+    font-style: normal
+}
+
+.tickets .details.multiEvent .info .text .event-details h2 {
+    color: #0e1422;
+    font-size: 16px;
+    margin-bottom: 10px
+}
+
+.tickets .details.multiEvent .info .text .event-details p span {
+    color: #292929
+}
+
+.tickets .details.multiEvent .info .text .event-details .__details {
+    float: left;
+    width: 50%
+}
+
+.tickets .details.multiEvent .info .text .event-details .__price {
+    float: right;
+    font-size: 18px;
+    color: #5d5f61;
+    width: 25%;
+    text-align: center
+}
+
+.tickets .details.multiEvent .info .text .merchandise .event-details {
+    padding-top: 0 !important
+}
+
+.tickets .details.multiEvent .info .text .__summary {
+    clear: both;
+    padding-left: 240px
+}
+
+.tickets .details.multiEvent .info .text .__summary li span:last-child {
+    width: 30%;
+    text-align: center
+}
+
+.tickets .details.multiEvent .info .text .total {
+    float: right;
+    width: 100%;
+    border: 0;
+    padding: 30px 0 30px 240px
+}
+
+.tickets .details.multiEvent .info .text .total .event-details {
+    padding-top: 0
+}
+
+.tickets .details.multiEvent .info .text .total .__value {
+    float: right;
+    width: 30%;
+    text-align: center
+}
+
+.tickets .split-fnb .details {
+    height: 375px
+}
+
+.tickets .split-fnb .info {
+    height: 100%
+}
+
+.tickets .bookasmile {
+    width: 920px;
+    margin: 0 auto
+}
+
+.tickets .bookasmile .details {
+    width: 100%
+}
+
+.tickets .bookasmile .qyt {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    color: #7b8086;
+    font-size: 12px
+}
+
+.tickets .giftcards .details .info .__img {
+    width: 38%
+}
+
+.tickets .giftcards .details .info .text {
+    width: 62%
+}
+
+.tickets .giftcards .details .info .text .inner-text {
+    padding: 25px 0 30px
+}
+
+.tickets .giftcards .qyt {
+    position: absolute;
+    left: 0;
+    bottom: 10px
+}
+
+.tickets .actions {
+    float: left;
+    width: 25%;
+    padding: 30px;
+    text-align: center
+}
+
+@media (min-width:320px) and (max-width:800px) {
+    .tickets .actions {
+        width: 100% !important;
+        padding: 10px !important;
+        margin-top: 10px;
+        background: #fff;
+        border: 1px solid #dfddde;
+        border-top: none
+    }
+}
+
+.tickets .actions .text-center {
+    text-align: center
+}
+
+.tickets .actions [class^=icon-] {
+    width: 15px;
+    height: 15px
+}
+
+.tickets .actions a {
+    display: inline-block;
+    cursor: pointer;
+    transition: .5s;
+    text-decoration: none;
+    font-size: 12px;
+    max-width: 230px;
+    min-width: 230px;
+    border: 1px solid #e2e3e5;
+    background: #fff;
+    color: #666;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px auto 0;
+    text-align: left
+}
+
+.tickets .actions a span {
+    display: inline-block;
+    margin-right: 20px;
+    width: 15px;
+    height: 15px
+}
+
+.tickets .actions a span svg {
+    fill: #666666;
+    width: 15px
+}
+
+.tickets .actions a._disabled {
+    cursor: text;
+    background-color: #e2e3e5
+}
+
+.tickets .actions a:not(._disabled):hover {
+    background: #f84464;
+    color: #fff;
+    border-color: #f84464
+}
+
+.tickets .actions a:not(._disabled):hover span svg {
+    fill: #fff
+}
+
+.tickets .actions a:first-child {
+    margin-top: 0
+}
+
+.tickets .actions a.none {
+    display: none !important
+}
+
+.tickets .actions .cancellation-information-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 230px;
+    min-width: 230px;
+    margin: 8px auto 0
+}
+
+.tickets .actions .cancellation-information-wrapper .cancel-tickets-desc {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: left;
+    color: #666
+}
+
+.tickets .actions .cancellation-information-wrapper .cancel-tickets-info-icon {
+    display: none;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    cursor: pointer
+}
+
+.tickets .actions .rate-it-container,
+.tickets .actions .write-review-container {
+    margin-top: 10px;
+    cursor: pointer
+}
+
+.tickets .actions .rate-it-container .rate-it-text,
+.tickets .actions .rate-it-container .write-review-text,
+.tickets .actions .write-review-container .rate-it-text,
+.tickets .actions .write-review-container .write-review-text {
+    border-bottom: 2px solid #c5c5c5;
+    padding: 2px;
+    font-size: 14px;
+    color: #787878
+}
+
+.tickets .split-actions {
+    padding: 0
+}
+
+@media (min-width:768px) and (max-width:991px),
+(min-width:320px) and (max-width:767px) {
+    .tickets .split-actions {
+        padding: 10px 0
+    }
+}
+
+.tickets .ticket-status {
+    padding: 0;
+    position: relative;
+    left: 24px;
+    background: #fff;
+    text-align: unset
+}
+
+@media (min-width:768px) and (max-width:991px),
+(min-width:320px) and (max-width:767px) {
+    .tickets .ticket-status {
+        margin-top: 2px;
+        left: 0
+    }
+}
+
+.booking-details {
+    text-align: left;
+    zoom: 1;
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px
+}
+
+.booking-details:after,
+.booking-details:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.booking-details:after {
+    clear: both
+}
+
+.booking-details p {
+    float: left;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 400;
+    color: #868c92;
+    margin-right: 50px
+}
+
+.booking-details p span {
+    transition: .3s;
+    color: #5d5f61;
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px
+}
+
+.booking-details p a {
+    text-decoration: none;
+    color: #70b1ea;
+    font-size: 14px
+}
+
+.booking-details.hide p {
+    opacity: 0
+}
+
+.rating .__label {
+    font-family: 'Jenna Sue', sans-serif;
+    font-size: 30px;
+    color: #666
+}
+
+.rating .rate-o-meter {
+    display: inline-block;
+    line-height: 30px;
+    vertical-align: top;
+    color: #787878;
+    font-size: 30px;
+    margin-right: 15px
+}
+
+.booking-filters {
+    zoom: 1;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #dfe3e7;
+    background: #fff;
+    padding: 0 20px
+}
+
+.booking-filters:after,
+.booking-filters:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.booking-filters:after {
+    clear: both
+}
+
+.booking-filters .bkl-container {
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding: 20px
+}
+
+@media (min-width:320px) and (max-width:600px) {
+    .booking-details {
+        margin-top: 0
+    }
+
+    .booking-details p {
+        width: 100%;
+        margin-top: 20px;
+        margin-right: 0
+    }
+
+    .booking-details p span {
+        margin-top: 5px
+    }
+
+    .booking-filters {
+        width: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        -moz-overflow-scrolling: touch;
+        -o-overflow-scrolling: touch;
+        /* overflow-scrolling: touch */
+    }
+
+    .booking-filters .bkl-container {
+        width: 600px
+    }
+}
+
+.booking-filters .p-tab {
+    border: 0 !important
+}
+
+.booking-filters .p-tab li a {
+    color: #333 !important
+}
+
+.booking-filters .p-tab li._active a {
+    color: #f84464 !important
+}
+
+.booking-filters .__text {
+    display: inline-block;
+    color: #0e1422;
+    min-width: 100px;
+    font-size: 12px
+}
+
+.booking-filters .dropdown-block {
+    min-width: 320px;
+    max-width: 1280px;
+    margin: 0 auto
+}
+
+@media (min-width:320px) and (max-width:767px) {
+    .booking-filters .dropdown-block:not(._touch) {
+        min-width: 320px;
+        width: 100%
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .tickets .details.multiEvent .bcode>div {
+        width: 33.33333333%;
+        float: left
+    }
+
+    .booking-filters .dropdown-block:not(._touch) {
+        max-width: 992px;
+        width: 100%
+    }
+}
+
+@media (min-width:992px) and (max-width:1279px) {
+    .tickets .details.multiEvent .bcode>div {
+        width: 33.33333333%;
+        float: left
+    }
+
+    .booking-filters .dropdown-block:not(._touch) {
+        max-width: 1200px
+    }
+}
+
+@media (min-width:1280px) and (max-width:1439px) {
+    .tickets .details.multiEvent .bcode>div {
+        width: 33.33333333%;
+        float: left
+    }
+
+    .booking-filters .dropdown-block:not(._touch) {
+        max-width: 1400px;
+        width: 100%
+    }
+}
+
+@media (min-width:1440px) {
+    .tickets .details.multiEvent .bcode>div {
+        width: 33.33333333%;
+        float: left
+    }
+
+
+}
+
+
+.cancel-ticket {
+    color: #969696;
+    background: #f2f2f2
+}
+
+.cancel-ticket .wrapper {
+    width: 90% !important;
+    max-width: 1400px
+}
+
+.cancel-ticket .header {
+    background: #1f2533;
+    padding: 15px 0;
+    zoom: 1;
+    font-size: 12px;
+    color: #a4a5a8
+}
+
+.cancel-ticket .header:after,
+.cancel-ticket .header:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.cancel-ticket .header:after {
+    clear: both
+}
+
+.cancel-ticket .header .payment-container {
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+.cancel-ticket .header .logo-left {
+    width: 140px;
+    float: left
+}
+
+.cancel-ticket .header .logo-left .logo-small {
+    fill: #F84464;
+    display: none
+}
+
+.cancel-ticket .header .__customer-care>div {
+    float: right;
+    margin: 0 15px
+}
+
+.cancel-ticket .header .__customer-care>div.__need-help {
+    padding-top: 8px
+}
+
+.cancel-ticket .header .__customer-care>div.__need-help .__text {
+    float: left;
+    margin-top: 6px
+}
+
+.cancel-ticket .header .__customer-care>div.__need-help .__text div {
+    color: #dc3558;
+    cursor: pointer
+}
+
+.cancel-ticket .header .__customer-care>div.timer .__details p {
+    margin-top: 8px
+}
+
+.cancel-ticket .details {
+    min-height: 400px;
+    position: relative;
+    margin: -150px auto 50px
+}
+
+.cancel-ticket .details .left-side-details {
+    float: left;
+    width: 70%
+}
+
+.cancel-ticket .details .left-side-details .ticket-info {
+    position: relative;
+    background: #fff;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    padding: 15px 15px 5px;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .cancellation-logo {
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-top: -43px;
+    margin-left: 20px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .__img {
+    float: left;
+    width: 160px;
+    height: 240px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .__img img {
+    display: block;
+    width: 160px;
+    height: 240px;
+    object-fit: cover
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text {
+    float: left;
+    width: 80%;
+    padding: 5px 10px 7px 25px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .inner-text {
+    border-bottom: 2px solid #f1eff1
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .inner-text>span {
+    font-size: 12px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .inner-text>span.Qyt {
+    display: inline-block;
+    margin-top: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) {
+    text-align: left;
+    position: relative;
+    padding: 25px 0 15px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__seats {
+    color: #5d5f61;
+    font-size: 12px;
+    font-weight: 400
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__seats .icon-seat {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__seats .icon-seat svg {
+    fill: #5d5f61
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__seats strong {
+    display: inline-block;
+    font-size: 15px;
+    width: auto;
+    margin: 5px 0 5px 5px;
+    vertical-align: top
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__seats strong+span {
+    display: none
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) h1 {
+    font-size: 16px;
+    color: #0e1422;
+    width: 70%
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) p {
+    color: #7b8086;
+    font-size: 12px;
+    line-height: 18px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info) .__adons {
+    display: none
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text>div:not(.success-wrapper-ticket-info):first-child {
+    padding-top: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .success-wrapper-ticket-info {
+    display: none;
+    opacity: .6;
+    width: calc(80% - 50px);
+    height: calc(100% - 32px);
+    background-color: #fff;
+    position: absolute;
+    z-index: 9;
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-stamp {
+    display: none;
+    width: 112px;
+    height: 52px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -26px;
+    margin-left: -56px;
+    z-index: 10
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup {
+    display: none;
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 20px 0;
+    float: left;
+    width: 100%;
+    zoom: 1
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup:after,
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup:after {
+    clear: both
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li {
+    width: 100%;
+    float: left;
+    line-height: 14px;
+    margin-top: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li span {
+    float: right;
+    font-size: 11px;
+    color: #444
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li span b {
+    font-size: 12px;
+    color: #1f2533
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li span:first-child {
+    float: left;
+    color: #969696
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li:first-child {
+    margin-top: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li div {
+    float: left;
+    margin-left: 25px;
+    font-size: 11px;
+    color: #b6b6b6
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li div:first-child {
+    margin-left: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .ticket-breakup li div strong {
+    display: inline-block;
+    font-size: 12px;
+    color: #1f2533;
+    font-weight: 300;
+    margin-top: 5px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading {
+    padding-top: 0 !important;
+    float: left;
+    width: 100%
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading .__heading {
+    font-size: 12px;
+    color: #1f2533;
+    float: left
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading .__heading .__icon {
+    position: relative;
+    top: 1px;
+    height: 10px;
+    width: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading .__heading .__icon svg {
+    width: 10px;
+    height: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading .__heading .__icon.__active {
+    position: relative;
+    top: 5px;
+    transform: rotate(180deg)
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-fnb-heading .__tot-amount {
+    float: right;
+    color: #444;
+    font-size: 11px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details {
+    clear: both;
+    font-size: 12px;
+    padding-top: 0 !important
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .order-heading {
+    color: #666;
+    padding-bottom: 12px;
+    font-size: 14px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-desc-heading {
+    padding: 10px 6px 22px;
+    border-top: 1px solid #dfe3e7;
+    border-bottom: 1px solid #dfe3e7;
+    font-size: 11px;
+    color: #666
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-desc-heading .__desc-text {
+    float: left;
+    width: 300px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-desc-heading .__desc-quantity {
+    float: left
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-desc-heading .__price {
+    float: right
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list {
+    margin-top: 10px;
+    font-size: 12px;
+    padding-bottom: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list .fooditem {
+    padding: 5px 5px 30px;
+    clear: both;
+    color: #000
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list .fooditem .__item-name {
+    float: left;
+    width: 300px;
+    line-height: 18px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list .fooditem .__item-name .__item-desc {
+    color: #666;
+    font-size: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list .fooditem .__item-qty {
+    float: left
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .item-list .fooditem .__item-price {
+    float: right
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .total-amt {
+    clear: both;
+    margin-top: 20px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .total-amt .__total-text {
+    float: left;
+    font-size: 14px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .cancellation-order-details .total-amt .__total-amt {
+    float: right;
+    font-size: 18px;
+    padding-right: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total {
+    color: #666;
+    padding: 10px 0;
+    border-top: 1px dashed #e3e3e3;
+    float: left;
+    width: 100%;
+    zoom: 1
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total:after,
+.cancel-ticket .details .left-side-details .ticket-info .text .total:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total:after {
+    clear: both
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total .__value {
+    float: right;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1f2533
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total .__text {
+    position: relative;
+    color: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 5px;
+    display: inline-block;
+    vertical-align: top
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total .__text i {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    border: 1px solid #1f2533;
+    border-radius: 50%;
+    color: #1f2533;
+    font-style: inherit;
+    text-align: center;
+    padding-bottom: 1px;
+    top: -2px;
+    right: -19px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .total .__text:hover>i {
+    background: #1f2533;
+    color: #fff
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 15px 0;
+    border-top: 1px solid #e3e3e3;
+    zoom: 1;
+    float: left;
+    width: 100%
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary:after,
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary:after {
+    clear: both
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul {
+    line-height: 19px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li {
+    width: 100%;
+    float: left;
+    line-height: 14px;
+    margin-top: 10px
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li span {
+    float: right;
+    font-size: 11px;
+    color: #444
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li span b {
+    font-size: 12px;
+    color: #1f2533
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li span:first-child {
+    float: left;
+    color: #969696
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li:first-child {
+    margin-top: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li div {
+    float: left;
+    margin-left: 25px;
+    font-size: 11px;
+    color: #b6b6b6
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li div:first-child {
+    margin-left: 0
+}
+
+.cancel-ticket .details .left-side-details .ticket-info .text .__summary ul li div strong {
+    display: inline-block;
+    font-size: 12px;
+    color: #1f2533;
+    font-weight: 300;
+    margin-top: 5px
+}
+
+.cancel-ticket .details .left-side-details .policy-section {
+    background-color: #fff9e3;
+    margin-bottom: 12px;
+    padding: 16px;
+    border-radius: 6px
+}
+
+.cancel-ticket .details .left-side-details .policy-section .policy-heading {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #222;
+    padding-bottom: 8px
+}
+
+.cancel-ticket .details .left-side-details .policy-section .policy-paragraph {
+    font-size: 12px;
+    line-height: 16px;
+    color: #222
+}
+
+.cancel-ticket .details .left-side-details .policy-section .policy-link {
+    font-size: 12px;
+    color: #dc3558;
+    cursor: pointer
+}
+
+.cancel-ticket .details .price-info-wrapper {
+    float: right;
+    width: 28%;
+    min-height: 220px;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 16px;
+    cursor: default
+}
+
+.cancel-ticket .details .price-info-wrapper .divider {
+    border: .5px solid #f1f1f1;
+    height: 0;
+    margin: 12px 0
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222;
+    padding-top: 0;
+    font-weight: 500;
+    cursor: pointer
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container.is-child {
+    font-size: 12px;
+    line-height: 16px;
+    color: #666;
+    padding-top: 8px;
+    font-weight: 400 !important
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container.is-child .price-heading,
+.cancel-ticket .details .price-info-wrapper .total-amount-container.is-child .price-value {
+    font-weight: 400 !important
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container .price-heading {
+    font-weight: 700
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container .price-heading .price-chevron {
+    border: solid #666;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 2px;
+    margin-left: 8px;
+    margin-bottom: 4px;
+    transition: .5s;
+    transform: rotate(45deg)
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container .price-heading .price-chevron.is-open {
+    margin-bottom: 2px;
+    transform: rotate(-135deg)
+}
+
+.cancel-ticket .details .price-info-wrapper .total-amount-container .price-value {
+    font-weight: 700
+}
+
+.cancel-ticket .details .price-info-wrapper .price-panel {
+    max-height: 0;
+    transition: max-height .2s ease-out;
+    overflow: hidden
+}
+
+.cancel-ticket .details .price-info-wrapper .price-panel .sub-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 16px;
+    color: #666;
+    padding-top: 8px
+}
+
+.cancel-ticket .details .refund-success-wrapper {
+    display: none;
+    float: right;
+    width: 28%;
+    min-height: 220px;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 16px;
+    cursor: default;
+    text-align: center
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222;
+    padding-top: 44px
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-icon {
+    width: 100%;
+    height: 40px;
+    margin-top: 8px
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-icon img {
+    object-fit: contain
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-icon svg {
+    width: 66px
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-amount {
+    padding-top: 4px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #222
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-message {
+    font-size: 12px;
+    line-height: 16px;
+    color: #222;
+    padding-bottom: 60px;
+    padding-top: 8px
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f84464;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-cta {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    width: 100%;
+    padding-top: 56px;
+    padding-bottom: 38px
+}
+
+.cancel-ticket .details .refund-success-wrapper .refund-success-cta span {
+    color: #dc3558;
+    cursor: pointer
+}
+
+.cancel-ticket .details .refund-pref-wrapper {
+    overflow: auto
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container {
+    margin-top: 28px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-message {
+    padding: 12px;
+    text-align: center
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-title {
+    padding-bottom: 4px;
+    font-size: 10px;
+    line-height: 16px;
+    color: #222539;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body {
+    padding: 16px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .struktur [type=radio]:checked+label:before,
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .struktur [type=radio]:not(:checked)+label:before {
+    border: 2px solid #999;
+    width: 18px;
+    height: 18px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .struktur [type=radio]:checked+label:after {
+    background-color: #f84464;
+    transform: scale(1, 1);
+    width: 12px;
+    height: 12px;
+    left: 3px;
+    top: 5px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .struktur [type=radio]:not(:checked)+label:after {
+    width: 12px;
+    height: 12px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .struktur [type=radio]:checked+label:before {
+    border: 1px solid #f84464;
+    width: 18px;
+    height: 18px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option {
+    margin-top: 6px;
+    padding-bottom: 6px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container {
+    padding-left: 26px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body {
+    margin-top: -4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ebebeb
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body .refund-type-title {
+    color: #333545;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body .refund-type-title .__refund-breakup-info-icon {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    fill: #333333
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body .refund-type-subtitle {
+    color: #666;
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 16px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body .terms-and-conditions {
+    color: #0078ff;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option .refund-type-container .refund-type-body:nth-of-type(2) {
+    border-top: 1px solid #ebebeb
+}
+
+.cancel-ticket .details .refund-pref-wrapper .refund-pref-container .refund-pref-body .__input-option:last-child .refund-type-container .refund-type-body {
+    padding-bottom: 0;
+    border-bottom: none
+}
+
+.cancel-ticket .details .cancellation-price-footer {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    height: 64px
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-details .cancellation-label {
+    font-size: 12px;
+    line-height: 16px;
+    color: #666
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-details .cancellation-amount {
+    font-size: 18px;
+    line-height: 24px;
+    color: #222;
+    font-weight: 700
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .16);
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px;
+    background: #f84464;
+    color: #fff;
+    width: 160px;
+    height: 40px
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button._primary {
+    background: #f84464;
+    color: #fff
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button._secondary {
+    background: #fff;
+    color: #f84464;
+    border: 1px solid #f84464
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button._full-width {
+    width: 100%;
+    padding: 10px 16px;
+    justify-content: space-between
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button._centered {
+    margin: auto;
+    justify-content: center
+}
+
+.cancel-ticket .details .cancellation-price-footer .cancellation-button._small {
+    width: 30%
+}
+
+.cancel-ticket .details-heading {
+    display: flex;
+    align-items: flex-start;
+    height: 250px;
+    background-color: #2a3244;
+    transition: .2s
+}
+
+.cancel-ticket .details-heading .details-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    width: 90%;
+    margin: 40px auto 0
+}
+
+.cancel-ticket .details-heading .details-container .success-details-icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px
+}
+
+.cancel-ticket .details-heading .details-container .details-message {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 20px;
+    color: #fff
+}
+
+.cancel-ticket .footer {
+    clear: both;
+    padding: 15px;
+    color: #adadad;
+    font-size: 11px;
+    margin-top: 50px
+}
+
+.cancel-ticket .footer .wrapper {
+    zoom: 1
+}
+
+.cancel-ticket .footer .wrapper:after,
+.cancel-ticket .footer .wrapper:before {
+    content: " ";
+    display: table;
+    line-height: 0
+}
+
+.cancel-ticket .footer .wrapper:after {
+    clear: both
+}
+
+.cancel-ticket .footer .copy-rights {
+    margin-top: 20px;
+    float: left
+}
+
+.cancel-ticket .footer .copy-rights a {
+    color: #323335
+}
+
+.cancel-ticket .footer .safe {
+    float: right;
+    text-align: right;
+    font-size: 11px
+}
+
+.cancel-ticket .footer .safe .__text {
+    position: relative;
+    top: -25px
+}
+
+#refund-breakup-modal {
+    max-width: 328px !important;
+    transition: .2s;
+    border-radius: 4px;
+    overflow: hidden
+}
+
+#cancellation-error-modal,
+#cancellation-policy-modal {
+    max-width: 584px !important;
+    border-radius: 4px;
+    overflow: hidden
+}
+
+#cancellation-error-modal .cross-container,
+#cancellation-policy-modal .cross-container {
+    position: absolute;
+    text-align: right;
+    top: 16px;
+    right: 16px;
+    background-color: #fff;
+    cursor: pointer
+}
+
+#cancellation-error-modal #cancellation-policy-iframe,
+#cancellation-policy-modal #cancellation-policy-iframe {
+    width: 100%;
+    height: 600px
+}
+
+#cancellation-error-modal {
+    max-height: 85vh;
+    overflow-y: auto
+}
+
+#cancellation-error-modal .popover-container {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+#cancellation-error-modal .popover-container .action-button {
+    margin-top: 24px
+}
+
+#cancellation-error-modal .popover-container .subtitle {
+    font-size: 14px
+}
+
+#rebooking-flow-modal {
+    max-width: 380px !important;
+    padding: 16px 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%
+}
+
+#rebooking-flow-modal .rebooking-flow .title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    color: #000
+}
+
+#rebooking-flow-modal .rebooking-flow .subtitle {
+    text-align: center;
+    font-size: 14px;
+    line-height: 16px;
+    color: #222
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 16px
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 15px 8px;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    cursor: pointer
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option:last-child {
+    border-bottom: none
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option .option-image {
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+    align-self: flex-start;
+    margin-right: 10px
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option .option-details {
+    width: 100%
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option .option-details .option-title {
+    font-size: 14px;
+    line-height: 16px;
+    word-break: break-word;
+    margin-bottom: 5px;
+    color: #222
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option .option-details .option-description {
+    font-size: 12px;
+    line-height: 16px;
+    word-break: break-word;
+    color: #666
+}
+
+#rebooking-flow-modal .rebooking-flow .options-container .rebooking-option .options-icon {
+    width: 10px;
+    height: 18px
+}
+
+#cancellation-error-modal,
+.cancellation-refund-breakup {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 400;
+    padding: 24px 16px;
+    border-radius: 4px
+}
+
+#cancellation-error-modal .icon-holder,
+.cancellation-refund-breakup .icon-holder {
+    width: 100%;
+    margin-bottom: 32px;
+    text-align: center
+}
+
+#cancellation-error-modal .icon-holder svg,
+.cancellation-refund-breakup .icon-holder svg {
+    width: 153px;
+    height: 142px
+}
+
+#cancellation-error-modal .title,
+.cancellation-refund-breakup .title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    text-align: center;
+    color: #222
+}
+
+#cancellation-error-modal .subtitle,
+.cancellation-refund-breakup .subtitle {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #666;
+    text-align: center
+}
+
+#cancellation-error-modal .refund-splitup,
+.cancellation-refund-breakup .refund-splitup {
+    padding-top: 24px
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list {
+    color: #666
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity {
+    overflow: hidden;
+    list-style: none
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-icon,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-icon {
+    margin: 0 3%;
+    width: 16px;
+    height: 16px;
+    vertical-align: top
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ebebeb
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list .header-li,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list .header-li {
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 4px
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li {
+    padding: 3px 0
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__label,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__label {
+    display: inline-block;
+    min-width: 120px;
+    max-width: 75%
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__label.heading,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__label.heading {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #333;
+    max-width: 100%
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__price,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__price {
+    float: right
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__price.heading,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity .refund-entity-desc .refund-entity-amount-details-list li .__price.heading {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #333
+}
+
+#cancellation-error-modal .refund-splitup .refund-splitup-list .refund-entity:last-child .refund-entity-desc,
+.cancellation-refund-breakup .refund-splitup .refund-splitup-list .refund-entity:last-child .refund-entity-desc {
+    border-bottom: none
+}
+
+#cancellation-error-modal .action-button,
+.cancellation-refund-breakup .action-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .16);
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px;
+    background: #f84464;
+    color: #fff;
+    width: 140px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 13px auto 0
+}
+
+#cancellation-error-modal .action-button._primary,
+.cancellation-refund-breakup .action-button._primary {
+    background: #f84464;
+    color: #fff
+}
+
+#cancellation-error-modal .action-button._secondary,
+.cancellation-refund-breakup .action-button._secondary {
+    background: #fff;
+    color: #f84464;
+    border: 1px solid #f84464
+}
+
+#cancellation-error-modal .action-button._full-width,
+.cancellation-refund-breakup .action-button._full-width {
+    width: 100%;
+    padding: 10px 16px;
+    justify-content: space-between
+}
+
+#cancellation-error-modal .action-button._centered,
+.cancellation-refund-breakup .action-button._centered {
+    margin: auto;
+    justify-content: center
+}
+
+#cancellation-error-modal .action-button._small,
+.cancellation-refund-breakup .action-button._small {
+    width: 30%
+}
+
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+* {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    outline: 0
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block
+}
+
+audio,
+canvas,
+video {
+    display: inline-block
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden] {
+    display: none
+}
+
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+a:active,
+a:focus,
+a:hover {
+    outline: 0
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b,
+strong {
+    font-weight: 700
+}
+
+dfn {
+    font-style: italic
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    font-size: 1em
+}
+
+pre {
+    white-space: pre-wrap
+}
+
+q {
+    quotes: "\201C""\201D""\2018""\2019"
+}
+
+small {
+    font-size: 80%
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+img {
+    border: 0;
+    font-size: 12px;
+    color: #999
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+figure {
+    margin: 0
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0
+}
+
+button,
+input {
+    line-height: normal
+}
+
+button,
+select {
+    text-transform: none
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled],
+html input[disabled] {
+    cursor: default
+}
+
+input[type=checkbox],
+input[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top
+}
+
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+body div,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+dl,
+dt,
+em,
+fieldset,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: 400;
+    vertical-align: baseline;
+    background: 0 0
+}
+
+article,
+aside,
+details,
+figure,
+footer,
+header,
+nav,
+section,
+summary {
+    display: block
+}
+
+html {
+    box-sizing: border-box
+}
+
+*,
+:after,
+:before {
+    box-sizing: inherit
+}
+
+embed,
+img,
+object {
+    max-width: 100%
+}
+
+html {
+    overflow-y: scroll
+}
+
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: '';
+    content: none
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    text-decoration: none;
+    vertical-align: baseline;
+    background: 0 0
+}
+
+del {
+    text-decoration: line-through
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+th {
+    font-weight: 700;
+    vertical-align: bottom
+}
+
+td {
+    font-weight: 400;
+    vertical-align: top
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0
+}
+
+input,
+select {
+    vertical-align: middle
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word
+}
+
+input[type=radio] {
+    vertical-align: text-bottom
+}
+
+input[type=checkbox] {
+    vertical-align: bottom
+}
+
+.ie7 input[type=checkbox] {
+    vertical-align: baseline
+}
+
+.ie6 input {
+    vertical-align: text-bottom
+}
+
+table {
+    font-size: inherit
+}
+
+small {
+    font-size: 85%
+}
+
+strong {
+    font-weight: 700
+}
+
+td,
+td img {
+    vertical-align: top
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+.clickable,
+button,
+input[type=button],
+input[type=file],
+input[type=submit],
+label {
+    cursor: pointer
+}
+
+button,
+input,
+select,
+textarea {
+    margin: 0
+}
+
+button,
+input[type=button] {
+    width: auto;
+    overflow: visible
+}
+
+.ie7 img {
+    -ms-interpolation-mode: bicubic
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.clearfix {
+    zoom: 1
+}
+
+* {
+    -webkit-tap-highlight-color: transparent
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat-Regular'), url('//in.bmscdn.com/webin/fonts/montserrat/montserrat-400-webfont.woff2') format('woff2'), url('//in.bmscdn.com/webin/fonts/montserrat/montserrat-400-webfont.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat-Bold'), url('//in.bmscdn.com/webin/fonts/montserrat/montserrat-700-webfont.woff2') format('woff2'), url('//in.bmscdn.com/webin/fonts/montserrat/montserrat-700-webfont.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+}
+
+@font-face {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 400;
+    src: local('Calibre-Regular'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-regular.woff2') format('woff2'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-regular.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+}
+
+@font-face {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 500;
+    src: local('Calibre-Medium'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-medium.woff2') format('woff2'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-medium.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+}
+
+@font-face {
+    font-family: Calibre;
+    font-style: normal;
+    font-weight: 700;
+    src: local('Calibre-Bold'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-bold.woff2') format('woff2'), url('//in.bmscdn.com/webin/fonts/calibre/web-fonts/calibre-bold.woff') format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.wrapper,
+.wrapper-main {
+    min-width: 320px;
+    max-width: 1280px;
+    margin: 0 auto
+}
+
+@media (min-width:320px) and (max-width:767px) {
+    .inTab-container {
+        width: 100%
+    }
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        min-width: 320px;
+        width: 100%
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 992px;
+        width: 100%
+    }
+}
+
+@media (min-width:992px) and (max-width:1279px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 1200px
+    }
+}
+
+@media (min-width:1280px) and (max-width:1439px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 1400px;
+        width: 100%
+    }
+}
+
+@media (min-width:1440px) {
+
+    .wrapper-main:not(._touch),
+    .wrapper:not(._touch) {
+        max-width: 1400px;
+        width: 90%
+    }
+}
+
+.wrapper-main._touch,
+.wrapper._touch {
+    min-width: 320px;
+    max-width: 1280px;
+    margin: 0 auto
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+    .wrapper-main._touch,
+    .wrapper._touch {
+        max-width: 992px;
+        width: 100%
+    }
+}
+
+@media (min-width:992px) and (max-width:1279px) {
+
+    .wrapper-main._touch,
+    .wrapper._touch {
+        max-width: 1200px
+    }
+}
+
+@media (min-width:1280px) and (max-width:1439px) {
+
+    .wrapper-main._touch,
+    .wrapper._touch {
+        max-width: 1400px;
+        width: 100%
+    }
+}
+
+/*!
+ * Preboot v2
+ *
+ * Open sourced under MIT license by @mdo.
+ * Some variables and mixins from Bootstrap (Apache 2 license).
+ */
+.none {
+    display: none
+}
+
+[class*=icon] {
+    display: inline-block
+}
+
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Daniel Eden
+*/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn
+}
+
+.animated.infinite {
+    animation-iteration-count: infinite
+}
+
+@keyframes wobble {
+    0% {
+        transform: none
+    }
+
+    15% {
+        transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg)
+    }
+
+    30% {
+        transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg)
+    }
+
+    45% {
+        transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg)
+    }
+
+    60% {
+        transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg)
+    }
+
+    75% {
+        transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg)
+    }
+
+    100% {
+        transform: none
+    }
+}
+
+.wobble {
+    animation-name: wobble
+}
+
+@keyframes puff {
+    0% {
+        opacity: 0;
+        transform: scale3d(1.5, 1.5, 1.5)
+    }
+
+    100% {
+        opacity: 1
+    }
+}

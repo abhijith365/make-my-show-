@@ -1,0 +1,124 @@
+<%- include('../../partials/header.ejs', {user}) %>
+    <link rel="stylesheet" href="/css/user/ticketHome.css">
+    <!-- filter header -->
+    <div class="main-body-wrapper ">
+        <div class="profile-container">
+            <!-- start of tabs container -->
+            <div class="booking-filters tab-list">
+                <ul class="p-tab bh-tab sub-tab">
+                    <li query="recent-bookings" class="_active" data-id="dBookingNav" id="sixMonths"><a>Recent
+                            Bookings</a>
+                    </li>
+                    <li query="pre-book" class="" data-id="dBookingNav" id="prebookTab"><a>Prev-booking</a></li>
+
+                </ul>
+            </div>
+
+            <div class="wrapper">
+                <div class="profile-tabs " data-id="sixMonths" style="display: block;" hasdata="Y"
+                    data-role="memberTicketData">
+                    <section class="tickets">
+
+                        <ul class="confirmation-list" id="ALLBOOKINGS">
+                            <!-- <li style="display: none;">Getting your purchase history...</li> -->
+
+                            <li class="confirmation-card" data-showstarttime="10:15pm" data-role="card"
+                                data-booking-id="WJZ24BT" data-trans-id="3119733610" data-trans-status="P">
+                                <aside class="details">
+
+                                    <div id="spnRedCanTag_3119733610" class="unpaid-tag" style="display: none;">
+                                        Cancelled</div>
+                                    <div class="bcode" id="barcode_3119733610">
+
+                                        <div class="__qrcode {{ className }}">
+                                            <img src="/secure/barcode/?IsImage=Y&amp;strBarcodeType=qrcode&amp;strBarcodeTxt=WJZ24BT&amp;intHeight=100&amp;intWidth=100"
+                                                style="width: 100px; height: 100px;" alt="">
+                                        </div>
+
+                                        <div class="__booking-id" id="bidText_3119733610">BOOKING ID
+                                            <br><span class="_bkn_id"><strong>WJZ24BT</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="info">
+                                        <div class="__img"><img src="//in.bmscdn.com/Events/moviecard/ET00312035.jpg"
+                                                alt=""></div>
+                                        <div class="text">
+                                            <div class="inner-text">
+                                                <div style="display: flex;justify-content: space-between;">
+                                                    <h1>K.G.F. Chapter 2 (Tamil)</h1>
+
+                                                </div>
+                                                <p><span class="venue-pin"></span>
+                                                    <br>PVR: Lulu, Kochi <br>10:15pm | 21-Apr-2022
+                                                </p><span id="Qyt-3119733610" class="Qyt">Quantity: 1</span>
+                                                <div class="__seats"><span class="icon-seat"><svg xml:space="preserve"
+                                                            enable-background="new 0 0 100 100" viewBox="0 0 100 100"
+                                                            y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                                            <use xlink:href="/icons/user-profile-icons.svg#icon-seat">
+                                                            </use>
+                                                        </svg></span>
+                                                    <strong id="seatno-3119733610">CLASSICP - G6</strong>
+                                                    <span>WJZ24BT</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="ticket-breakup" style="display: block">
+                                                <div class="__tax-summary">
+                                                    <ul>
+                                                        <li>
+                                                            <span><b>Ticket price</b><br></span>
+                                                            <span><b>Rs 160.00</b></span>
+                                                        </li>
+                                                        <li>
+                                                            <span><b>Convenience fees</b><br>Incl. of Tax</span>
+                                                            <span>Rs 28.32</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="total"><span class="__text" data-role="amount-paid-tag">AMOUNT
+                                                    PAID</span><span class="__value">Rs 188.32</span></div>
+                                            <!-- Loyalty Ticket Cancellation Stamp to appear, if ticket has been successfully cancelled -->
+                                            <div class="loyalty-refund" id="refund-3119733610" style="display: none;">
+                                                <span>
+                                                    <p>Refund</p>
+                                                </span>
+                                                <span id="loyalty-cashback"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </aside>
+
+
+                                <!-- <div class="booking-details">
+                                    <p>BOOKING DATE &amp; TIME
+                                        <br><span>Apr 21 2022 05:13PM</span>
+                                    </p>
+                                    <p data-role="payment-method">PAYMENT METHOD
+                                        <br><span>UPI</span>
+                                    </p>
+                                    <p>CONFIRMATION ID
+                                        <br><span id="conf-id-3119733610">WJZ24BT</span>
+                                    </p>
+                                </div> -->
+                            </li>
+                        </ul>
+
+
+                        <!-- <ul class="confirmation-list" id="SIXMONTHS"> -->
+                        <!-- <li class="no-data">You don't seem to have any recent bookings.</li>
+                            <div id="allBookings" class="view-all-bookings"
+                                onclick="profile.fnLazyLoadOldHistory('N');">
+                                View all bookings</div>
+                        </ul> -->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>

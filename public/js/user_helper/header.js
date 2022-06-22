@@ -3,8 +3,10 @@ $(document).ready(()=>{
         $("#sideNav").toggleClass('d-block d-none')
     })
     $(".gPINdS").click(function(){
-        alert("MMM")
-        console.log($(this).data('id'))
+        
+        if ($(this).data('id') == 'purchace'){
+            location.href = "/tickets"
+        }
     })
 })
 

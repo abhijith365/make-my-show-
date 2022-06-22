@@ -73,6 +73,7 @@ router.post('/otp_val', (req, res) => {
                     }
                     else {
                         user = await User.create({ phone: req.body.phone });
+                        user._id = ObjectId(user._id)
                         req.session.phone = user
                         res.redirect('/')
                     }
@@ -134,8 +135,8 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
                 receipt: `order_receipt_`
             };
             instance.orders.create(options, function (err, order) {
-                if (order) {     
-                        res.send({ "orderId": order.id, price: pr, data: req.session.order_data });
+                if (order) {
+                    res.send({ "orderId": order.id, price: pr, data: req.session.order_data });
                 } else console.log(err);
 
             });
@@ -161,16 +162,23 @@ router.post("/api/payment/verify", ensureAuth, async (req, res) => {
 
         var response = { "signatureIsValid": "false" }
         if (expectedSignature === req.body.response.razorpay_signature) {
-            
+
+            let usr = req.user || req.session.phone;
             let seat_data = req.session.order_data;
-            let user = req.user._id
+
+            let user = usr._id
+
+            if (typeof (usr._id) == "string") {
+                user = ObjectId(usr._id)
+            }
+
             let ticket_ids = [];
 
             let array = await seat_data.map(async (e) => {
-                ticket_ids.push({ seat_id: ObjectId(e.id)});
+                ticket_ids.push({ seat_id: ObjectId(e.id) });
                 await db.BookSeats(ObjectId(e.id), user);
             });
-           
+
             let ticketObj = {
                 user_id: user,
                 ticketData: ticket_ids,

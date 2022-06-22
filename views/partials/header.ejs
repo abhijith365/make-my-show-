@@ -4,7 +4,7 @@
             <a class="navbar-brand" href="/"><img src="/img/svgexport-36.svg" alt="make my show"
                     style="height:2.1rem"></a>
             <div class="input-group mx-5 input-box" style="width: 26rem;">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                <input type="search" class="form-control rounded" style="height:100%" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" />
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -19,10 +19,10 @@
                         <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
                         <% }else{ %>
                             <a href="/profile">
-                                <div class="chip text-nowrap">
+                                <div class="chip text-nowrap d-flex align-items-center">
 
                                     <img src="<%=user.image%>" class="rounded-circle " style="width:40px" alt="img">
-                                    <span class="chip-user-name">
+                                    <span class="chip-user-name ms-2">
                                         <%=user.firstName%>
                                     </span>
                                 </div>
@@ -100,7 +100,7 @@
                                 class="sc-gRnDUn gMMdZt">
                             <div class="sc-cmjSyW bTZsza">
                                 <div class="sc-sdtwF bGPOnl">Purchase History</div>
-                                <div class="sc-iYUSvU hNTLEy">View all your bookings &amp; purchases</div>
+                                <div class="sc-iYUSvU hNTLEy">View all your bookings &amp; purchases</div>                         
                             </div>
                         </div>
                     <!-- </div> -->
