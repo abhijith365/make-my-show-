@@ -125,9 +125,10 @@ route.get("/tickets", ensureAuth, async (req, res) => {
 //@route POST /cancel_tickets
 route.post('/cancelTicket', ensureAuth, async (req, res) => {
     try {
-        console.log(req.body)
-        res.send(req.id)
-        // let id = ObjectId(req.id);
+        // let id = req.body.id
+        let id = ObjectId(req.body.id);
+        let findData = await db.CancelTicket(id)
+        req.send(findData)
     } catch (error) {
         res.render('error/500')
         console.error(error)

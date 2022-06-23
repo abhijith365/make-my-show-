@@ -386,7 +386,7 @@ module.exports = {
                             'ticketData': 1,
                             'showDetails.showTime': 1,
                             "seat_status": 1,
-                            createdAt:1
+                            createdAt: 1
                         }
                     }, {
                         '$sort': {
@@ -406,9 +406,42 @@ module.exports = {
             }
         })
     },
-    CancelTicket:(obj)=>{
-        return new Promise(async(res,rej)=>{
-            
+    CancelTicket: (obj) => {
+        return new Promise(async (res, rej) => {
+            let userData = await db.getDb().collection(coll.ticket).aggregate(
+                [{
+                        '$match': {
+                            '_id': obj
+                        }
+                }]
+            ).toArray()
+                
+            let arr = userData[0].ticketData.map(e=>ObjectId(e.id))
+
+            let updateStatus = await db.getDb().collection(coll.ticket).updateOne({ '_id': obj },
+                
+                    {$set:{seat_status: false}}
+                )
+
+            let updateSeatData = await db.getDb().collection(coll.seat).updateOne(
+                {
+                    "show_seats.showByDate.shows.showSeats._id": { $in: arr }
+                },
+                {
+                    $set: {
+                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].seat_status": false,
+                        "show_seats.$[].showByDate.shows.$[].showSeats.$[elem].user_id": false
+                    }
+                },
+                {
+                    arrayFilters: [{ "elem._id": {$in:arr} }]
+                }
+            )
+            if(updateSeatData&&updateStatus&&userData){
+                res(true)
+            }else{
+                res(false)
+            }
         })
     }
 }
