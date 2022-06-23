@@ -45,6 +45,28 @@ $(document).ready(function () {
     })
 
 
+    //heading section
+    let data_from_seats = JSON.parse(data);
+
+    //add movie name 
+    let movieName = `${data_from_seats[0].movie[0].movieName}`;
+    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
+    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
+    let language = `${data_from_seats[0].movie[0].language}`;
+    let screen = `${data_from_seats[0].screen[0].screenName}`
+    let city = `${data_from_seats[0].theatre[0].city}`;
+    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
+    let time = `${date.split("T")[1]}`;
+    let full_date = `${new Date(date)}`;
+    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
+
+    $('#strEvtName').append(`${movieName}`)
+    $("#strVenName").append(`${theatreName} : ${city} `)
+    $('#audiInfo').append(`${screen}`)
+    // 'Monday,Jun 13, 2022, 03:15 PM'
+    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
+    $("#strDate").append(d_time)
+
 
     //entering ticket confirm section and food section
     $('#btmcntbook').on('click', (e) => {
@@ -67,7 +89,7 @@ $(document).ready(function () {
                 <h2>
                     <!-- Event name -->
                     <div>
-                        <span class="__event-name"><a id="strEvtName" href="#"></a></span>
+                        <span class="__event-name"><a id="strEvtName" href="#">${movieName}</a></span>
                         <span class="icon-a" id="sen_a" style="display: none;">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
@@ -324,27 +346,7 @@ $(document).ready(function () {
     })
 
 
-    //heading section
-    let data_from_seats = JSON.parse(data);
 
-    //add movie name 
-    let movieName = `${data_from_seats[0].movie[0].movieName}`;
-    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
-    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
-    let language = `${data_from_seats[0].movie[0].language}`;
-    let screen = `${data_from_seats[0].screen[0].screenName}`
-    let city = `${data_from_seats[0].theatre[0].city}`;
-    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
-    let time = `${date.split("T")[1]}`;
-    let full_date = `${new Date(date)}`;
-    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
-
-    $('#strEvtName').append(`${movieName}`)
-    $("#strVenName").append(`${theatreName} : ${city} `)
-    $('#audiInfo').append(`${screen}`)
-    // 'Monday,Jun 13, 2022, 03:15 PM'
-    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
-    $("#strDate").append(d_time)
 
 
 

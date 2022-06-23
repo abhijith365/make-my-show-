@@ -242,10 +242,11 @@
                                     </div>
                                     <div class="showtime-pill-wrapper">
                                         <% d.showByDay.map(e=>{%>
-
-                                            <div class="showtime-pill-container _sold">
+                                            <% var da=date.toString(); var cdate=`${date}T${e.startTime}`;let tr = new Date()<new Date(cdate); %>
+                                             <%-(!tr)?`<div class="showtime-pill-container _sold" >`:`<div class="showtime-pill-container" >`%> 
                                                 <a class="showtime-pill show_time_url"
-                                                    href="/home/bookticket/seat/<%-d._id%>?&t=<%-e.startTime%>&d=<%- date %>"
+                                                
+                                                   <%-(tr)? `href=/home/bookticket/seat/${d._id}?&t=${e.startTime}&d=${date}`:`` %> 
                                                     data-url=" /home/bookticket/seat/<%-d._id%>?&t=<%-e.startTime%>&d=<%- date %>"
                                                     data-id="<%-d._id%>" data-time="<%-e.startTime%>" data-date="<%-e.startTime%>&d=<%- date %>"
                                                     data-date="<%- date %>">

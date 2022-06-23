@@ -50,7 +50,7 @@
                                                 <div>
                                                     <div class="download_btn"><i class="fa fa-download"
                                                             aria-hidden="true"></i></div>
-                                                    <div class="btn btn-danger mt-2 cancel_ticket" data-cancel="<%-e._id %>"  <%-(!e.seat_status)?"style=display:none;":"style=display:block;"%>>cancel booking</div>
+                                                    <div class="btn btn-danger mt-2 cancel_ticket" data-cancel="<%-e._id %>"  <%-(!e.seat_status  || new Date(e.showDetails.showTime) <= new Date())?"style=display:none;":"style=display:block;"%>>cancel booking</div>
                                                 </div>
                                             </div>
                                             

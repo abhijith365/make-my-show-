@@ -1,4 +1,4 @@
-// changing class in theatre selecting section
+//changing class in theatre selecting section
 //button class changing
 
 $(document).ready(function () {
@@ -12,11 +12,9 @@ $(document).ready(function () {
         $(this).parent().removeClass()
         $(this).parent().addClass('date-details _active slick-slide slick-current slick-active')
 
-
         let id = $(this).data('id');
         var date = $(this).data('date');
         let url = $(this).data('url')
-
 
         $.ajax({
             url: url,
@@ -86,12 +84,14 @@ $(document).ready(function () {
                     '</div>' +
                     '<div class="showtime-pill-wrapper">'
                 d.showByDay.forEach(e => {
+                    // let da = date.toString();
+                    let cdate = `${res.obj.date}T${e.startTime}`;
+                    let tr = new Date() < new Date(cdate);
+                    console.log(tr)
                     divv +=
-
-                        `<div class="showtime-pill-container _sold">
-
+                        `${(!tr) ? `<div class="showtime-pill-container _sold" >` : `<div class="showtime-pill-container" >`}
                         <a class="showtime-pill show_time_url"
-                            href="/home/bookticket/seat/${d._id}?&t=${e.startTime}&d=${res.obj.date}"
+                            ${(tr)?`href=/home/bookticket/seat/${d._id}?&t=${e.startTime}&d=${res.obj.date }`:`` } 
                             data-url="/home/bookticket/seat/${d._id}?&t=${e.startTime}&d=${res.obj.date}"
                             data-id="${d._id}" data-time="${e.startTime}" data-date="${e.startTime}&d=${res.obj.date}"
                             data-date="${res.obj.date}">      
@@ -102,9 +102,7 @@ $(document).ready(function () {
 
                         </a>
                     </div>`
-
                 })
-
 
                 divv += `</div>
                     <div class="venue-flags">
@@ -113,13 +111,8 @@ $(document).ready(function () {
                     </div>
                     </div>
                     </li>`
-
-
             }))
-            $("#venuelist").html(divv)
-            console.log(divv)
+            $("#venuelist").html(divv) 
         })
-
-    })
-   
+    }) 
 })
