@@ -471,5 +471,4 @@ route.get('/view/movies/:id', ensureAuth, async (req, res) => {
 })
 
 
-
 module.exports = route

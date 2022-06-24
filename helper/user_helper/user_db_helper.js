@@ -98,7 +98,7 @@ module.exports = {
 
                 {
                     '$match': {
-                        'movieId': new ObjectId(obj.id),
+                        'movieId': ObjectId(obj.id),
                         'showByDate.endDate': {
                             '$gte': new Date(date)
                         },

@@ -129,7 +129,7 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
         seatDetail.map((p) => pr += parseInt(p.show_seats.showByDate.shows.showSeats.price));
 
         (req.body.total) ? req.body.total = pr : req.body.total = 0;
-
+        req.session.total = pr;
 
         if (!seat_all_not_clear) {
 
@@ -198,6 +198,7 @@ router.post("/api/payment/verify", ensureAuth, async (req, res) => {
                 user_id: user,
                 showDetails: showObj,
                 ticketData: seat_data,
+                total: req.session.total,
                 seat_status: true,
                 createdAt: new Date()
             }

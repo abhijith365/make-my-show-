@@ -338,10 +338,10 @@ module.exports = {
                     }
 
                 }, {
-                        '$sort': {
-                            'showByDate.startDate': 1
-                        }
-                    },
+                    '$sort': {
+                        'showByDate.startDate': 1
+                    }
+                },
                 {
                     $lookup: {
                         from: coll.screen,
@@ -381,8 +381,8 @@ module.exports = {
             } else { res(false) }
         })
     },
-    previouseShows :(obj)=>{
-        return new Promise(async(resolve,reject)=>{
+    previouseShows: (obj) => {
+        return new Promise(async (resolve, reject) => {
             let data = await db.getDb().collection(coll.show).aggregate(
                 [{
                     $match: {
@@ -393,40 +393,40 @@ module.exports = {
                     }
 
                 }, {
-                        '$sort': {
-                            'showByDate.startDate': 1
-                        }
-                    },
-                    {
-                        $lookup: {
-                            from: coll.screen,
-                            localField: "screenId",
-                            foreignField: "_id",
-                            as: "screen"
+                    '$sort': {
+                        'showByDate.startDate': 1
+                    }
+                },
+                {
+                    $lookup: {
+                        from: coll.screen,
+                        localField: "screenId",
+                        foreignField: "_id",
+                        as: "screen"
 
-                        }
-                    },
-                    {
-                        $lookup: {
-                            from: coll.movie,
-                            localField: "movieId",
-                            foreignField: "_id",
-                            as: "movie"
-                        }
-                    },
-                    {
-                        $lookup: {
-                            from: coll.theatre,
-                            localField: "theatreId",
-                            foreignField: "_id",
-                            as: "theatre"
-                        }
-                    },
-                    {
-                        $project: {
-                            _id: 1, showUid: 1, showType: 1, showByDate: 1, screen: 1, movie: 1, theatreOwner: 1
-                        }
-                    },
+                    }
+                },
+                {
+                    $lookup: {
+                        from: coll.movie,
+                        localField: "movieId",
+                        foreignField: "_id",
+                        as: "movie"
+                    }
+                },
+                {
+                    $lookup: {
+                        from: coll.theatre,
+                        localField: "theatreId",
+                        foreignField: "_id",
+                        as: "theatre"
+                    }
+                },
+                {
+                    $project: {
+                        _id: 1, showUid: 1, showType: 1, showByDate: 1, screen: 1, movie: 1, theatreOwner: 1
+                    }
+                },
 
                 ]
             ).toArray()
@@ -435,7 +435,7 @@ module.exports = {
                 resolve(data)
             } else { resolve(false) }
         })
-       
+
     }
     ,
     // all foods
@@ -477,5 +477,57 @@ module.exports = {
                 res(false)
             }
         })
+    },
+    AllTickets: () => {
+        return new Promise(async (res, rej) => {
+            let data = await db.getDb().collection(coll.ticket).aggregate(
+                [
+                    {
+                        '$match': {
+                            'seat_status': true
+                        }
+                    }, {
+                        '$sort': {
+                            'createdAt': -1
+                        }
+                    }
+                ]
+            ).toArray()
+            if (data.length != 0) {
+                res(data)
+            } else {
+                res(false)
+            }
+        })
+    },
+    TotalSell: () => {
+        return new Promise(async (res, rej) => {
+            let data = await db.getDb().collection(coll.ticket).aggregate(
+                [
+                    {
+                        '$match': {
+                            'seat_status': true
+                        }
+                    }, {
+                        '$project': {
+                            '_id': 0,
+                            'total': 1
+                        }
+                    }
+                ]
+            )
+                .toArray()
+            if (data) {
+                res(data)
+            } else {
+                res(false)
+            }
+        })
     }
+
+
+
+
+
+
 }

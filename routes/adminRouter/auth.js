@@ -3,6 +3,7 @@ const Admin = require('../../models/Admin')
 const { ensureAuth } = require('../../middleware/isAdmin')
 const route = express.Router();
 const theatreOwn = require('../../models/Theatre_own');
+const db = require('../../helper/theatre_helper/database_helper')
 
 //admin  login 
 
@@ -50,12 +51,14 @@ route.get('/auth/logout', (req, res) => {
 // @desc admin home
 // @route GET /adminHome
 
-route.get('/adminHome', (req, res) => {
+route.get('/adminHome', async(req, res) => {
     if (!req.session.adminName) {
         res.redirect('/admin')
     } else {
+        let sell = await db.TotalSell();
         res.render('admin/index', {
-            layout: './layout/layout.ejs'
+            layout: './layout/layout.ejs',
+            sell
         });
     }
 })

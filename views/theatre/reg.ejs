@@ -3,7 +3,7 @@
     <div class="col-md-offset-1 col-md-12">
         <div class="form-container">
             <h3 class="title">Register</h3>
-            <form class="form-horizontal" action="/theatre/reg" method="POST">
+            <form class="form-horizontal needs-validation" novalidate action="/theatre/reg" method="POST">
                 <% if(locals.message){ %>
                     <h5 class="alter alert-danger text-capitalize text-center rounded-3 p-3">
                         <%= message %>
@@ -12,15 +12,36 @@
                         <div class="form-group">
                             <label>User Name</label>
                             <input required name="userName" type="text" class="form-control" placeholder="User Name">
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Enter User Name
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label>Password</label>
                             <input required name="password" type="password" class="form-control" placeholder="Password">
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Enter proper password
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <input required name="address" type="text" class="form-control" placeholder="Address">
+                            <input required name="address" minlength="10" type="text" class="form-control" placeholder="Address">
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Enter Address min 10 char
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>City</label>
@@ -35,31 +56,71 @@
                                 <option value="Kolkata">Kolkata</option>
                                 <option value="Mumbai">Mumbai</option>
                             </select>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Enter city
+                            </div>
                         </div>
                         <h4 class="sub-title">credential</h4>
                         <div class="form-group">
                             <label>Phone No.</label>
                             <input required name="phone" type="text" class="form-control" placeholder="Phone Number">
+
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Enter proper Phone Number
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label>Email ID</label>
                             <input required name="googleMail" type="email" class="form-control"
                                 placeholder="Email Address">
+
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter proper email
+                                </div>
                         </div>
                         <div class="form-group">
                             <label>Theater name</label>
                             <input required name="theatreName" type="text" class="form-control"
                                 placeholder="Theater name">
+
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter Theater name
+                                </div>
                         </div>
                         <div class="form-group">
                             <label>Theater registered ID</label>
                             <input required name="theatreId" type="text" class="form-control"
                                 placeholder="Theater registered ID">
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-tooltip">
+                                    Enter Theater registered ID
+                                </div>
                         </div>
 
-                        <div class="check-terms">
+                        <div class="check-terms form-group">
                             <input required type="checkbox" class="checkbox">
                             <span class="check-label">I agree to the terms</span>
+                            <div class="valid-tooltip">
+                                Looks good!
+                            </div>
+                            <div class="invalid-tooltip">
+                                Need to agree
+                            </div>
                         </div>
                         <span class="signin-link">Already have an account? Click here to <a
                                 href="/theatre">Login</a></span>
@@ -69,3 +130,44 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+</script>
+
+<style>
+    .invalid-tooltip,
+    .valid-tooltip {
+        top: -2px;
+        right: 0;
+        left: auto;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    .form-group {
+        position: relative;
+    }
+</style>

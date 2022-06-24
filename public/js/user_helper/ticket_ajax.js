@@ -2,7 +2,7 @@ $(document).ready(() => {
     $(".cancel_ticket").on("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
-        let data = $(".cancel_ticket").attr("data-cancel")
+        let data = $(this).data("cancel")
 
 
         Swal.fire({
@@ -28,9 +28,9 @@ $(document).ready(() => {
                             'Your Ticket has been canceled.',
                             'success'
                         )
-                        $('.loyalty-refund').css("display", "block");
-                        $('.cancellation-btn').css("display", "block");
-                        $('.cancel_ticket').css("display", "none")
+                        $(this).parent().parent().find('.unpaid-tag').css("display", "block");
+                        $(this).parent().parent().find('.tkt-cancellation').css("display", "block");
+                        $(this).parent().find('.cancel_ticket').css("display", "none")
 
                     } else {
                         Swal.fire(
@@ -54,7 +54,7 @@ $(document).ready(() => {
     $('.fa-download').click(function () {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "download.....!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -75,7 +75,7 @@ $(document).ready(() => {
                 )
             }
         })
-        
+
 
     });
 

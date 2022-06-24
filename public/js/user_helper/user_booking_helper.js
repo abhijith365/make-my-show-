@@ -45,27 +45,6 @@ $(document).ready(function () {
     })
 
 
-    //heading section
-    let data_from_seats = JSON.parse(data);
-
-    //add movie name 
-    let movieName = `${data_from_seats[0].movie[0].movieName}`;
-    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
-    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
-    let language = `${data_from_seats[0].movie[0].language}`;
-    let screen = `${data_from_seats[0].screen[0].screenName}`
-    let city = `${data_from_seats[0].theatre[0].city}`;
-    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
-    let time = `${date.split("T")[1]}`;
-    let full_date = `${new Date(date)}`;
-    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
-
-    $('#strEvtName').append(`${movieName}`)
-    $("#strVenName").append(`${theatreName} : ${city} `)
-    $('#audiInfo').append(`${screen}`)
-    // 'Monday,Jun 13, 2022, 03:15 PM'
-    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
-    $("#strDate").append(d_time)
 
 
     //entering ticket confirm section and food section
@@ -307,6 +286,7 @@ $(document).ready(function () {
 </style>
 
             `)
+            
 
             //food details
             //seat price 
@@ -348,6 +328,27 @@ $(document).ready(function () {
 
 
 
+    //heading section
+    let data_from_seats = JSON.parse(data);
+
+    //add movie name 
+    let movieName = `${data_from_seats[0].movie[0].movieName}`;
+    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
+    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
+    let language = `${data_from_seats[0].movie[0].language}`;
+    let screen = `${data_from_seats[0].screen[0].screenName}`
+    let city = `${data_from_seats[0].theatre[0].city}`;
+    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
+    let time = `${date.split("T")[1]}`;
+    let full_date = `${new Date(date)}`;
+    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
+
+    $('#strEvtName').append(`${movieName}`)
+    $("#strVenName").append(`${theatreName} : ${city} `)
+    $('#audiInfo').append(`${screen}`)
+    // 'Monday,Jun 13, 2022, 03:15 PM'
+    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
+    $("#strDate").append(d_time)
 
 
     //adding foods

@@ -86,7 +86,7 @@
                                         <% let date1 =  new Date(data[data.length-1].showByDate.endDate.toISOString().split("T")[0])%> 
                                         <% let date2 = new Date(new Date().toISOString().split("T")[0]) %> 
                                         <%const maxday=(Math.ceil((date1.getTime() - date2.getTime()) / (1000 * 3600 * 24))) %>
-                                        <%- console.log(data, maxday) %> 
+                                        
                                             <% for( let i=0; i <maxday; i++ ) { %>
                                                 <% let startDate=data[0].showByDate.startDate.toString()%>
                                                     <%let date=new Date();%>

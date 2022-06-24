@@ -308,4 +308,10 @@ route.get('/delete/food/:id', ensureAuth, async (req, res) => {
     }
 })
 
+route.get('/ticket',async(req,res)=>{
+    let data = await db.AllTickets();
+    console.log(data)
+    res.render('theatre/Home/ticket_home',{data})
+})
+
 module.exports = route;

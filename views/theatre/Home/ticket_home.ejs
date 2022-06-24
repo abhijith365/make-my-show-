@@ -1,0 +1,259 @@
+<%- include('../../partials/theater_header.ejs') %>
+
+    <div class="d-flex">
+        <div class="px-3 text-white" style="background-color: rgba(0, 0, 0, 0.776);">
+            <div class="list-group px-2 py-4  text-white text-nowrap" style="height:560px;">
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
+                    href="/theatre/home">Dashboard</a>
+
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Profile</a>
+            </div>
+        </div>
+        <div class="w-100 h-100 sticky-top" style="color: rgba(45, 42, 42, 0.793);">
+            <!-- <div class="h4 py-3 text-center text-white" style="background-color:rgb(9, 20, 9);">Shows Dashboard
+
+ 
+            </div> -->
+            <div class="dropdown py-3 text-white d-flex w-100" style="background-color:rgb(9, 20, 9);">
+                <div class="px-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Running Tickets &nbsp;
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item running-show" href="#">Running Tickets&nbsp;</a>
+                        <a class="dropdown-item old-show" href="#">Canceled Tickets</a>
+                    </div>
+                </div>
+                <div id="showHeader" class="h3" style="margin-left:27% ;">New Tickets</div>
+            </div>
+
+            <div class="status p-1" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
+
+                <% if(data){ %>
+                    <%- console.log(data) %> 
+                    <section class="container">
+                        <% data.map((e,i)=>{ %>
+                            <% var dt = new Date(e.showDetails.showTime).toString().split(" ") %> 
+                           
+                                <article class="card fl-left" > 
+                                    <section class="date">
+                                        <time datetime="23th feb">
+                                            <span><%- dt[2] %> </span><span><%-dt[1] %> </span>
+                                        </time>
+                                    </section>
+                                    <section class="card-cont">
+                                        <small> Movie</small>
+                                        <h3>Id: <%- e._id %></h3>
+                                        <div class="even-date">
+                    
+                                            <time>
+                                                <span>Show Time: <%- e.showDetails.showTime %> </span>
+                                               
+                                            </time>
+                                        </div>
+                                        <div class="even-info">
+                                          
+                                            <p>
+                                                Movie Id: <%- e.showDetails.movieId %> <br>
+                                            
+                                                Screen Id: <%- e.showDetails.screenId %><br>
+                                            
+                                                Ticket Booked time: <%- new Date(e.createdAt.toISOString()) %>
+                                            </p>
+                                        </div>
+                                       
+                                    </section>
+                                </article>
+                            <% }) %>
+                    </section>
+                    <% }else{ %>
+                        <h2> Tickets Not Available</h2>
+                        <% } %>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald');
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #dadde6;
+            font-family: arial
+        }
+
+        .fl-left {
+            float: left
+        }
+
+        .fl-right {
+            float: right
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .row {
+            overflow: hidden
+        }
+
+        .card {
+            display: table-row;
+            width: 100%;
+            background-color: #fff;
+            color: #989898;
+            margin-bottom: 10px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            border-radius: 4px;
+            position: relative;
+            margin: 10px auto;
+        }
+
+      
+
+        .date {
+            display: table-cell;
+            width: 25%;
+            position: relative;
+            text-align: center;
+            border-right: 2px dashed #dadde6
+        }
+
+        .date:before,
+        .date:after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #DADDE6;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            z-index: 1;
+            border-radius: 50%
+        }
+
+        .date:after {
+            top: auto;
+            bottom: -15px
+        }
+
+        .date time {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .date time span {
+            display: block
+        }
+
+        .date time span:first-child {
+            color: #2b2b2b;
+            font-weight: 600;
+            font-size: 250%
+        }
+
+        .date time span:last-child {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: -10px
+        }
+
+        .card-cont {
+            display: table-cell;
+            width: 75%;
+            font-size: 85%;
+            padding: 10px 10px 30px 50px
+        }
+
+        .card-cont h3 {
+            color: #3C3C3C;
+            font-size: 130%
+        }
+
+       
+
+        .card-cont>div {
+            display: table-row
+        }
+
+      
+
+        .card-cont .even-date i,
+        .card-cont .even-info i {
+            padding: 5% 5% 0 0
+        }
+
+        .card-cont .even-info p {
+            padding: 30px 50px 0 0
+        }
+
+        .card-cont .even-date time span {
+            display: block
+        }
+
+        .card-cont a {
+            display: block;
+            text-decoration: none;
+            width: 80px;
+            height: 30px;
+            background-color: #D8DDE0;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 2px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px
+        }
+
+        .row:last-child .card:first-child .card-cont a {
+            background-color: #037FDD
+        }
+
+        .row:last-child .card:last-child .card-cont a {
+            background-color: #F8504C
+        }
+
+        @media screen and (max-width: 860px) {
+            .card {
+                display: block;
+                float: none;
+                width: 100%;
+                margin-bottom: 10px
+            }
+
+            .card+.card {
+                margin-left: 0
+            }
+
+            .card-cont .even-date,
+            .card-cont .even-info {
+                font-size: 75%
+            }
+        }
+    </style>

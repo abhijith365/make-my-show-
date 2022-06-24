@@ -18,7 +18,7 @@
                     href="/theatre/shows/home">
                     Shows</a>
 
-                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="#!">Ticket</a>
+                <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5" href="/theatre/shows/ticket">Ticket</a>
                 <a class="list-group-item list-group-item-action text-white bg-dark py-4 px-5"
                     href="/theatre/edit/profile/<%-data._id %> ">Profile</a>
             </div>
@@ -28,6 +28,8 @@
             <div class="status p-5" style="overflow-y: scroll;overflow-x: hidden; height: 500px;">
 
                 <canvas id="myChart"></canvas>
+                <div id="myPlot" style="width:100%;max-width:1221px"></div>
+                
 
             </div>
 
@@ -36,6 +38,7 @@
     </div>
 
     </div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
         integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -45,14 +48,39 @@
             box-sizing: border-box;
             height: 426px !important;
             width: 1021px !important;
+            margin-bottom: 10%;
         }
         
     </style>
-
     <script>
+        let array = `<%- sell.map(e=>e.total)%>`
+        let m = array.split('"').toString().split(",");
+        let mm = m.map(e=> parseInt(e))
+ 
+        var xArray = mm;
+        var yArray = [1, 2, 3, 4, 5, 6, 7,8,9];
+
+        // Define Data
+        var data = [{
+            x: xArray,
+            y: yArray,
+            mode: "lines"
+        }];
+
+        // Define Layout
+        var layout = {
+            xaxis: { range: [1], title: "Square Meters" },
+            yaxis: { range: [1], title: "Price" },
+            title: "buying"
+        };
+
+        // Display using Plotly
+        Plotly.newPlot("myPlot", data, layout);
+  
+
         const ctx = document.getElementById('myChart');
-        var xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-        var yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+        var xValues = mm;
+        var yValues = mm;
 
         new Chart("myChart", {
             type: "line",
@@ -64,8 +92,13 @@
                     data: yValues
                 }]
             },
-            options: {
-                
+             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sells'
+                    }
+                }
             }
         });
 

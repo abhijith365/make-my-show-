@@ -25,7 +25,6 @@ route.get('/allmovies', async (req, res) => {
                 ))
             )
 
-
             res.render('user/home/allMovies', {
                 user,
                 data: uniqueArray
@@ -185,8 +184,8 @@ route.post('/booking/', ensureAuth, async (req, res) => {
 
         let obj = { id, date }
 
-        let user = req.user || req.session.phone;
         let data = await db.runningTheatre(obj).then(result => result).catch(err => err);
+        let user = req.user || req.session.phone;
 
         if (data) {
             res.render('user/home/booking', {
