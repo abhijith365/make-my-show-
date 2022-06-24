@@ -10,6 +10,135 @@ var totalSeatNames = 0;
 $(document).ready(function () {
     var arr = [];
 
+    let spinner = `
+                    <style>
+                        /* Spinner Wrapper */
+                    .loader {
+                        width: 100vw;
+                        height: 100vh;
+                        background: #fff;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    .loader-inner {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+
+                    /* Spinner */
+                    .lds-roller {
+                        display: inline-block;
+                        position: relative;
+                        width: 64px;
+                        height: 64px;
+                    }
+                    .lds-roller div {
+                        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                        transform-origin: 32px 32px;
+                    }
+                    .lds-roller div:after {
+                        content: " ";
+                        display: block;
+                        position: absolute;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #333;
+                        margin: -3px 0 0 -3px;
+                    }
+                    .lds-roller div:nth-child(1) {
+                        animation-delay: -0.036s;
+                    }
+                    .lds-roller div:nth-child(1):after {
+                        top: 50px;
+                        left: 50px;
+                    }
+                    .lds-roller div:nth-child(2) {
+                        animation-delay: -0.072s;
+                    }
+                    .lds-roller div:nth-child(2):after {
+                        top: 54px;
+                        left: 45px;
+                    }
+                    .lds-roller div:nth-child(3) {
+                        animation-delay: -0.108s;
+                    }
+                    .lds-roller div:nth-child(3):after {
+                        top: 57px;
+                        left: 39px;
+                    }
+                    .lds-roller div:nth-child(4) {
+                        animation-delay: -0.144s;
+                    }
+                    .lds-roller div:nth-child(4):after {
+                        top: 58px;
+                        left: 32px;
+                    }
+                    .lds-roller div:nth-child(5) {
+                        animation-delay: -0.18s;
+                    }
+                    .lds-roller div:nth-child(5):after {
+                        top: 57px;
+                        left: 25px;
+                    }
+                    .lds-roller div:nth-child(6) {
+                        animation-delay: -0.216s;
+                    }
+                    .lds-roller div:nth-child(6):after {
+                        top: 54px;
+                        left: 19px;
+                    }
+                    .lds-roller div:nth-child(7) {
+                        animation-delay: -0.252s;
+                    }
+                    .lds-roller div:nth-child(7):after {
+                        top: 50px;
+                        left: 14px;
+                    }
+                    .lds-roller div:nth-child(8) {
+                        animation-delay: -0.288s;
+                    }
+                    .lds-roller div:nth-child(8):after {
+                        top: 45px;
+                        left: 10px;
+                    }
+                    @keyframes lds-roller {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    </style>
+
+                    <div class="loader text-center">
+                        <div class="loader-inner">
+
+                            <!-- Animated Spinner -->
+                            <div class="lds-roller mb-3">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+
+                            
+                            <h4 class="text-uppercase font-weight-bold">Loading</h4>
+                        </div>
+                    </div>
+                    `
+
 
     $('.seatI a').on('click', function (e) {
         e.preventDefault();
@@ -47,9 +176,82 @@ $(document).ready(function () {
 
 
 
+
+
+    //heading section
+    let data_from_seats = JSON.parse(data);
+
+    //add movie name 
+    let movieName = `${data_from_seats[0].movie[0].movieName}`;
+    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
+    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
+    let language = `${data_from_seats[0].movie[0].language}`;
+    let screen = `${data_from_seats[0].screen[0].screenName}`
+    let city = `${data_from_seats[0].theatre[0].city}`;
+    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
+    let time = `${date.split("T")[1]}`;
+    let full_date = `${new Date(date)}`;
+    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
+
+    $('#strEvtName').append(`${movieName}`)
+    $("#strVenName").append(`${theatreName} : ${city} `)
+    $('#audiInfo').append(`${screen}`)
+    // 'Monday,Jun 13, 2022, 03:15 PM'
+    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
+    $("#strDate").append(d_time)
+
+
+    //adding foods
+    let elm = ""
+
+    data_from_seats[0].foods.forEach((val, ind) => {
+        elm +=
+            `<aside class="fnb-body" data-category="PO" data-uid="${val.food_uid}">
+                <div class="fnb-div">
+                    <div class="img"><img
+                        src=http://localhost:3000/uploads/${val.image.image_url}
+                        onerror="this.src='//in.bmscdn.com/bmsin/callouts/foodc.jpg'">
+                        <div class="price-tag"><span class="__amount"><svg version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                            xml:space="preserve">
+                            <use xlink:href="/icons/common-icons.svg#icon-rs"></use>
+                        </svg>${val.price}</span><span class="__price-tag all-excl-combos"></span>
+                        </div>
+                    </div>
+                    <div class="description" id="desc_1020004-2957">
+                        <div class="foodtype-indicator"><svg version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
+                            viewBox="0 0 26 24" fill="none">&gt ;<use
+                                xlink:href="/icons/fnb-icons.svg#icon-veg"></use></svg></div>
+                        <div class="item-desc">
+                            <h2><span class="_veg"></span><span
+                                class="item-sname detail-sname">${val.foodName}</span></h2>
+                            <p class="tr-desc">${val.foodName}</p>
+                            <p style="display:none;"
+                                class="detail-desc">${val.foodName}</p>
+                        </div>
+                        <div class="qty"><span  class="add-btn">ADD</span><span
+                                style="display:none;" class="icon-minus">
+                                <div class="minus-icon"></div>
+                            </span><span  class="__holder"></span>
+                            <span style="display:none;" class="icon-minus">
+                                <div class="plus-icon"></div>
+                            </span></div>
+                    </div>
+                </div>
+            </aside>`
+
+    })
+    $("#fnbcall").append(elm)
+
+
     //entering ticket confirm section and food section
     $('#btmcntbook').on('click', (e) => {
         e.preventDefault();
+        $('body').html(spinner)
         $.ajax({
             url: '/home/payment_one',
             type: 'POST',
@@ -328,204 +530,7 @@ $(document).ready(function () {
 
 
 
-    //heading section
-    let data_from_seats = JSON.parse(data);
-
-    //add movie name 
-    let movieName = `${data_from_seats[0].movie[0].movieName}`;
-    let theatreName = `${data_from_seats[0].theatre[0].theatreName}`;
-    let BuildingName = `${data_from_seats[0].theatre[0].BuildingName}`;
-    let language = `${data_from_seats[0].movie[0].language}`;
-    let screen = `${data_from_seats[0].screen[0].screenName}`
-    let city = `${data_from_seats[0].theatre[0].city}`;
-    let date = `${data_from_seats[0].show_seats.showByDate.shows.showTime}`;
-    let time = `${date.split("T")[1]}`;
-    let full_date = `${new Date(date)}`;
-    data_from_seats.map(i => { totalSeats += 1; totalSeatNames += i.seatDetail })
-
-    $('#strEvtName').append(`${movieName}`)
-    $("#strVenName").append(`${theatreName} : ${city} `)
-    $('#audiInfo').append(`${screen}`)
-    // 'Monday,Jun 13, 2022, 03:15 PM'
-    let d_time = ` ${date.split("T")[0]} ${moment(time, ["HH.mm"]).format("hh:mm A")}`
-    $("#strDate").append(d_time)
-
-
-    //adding foods
-    let elm = ""
-
-    data_from_seats[0].foods.forEach((val, ind) => {
-        elm +=
-            `<aside class="fnb-body" data-category="PO" data-uid="${val.food_uid}">
-                <div class="fnb-div">
-                    <div class="img"><img
-                        src=http://localhost:3000/uploads/${val.image.image_url}
-                        onerror="this.src='//in.bmscdn.com/bmsin/callouts/foodc.jpg'">
-                        <div class="price-tag"><span class="__amount"><svg version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                            xml:space="preserve">
-                            <use xlink:href="/icons/common-icons.svg#icon-rs"></use>
-                        </svg>${val.price}</span><span class="__price-tag all-excl-combos"></span>
-                        </div>
-                    </div>
-                    <div class="description" id="desc_1020004-2957">
-                        <div class="foodtype-indicator"><svg version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
-                            viewBox="0 0 26 24" fill="none">&gt ;<use
-                                xlink:href="/icons/fnb-icons.svg#icon-veg"></use></svg></div>
-                        <div class="item-desc">
-                            <h2><span class="_veg"></span><span
-                                class="item-sname detail-sname">${val.foodName}</span></h2>
-                            <p class="tr-desc">${val.foodName}</p>
-                            <p style="display:none;"
-                                class="detail-desc">${val.foodName}</p>
-                        </div>
-                        <div class="qty"><span  class="add-btn">ADD</span><span
-                                style="display:none;" class="icon-minus">
-                                <div class="minus-icon"></div>
-                            </span><span  class="__holder"></span>
-                            <span style="display:none;" class="icon-minus">
-                                <div class="plus-icon"></div>
-                            </span></div>
-                    </div>
-                </div>
-            </aside>`
-
-    })
-    $("#fnbcall").append(elm)
-
-
-    let spinner = `
-                    <style>
-                        /* Spinner Wrapper */
-                    .loader {
-                        width: 100vw;
-                        height: 100vh;
-                        background: #fff;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                    }
-
-                    .loader-inner {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                    }
-
-
-                    /* Spinner */
-                    .lds-roller {
-                        display: inline-block;
-                        position: relative;
-                        width: 64px;
-                        height: 64px;
-                    }
-                    .lds-roller div {
-                        animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-                        transform-origin: 32px 32px;
-                    }
-                    .lds-roller div:after {
-                        content: " ";
-                        display: block;
-                        position: absolute;
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 50%;
-                        background: #333;
-                        margin: -3px 0 0 -3px;
-                    }
-                    .lds-roller div:nth-child(1) {
-                        animation-delay: -0.036s;
-                    }
-                    .lds-roller div:nth-child(1):after {
-                        top: 50px;
-                        left: 50px;
-                    }
-                    .lds-roller div:nth-child(2) {
-                        animation-delay: -0.072s;
-                    }
-                    .lds-roller div:nth-child(2):after {
-                        top: 54px;
-                        left: 45px;
-                    }
-                    .lds-roller div:nth-child(3) {
-                        animation-delay: -0.108s;
-                    }
-                    .lds-roller div:nth-child(3):after {
-                        top: 57px;
-                        left: 39px;
-                    }
-                    .lds-roller div:nth-child(4) {
-                        animation-delay: -0.144s;
-                    }
-                    .lds-roller div:nth-child(4):after {
-                        top: 58px;
-                        left: 32px;
-                    }
-                    .lds-roller div:nth-child(5) {
-                        animation-delay: -0.18s;
-                    }
-                    .lds-roller div:nth-child(5):after {
-                        top: 57px;
-                        left: 25px;
-                    }
-                    .lds-roller div:nth-child(6) {
-                        animation-delay: -0.216s;
-                    }
-                    .lds-roller div:nth-child(6):after {
-                        top: 54px;
-                        left: 19px;
-                    }
-                    .lds-roller div:nth-child(7) {
-                        animation-delay: -0.252s;
-                    }
-                    .lds-roller div:nth-child(7):after {
-                        top: 50px;
-                        left: 14px;
-                    }
-                    .lds-roller div:nth-child(8) {
-                        animation-delay: -0.288s;
-                    }
-                    .lds-roller div:nth-child(8):after {
-                        top: 45px;
-                        left: 10px;
-                    }
-                    @keyframes lds-roller {
-                        0% {
-                            transform: rotate(0deg);
-                        }
-                        100% {
-                            transform: rotate(360deg);
-                        }
-                    }
-
-                    </style>
-
-                    <div class="loader text-center">
-                        <div class="loader-inner">
-
-                            <!-- Animated Spinner -->
-                            <div class="lds-roller mb-3">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-
-                            
-                            <h4 class="text-uppercase font-weight-bold">Loading</h4>
-                        </div>
-                    </div>
-                    `
+ 
 
     //payment first step
 
