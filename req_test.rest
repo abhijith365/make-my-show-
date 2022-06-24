@@ -1,0 +1,10 @@
+GET http://localhost:3000/
+
+###
+POST http://localhost:3000/auth/api/payment
+
+Content-Type: application/json
+
+{
+    "amount": 10000
+}
