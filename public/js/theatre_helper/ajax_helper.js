@@ -24,7 +24,7 @@ $(document).ready(function () {
                     elm += ` <div class="col-sm-4">
                                     <div class=" card">
                                         <img class="card-img-top"
-                                            src="http://localhost:3000/uploads/${arr.movie[0].images[0].image_url}"
+                                            src="https://abhijithv.xyz/uploads/${arr.movie[0].images[1].image_url}"
                                             style="height: 220px;" alt="Card image cap">
                                         <div class="card-body">
 
@@ -94,7 +94,7 @@ $(document).ready(function () {
                     elm += ` <div class="col-sm-4">
                         <div class=" card">
                             <img class="card-img-top"
-                                src="http://localhost:3000/uploads/${arr.movie[0].images[0].image_url}"
+                                src="https://abhijithv.xyz/uploads/${arr.movie[0].images[1].image_url}"
                                 style="height: 220px;" alt="Card image cap">
                             <div class="card-body">
 
