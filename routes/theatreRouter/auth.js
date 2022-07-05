@@ -213,7 +213,7 @@ route.post('/auth/otp_val', (req, res) => {
 
 })
 
-// profile page
+// profile home page
 route.get('/edit/profile/:id', ensureAuth, (req, res) => {
     try {
         const message = req.session.message;
