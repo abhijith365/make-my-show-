@@ -57,7 +57,7 @@ route.post('/', async (req, res) => {
 })
 
 
-route.get('/home', async(req, res) => {
+route.get('/home', async (req, res) => {
     try {
         let user = req.session.theatreOwn;
         if (!user) {
@@ -73,7 +73,7 @@ route.get('/home', async(req, res) => {
                 "layout": './layout/layout',
                 data: user,
                 admin: user,
-                sell:total
+                sell: total
             })
         }
     } catch (error) {
@@ -213,7 +213,9 @@ route.post('/auth/otp_val', (req, res) => {
 
 })
 
-// profile home page
+// @desc profile home page
+// GET /edit/profile/:id
+
 route.get('/edit/profile/:id', ensureAuth, (req, res) => {
     try {
         const message = req.session.message;
