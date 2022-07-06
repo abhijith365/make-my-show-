@@ -209,7 +209,7 @@ $(document).ready(function () {
             `<aside class="fnb-body" data-category="PO" data-uid="${val.food_uid}">
                 <div class="fnb-div">
                     <div class="img"><img
-                        src=http://localhost:3000/uploads/${val.image.image_url}
+                        src=https://www.abhijithv.xyz/uploads/${val.image.image_url}
                         onerror="this.src='//in.bmscdn.com/bmsin/callouts/foodc.jpg'">
                         <div class="price-tag"><span class="__amount"><svg version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
