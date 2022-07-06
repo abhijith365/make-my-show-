@@ -565,7 +565,7 @@ $(document).ready(function () {
             let orderId = response.orderId;
             let seat_tags = response.data.map(e => e.seatDetail)
             seat_tags =`${response.data[0].cate}: ${seat_tags.join(", ")}`
-            console.log(response,seat_tags)
+
 
             $('body').html(`
             <link rel="stylesheet" href="/css/user/payment.css">
