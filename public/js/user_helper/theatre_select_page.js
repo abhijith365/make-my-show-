@@ -87,7 +87,7 @@ $(document).ready(function () {
                     // let da = date.toString();
                     let cdate = `${res.obj.date}T${e.startTime}`;
                     let tr = new Date() < new Date(cdate);
-                    console.log(tr)
+                  
                     divv +=
                         `${(!tr) ? `<div class="showtime-pill-container _sold" >` : `<div class="showtime-pill-container" >`}
                         <a class="showtime-pill show_time_url"
