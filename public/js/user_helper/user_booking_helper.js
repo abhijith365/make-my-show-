@@ -260,7 +260,7 @@ $(document).ready(function () {
 
         }).done((d) => {
     
-            $('body').html(`
+                let htmlData =`
             <link rel="stylesheet" href="/css/user/booking.css">
 <section class="bkf-layout" id="seat-layout" style="display: block;">
     <div class="container">
@@ -487,8 +487,8 @@ $(document).ready(function () {
     }
 </style>
 
-            `)
-            
+            `;
+            $('body').html(htmlData)
 
             //food details
             //seat price 
