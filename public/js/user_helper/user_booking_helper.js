@@ -490,8 +490,7 @@ $(document).ready(function () {
             `;
             $('body').html(htmlData)
 
-            //food details
-            //seat price 
+            //food details && seat price 
             var groupBy = function (xs, key) {
                 return xs.reduce(function (rv, x) {
                     (rv[x[key]] = rv[x[key]] || []).push(x);
