@@ -6982,10 +6982,16 @@ ul {
 .showtime-pill-container._sold .showtime-pill {
     color: rgb(153, 153, 153);
     cursor: pointer;
+    border: 1px solid rgb(153, 153, 153);
+    text-decoration: none;
 }
 
+/* .show_time_url {
+    border: 1px solid rgb(74, 189, 93) !important;
+} */
+
 .showtime-pill-container .showtime-pill {
-    border: 1px solid rgb(153, 153, 153);
+    border: 1px solid rgb(74, 189, 93);
     color: rgb(74, 189, 93);
     padding: 4px;
     border-radius: 4px;
@@ -7030,4 +7036,3 @@ ul {
     background: rgb(255, 198, 16);
     border-radius: 50%;
 }
-
