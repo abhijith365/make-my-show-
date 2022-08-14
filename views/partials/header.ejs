@@ -1,11 +1,11 @@
 <div style="position: fixed;z-index: 99999; width: 100%; ">
-    <nav class=" navbar navbar-expand navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep"  id="ftco-navbar">
+    <nav class=" navbar navbar-expand navbar-dark ftco_navbar bg-dark ftco-navbar-light sleep" id="ftco-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="/img/svgexport-36.svg" alt="make my show"
                     style="height:2.1rem"></a>
             <div class="input-group mx-5 input-box" style="width: 26rem;">
-                <input type="search" class="form-control rounded" style="height:100%" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
+                <input type="search" disabled class="form-control rounded" style="height:100%" placeholder="Search"
+                    aria-label="Search" aria-describedby="search-addon" />
             </div>
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,27 +16,31 @@
 
 
                     <% if(!user) {%>
-                        <li class="login_main"><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
+                        <li class="login_main"><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a>
+                        </li>
                         <% }else{ %>
                             <a href="/profile" class="login_main">
                                 <div class="chip text-nowrap d-flex align-items-center">
 
-                                    <img src="<%=user.image%>" class="rounded-circle login_main" style="width:40px" alt="img">
+                                    <img src="<%=user.image%>" class="rounded-circle login_main" style="width:40px"
+                                        alt="img">
                                     <span class="chip-user-name ms-2 login_main">
                                         <%=user.firstName%>
                                     </span>
                                 </div>
                             </a>
-                            <li class="login_main"><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger ">logout</a></li>
+                            <li class="login_main"><a href="/auth/logout"
+                                    class=" mx-3 px-3 text-white btn btn-danger ">logout</a></li>
                             <% } %>
-                                <li  class="login_main">
+                                <li class="login_main">
                                     <div class="dropdown me-5" style="margin-right:20px ;z-index: 10000;">
                                         <button class="btn btn-secondary dropdown-toggle" disabled type="button"
                                             id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                             City
                                         </button>
-                                        <div class="dropdown-menu me-5 pe-5 mt-3" style="z-index: 999999;" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu me-5 pe-5 mt-3" style="z-index: 999999;"
+                                            aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="/home/city/Kochi">Kochi</a>
                                             <a class="dropdown-item" href="/home/city/NCR">NCR</a>
                                             <a class="dropdown-item" href="/home/city/Bengalure">Bengalure</a>
@@ -95,43 +99,44 @@
                         </div>
                     </div>
                     <div class="main_sm_class d-none">
-                        
-                                <% if(!user) {%>
-                                    <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
-                                    <% }else{ %>
-                                        <a href="/profile">
-                                            <div class="chip text-nowrap d-flex align-items-center">
-                    
-                                                <img src="<%=user.image%>" class="rounded-circle " style="width:40px " alt="img">
-                                                <span class="chip-user-name ms-2" style="color: black;">
-                                                    <%=user.firstName%>
-                                                </span>
-                                            </div>
-                                        </a>
-                                        <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
-                                        <% } %>
-                           
+
+                        <% if(!user) {%>
+                            <li><a href="/login" class=" mx-3 px-3 text-white btn btn-danger">login</a></li>
+                            <% }else{ %>
+                                <a href="/profile">
+                                    <div class="chip text-nowrap d-flex align-items-center">
+
+                                        <img src="<%=user.image%>" class="rounded-circle " style="width:40px "
+                                            alt="img">
+                                        <span class="chip-user-name ms-2" style="color: black;">
+                                            <%=user.firstName%>
+                                        </span>
+                                    </div>
+                                </a>
+                                <li><a href="/auth/logout" class=" mx-3 px-3 text-white btn btn-danger">logout</a></li>
+                                <% } %>
+
                     </div>
 
                     <!-- <div class="sc-fnwBNb iiLYQK"> -->
-                        <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="purchace" id="purchace"><img
-                                src="https://assets-in.bmscdn.com/members/common/icons/purchasehistory.png"
-                                class="sc-gRnDUn gMMdZt">
-                            <div class="sc-cmjSyW bTZsza">
-                                <div class="sc-sdtwF bGPOnl">Purchase History</div>
-                                <div class="sc-iYUSvU hNTLEy">View all your bookings &amp; purchases</div>                         
-                            </div>
+                    <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="purchace" id="purchace"><img
+                            src="https://assets-in.bmscdn.com/members/common/icons/purchasehistory.png"
+                            class="sc-gRnDUn gMMdZt">
+                        <div class="sc-cmjSyW bTZsza">
+                            <div class="sc-sdtwF bGPOnl">Purchase History</div>
+                            <div class="sc-iYUSvU hNTLEy">View all your bookings &amp; purchases</div>
                         </div>
+                    </div>
                     <!-- </div> -->
                     <!-- <div class="sc-fnwBNb iiLYQK"> -->
-                        <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="setting"><img
-                                src="https://assets-in.bmscdn.com/members/common/icons/accountandsettings.png"
-                                class="sc-gRnDUn gMMdZt">
-                            <div class="sc-cmjSyW bTZsza">
-                                <div class="sc-sdtwF bGPOnl">Accounts &amp; Settings</div>
-                                <div class="sc-iYUSvU hNTLEy">Location, Payments, Addresses &amp; More</div>
-                            </div>
+                    <div class="sc-iwsKbI sc-gVyKpa gPINdS" data-id="setting"><img
+                            src="https://assets-in.bmscdn.com/members/common/icons/accountandsettings.png"
+                            class="sc-gRnDUn gMMdZt">
+                        <div class="sc-cmjSyW bTZsza">
+                            <div class="sc-sdtwF bGPOnl">Accounts &amp; Settings</div>
+                            <div class="sc-iYUSvU hNTLEy">Location, Payments, Addresses &amp; More</div>
                         </div>
+                    </div>
                     <!-- </div> -->
                 </div>
             </div>
@@ -146,17 +151,21 @@
         .input-box {
             display: none;
         }
-        .burget_menu{
+
+        .burget_menu {
             display: block;
         }
-        .login_main{
+
+        .login_main {
             display: none;
         }
-        .main_sm_class{
+
+        .main_sm_class {
             display: flex !important;
         }
-        .main_sm_class li{
-             list-style-type: none;
+
+        .main_sm_class li {
+            list-style-type: none;
         }
     }
 
@@ -435,11 +444,13 @@
         z-index: 449;
         transition: all 500ms ease-in-out 0s;
     }
-    .gPINdS:hover{
+
+    .gPINdS:hover {
         background-color: rgb(218, 207, 207);
         color: wheat;
     }
-    #purchace{
-        margin-top:15px;
+
+    #purchace {
+        margin-top: 15px;
     }
 </style>
