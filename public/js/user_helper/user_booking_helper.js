@@ -151,6 +151,7 @@ $(document).ready(async function () {
             }
         }
 
+
         // storing all selected items data into a array
         arr = $('._selected').map((i, e) => {
             let obj = { "seatDetail": $(e).data('num'), "price": $(e).data('price'), "id": $(e).data('id'), cate: $(e).data('cate') }
