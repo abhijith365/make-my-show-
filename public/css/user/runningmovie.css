@@ -1,6 +1,10 @@
 body {
     background-color: #f5f5f5;
     overflow-x: hidden;
+    -ms-overflow-style: none !important;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none !important;
+    /* Firefox */
 }
 
 img {
@@ -19,7 +23,6 @@ img {
 
 }
 
-.clearfix img:hover {}
 
 .card-img-top {
     width: 100%;
@@ -54,4 +57,113 @@ body::-webkit-scrollbar {
     left: 0;
     top: 42%;
     padding: 7px 13px;
+}
+
+.top_bottom_line {
+    height: 1.6rem;
+    border-radius: 0 0 .9rem .9rem;
+    width: 100%;
+}
+
+img {
+    border-radius: .9rem .9rem 0 0
+}
+
+@media only screen and (max-width: 768px) {
+
+    .row {
+        display: -ms-flexbox;
+        /* display: flex; */
+        -ms-flex-wrap: wrap;
+        flex-wrap: nowrap;
+        margin-right: -42px;
+        margin-left: -33px;
+    }
+
+    .carousel-inner {
+        display: flex !important;
+    }
+
+    .row-cols-5 {
+        display: flex !important;
+
+    }
+
+    .movie_top_title {
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        position: relative;
+        left: 27px;
+    }
+
+    img {
+        border-radius: .3rem .3rem 0 0;
+    }
+
+    .card-img-top {
+        width: 100px;
+
+    }
+
+    .top_bottom_line {
+        height: 1rem;
+        width: 100px !important;
+        border-radius: 0 0 .3rem .3rem;
+    }
+
+    .fa-star {
+        font-size: 10px;
+        position: relative;
+        top: -6.5px;
+    }
+
+
+    .fa-chevron-left,
+    .fa-chevron-right {
+        display: none !important;
+    }
+
+    body {
+        width: 100 !important;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .p-4 {
+        padding: 0px !important;
+    }
+
+    .card_body_top {
+        overflow-x: scroll !important;
+
+    }
+
+    .book_movie_title {
+        font-size: 16px !important;
+    }
+
+    .book_movie_info {
+        font-size: 10px !important;
+    }
+
+    .book_movie_text_top {
+        padding-top: 10px;
+    }
+
+    .clearfix:hover {
+        transform: scale(1.01);
+        transition-duration: 0.7s;
+    }
+
+    .clearfix {
+        zoom: 1;
+        margin: 11px;
+    }
 }

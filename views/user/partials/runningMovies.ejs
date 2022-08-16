@@ -1,7 +1,7 @@
 <section class="container-fluid p-4">
-    <div class="d-flex justify-content-between align-items-center mx-4">
-        <div class="h2 ">Book A Movie</div>
-        <div class="h6 info"><a href="/home/allmovies">
+    <div class="d-flex justify-content-between  book_movie_text_top align-items-center mx-4">
+        <div class="h2 book_movie_title">Book A Movie</div>
+        <div class="h6 book_movie_info info"><a href="/home/allmovies">
                 View all</a> <i class="fa fa-arrow-right" aria-hidden="true"></i>
         </div>
     </div>
@@ -29,27 +29,25 @@
                 <% data.forEach((item,inx)=>{i++%>
                     <% if(inx==0||inx%5==0){ %>
                         <div class="<%= i === 1 ? " carousel-item active":"carousel-item" %>">
-                            <div class="row row-cols-5 ">
+                            <div class="row row-cols-5 card_body_top">
                                 <% } %>
 
                                     <div class="col clearfix">
-                                        <div class=" card-img-top">
+                                        <div class="card-img-top">
                                             <a href="/home/movie/<%- item.movies[0]._id %>" class="imageoutlink">
-                                                <img style="border-radius:.9rem .9rem 0 0;height: 19rem ; object-fit: cover;"
-                                                    src="https://abhijithv.xyz/uploads/<%-item.movies[0].images[0].image_url%> "
-                                                    class="img-fluid shadow-sm wp-post-image" alt="" loading="lazy" />
+                                                <img src="https://abhijithv.xyz/uploads/<%-item.movies[0].images[0].image_url%> "
+                                                    class="img-fluid shadow-sm wp-post-image" alt="" />
                                             </a>
 
                                         </div>
-                                        <div class="text-center"
-                                            style="width:100%;height: 1.6rem;border-radius: 0 0 .9rem  .9rem  ; background-color: #212529;; ">
+                                        <div class="text-center top_bottom_line" style=" background-color: #212529;; ">
                                             <i class="fa fa-star" style="color: rgba(241, 237, 237, 0.974); "
                                                 aria-hidden="true"></i>
                                         </div>
 
                                         <div class="h5 mt-2  text-center" style="color:#333 ;">
 
-                                            <span style="color: #333;">
+                                            <span style="color: #333;" class="movie_top_title">
                                                 <%-item.movies[0].movieName%>
                                             </span>
 
