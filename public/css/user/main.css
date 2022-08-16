@@ -639,8 +639,12 @@
 }
 
 @media (max-width:768px) {
-    .egMXIV {
+
+    /* .egMXIV {
         display: none;
+    } */
+    .sc-jkCMRl {
+        display: none !important;
     }
 }
 
