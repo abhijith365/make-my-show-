@@ -97,13 +97,13 @@ img {
     }
 
     .movie_top_title {
-        font-size: 12px;
+        font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
         /* number of lines to show */
-        line-clamp: 3;
+        line-clamp: 4;
         -webkit-box-orient: vertical;
         position: relative;
         left: 27px;
@@ -190,5 +190,10 @@ img {
     .carousel-indicators {
         bottom: -17px !important;
         left: 100px !important;
+    }
+
+    .fMIHoZ {
+        visibility: hidden !important;
+        margin: 10px 0 !important;
     }
 }
