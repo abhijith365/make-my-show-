@@ -7,6 +7,13 @@ body {
     /* Firefox */
 }
 
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
 img {
     width: 100%;
     height: auto;
@@ -71,13 +78,13 @@ img {
 
 @media only screen and (max-width: 768px) {
 
-    .row {
-        display: -ms-flexbox;
-        /* display: flex; */
-        -ms-flex-wrap: wrap;
-        flex-wrap: nowrap;
-        margin-right: -42px;
-        margin-left: -33px;
+    .card_body_top {
+        display: -ms-flexbox !important;
+        /* display: flex !important; */
+        -ms-flex-wrap: wrap !important;
+        flex-wrap: nowrap !important;
+        margin-right: -42px !important;
+        margin-left: -33px !important;
     }
 
     .carousel-inner {
@@ -146,7 +153,7 @@ img {
     }
 
     .book_movie_title {
-        font-size: 16px !important;
+        font-size: 18px !important;
     }
 
     .book_movie_info {
@@ -165,5 +172,23 @@ img {
     .clearfix {
         zoom: 1;
         margin: 11px;
+    }
+
+    .ad-my {
+        padding: 0px !important;
+        margin: 10px 0 !important
+    }
+
+    .carousel-indicators {
+        width: 50px;
+    }
+
+    .mx-5 {
+        margin: 0 12px !important;
+    }
+
+    .carousel-indicators {
+        bottom: -17px !important;
+        left: 100px !important;
     }
 }
