@@ -26,6 +26,10 @@
         left: -3.5em !important;
         top: 44px;
     }
+
+    .container {
+        padding: 0 !important;
+    }
 }
 
 @-moz-document url-prefix() {

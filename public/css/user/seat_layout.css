@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .bkf-layout .bkf-container._seat {
     overflow-y: auto;
 }
@@ -611,7 +615,7 @@
 
 @media (min-width:320px) and (max-width:767px) {
     .bkf-layout .bkf-header .header-container {
-        padding: 9px 0 9px 10px
+        padding: 9px 0 9px 27px
     }
 }
 
