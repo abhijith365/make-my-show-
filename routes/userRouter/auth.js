@@ -8,9 +8,13 @@ const Razorpay = require('razorpay');
 
 const router = express.Router()
 
-const accountSid = process.env.ACCOUNT_SID
-const authToken = process.env.AUTH_TOKEN
-const serviceid = process.env.SERVICE_ID
+const accountSid = 'ACd2eebe8ef89cd5e0eff40d11cd4837ad'
+const authToken = 'bab89f5e5022c7aa0fba7250cee90749'
+const serviceid = 'VA1751d94f299a64513b8dcc2296ac5087'
+
+// const accountSid = process.env.ACCOUNT_SID
+// const authToken = process.env.AUTH_TOKEN
+// const serviceid = process.env.SERVICE_ID
 
 const db = require('../../helper/user_helper/user_db_helper');
 const { ensureAuth } = require('../../middleware/isUser')
@@ -109,16 +113,17 @@ router.post('/api/payment', ensureAuth, async (req, res) => {
 
         //collecting amount details from database
         let seatDetail = await db.findAmt(array);
-        
+
         //storing show data
         let showObj = {
-        movieId : seatDetail[0].movieId,
-        screenId : seatDetail[0].screenId,
-        showTime : seatDetail[0].show_seats.showByDate.shows.showTime}
-       
+            movieId: seatDetail[0].movieId,
+            screenId: seatDetail[0].screenId,
+            showTime: seatDetail[0].show_seats.showByDate.shows.showTime
+        }
+
         req.session.showDetails = showObj;
 
-         //checking all seats avialable
+        //checking all seats avialable
         let status = seatDetail.map((d) => d.show_seats.showByDate.shows.showSeats.seat_status);
         let seat_all_not_clear = false;
 

@@ -98,12 +98,13 @@ img {
 
     .movie_top_title {
         font-size: 13px;
+
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 1;
         /* number of lines to show */
-        line-clamp: 4;
+        line-clamp: 1;
         -webkit-box-orient: vertical;
         position: relative;
         left: 27px;
