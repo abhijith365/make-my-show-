@@ -7044,3 +7044,20 @@ ul {
     background: rgb(255, 198, 16);
     border-radius: 50%;
 }
+
+@media only screen and (max-width: 768px) {
+    .buyticket-page .showtimes .wrapper .container ul .list {
+        flex-direction: column !important;
+    }
+
+    .listing-info .info-section {
+        display: none !important;
+    }
+
+    .prev,
+    .next,
+    .heart-rating {
+        display: none !important;
+    }
+
+}
