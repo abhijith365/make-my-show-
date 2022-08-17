@@ -222,4 +222,8 @@ img {
         font-size: 13px !important;
         font-weight: 500 !important;
     }
+
+    .bkf-layout .bkf-container._add-ons {
+        padding-top: 15px !important;
+    }
 }

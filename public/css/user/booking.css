@@ -7716,7 +7716,7 @@ body {
     }
 
     .bkf-layout .bkf-container._add-ons {
-        padding-top: 120px;
+        padding-top: 15px;
         width: 100%;
         min-width: 320px
     }
@@ -9904,4 +9904,9 @@ body {
 
 .__pay-now a {
     width: 80%
+}
+
+.qty,
+.add-btn {
+    cursor: not-allowed !important;
 }
