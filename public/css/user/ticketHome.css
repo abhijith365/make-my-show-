@@ -832,7 +832,14 @@ a {
 .tickets .details .info .text>div {
     text-align: left;
     position: relative;
-    padding: 25px 0 15px
+    /* padding: 25px 0 15px
+        */
+    padding: 0px 16px;
+
+}
+
+.btn-danger {
+    margin: 0 0 10px 0;
 }
 
 .tickets .details .info .text>div .__seats {
