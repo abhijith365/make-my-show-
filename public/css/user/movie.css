@@ -475,3 +475,40 @@
  .cKuWQr span {
      user-select: text;
  }
+
+ .lftZnN {
+     cursor: not-allowed !important;
+ }
+
+ @media only screen and (max-width: 768px) {
+     .cUDDgh {
+         display: flex !important;
+         flex-direction: column;
+         justify-content: center;
+     }
+
+     .fdWjQB {
+         display: none !important;
+     }
+
+     .bmFtqL {
+         display: none !important;
+     }
+
+     .btqyFP {
+         justify-content: center !important;
+     }
+
+     .ehwnas {
+         display: flex !important;
+         flex-direction: column !important;
+         justify-content: flex-start !important;
+         align-content: stretch !important;
+         align-items: center !important;
+     }
+
+     .cFiFtf,
+     .cKuWQr {
+         text-align: center;
+     }
+ }
