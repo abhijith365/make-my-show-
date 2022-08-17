@@ -16,8 +16,16 @@
 
 .indian-flag {
     position: absolute;
-    left: -90%;
+    left: -4.8rem;
     top: 44px;
+}
+
+@media only screen and (max-width: 768px) {
+    .indian-flag {
+        position: absolute;
+        left: -3.5em !important;
+        top: 44px;
+    }
 }
 
 @-moz-document url-prefix() {
