@@ -197,4 +197,29 @@ img {
         visibility: hidden !important;
         margin: 15px 0 !important;
     }
+
+    .movie {
+        flex-direction: column !important;
+    }
+
+    .movie__detail:nth-child(1),
+    .movie__detail:nth-child(2),
+    .movie__tag {
+        display: none !important;
+    }
+
+    .heading__primary {
+        margin-right: auto !important;
+        color: #050506 !important;
+        font-family: bold !important;
+    }
+
+    .movie__hero {
+        flex: 0 !important;
+    }
+
+    .movie__description {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
 }
