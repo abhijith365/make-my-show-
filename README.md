@@ -3,6 +3,7 @@ a movie booking application. using node, express.js in back-end, mongo db as dat
 
 ## to using this app you need t add config.env inside config folder
 ### add below item to config.env
+```
 PORT = 3000
 # DATABASE
 MONGO_URI = "...
@@ -21,6 +22,7 @@ SERVICE_ID= '...'
 #Razor pay
 RAZ__ID = '...'
 RAZ_SECRET= '...'
+```
 
 ### npm start 
 ## enjoy:)
