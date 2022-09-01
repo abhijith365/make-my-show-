@@ -8,13 +8,10 @@ const Razorpay = require('razorpay');
 
 const router = express.Router()
 
-const accountSid = 'ACd2eebe8ef89cd5e0eff40d11cd4837ad'
-const authToken = 'bab89f5e5022c7aa0fba7250cee90749'
-const serviceid = 'VA1751d94f299a64513b8dcc2296ac5087'
 
-// const accountSid = process.env.ACCOUNT_SID
-// const authToken = process.env.AUTH_TOKEN
-// const serviceid = process.env.SERVICE_ID
+const accountSid = process.env.ACCOUNT_SID
+const authToken = process.env.AUTH_TOKEN
+const serviceid = process.env.SERVICE_ID
 
 const db = require('../../helper/user_helper/user_db_helper');
 const { ensureAuth } = require('../../middleware/isUser')
