@@ -2,7 +2,7 @@
 # make-my-show-
 a movie booking application. using node, express.js in back-end, mongo db as database and ejs as front end, user can book ticket , theatre owner can add theatre and add movies, seats, show time, show date, ects. admin page can approve theatre owner request, dashboard for revenue and many features and interactive front end
 
-## to using this app you need t add config.env inside config folder
+## to using this app you need to add config.env inside config folder
 ### add below item to config.env
 ```
 PORT = 3000
